@@ -1,0 +1,103 @@
+.admin-reviews-root {
+  max-width: 800px;
+  margin: 48px auto 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #0001;
+  padding: 40px 28px 32px 28px;
+  color: #1a3a2b;
+}
+.admin-reviews-root h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.admin-reviews-empty {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  margin: 40px 0;
+}
+.admin-reviews-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.admin-review-card {
+  background: #f7f8fa;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px #0001;
+  padding: 18px 18px 14px 18px;
+}
+.admin-review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.admin-review-name {
+  font-weight: 700;
+  color: #1a3a2b;
+}
+.admin-review-date {
+  color: #888;
+  font-size: 0.98em;
+}
+.admin-review-text {
+  font-size: 1.08em;
+  color: #222;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+.admin-review-btn {
+  background: #4fd165;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 1.08rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admin-review-btn:hover {
+  background: #36b14e;
+}
+.admin-review-btn.reject {
+  background: #e74c3c;
+  margin-left: 12px;
+}
+.admin-review-btn.reject:hover {
+  background: #c0392b;
+}
+body.theme-dark .admin-reviews-root {
+  background: #181818;
+  color: #f7f8fa;
+}
+body.theme-dark .admin-review-card {
+  background: #232323;
+}
+body.theme-dark .admin-review-header .admin-review-name {
+  color: #4fd165;
+}
+body.theme-dark .admin-review-date {
+  color: #aaa;
+}
+body.theme-dark .admin-review-text {
+  color: #f7f8fa;
+}
+body.theme-dark .admin-review-btn {
+  background: #4fd165;
+  color: #fff;
+}
+body.theme-dark .admin-review-btn:hover {
+  background: #36b14e;
+}
+body.theme-dark .admin-review-btn.reject {
+  background: #e74c3c;
+  color: #fff;
+}
+body.theme-dark .admin-review-btn.reject:hover {
+  background: #c0392b;
+} 

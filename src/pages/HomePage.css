@@ -1,0 +1,224 @@
+.home-root {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #f7f8fa;
+  min-height: 100vh;
+  color: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-header {
+  width: 100%;
+  margin: 0 auto;
+  padding: 48px 32px 32px 32px;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.home-header h1 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 18px;
+  color: #1a3a2b;
+}
+
+.home-subtitle {
+  font-size: 1.25rem;
+  color: #3a4a3a;
+  margin-bottom: 32px;
+}
+
+.home-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.home-cta button {
+  background: #4fd165;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 16px 28px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.home-cta button:hover {
+  background: #36b14e;
+}
+
+.home-cta .combo {
+  background: #1a3a2b;
+}
+
+.home-cta .combo:hover {
+  background: #2e5c3f;
+}
+
+.home-benefits {
+  background: #fff;
+  border-radius: 18px;
+  width: 100%;
+  margin: 32px auto 0 auto;
+  padding: 32px 32px 24px 32px;
+  box-shadow: 0 2px 16px #0001;
+  box-sizing: border-box;
+}
+
+.home-benefits h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: #1a3a2b;
+}
+
+.benefits-list {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.benefit {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 180px;
+  text-align: center;
+}
+
+.benefit span {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+}
+
+.home-examples {
+  width: 100%;
+  margin: 40px auto 0 auto;
+  padding: 0 32px 32px 32px;
+  box-sizing: border-box;
+}
+
+.home-examples h2 {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-bottom: 24px;
+  color: #1a3a2b;
+}
+
+.examples-list {
+  display: flex;
+  gap: 28px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.example {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #0001;
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 20px;
+  min-width: 270px;
+  max-width: 340px;
+  margin-bottom: 16px;
+}
+
+.example-img {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #e6f7ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.example-img.food {
+  background: linear-gradient(135deg, #ffe7a3 60%, #fffbe6 100%);
+}
+.example-img.workout {
+  background: linear-gradient(135deg, #b3e6ff 60%, #e6f7fa 100%);
+}
+.example-img.combo {
+  background: linear-gradient(135deg, #c6e6c3 60%, #f7f8fa 100%);
+}
+
+@media (max-width: 800px) {
+  .benefits-list, .examples-list {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .example {
+    max-width: 100%;
+    min-width: 0;
+  }
+}
+
+body.theme-dark .home-root {
+  background: #181a1b;
+  color: #f7f8fa;
+}
+body.theme-dark .home-header h1,
+body.theme-dark .home-benefits h2,
+body.theme-dark .home-examples h2 {
+  color: #4fd165;
+  text-shadow: 0 2px 12px #0008;
+}
+body.theme-dark .home-subtitle {
+  color: #b2e6c3;
+}
+body.theme-dark .home-benefits {
+  background: #232323;
+  box-shadow: 0 4px 32px #0008;
+}
+body.theme-dark .benefit {
+  color: #f7f8fa;
+}
+body.theme-dark .home-examples {
+  background: none;
+}
+body.theme-dark .example {
+  background: #232323;
+  color: #f7f8fa;
+  box-shadow: 0 2px 16px #0008;
+}
+body.theme-dark .example-img.food {
+  background: linear-gradient(135deg, #bfae6a 60%, #232323 100%);
+}
+body.theme-dark .example-img.workout {
+  background: linear-gradient(135deg, #5bb6d6 60%, #232323 100%);
+}
+body.theme-dark .example-img.combo {
+  background: linear-gradient(135deg, #4fd165 60%, #232323 100%);
+}
+body.theme-dark .home-cta button {
+  background: #4fd165;
+  color: #181a1b;
+  box-shadow: 0 2px 16px #4fd16544, 0 2px 8px #0008;
+}
+body.theme-dark .home-cta button:hover {
+  background: #36b14e;
+  color: #fff;
+}
+body.theme-dark .home-cta .combo {
+  background: #232323;
+  color: #4fd165;
+  border: 1.5px solid #4fd165;
+  box-shadow: 0 2px 16px #4fd16522, 0 2px 8px #0008;
+}
+body.theme-dark .home-cta .combo:hover {
+  background: #333;
+  color: #fff;
+} 

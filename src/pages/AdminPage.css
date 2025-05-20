@@ -1,0 +1,54 @@
+.admin-tabs-root {
+  max-width: 900px;
+  margin: 48px auto 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #0001;
+  padding: 0 0 32px 0;
+}
+.admin-tabs-bar {
+  display: flex;
+  border-bottom: 2px solid #e6f7ec;
+  background: #f7f8fa;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+}
+.admin-tab {
+  flex: 1;
+  padding: 20px 0;
+  font-size: 1.13rem;
+  font-weight: 700;
+  background: none;
+  border: none;
+  color: #1a3a2b;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.admin-tab.active {
+  background: #4fd165;
+  color: #fff;
+}
+.admin-tab:not(.active):hover {
+  background: #e6f7ec;
+}
+.admin-tab-content {
+  padding: 0 28px;
+}
+body.theme-dark .admin-tabs-root {
+  background: #181818;
+  color: #f7f8fa;
+}
+body.theme-dark .admin-tabs-bar {
+  background: #232323;
+  border-bottom: 2px solid #333;
+}
+body.theme-dark .admin-tab {
+  color: #f7f8fa;
+}
+body.theme-dark .admin-tab.active {
+  background: #4fd165;
+  color: #fff;
+}
+body.theme-dark .admin-tab:not(.active):hover {
+  background: #333;
+}

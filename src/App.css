@@ -1,0 +1,421 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap');
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+.main-header {
+  width: 100vw;
+  background: #fff;
+  box-shadow: 0 2px 12px #0001;
+  padding: 0;
+  margin: 0 0 24px 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.main-header nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+}
+.main-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.main-logo {
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #1a3a2b;
+  text-decoration: none;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  line-height: 64px;
+  transition: color 0.2s;
+}
+.main-logo .logo-accent {
+  color: #4fd165;
+  margin-left: 2px;
+}
+.main-nav-links {
+  display: flex;
+  gap: 18px;
+}
+.main-nav-links a {
+  color: #1a3a2b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1.08rem;
+  padding: 8px 18px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.main-nav-links a:hover {
+  background: #e6f7ea;
+  color: #4fd165;
+}
+@media (max-width: 700px) {
+  .main-header nav {
+    padding: 0 10px;
+  }
+  .main-logo {
+    font-size: 1.2rem;
+    height: 48px;
+    line-height: 48px;
+  }
+  .main-nav-links a {
+    font-size: 1rem;
+    padding: 6px 10px;
+  }
+  .theme-toggle-btn {
+    height: 48px;
+    margin-right: 12px;
+  }
+}
+
+.main-nav-btn {
+  background: #f7f8fa;
+  color: #1a3a2b;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 18px;
+  font-weight: 600;
+  font-size: 1.08rem;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+.main-nav-btn:hover {
+  background: #e6f7ea;
+  color: #4fd165;
+}
+
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-right: 24px;
+  cursor: pointer;
+  color: #1a3a2b;
+  transition: color 0.2s;
+  padding: 0 4px;
+  display: flex;
+  align-items: center;
+  height: 64px;
+}
+.theme-toggle-btn:hover {
+  color: #4fd165;
+}
+
+body.theme-dark {
+  background: #232323 !important;
+  color: #f7f8fa;
+}
+body.theme-dark .main-header {
+  background: #181818;
+  box-shadow: 0 2px 12px #0008;
+}
+body.theme-dark .main-logo,
+body.theme-dark .main-nav-links a,
+body.theme-dark .main-nav-btn {
+  color: #f7f8fa;
+}
+body.theme-dark .main-nav-links a:hover,
+body.theme-dark .main-nav-btn:hover {
+  background: #333;
+  color: #4fd165;
+}
+body.theme-dark .theme-toggle-btn {
+  color: #f7f8fa;
+}
+
+body.theme-dark .login-bg,
+body.theme-dark .pay-bg,
+body.theme-dark .dash-bg,
+body.theme-dark .questionnaire-bg {
+  background: #232323 !important;
+}
+body.theme-dark .login-center,
+body.theme-dark .pay-center,
+body.theme-dark .dash-center,
+body.theme-dark .questionnaire-center {
+  background: #181818 !important;
+  color: #f7f8fa;
+  box-shadow: 0 2px 16px #0008;
+}
+body.theme-dark .login-input,
+body.theme-dark .login-btn,
+body.theme-dark .pay-tariff,
+body.theme-dark .pay-btn,
+body.theme-dark .dash-food-day,
+body.theme-dark .dash-workout-day,
+body.theme-dark .dash-btn,
+body.theme-dark .questionnaire-center input,
+body.theme-dark .questionnaire-center select,
+body.theme-dark .questionnaire-center textarea {
+  background: #232323 !important;
+  color: #f7f8fa !important;
+  border-color: #444 !important;
+}
+body.theme-dark .pay-tariff.selected,
+body.theme-dark .pay-tariff.highlight {
+  background: #232323 !important;
+}
+body.theme-dark .pay-title,
+body.theme-dark .pay-desc,
+body.theme-dark .pay-price,
+body.theme-dark .pay-badge,
+body.theme-dark .dash-food-dayname,
+body.theme-dark .dash-workout-dayname {
+  color: #f7f8fa !important;
+}
+body.theme-dark .dash-shopping-list li {
+  background: #333 !important;
+  color: #f7f8fa !important;
+}
+body.theme-dark .home-root,
+body.theme-dark .home-header,
+body.theme-dark .home-benefits,
+body.theme-dark .home-examples,
+body.theme-dark .example {
+  background: #181818 !important;
+  color: #f7f8fa !important;
+}
+body.theme-dark .benefit span {
+  color: #4fd165 !important;
+}
+body.theme-dark .home-cta button,
+body.theme-dark .home-cta .combo {
+  background: #333 !important;
+  color: #f7f8fa !important;
+}
+body.theme-dark .home-cta button:hover,
+body.theme-dark .home-cta .combo:hover {
+  background: #4fd165 !important;
+  color: #fff !important;
+}
+
+body.theme-dark .home-header h1,
+body.theme-dark .home-benefits h2,
+body.theme-dark .home-examples h2,
+body.theme-dark .dash-header h2,
+body.theme-dark .pay-center h2,
+body.theme-dark .login-center h2,
+body.theme-dark .questionnaire-center h2 {
+  color: #fff !important;
+  text-shadow: 0 2px 12px #0008;
+}
+body.theme-dark .home-subtitle,
+body.theme-dark .home-benefits,
+body.theme-dark .home-examples,
+body.theme-dark .pay-desc,
+body.theme-dark .pay-guarantee,
+body.theme-dark .dash-food-day,
+body.theme-dark .dash-workout-day,
+body.theme-dark .dash-shopping-list li,
+body.theme-dark .questionnaire-center label,
+body.theme-dark .questionnaire-center,
+body.theme-dark .login-center,
+body.theme-dark .register-center {
+  color: #e6e6e6 !important;
+}
+body.theme-dark .home-cta button,
+body.theme-dark .home-cta .combo,
+body.theme-dark .pay-btn,
+body.theme-dark .dash-btn,
+body.theme-dark .main-nav-btn {
+  background: #333 !important;
+  color: #fff !important;
+  border: 1px solid #444 !important;
+}
+body.theme-dark .home-cta button:hover,
+body.theme-dark .home-cta .combo:hover,
+body.theme-dark .pay-btn:hover,
+body.theme-dark .dash-btn:hover,
+body.theme-dark .main-nav-btn:hover {
+  background: #4fd165 !important;
+  color: #fff !important;
+  border: 1px solid #4fd165 !important;
+}
+body.theme-dark .benefit span {
+  color: #4fd165 !important;
+  filter: drop-shadow(0 2px 8px #0008);
+}
+body.theme-dark .example h3,
+body.theme-dark .pay-title,
+body.theme-dark .dash-food-dayname,
+body.theme-dark .dash-workout-dayname {
+  color: #fff !important;
+}
+body.theme-dark .example p {
+  color: #e6e6e6 !important;
+}
+body.theme-dark .main-logo {
+  color: #fff !important;
+}
+
+body.theme-light, body:not(.theme-dark) {
+  color: #1a3a2b;
+  background: #f7f8fa;
+}
+body.theme-light .main-header,
+body:not(.theme-dark) .main-header {
+  background: #fff;
+  color: #1a3a2b;
+}
+body.theme-light .main-logo,
+body:not(.theme-dark) .main-logo,
+body.theme-light .main-nav-links a,
+body:not(.theme-dark) .main-nav-links a,
+body.theme-light .main-nav-btn,
+body:not(.theme-dark) .main-nav-btn {
+  color: #1a3a2b;
+}
+body.theme-light .main-nav-links a:hover,
+body:not(.theme-dark) .main-nav-links a:hover,
+body.theme-light .main-nav-btn:hover,
+body:not(.theme-dark) .main-nav-btn:hover {
+  background: #e6f7ea;
+  color: #4fd165;
+}
+body.theme-light .home-header h1,
+body:not(.theme-dark) .home-header h1,
+body.theme-light .home-benefits h2,
+body:not(.theme-dark) .home-benefits h2,
+body.theme-light .home-examples h2,
+body:not(.theme-dark) .home-examples h2,
+body.theme-light .dash-header h2,
+body:not(.theme-dark) .dash-header h2,
+body.theme-light .pay-center h2,
+body:not(.theme-dark) .pay-center h2,
+body.theme-light .login-center h2,
+body:not(.theme-dark) .login-center h2,
+body.theme-light .questionnaire-center h2,
+body:not(.theme-dark) .questionnaire-center h2 {
+  color: #1a3a2b !important;
+  text-shadow: none;
+}
+body.theme-light .home-subtitle,
+body:not(.theme-dark) .home-subtitle,
+body.theme-light .home-benefits,
+body:not(.theme-dark) .home-benefits,
+body.theme-light .home-examples,
+body:not(.theme-dark) .home-examples,
+body.theme-light .pay-desc,
+body:not(.theme-dark) .pay-desc,
+body.theme-light .pay-guarantee,
+body:not(.theme-dark) .pay-guarantee,
+body.theme-light .dash-food-day,
+body:not(.theme-dark) .dash-food-day,
+body.theme-light .dash-workout-day,
+body:not(.theme-dark) .dash-workout-day,
+body.theme-light .dash-shopping-list li,
+body:not(.theme-dark) .dash-shopping-list li,
+body.theme-light .questionnaire-center label,
+body:not(.theme-dark) .questionnaire-center label,
+body.theme-light .questionnaire-center,
+body:not(.theme-dark) .questionnaire-center,
+body.theme-light .login-center,
+body:not(.theme-dark) .login-center,
+body.theme-light .register-center,
+body:not(.theme-dark) .register-center {
+  color: #222 !important;
+}
+body.theme-light .home-cta button,
+body:not(.theme-dark) .home-cta button,
+body.theme-light .home-cta .combo,
+body:not(.theme-dark) .home-cta .combo,
+body.theme-light .pay-btn,
+body:not(.theme-dark) .pay-btn,
+body.theme-light .dash-btn,
+body:not(.theme-dark) .dash-btn,
+body.theme-light .main-nav-btn,
+body:not(.theme-dark) .main-nav-btn {
+  background: #4fd165 !important;
+  color: #fff !important;
+  border: none !important;
+}
+body.theme-light .home-cta button:hover,
+body:not(.theme-dark) .home-cta button:hover,
+body.theme-light .home-cta .combo:hover,
+body:not(.theme-dark) .home-cta .combo:hover,
+body.theme-light .pay-btn:hover,
+body:not(.theme-dark) .pay-btn:hover,
+body.theme-light .dash-btn:hover,
+body:not(.theme-dark) .dash-btn:hover,
+body.theme-light .main-nav-btn:hover,
+body:not(.theme-dark) .main-nav-btn:hover {
+  background: #36b14e !important;
+  color: #fff !important;
+}
+body.theme-light .benefit span,
+body:not(.theme-dark) .benefit span {
+  color: #4fd165 !important;
+  filter: none;
+}
+body.theme-light .example h3,
+body:not(.theme-dark) .example h3,
+body.theme-light .pay-title,
+body:not(.theme-dark) .pay-title,
+body.theme-light .dash-food-dayname,
+body:not(.theme-dark) .dash-food-dayname,
+body.theme-light .dash-workout-dayname,
+body:not(.theme-dark) .dash-workout-dayname {
+  color: #1a3a2b !important;
+}
+body.theme-light .example p,
+body:not(.theme-dark) .example p {
+  color: #222 !important;
+}
+
+.main-admin-btn {
+  margin-left: 18px;
+}

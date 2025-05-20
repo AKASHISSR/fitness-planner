@@ -1,0 +1,97 @@
+.admin-feedback-root {
+  max-width: 900px;
+  margin: 48px auto 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 4px 32px #0001;
+  padding: 40px 28px 32px 28px;
+  color: #1a3a2b;
+}
+.admin-feedback-root h1 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 28px;
+  text-align: center;
+}
+.admin-feedback-empty {
+  text-align: center;
+  color: #888;
+  font-size: 1.1rem;
+  margin: 40px 0;
+}
+.admin-feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1.08rem;
+  background: #fff;
+}
+.admin-feedback-table th, .admin-feedback-table td {
+  border: 1px solid #e6f7ea;
+  padding: 12px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+.admin-feedback-table th {
+  background: #e6f7ea;
+  color: #1a3a2b;
+  font-weight: 700;
+}
+.admin-feedback-table tr:nth-child(even) td {
+  background: #f7f8fa;
+}
+.admin-feedback-table a {
+  color: #4fd165;
+  text-decoration: underline;
+}
+@media (max-width: 700px) {
+  .admin-feedback-root {
+    padding: 12px 2vw;
+    font-size: 0.98rem;
+  }
+  .admin-feedback-table th, .admin-feedback-table td {
+    padding: 7px 4px;
+    font-size: 0.95rem;
+  }
+}
+body.theme-dark .admin-feedback-root {
+  background: #181818;
+  color: #f7f8fa;
+}
+body.theme-dark .admin-feedback-table {
+  background: #181818;
+  color: #f7f8fa;
+}
+body.theme-dark .admin-feedback-table th {
+  background: #232323;
+  color: #4fd165;
+}
+body.theme-dark .admin-feedback-table td {
+  border: 1px solid #333;
+}
+body.theme-dark .admin-feedback-table tr:nth-child(even) td {
+  background: #232323;
+}
+body.theme-dark .admin-feedback-table a {
+  color: #4fd165;
+}
+.admin-feedback-remove-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.admin-feedback-remove-btn:hover {
+  background: #c0392b;
+}
+body.theme-dark .admin-feedback-remove-btn {
+  background: #e74c3c;
+  color: #fff;
+}
+body.theme-dark .admin-feedback-remove-btn:hover {
+  background: #c0392b;
+} 
