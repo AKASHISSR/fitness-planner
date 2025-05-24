@@ -194,7 +194,7 @@ function Footer() {
         </div>
       </div>
       <div className="footer-pay-logos">
-        <img src="footer-pay-logos.png" alt="Платёжные системы" className="footer-pay-logos-img" />
+        <img src={`${import.meta.env.BASE_URL}footer-pay-logos.png`} alt="Платёжные системы" className="footer-pay-logos-img" />
       </div>
     </footer>
   );
