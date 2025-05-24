@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import './QuestionnairePage.css';
+import { logUserActivity } from '../firebase';
 
 const COMMON_QUESTIONS = [
   { name: 'gender', label: 'Пол', type: 'select', options: ['Мужской', 'Женский'] },
@@ -57,9 +58,14 @@ function QuestionnairePage() {
     setStep((s) => Math.max(0, s - 1));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    navigate('/payment');
+    localStorage.setItem('fitgenius_selected_type', type);
+    localStorage.setItem('fitgenius_questionnaire_answers', JSON.stringify(answers));
+    // Логируем прохождение опроса
+    const email = localStorage.getItem('fitgenius_user') || '';
+    await logUserActivity({ email, type: 'Опрос', desc: `Пройден опрос: ${type}` });
+    navigate('/pay');
   };
 
   return (

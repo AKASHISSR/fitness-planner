@@ -39,62 +39,64 @@ function ReviewsPage() {
   const handlePageChange = (p) => setPage(p);
 
   return (
-    <div className="reviews-root">
-      <h1>Отзывы наших пользователей</h1>
-      <h2>Оставьте свой отзыв</h2>
-      <form className="review-form" onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Ваше имя"
-          value={form.name}
-          onChange={handleChange}
-          className="review-input"
-          required
-        />
-        <textarea
-          name="text"
-          placeholder="Ваш отзыв..."
-          value={form.text}
-          onChange={handleChange}
-          className="review-textarea"
-          required
-        />
-        {error && <div className="review-error">{error}</div>}
-        {sent && <div className="review-success">Спасибо! Ваш отзыв отправлен на модерацию.</div>}
-        <button type="submit" className="review-btn">Отправить отзыв</button>
-      </form>
-      {published.length === 0 ? (
-        <div className="reviews-empty">Пока нет опубликованных отзывов.</div>
-      ) : (
-        <>
-          <div className="reviews-list">
-            {paginatedReviews.map((r, i) => (
-              <div className="review-card" key={i}>
-                <div className="review-header">
-                  <span className="review-name">{r.name}</span>
-                  <span className="review-date">{r.date}</span>
+    <div className="reviews-bg">
+      <div className="reviews-root">
+        <h1>Отзывы наших пользователей</h1>
+        <h2>Оставьте свой отзыв</h2>
+        <form className="review-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="name"
+            placeholder="Ваше имя"
+            value={form.name}
+            onChange={handleChange}
+            className="review-input"
+            required
+          />
+          <textarea
+            name="text"
+            placeholder="Ваш отзыв..."
+            value={form.text}
+            onChange={handleChange}
+            className="review-textarea"
+            required
+          />
+          {error && <div className="review-error">{error}</div>}
+          {sent && <div className="review-success">Спасибо! Ваш отзыв отправлен на модерацию.</div>}
+          <button type="submit" className="review-btn">Отправить отзыв</button>
+        </form>
+        {published.length === 0 ? (
+          <div className="reviews-empty">Пока нет опубликованных отзывов.</div>
+        ) : (
+          <>
+            <div className="reviews-list">
+              {paginatedReviews.map((r, i) => (
+                <div className="review-card" key={i}>
+                  <div className="review-header">
+                    <span className="review-name">{r.name}</span>
+                    <span className="review-date">{r.date}</span>
+                  </div>
+                  <div className="review-text">{r.text}</div>
                 </div>
-                <div className="review-text">{r.text}</div>
-              </div>
-            ))}
-          </div>
-          {totalPages > 1 && (
-            <div className="reviews-pagination">
-              {Array.from({ length: totalPages }, (_, idx) => (
-                <button
-                  key={idx}
-                  className={`reviews-page-btn${page === idx + 1 ? ' active' : ''}`}
-                  onClick={() => handlePageChange(idx + 1)}
-                  disabled={page === idx + 1}
-                >
-                  {idx + 1}
-                </button>
               ))}
             </div>
-          )}
-        </>
-      )}
+            {totalPages > 1 && (
+              <div className="reviews-pagination">
+                {Array.from({ length: totalPages }, (_, idx) => (
+                  <button
+                    key={idx}
+                    className={`reviews-page-btn${page === idx + 1 ? ' active' : ''}`}
+                    onClick={() => handlePageChange(idx + 1)}
+                    disabled={page === idx + 1}
+                  >
+                    {idx + 1}
+                  </button>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+      </div>
     </div>
   );
 }

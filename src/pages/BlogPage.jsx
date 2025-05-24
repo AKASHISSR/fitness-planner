@@ -1,5 +1,5 @@
 function BlogPage() {
-  return <div>Блог</div>;
+  return <div className="blog-bg">Блог</div>;
 }
 
 export default BlogPage; 

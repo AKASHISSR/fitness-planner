@@ -1,5 +1,9 @@
 function AboutPage() {
-  return <div>О нас</div>;
+  return (
+    <div className="about-bg">
+      {/* ...контент о проекте... */}
+    </div>
+  );
 }
 
 export default AboutPage; 

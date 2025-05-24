@@ -2,6 +2,7 @@ import { useState } from 'react';
 import AdminReviewsPage from './AdminReviewsPage';
 import AdminFeedbackPage from './AdminFeedbackPage';
 import AdminPublishedReviewsPage from './AdminPublishedReviewsPage';
+import AdminVisitsPage from './AdminVisitsPage';
 import './AdminPage.css';
 
 function AdminPage() {
@@ -27,11 +28,18 @@ function AdminPage() {
         >
           Форма обратной связи
         </button>
+        <button
+          className={tab === 'visits' ? 'admin-tab active' : 'admin-tab'}
+          onClick={() => setTab('visits')}
+        >
+          История заходов
+        </button>
       </div>
       <div className="admin-tab-content">
         {tab === 'reviews' && <AdminReviewsPage />}
         {tab === 'published' && <AdminPublishedReviewsPage />}
         {tab === 'feedback' && <AdminFeedbackPage />}
+        {tab === 'visits' && <AdminVisitsPage />}
       </div>
     </div>
   );

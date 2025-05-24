@@ -5,9 +5,9 @@ function HomePage() {
   const navigate = useNavigate();
 
   return (
-    <div className="home-root">
+    <div className="home-bg">
       <header className="home-header">
-        <h1>Персональная программа питания и тренировок для 100% результата</h1>
+        <h1>Персональные программы питания и тренировок с гарантией результата</h1>
         <p className="home-subtitle">Ответьте на вопросы – получите идеальный рацион и план занятий под ваши цели</p>
         <div className="home-cta">
           <button onClick={() => navigate('/questionnaire?type=food')}>Создать программу питания</button>

@@ -1,21 +1,36 @@
 .questionnaire-bg {
   min-height: 100vh;
   width: 100vw;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(120deg, #f7f8fa 60%, #e6f7ea 100%), url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80');
-  background-size: cover;
-  background-position: center;
-  position: relative;
+  background: linear-gradient(270deg, #f7f8fa, #e6f7ea, #b2f7c3, #4fd165, #e6f7ea, #f7f8fa);
+  background-size: 400% 400%;
+  animation: animatedGradientLight 18s ease-in-out infinite;
+  transition: background 0.5s;
+}
+body.theme-dark .questionnaire-bg {
+  background: linear-gradient(270deg, #232323, #1a3a2b, #4fd165, #1a3a2b, #232323);
+  background-size: 400% 400%;
+  animation: animatedGradientDark 18s ease-in-out infinite;
+  transition: background 0.5s;
+}
+@keyframes animatedGradientLight {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes animatedGradientDark {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 .questionnaire-bg::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(255,255,255,0.35);
-  z-index: 1;
+  display: none !important;
 }
 
 .questionnaire-center {
@@ -23,20 +38,45 @@
   z-index: 2;
   width: 100%;
   max-width: 540px;
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 4px 32px #0002;
+  background: rgba(255,255,255,0.98);
+  border-radius: 28px;
+  box-shadow: 0 8px 40px #4fd16522, 0 1.5px 0 #4fd16544;
   padding: 48px 36px 36px 36px;
   margin: 32px 0;
   display: flex;
   flex-direction: column;
   align-items: stretch;
   color: #111;
+  border: 2.5px solid #e6f7ea;
+  backdrop-filter: blur(2px);
+  animation: fadeInUp 0.8s;
+}
+body.theme-dark .questionnaire-center {
+  background: rgba(30,32,34,0.98);
+  color: #f7f8fa;
+  border: 2.5px solid #4fd16544;
+  box-shadow: 0 8px 40px #4fd16533, 0 1.5px 0 #4fd16544;
+}
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 700px) {
+  .questionnaire-bg {
+    min-height: 100vh;
+    width: 100vw;
+    background-size: 400% 400%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 18vw;
+  }
   .questionnaire-center {
     max-width: 98vw;
-    padding: 24px 6vw;
+    padding: 18vw 4vw 8vw 4vw;
+    margin: 0;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #4fd16522;
   }
 } 

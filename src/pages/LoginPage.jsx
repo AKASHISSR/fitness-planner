@@ -1,23 +1,30 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, logUserActivity } from '../firebase';
 import './LoginRegister.css';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem('fitgenius_users') || '{}');
-    if (!users[email] || users[email].password !== password) {
-      setError('Неверный email или пароль');
-      return;
-    }
-    localStorage.setItem('fitgenius_user', email);
+    setLoading(true);
     setError('');
-    navigate('/dashboard');
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      localStorage.setItem('fitgenius_user', email);
+      setError('');
+      await logUserActivity({ email, type: 'Вход', desc: 'Пользователь вошёл в аккаунт' });
+      navigate('/dashboard');
+    } catch (err) {
+      setError('Неверный email или пароль');
+    }
+    setLoading(false);
   };
 
   return (
@@ -28,7 +35,7 @@ function LoginPage() {
           <input type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required className="login-input" />
           <input type="password" placeholder="Пароль" value={password} onChange={e=>setPassword(e.target.value)} required className="login-input" />
           {error && <div style={{color:'red',marginBottom:12}}>{error}</div>}
-          <button type="submit" className="login-btn">Войти</button>
+          <button type="submit" className="login-btn" disabled={loading}>{loading ? 'Вход...' : 'Войти'}</button>
         </form>
         <div style={{marginTop:18,textAlign:'center',fontSize:15}}>
           Нет аккаунта? <Link to="/register">Зарегистрироваться</Link>

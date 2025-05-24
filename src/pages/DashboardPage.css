@@ -127,10 +127,89 @@
 @media (max-width: 900px) {
   .dash-center {
     max-width: 98vw;
-    padding: 24px 6vw;
+    padding: 18px 2vw;
   }
-  .dash-food-plan, .dash-workout-plan {
+  .profile-block {
     flex-direction: column;
+    align-items: center;
+    text-align: center;
     gap: 12px;
+  }
+  .profile-avatar {
+    width: 64px !important;
+    height: 64px !important;
+    margin: 0 auto 8px auto;
+  }
+  .profile-block-name {
+    font-size: 1rem !important;
+    justify-content: center;
+  }
+  .profile-block-email {
+    font-size: 0.9rem !important;
+    margin-bottom: 4px;
+  }
+  .avatar-upload-btn {
+    width: 100%;
+    margin: 0 auto 8px auto;
+    font-size: 0.95rem;
+    padding: 6px 0;
+  }
+  .dash-btn {
+    width: 100%;
+    min-width: unset;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    padding: 10px 0;
+  }
+  .dash-btn:last-child {
+    margin-bottom: 0;
+  }
+  .dash-tabs, .admin-tabs {
+    overflow-x: auto;
+    flex-wrap: nowrap !important;
+    gap: 4px;
+    margin-bottom: 18px;
+  }
+  .dash-tabs button, .admin-tabs button {
+    min-width: 140px;
+    font-size: 0.98rem;
+    padding: 8px 10px;
+    white-space: nowrap;
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.avatar-spinner {
+  display: inline-block;
+}
+
+.avatar-upload-btn {
+  transition: background 0.2s, color 0.2s, border 0.2s;
+}
+.avatar-upload-btn:hover:not(:disabled) {
+  background: #e6f7ea;
+  color: #4fd165;
+  border: 1.5px solid #4fd165;
+}
+
+/* Для админки: горизонтальный скролл вкладок */
+.admin-tabs {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  flex-wrap: nowrap;
+  scrollbar-width: thin;
+}
+.admin-tabs button {
+  flex: 0 0 auto;
+}
+
+@media (max-width: 900px) {
+  .avatar-upload-btn {
+    font-size: 0.95rem;
+    padding: 6px 12px;
   }
 } 
