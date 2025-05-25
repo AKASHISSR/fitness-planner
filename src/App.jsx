@@ -17,7 +17,7 @@ import PayPage from './pages/PayPage';
 import './App.css';
 import { logVisit } from './firebase';
 
-const ADMINS = [
+export const ADMINS = [
   'laptinskii07@gmail.com',
   'Sasha-laptinskii@mail.ru',
   // Добавляй сюда другие email для админов
@@ -99,14 +99,11 @@ function Header() {
         <div className="main-header-left">
           <ThemeToggle />
           <Link to="/" className="main-logo">Fit<span className="logo-accent">Genius</span></Link>
-          <button className="main-nav-btn" style={{marginLeft:12,background:'linear-gradient(90deg,#4fd165 60%,#36b14e 100%)',color:'#fff',fontWeight:800}} onClick={()=>setPricesOpen(true)}>Цены и оплата</button>
-          {isAdmin && <Link to="/admin" className="main-nav-btn main-admin-btn">Админ</Link>}
         </div>
         <button className="mobile-menu-btn" onClick={toggleMobileMenu} title="Меню">
           {isMobileMenuOpen ? '✕' : '☰'}
         </button>
         <div className={`main-nav-links ${isMobileMenuOpen ? 'active' : ''}`}>
-          {/* Кнопка закрытия меню — теперь первой внутри меню */}
           {isMobileMenuOpen && (
             <button
               className="mobile-menu-close-btn"
@@ -132,6 +129,7 @@ function Header() {
               ✕
             </button>
           )}
+          <button className="main-nav-btn" style={{background:'none',color:'inherit',fontWeight:700,padding:'10px 22px',fontSize:'1.08rem',borderRadius:'12px',boxShadow:'none'}} onClick={()=>{setPricesOpen(true); setIsMobileMenuOpen(false);}}>Цены и оплата</button>
           <Link to="/reviews" onClick={() => setIsMobileMenuOpen(false)}>Отзывы</Link>
           <Link to="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</Link>
           {user ? (
