@@ -1046,3 +1046,44 @@ body.theme-dark .offer-modal-close:hover {
   background: #333;
   color: #4fd165;
 }
+
+.main-nav-dashboard {
+  background: #e6f7ea;
+  color: #1a3a2b !important;
+  border: 2px solid #4fd165;
+  border-radius: 12px;
+  font-weight: 800;
+  padding: 10px 22px;
+  margin: 0 0 0 4px;
+  box-shadow: 0 2px 8px #4fd16522;
+  transition: background 0.18s, color 0.18s, border 0.18s;
+  text-decoration: none;
+  display: inline-block;
+}
+.main-nav-dashboard:hover, .main-nav-dashboard:focus {
+  background: #4fd165;
+  color: #fff !important;
+  border: 2px solid #36b14e;
+  box-shadow: 0 4px 16px #4fd16533;
+}
+body.theme-dark .main-nav-dashboard {
+  background: #232323;
+  color: #4fd165 !important;
+  border: 2px solid #4fd165;
+}
+body.theme-dark .main-nav-dashboard:hover, body.theme-dark .main-nav-dashboard:focus {
+  background: #4fd165;
+  color: #232323 !important;
+  border: 2px solid #36b14e;
+}
+@media (max-width: 700px) {
+  .main-nav-dashboard {
+    width: 100%;
+    display: block;
+    text-align: left;
+    margin: 0 0 10px 0;
+    font-size: 1.13rem;
+    border-radius: 12px;
+    padding: 20px 0 20px 10px;
+  }
+}

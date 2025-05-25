@@ -96,7 +96,7 @@ function Header() {
           <Link to="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</Link>
           {user ? (
             <>
-              <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)}>Личный кабинет</Link>
+              <Link to="/dashboard" onClick={() => setIsMobileMenuOpen(false)} className="main-nav-dashboard">Личный кабинет</Link>
               <span className="main-nav-phone" style={{color:'#4fd165',fontWeight:700,fontSize:'1.08rem',padding:'10px 22px'}}>+375 29 897-52-19</span>
             </>
           ) : (
