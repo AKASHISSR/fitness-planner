@@ -1,5 +1,5 @@
 import { HashRouter as Router, Routes, Route, Link, useNavigate, Navigate, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import HomePage from './pages/HomePage';
 import ProgramTypePage from './pages/ProgramTypePage';
 import QuestionnairePage from './pages/QuestionnairePage';
@@ -175,9 +175,50 @@ function NotFound() {
   );
 }
 
+function OfferModal({ open, onClose }) {
+  const modalRef = useRef();
+  if (!open) return null;
+  return (
+    <div className="offer-modal-overlay" onClick={onClose}>
+      <div className="offer-modal" onClick={e => e.stopPropagation()} ref={modalRef}>
+        <button className="offer-modal-close" onClick={onClose} aria-label="Закрыть">✕</button>
+        <h2>Договор оферты</h2>
+        <div className="offer-modal-content">
+          <p><b>1. Общие положения</b><br/>
+          Настоящий документ является официальным предложением (офертой) ИП Лаптинский Александр Владимирович, УНП 391986581, далее — «Исполнитель», заключить договор на оказание информационных услуг дистанционным способом с любым физическим лицом, далее — «Пользователь», на условиях, изложенных ниже.<br/>
+          Акцепт (принятие) условий настоящей оферты осуществляется путем оплаты услуг на сайте.</p>
+          <p><b>2. Предмет договора</b><br/>
+          Исполнитель предоставляет Пользователю доступ к персональным программам питания и/или тренировок, а также сопутствующим информационным материалам, размещённым на сайте. Услуги оказываются дистанционно, посредством сети Интернет.</p>
+          <p><b>3. Права и обязанности сторон</b><br/>
+          Исполнитель обязуется: предоставить доступ к выбранным и оплаченным программам; обеспечивать конфиденциальность персональных данных Пользователя.<br/>
+          Пользователь обязуется: предоставить достоверные данные при регистрации; не передавать доступ третьим лицам; оплатить услуги в полном объёме.</p>
+          <p><b>4. Стоимость и порядок оплаты</b><br/>
+          Стоимость услуг указывается на сайте. Оплата производится через платёжные системы, указанные на сайте.</p>
+          <p><b>5. Ответственность сторон</b><br/>
+          Исполнитель не несёт ответственности за невозможность оказания услуг по причинам, не зависящим от него (технические сбои, действия третьих лиц и пр.). Пользователь несёт ответственность за достоверность предоставленных данных.</p>
+          <p><b>6. Возврат средств</b><br/>
+          Возврат денежных средств возможен в случаях, предусмотренных законодательством Республики Беларусь.</p>
+          <p><b>7. Персональные данные</b><br/>
+          Пользователь даёт согласие на обработку своих персональных данных в соответствии с Политикой конфиденциальности.</p>
+          <p><b>8. Прочие условия</b><br/>
+          Исполнитель вправе вносить изменения в условия оферты без предварительного согласия Пользователя, с обязательной публикацией новой редакции на сайте. Оферта считается заключённой с момента оплаты услуг Пользователем.</p>
+          <p><b>9. Реквизиты Исполнителя</b><br/>
+          ИП Лаптинский Александр Владимирович<br/>
+          УНП 391986581<br/>
+          211389, Республика Беларусь, г. Орша, ул. Могилёвская, 99-19<br/>
+          E-mail: support@fitgenius.ru<br/>
+          Тел.: +375 29 897-52-19</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Footer() {
+  const [offerOpen, setOfferOpen] = useState(false);
   return (
     <footer className="main-footer">
+      <OfferModal open={offerOpen} onClose={() => setOfferOpen(false)} />
       <div className="footer-top">
         <div className="footer-block">
           <b>ИП Лаптинский Александр Владимирович</b><br />
@@ -185,7 +226,7 @@ function Footer() {
           211389, Республика Беларусь, г. Орша, ул. Могилёвская, 99-19.
         </div>
         <div className="footer-block">
-          <a href="#" className="footer-link">Договор Оферты</a><br />
+          <button className="footer-link" style={{background:'none',border:'none',padding:0,cursor:'pointer'}} onClick={()=>setOfferOpen(true)}>Договор Оферты</button><br />
           <a href="#" className="footer-link">Политика Конфиденциальности</a>
         </div>
         <div className="footer-block">
