@@ -192,12 +192,14 @@ function DashboardPage() {
                 />
                 <button onClick={handleNameSave} disabled={loadingName || !newName.trim()} style={{padding:'4px 10px',borderRadius:8,border:'none',background:'#4fd165',color:'#fff',fontWeight:700,cursor:'pointer'}}>Сохранить</button>
                 <button onClick={()=>{setEditName(false);setNewName(user.name);}} disabled={loadingName} style={{padding:'4px 10px',borderRadius:8,border:'none',background:'#eee',color:'#333',fontWeight:700,cursor:'pointer'}}>Отмена</button>
+                <button onClick={()=>{localStorage.removeItem('fitgenius_user');localStorage.removeItem('fitgenius_paid_type');window.location.href='/'}} style={{padding:'4px 14px',borderRadius:8,border:'none',background:'#4fd165',color:'#fff',fontWeight:700,cursor:'pointer',marginLeft:8}}>Выйти</button>
               </div>
             ) : (
               <div className="profile-block-name" style={{fontWeight:800,fontSize:'1.2rem',color:'#1a3a2b',display:'flex',alignItems:'center',gap:8}}>
                 {user.name}
                 <button onClick={()=>setEditName(true)} style={{background:'none',border:'none',color:'#4fd165',cursor:'pointer',fontSize:18}} title="Редактировать имя">✏️</button>
                 {loadingName && <span style={{fontSize:14,color:'#888',marginLeft:8}}>Сохранение...</span>}
+                <button onClick={()=>{localStorage.removeItem('fitgenius_user');localStorage.removeItem('fitgenius_paid_type');window.location.href='/'}} style={{padding:'4px 14px',borderRadius:8,border:'none',background:'#4fd165',color:'#fff',fontWeight:700,cursor:'pointer',marginLeft:8}}>Выйти</button>
               </div>
             )}
             <div className="profile-block-email" style={{color:'#444',fontSize:'1rem'}}>{user.email || '—'}</div>
