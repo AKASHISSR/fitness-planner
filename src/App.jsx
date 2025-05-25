@@ -14,6 +14,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPage from './pages/AdminPage';
 import PayPage from './pages/PayPage';
+import PricesPage from './pages/PricesPage';
 import './App.css';
 import { logVisit } from './firebase';
 
@@ -37,49 +38,11 @@ function ThemeToggle() {
   );
 }
 
-function PricesModal({ open, onClose }) {
-  const modalRef = useRef();
-  if (!open) return null;
-  return (
-    <div className="offer-modal-overlay" onClick={onClose}>
-      <div className="offer-modal" onClick={e => e.stopPropagation()} ref={modalRef}>
-        <button className="offer-modal-close" onClick={onClose} aria-label="Закрыть">✕</button>
-        <h2>Цены и оплата</h2>
-        <div className="offer-modal-content">
-          <div style={{display:'flex',flexDirection:'column',gap: '18px',marginBottom:'18px'}}>
-            <div style={{background:'#e6f7ea',borderRadius:'14px',padding:'16px',boxShadow:'0 2px 8px #4fd16522'}}>
-              <b style={{color:'#1a3a2b'}}>Программа питания</b><br/>
-              <span style={{fontWeight:700,fontSize:'1.2rem',color:'#4fd165'}}>20 руб.</span>
-            </div>
-            <div style={{background:'#e6f7ea',borderRadius:'14px',padding:'16px',boxShadow:'0 2px 8px #4fd16522'}}>
-              <b style={{color:'#1a3a2b'}}>Программа тренировок</b><br/>
-              <span style={{fontWeight:700,fontSize:'1.2rem',color:'#4fd165'}}>30 руб.</span>
-            </div>
-            <div style={{background:'linear-gradient(90deg,#4fd16522,#e6f7ea 80%)',borderRadius:'14px',padding:'16px',boxShadow:'0 2px 12px #4fd16533'}}>
-              <b style={{color:'#1a3a2b'}}>Комбо: питание + тренировки</b><br/>
-              <span style={{fontWeight:800,fontSize:'1.3rem',color:'#36b14e'}}>40 руб.</span>
-            </div>
-          </div>
-          <p style={{marginBottom:8}}><b>Как оплатить?</b></p>
-          <ul style={{marginLeft:18,marginBottom:12}}>
-            <li>Выберите нужную программу и заполните анкету</li>
-            <li>После заполнения анкеты вы перейдёте на страницу оплаты</li>
-            <li>Оплатить можно картой любого банка, через ЕРИП, Apple Pay, Google Pay</li>
-            <li>После оплаты программа будет доступна в личном кабинете</li>
-          </ul>
-          <p style={{fontSize:'0.98rem',color:'#888'}}>Все платежи защищены и проходят через сертифицированные платёжные системы. Если возникнут вопросы — пишите на <a href="mailto:support@fitgenius.ru" style={{color:'#4fd165'}}>support@fitgenius.ru</a></p>
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function Header() {
   const user = localStorage.getItem('fitgenius_user');
   const navigate = useNavigate();
   const isAdmin = user && ADMINS.includes(user);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [pricesOpen, setPricesOpen] = useState(false);
 
   const handleLogout = () => {
     localStorage.removeItem('fitgenius_user');
@@ -94,7 +57,6 @@ function Header() {
 
   return (
     <header className="main-header">
-      <PricesModal open={pricesOpen} onClose={()=>setPricesOpen(false)} />
       <nav>
         <div className="main-header-left">
           <ThemeToggle />
@@ -129,7 +91,7 @@ function Header() {
               ✕
             </button>
           )}
-          <button className="main-nav-btn" style={{background:'none',color:'inherit',fontWeight:700,padding:'10px 22px',fontSize:'1.08rem',borderRadius:'12px',boxShadow:'none'}} onClick={()=>{setPricesOpen(true); setIsMobileMenuOpen(false);}}>Цены и оплата</button>
+          <Link to="/prices" onClick={() => setIsMobileMenuOpen(false)}>Цены и оплата</Link>
           <Link to="/reviews" onClick={() => setIsMobileMenuOpen(false)}>Отзывы</Link>
           <Link to="/faq" onClick={() => setIsMobileMenuOpen(false)}>FAQ</Link>
           {user ? (
@@ -351,14 +313,7 @@ function App() {
         <Route path="/questionnaire" element={<QuestionnairePage />} />
         <Route path="/pay" element={<PayPage />} />
         <Route path="/payment" element={<PaymentPage />} />
-        <Route 
-          path="/dashboard" 
-          element={
-            <ProtectedRoute>
-              <DashboardPage />
-            </ProtectedRoute>
-          } 
-        />
+        <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/reviews" element={<ReviewsPage />} />
         <Route path="/blog" element={<BlogPage />} />
@@ -366,14 +321,8 @@ function App() {
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route 
-          path="/admin" 
-          element={
-            <AdminRoute>
-              <AdminPage />
-            </AdminRoute>
-          } 
-        />
+        <Route path="/admin" element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path="/prices" element={<PricesPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
