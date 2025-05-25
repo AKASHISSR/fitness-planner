@@ -214,11 +214,58 @@ function OfferModal({ open, onClose }) {
   );
 }
 
+function PrivacyModal({ open, onClose }) {
+  const modalRef = useRef();
+  if (!open) return null;
+  return (
+    <div className="offer-modal-overlay" onClick={onClose}>
+      <div className="offer-modal" onClick={e => e.stopPropagation()} ref={modalRef}>
+        <button className="offer-modal-close" onClick={onClose} aria-label="Закрыть">✕</button>
+        <h2>Политика конфиденциальности</h2>
+        <div className="offer-modal-content">
+          <p><b>1. Общие положения</b><br/>
+          Настоящая Политика конфиденциальности определяет порядок обработки и защиты персональных данных пользователей, которые предоставляет ИП Лаптинский Александр Владимирович (далее — «Оператор») при использовании сайта и сервисов FitGenius.<br/>
+          Использование сайта означает согласие пользователя с данной Политикой.</p>
+          <p><b>2. Персональные данные, которые обрабатываются</b><br/>
+          Оператор может обрабатывать следующие данные:<br/>
+          — ФИО, e-mail, номер телефона;<br/>
+          — данные, предоставленные при регистрации и заполнении анкет;<br/>
+          — сведения о платежах (без хранения платёжных реквизитов);<br/>
+          — IP-адрес, данные о браузере, cookies и др.</p>
+          <p><b>3. Цели обработки персональных данных</b><br/>
+          Оператор обрабатывает персональные данные для:<br/>
+          — предоставления доступа к сервису и персональным программам;<br/>
+          — обратной связи и поддержки;<br/>
+          — выполнения требований законодательства;<br/>
+          — улучшения качества сервиса.</p>
+          <p><b>4. Передача данных третьим лицам</b><br/>
+          Оператор не передает персональные данные третьим лицам, за исключением случаев, предусмотренных законодательством или необходимых для выполнения обязательств (например, платёжные системы).</p>
+          <p><b>5. Хранение и защита данных</b><br/>
+          Оператор принимает все необходимые меры для защиты персональных данных от несанкционированного доступа, изменения, раскрытия или уничтожения.<br/>
+          Данные хранятся столько, сколько это необходимо для целей обработки.</p>
+          <p><b>6. Права пользователя</b><br/>
+          Пользователь вправе запросить информацию о своих данных, требовать их исправления или удаления, а также отозвать согласие на обработку.</p>
+          <p><b>7. Использование файлов cookie</b><br/>
+          Сайт может использовать cookie для улучшения пользовательского опыта. Пользователь может отключить cookie в настройках браузера.</p>
+          <p><b>8. Изменения политики</b><br/>
+          Оператор вправе вносить изменения в настоящую Политику. Новая редакция вступает в силу с момента публикации на сайте.</p>
+          <p><b>9. Контакты</b><br/>
+          Оператор: ИП Лаптинский Александр Владимирович<br/>
+          E-mail: support@fitgenius.ru<br/>
+          Тел.: +375 29 897-52-19</p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function Footer() {
   const [offerOpen, setOfferOpen] = useState(false);
+  const [privacyOpen, setPrivacyOpen] = useState(false);
   return (
     <footer className="main-footer">
       <OfferModal open={offerOpen} onClose={() => setOfferOpen(false)} />
+      <PrivacyModal open={privacyOpen} onClose={() => setPrivacyOpen(false)} />
       <div className="footer-top">
         <div className="footer-block">
           <b>ИП Лаптинский Александр Владимирович</b><br />
@@ -227,7 +274,7 @@ function Footer() {
         </div>
         <div className="footer-block">
           <button className="footer-link" style={{background:'none',border:'none',padding:0,cursor:'pointer'}} onClick={()=>setOfferOpen(true)}>Договор Оферты</button><br />
-          <a href="#" className="footer-link">Политика Конфиденциальности</a>
+          <button className="footer-link" style={{background:'none',border:'none',padding:0,cursor:'pointer'}} onClick={()=>setPrivacyOpen(true)}>Политика Конфиденциальности</button>
         </div>
         <div className="footer-block">
           <span style={{fontWeight:600}}>+375 29 897-52-19</span><br />
