@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db, uploadUserAvatarToImgbb, getUserAvatar } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import './DashboardPage.css';
+import { ADMINS } from '../App';
 
 const foodPlan = [
   { day: 'Понедельник', meals: [
@@ -126,6 +127,7 @@ function DashboardPage() {
 
   const isFoodPaid = paidType === 'food' || paidType === 'combo';
   const isWorkoutPaid = paidType === 'workout' || paidType === 'combo';
+  const isAdmin = user.email && ADMINS.includes(user.email);
 
   const handleExport = () => {
     if (tab === 'food' && mealPlan) {
@@ -271,6 +273,13 @@ function DashboardPage() {
             Экспорт в PDF
           </button>
         </div>
+
+        {/* Кнопка 'Админ' только для админов */}
+        {isAdmin && (
+          <button className="dash-btn" style={{marginBottom:16,background:'#4fd165',color:'#fff',fontWeight:700}} onClick={()=>navigate('/admin')}>
+            Админ-панель
+          </button>
+        )}
 
         {tab === 'food' && (
           isFoodPaid ? (
