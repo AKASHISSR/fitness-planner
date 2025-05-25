@@ -5,6 +5,7 @@ function PricesPage() {
     <div className="prices-bg">
       <div className="prices-center">
         <h1 className="prices-title">Цены и оплата</h1>
+        <p className="prices-period">Все цены указаны за 1 неделю пользования программой</p>
         <div className="prices-tariffs">
           <div className="prices-tariff">
             <div className="prices-tariff-title">Программа питания</div>

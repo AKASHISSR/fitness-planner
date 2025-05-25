@@ -158,4 +158,13 @@ body.theme-dark .prices-note {
 }
 body.theme-dark .prices-note a {
   color: #4fd165;
+}
+.prices-period {
+  color: #888;
+  font-size: 1.05rem;
+  text-align: center;
+  margin-bottom: 18px;
+}
+body.theme-dark .prices-period {
+  color: #b2e6c3;
 } 
