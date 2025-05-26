@@ -1,27 +1,39 @@
 @import '../theme.css';
 
+/* Основные стили для всей страницы */
 .home-bg {
   min-height: 100vh;
   background-color: var(--background);
   color: var(--text);
   padding-top: 0;
   margin-top: 0;
+  overflow-x: hidden;
+  font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
-.home-header {
-  padding: 80px 20px 60px;
+/* Героический блок */
+.home-hero {
+  min-height: 100vh;
+  padding: 0;
   text-align: center;
   background: linear-gradient(135deg, #061209 0%, #0a1a12 30%, #1a3a2b 70%, #2a4a3b 100%);
   color: white;
   position: relative;
   overflow: hidden;
-  animation: gradientAnimation 10s ease infinite;
+  animation: gradientAnimation 15s ease infinite;
   background-size: 300% 300%;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 
-/* u0423u0431u0440u0430u043bu0438 u043au0432u0430u0434u0440u0430u0442u0438u043au0438 u0441 u0444u043eu043du0430 */
+.theme-dark .home-hero {
+  background: linear-gradient(135deg, #0a0a0a 0%, #121212 30%, #1a3a2b 70%, #1a2a20 100%);
+}
 
+/* Контейнер для эффекта частиц */
 .cursor-effect-container {
   position: absolute;
   top: 0;
@@ -31,19 +43,35 @@
   overflow: hidden;
   z-index: 1;
   pointer-events: none;
-  background: radial-gradient(circle at center, rgba(26, 58, 43, 0.1) 0%, rgba(6, 18, 9, 0.4) 100%);
+  background: radial-gradient(circle at center, rgba(26, 58, 43, 0.2) 0%, rgba(6, 18, 9, 0.5) 100%);
 }
 
+.theme-dark .cursor-effect-container {
+  background: radial-gradient(circle at center, rgba(26, 58, 43, 0.3) 0%, rgba(0, 0, 0, 0.7) 100%);
+}
+
+/* Стили для частиц */
 .particle {
   position: absolute;
   pointer-events: none;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out, filter 0.5s ease-out;
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out, filter 0.8s ease-out;
   will-change: transform, opacity, filter;
   filter: blur(1px);
   z-index: 1;
-  box-shadow: 0 0 8px rgba(79, 209, 101, 0.5);
+  box-shadow: 0 0 10px rgba(79, 209, 101, 0.6);
 }
 
+.theme-dark .particle {
+  box-shadow: 0 0 12px rgba(79, 209, 101, 0.8);
+}
+
+.background-particle {
+  opacity: 0;
+  transition: transform 1.5s ease-out, opacity 1.5s ease-out;
+  z-index: 0;
+}
+
+/* Формы частиц */
 .particle.circle {
   border-radius: 50%;
 }
@@ -53,8 +81,7 @@
 }
 
 .particle.triangle {
-  width: 0;
-  height: 0;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
   background-color: transparent !important;
 }
 
@@ -118,29 +145,65 @@
   }
 }
 
-.home-header h1 {
-  font-size: 3rem;
+/* Контент героического блока */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 90%;
+  padding: 40px 20px;
+  margin-top: -50px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
   font-weight: 800;
-  margin-bottom: 20px;
-  max-width: 900px;
+  margin-bottom: 30px;
+  max-width: 1000px;
   margin-left: auto;
   margin-right: auto;
-  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-  animation: fadeInDown 0.8s ease;
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  background: linear-gradient(90deg, #ffffff, #e6f7ea);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  line-height: 1.2;
 }
 
-.home-subtitle {
-  font-size: 1.4rem;
-  margin-bottom: 40px;
-  max-width: 700px;
+.hero-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theme-dark .hero-title {
+  background: linear-gradient(90deg, #ffffff, #4fd165);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 50px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0.95;
-  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-  animation: fadeInUp 0.8s ease 0.2s both;
+  opacity: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.3s, transform 0.8s ease 0.3s;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.5;
 }
 
-.home-cta {
+.hero-subtitle.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.hero-cta {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
@@ -148,32 +211,71 @@
   margin-bottom: 30px;
   position: relative;
   z-index: 2;
-  animation: fadeInUp 0.8s ease 0.4s both;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s;
 }
 
-.home-cta button {
-  background-color: white;
-  color: #1a3a2b;
+.hero-cta.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Кнопки в героическом блоке */
+.cta-button {
   border: none;
   border-radius: 30px;
-  padding: 16px 32px;
-  font-size: 1.3rem;
-  font-weight: 800;
+  padding: 18px 36px;
+  font-size: 1.2rem;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   position: relative;
   overflow: hidden;
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.5);
   letter-spacing: 0.5px;
+  text-align: center;
+  min-width: 220px;
 }
 
-.home-cta button:hover {
+.cta-button.primary {
+  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
+  color: white;
+  box-shadow: 0 8px 25px rgba(54, 177, 78, 0.4);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.cta-button.secondary {
+  background-color: white;
+  color: #1a3a2b;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.theme-dark .cta-button.secondary {
+  background-color: #2a2a2a;
+  color: white;
+}
+
+.cta-button.combo {
+  background: linear-gradient(135deg, #36b14e 0%, #1a3a2b 100%);
+  color: white;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  animation: pulse 2s infinite;
+}
+
+.cta-button.large {
+  padding: 20px 40px;
+  font-size: 1.4rem;
+  min-width: 280px;
+}
+
+/* Эффекты наведения для кнопок */
+.cta-button:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
 }
 
-.home-cta button::before {
+.cta-button::before {
   content: '';
   position: absolute;
   top: 0;
@@ -184,27 +286,85 @@
   transition: 0.5s;
 }
 
-.home-cta button:hover::before {
+.cta-button:hover::before {
   left: 100%;
 }
 
-.home-cta button.combo {
-  background: linear-gradient(135deg, #36b14e 0%, #1a3a2b 100%);
-  color: white;
-  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4);
-  position: relative;
-  animation: pulse 2s infinite;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-  letter-spacing: 1px;
-  font-size: 1.4rem;
+.cta-button.primary:hover {
+  background: linear-gradient(135deg, #5fe576 0%, #4fd165 100%);
 }
 
-.home-cta button.combo:hover {
-  background-color: var(--primary-active);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+.cta-button.combo:hover {
   animation: none;
-  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Индикатор прокрутки */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  z-index: 2;
+  animation: fadeInUpSmall 2s ease infinite;
+}
+
+.scroll-icon {
+  width: 30px;
+  height: 50px;
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  border-radius: 15px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.scroll-icon::before {
+  content: '';
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: white;
+  border-radius: 50%;
+  transform: translateX(-50%);
+  animation: scrollDown 2s ease infinite;
+}
+
+@keyframes scrollDown {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  50% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, 20px);
+  }
+}
+
+@keyframes fadeInUpSmall {
+  0% {
+    opacity: 0.5;
+    transform: translate(-50%, 10px);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0.5;
+    transform: translate(-50%, 10px);
+  }
 }
 
 @keyframes pulse {
@@ -223,248 +383,281 @@
 }
 
 /* Benefits section */
+/* Секция преимуществ */
 .home-benefits {
-  padding: 80px 20px;
-  text-align: center;
-  background-color: var(--card-bg);
-}
-
-.home-benefits h2 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-  color: var(--text);
-  position: relative;
-  display: inline-block;
-}
-
-.home-benefits h2::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-.ben.examples-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  margin-top: 40px;
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.benefit {
-  flex: 1;
-  min-width: 250px;
-  max-width: 350px;
-  padding: 30px 20px;
-  background-color: var(--background);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  border: 1px solid var(--border);
-}
-
-.benefit:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-}
-
-.benefit span {
-  font-size: 3rem;
-  margin-bottom: 20px;
-  display: inline-block;
-}
-
-.benefit p {
-  font-size: 1.1rem;
-  color: var(--text);
-  font-weight: 500;
-}
-
-/* Examples section */
-.home-examples {
-  padding: 80px 20px;
+  padding: 100px 20px;
   text-align: center;
   background-color: var(--background);
-}
-
-.home-examples h2 {
-  font-size: 2rem;
-  margin-bottom: 50px;
-  color: var(--text);
-  position: relative;
-  display: inline-block;
-}
-
-.home-examples h2::after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--primary);
-  border-radius: 3px;
-}
-
-.examples-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 30px;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.example {
-  background-color: var(--card-bg);
-  border-radius: 16px;
-  padding: 30px;
-  width: 300px;
-  min-height: 450px; /* Уменьшена высота для третьей колонки */
-  max-height: 500px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  border: 1px solid var(--border);
-  height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-.example::before {
+.section-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  color: var(--text);
+  position: relative;
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.section-title.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  border-radius: 4px;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.benefit-card {
+  padding: 40px 25px;
+  background-color: var(--card-bg);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  transition: all 0.5s ease;
+  border: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.benefit-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.benefit-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.theme-dark .benefit-card:hover {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.benefit-icon {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 25px;
+  box-shadow: 0 10px 20px rgba(79, 209, 101, 0.2);
+}
+
+.theme-dark .benefit-icon {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+.benefit-icon span {
+  font-size: 2.5rem;
+  display: inline-block;
+}
+
+.benefit-card h3 {
+  font-size: 1.4rem;
+  color: var(--text);
+  margin-bottom: 15px;
+  font-weight: 700;
+}
+
+.benefit-card p {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* Секция примеров */
+.home-examples {
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(180deg, var(--background) 0%, var(--primary-light) 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-dark .home-examples {
+  background: linear-gradient(180deg, var(--background) 0%, var(--primary-dark) 100%);
+}
+
+/* Заголовок секции примеров уже стилизирован в .section-title */
+
+/* Подчеркивание заголовка уже стилизировано в .section-title::after */
+
+.examples-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 50px;
+}
+
+.example-card {
+  background-color: var(--card-bg);
+  border-radius: 20px;
+  padding: 35px 30px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid var(--border);
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.example-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theme-dark .example-card {
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.example-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 8px;
-  background: linear-gradient(90deg, #4fd165, #36b14e);
+  background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+  z-index: 1;
 }
 
-.example:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+.example-card:hover {
+  transform: translateY(-15px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+.theme-dark .example-card:hover {
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
 }
 
 .example-header {
   display: flex;
   align-items: center;
-  margin-bottom: 10px;
-  gap: 15px;
+  margin-bottom: 15px;
+  gap: 20px;
 }
 
-.example-emoji {
-  font-size: 2.5rem;
-  background-color: var(--primary-light);
-  width: 60px;
-  height: 60px;
+.example-icon {
+  width: 70px;
+  height: 70px;
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  color: var(--primary);
+  box-shadow: 0 10px 20px rgba(79, 209, 101, 0.2);
 }
 
-.example h3 {
-  font-size: 1.3rem;
+.theme-dark .example-icon {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+}
+
+.example-icon span {
+  font-size: 2.2rem;
+  color: white;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.example-card h3 {
+  font-size: 1.5rem;
   text-align: left;
   color: var(--text);
   flex: 1;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 .example-desc {
   color: var(--text-secondary);
-  font-size: 16px;
-  line-height: 1.5;
+  font-size: 1.1rem;
+  line-height: 1.6;
   margin: 0;
-}
-
-.example-img-container {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin: 15px 0;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   flex-grow: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
 }
 
-.example-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.3s ease;
-}
+/* Удалены стили для контейнера изображений, так как они больше не нужны */
 
-.example:hover .example-img {
-  transform: scale(1.05);
-}
+/* Удалены стили для изображений, так как они больше не нужны */
 
-.combo-img {
-  background: linear-gradient(135deg, rgba(79, 209, 101, 0.2), rgba(26, 58, 43, 0.8)), 
-              url('/example-food-day.png') left top no-repeat, 
-              url('/example-workout-day.png') right bottom no-repeat;
-  background-size: cover, 50% 50%, 50% 50%;
-  position: relative;
-}
+/* Удалены стили для комбо-изображений, так как они больше не нужны */
 
-.combo-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
-.combo-img:hover .combo-overlay {
-  opacity: 1;
-}
+/* Удалены стили для оверлея комбо-изображений, так как они больше не нужны */
 
 .example-btn {
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
   color: white;
   border: none;
   border-radius: 30px;
   padding: 16px 32px;
   font-size: 1.2rem;
-  font-weight: 800;
+  font-weight: 700;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: auto;
   align-self: center;
-  width: 80%;
+  width: 100%;
   text-align: center;
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
   letter-spacing: 0.5px;
-  box-shadow: 0 6px 20px rgba(54, 177, 78, 0.4);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 25px rgba(54, 177, 78, 0.4);
+  position: relative;
+  overflow: hidden;
 }
 
 .example-btn:hover {
-  background-color: var(--primary-hover);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(135deg, var(--primary-hover) 0%, var(--primary) 100%);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(54, 177, 78, 0.5);
+}
+
+.example-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: 0.5s;
+}
+
+.example-btn:hover::before {
+  left: 100%;
 }
 
 .example-btn-placeholder {
@@ -472,13 +665,55 @@
 }
 
 /* Modal */
-.example-modal-overlay {
+/* Секция призыва к действию */
+.home-cta-section {
+  padding: 100px 20px;
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: white;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.theme-dark .home-cta-section {
+  background: linear-gradient(135deg, #1a2a20 0%, var(--primary-dark) 100%);
+}
+
+.cta-content {
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.cta-content.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cta-content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.cta-content p {
+  font-size: 1.2rem;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+/* Модальное окно */
+.modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.85);
+  background-color: rgba(0, 0, 0, 0.9);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -487,126 +722,256 @@
   animation: fadeIn 0.3s ease;
 }
 
-.example-modal {
+.modal-content {
   background-color: var(--card-bg);
-  border-radius: 16px;
+  border-radius: 20px;
   padding: 20px;
   max-width: 90%;
   max-height: 90vh;
   overflow: auto;
   position: relative;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
   border: 1px solid var(--border);
   animation: scaleIn 0.3s ease;
 }
 
-.example-modal-close {
+.modal-image {
+  max-width: 100%;
+  max-height: 80vh;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.modal-close {
   position: absolute;
   top: 15px;
   right: 15px;
   background-color: var(--background);
   border: none;
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   cursor: pointer;
   color: var(--text);
   transition: all 0.3s ease;
   z-index: 2;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-.example-modal-close:hover {
+.modal-close:hover {
   background-color: #ff6b6b;
   color: white;
+  transform: rotate(90deg);
 }
 
-/* Responsive */
-@media (max-width: 992px) {
-  .home-header h1 {
+/* Адаптивность для разных устройств */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.3rem;
+  }
+  
+  .section-title {
     font-size: 2.2rem;
   }
   
-  .home-subtitle {
-    font-size: 1.1rem;
-  }
-  
-  .benefit {
-    min-width: 220px;
-  }
-  
-  .example {
-    min-width: 250px;
+  .benefits-grid,
+  .examples-grid {
+    gap: 25px;
   }
 }
 
-@media (max-width: 768px) {
-  .home-header {
-    padding: 60px 20px 40px;
+@media (max-width: 992px) {
+  .hero-title {
+    font-size: 2.5rem;
   }
   
-  .home-header h1 {
-    font-size: 1.8rem;
-  }
-  
-  .home-subtitle {
-    font-size: 1rem;
+  .hero-subtitle {
+    font-size: 1.2rem;
     margin-bottom: 30px;
   }
   
-  .home-cta {
+  .hero-cta {
     flex-direction: column;
+    align-items: center;
     width: 100%;
-    max-width: 300px;
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
   }
   
-  .home-cta button {
+  .cta-button {
     width: 100%;
+    margin-bottom: 15px;
   }
   
-  .home-benefits, .home-examples {
-    padding: 60px 20px;
+  .section-title {
+    font-size: 2rem;
   }
   
-  .benefit {
-    min-width: 100%;
+  .benefit-card,
+  .example-card {
+    padding: 30px 20px;
   }
   
-  .example {
-    min-width: 100%;
+  .benefit-icon,
+  .example-icon {
+    width: 70px;
+    height: 70px;
+  }
+  
+  .benefit-card h3,
+  .example-card h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 90vh;
+  }
+  
+  .hero-content {
+    padding: 30px 15px;
+    margin-top: 0;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+  }
+  
+  .cta-button {
+    padding: 15px 25px;
+    font-size: 1.1rem;
+  }
+  
+  .cta-button.large {
+    padding: 16px 30px;
+    font-size: 1.2rem;
+  }
+  
+  .home-benefits,
+  .home-examples,
+  .home-cta-section {
+    padding: 70px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+  
+  .section-title::after {
+    width: 80px;
+    height: 3px;
+    bottom: -10px;
+  }
+  
+  .benefits-grid,
+  .examples-grid {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .benefit-card,
+  .example-card {
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.8rem;
+  }
+  
+  .cta-content p {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+  
+  .modal-content {
+    padding: 15px;
+    width: 95%;
+  }
+  
+  .modal-close {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
   }
 }
 
 @media (max-width: 576px) {
-  .home-header h1 {
-    font-size: 1.6rem;
-  }
-  
-  .home-benefits h2, .home-examples h2 {
+  .hero-title {
     font-size: 1.7rem;
   }
   
-  .example-top {
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .benefit-icon,
+  .example-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .benefit-icon span,
+  .example-icon span {
+    font-size: 2rem;
+  }
+  
+  .benefit-card h3,
+  .example-card h3 {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+  
+  .benefit-card p,
+  .example-card p,
+  .example-desc {
+    font-size: 1rem;
+    text-align: center;
+  }
+  
+  .example-header {
     flex-direction: column;
     text-align: center;
   }
   
-  .example h3 {
-    text-align: center;
-  }
-  
-  .example-desc {
-    text-align: center;
-  }
-  
   .example-btn {
-    align-self: center;
+    font-size: 1.1rem;
+    padding: 14px 25px;
+  }
+  
+  .cta-content h2 {
+    font-size: 1.6rem;
+  }
+  
+  .cta-content p {
+    font-size: 1rem;
+  }
+  
+  .hero-scroll-indicator {
+    display: none;
   }
 }
 
