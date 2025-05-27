@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './ReviewsPage.css';
+import './ReviewsPageNew.css';
 
 // Компонент для анимированных частиц на фоне
 const AnimatedBackground = () => {
@@ -67,7 +67,7 @@ const ReviewCard = ({ review, index }) => {
   );
 };
 
-function ReviewsPage() {
+function ReviewsPageV2() {
   const [published, setPublished] = useState([]);
   const [form, setForm] = useState({ name: '', text: '', rating: 5 });
   const [sent, setSent] = useState(false);
@@ -250,7 +250,7 @@ function ReviewsPage() {
           
           <form className="review-form" onSubmit={handleSubmit}>
             <div className="form-group">
-              <label htmlFor="name">Ваше имя</label>
+              <label htmlFor="name" className="form-label">Ваше имя</label>
               <input
                 type="text"
                 id="name"
@@ -264,7 +264,7 @@ function ReviewsPage() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="rating">Ваша оценка</label>
+              <label htmlFor="rating" className="form-label">Ваша оценка</label>
               <div className="rating-selector">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <span 
@@ -279,7 +279,7 @@ function ReviewsPage() {
             </div>
             
             <div className="form-group">
-              <label htmlFor="text">Ваш отзыв</label>
+              <label htmlFor="text" className="form-label">Ваш отзыв</label>
               <textarea
                 id="text"
                 name="text"
@@ -336,7 +336,10 @@ function ReviewsPage() {
               style={{
                 left: `${Math.random() * 100}%`,
                 animationDelay: `${Math.random() * 0.5}s`,
-                backgroundColor: `hsl(${Math.random() * 360}, 80%, 60%)`
+                width: `${5 + Math.random() * 10}px`,
+                height: `${5 + Math.random() * 10}px`,
+                transform: `rotate(${Math.random() * 360}deg)`,
+                backgroundColor: index % 3 === 0 ? '#4fd165' : index % 3 === 1 ? '#36b14e' : '#8aeea0'
               }}
             />
           ))}
@@ -344,6 +347,6 @@ function ReviewsPage() {
       )}
     </div>
   );
-};
+}
 
-export default ReviewsPage;
+export default ReviewsPageV2;

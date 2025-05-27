@@ -6,7 +6,7 @@ import QuestionnairePage from './pages/QuestionnairePage';
 import PaymentPage from './pages/PaymentPage';
 import DashboardPage from './pages/DashboardPage';
 import AboutPage from './pages/AboutPage';
-import ReviewsPage from './pages/ReviewsPage';
+import ReviewsPageV2 from './pages/ReviewsPageV2';
 import BlogPage from './pages/BlogPage';
 import FAQPage from './pages/FAQPage';
 import ContactsPage from './pages/ContactsPage';
@@ -427,7 +427,7 @@ function App() {
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPage /></ProtectedRoute>} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/reviews" element={<ReviewsPage />} />
+        <Route path="/reviews" element={<ReviewsPageV2 />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/faq" element={<FAQPage />} />
         <Route path="/contacts" element={<ContactsPage />} />
