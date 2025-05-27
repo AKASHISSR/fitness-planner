@@ -27,8 +27,8 @@ const AnimatedBackground = () => {
 
 // Компонент карточки отзыва с анимацией
 const ReviewCard = ({ review, index }) => {
-  // Генерируем случайную оценку от 4 до 5 звезд
-  const rating = review.rating || (4 + Math.random());
+  // Используем рейтинг из отзыва или устанавливаем 5 звезд по умолчанию
+  const rating = review.rating || 5;
   const fullStars = Math.floor(rating);
   const hasHalfStar = rating % 1 >= 0.5;
   
@@ -48,7 +48,7 @@ const ReviewCard = ({ review, index }) => {
           <span className="review-name">{review.name}</span>
           <div className="review-rating">
             {[...Array(5)].map((_, i) => (
-              <span key={i} className="star">
+              <span key={i} className="star" style={{ fontSize: '1.2rem', color: '#ffb400' }}>
                 {i < fullStars ? '★' : (i === fullStars && hasHalfStar ? '⯪' : '☆')}
               </span>
             ))}
@@ -173,7 +173,7 @@ function ReviewsPageV2() {
             <div className="stat-value">{averageRating.toFixed(1)}</div>
             <div className="stat-rating">
               {[...Array(5)].map((_, i) => (
-                <span key={i} className="star">
+                <span key={i} className="star" style={{ fontSize: '1.5rem', color: '#ffb400' }}>
                   {i < Math.floor(averageRating) ? '★' : (i === Math.floor(averageRating) && averageRating % 1 >= 0.5 ? '⯪' : '☆')}
                 </span>
               ))}
