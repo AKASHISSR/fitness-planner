@@ -149,6 +149,7 @@ function Header() {
         </div>
         
         <div className="main-header-right">
+          {/* Мобильное меню, которое открывается с правой стороны */}
           <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : 'closed'}`}>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="nav-link">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-icon">
