@@ -371,7 +371,7 @@ function DashboardPageV2() {
   
   // Переход в админ-панель
   const goToAdmin = () => {
-    navigate('/admin');
+    navigate('/adminV2');
   };
   
   // Выход из аккаунта
@@ -401,23 +401,31 @@ function DashboardPageV2() {
             <div className="avatar-wrapper">
               {loadingAvatar ? (
                 <div className="avatar-spinner">⏳</div>
-              ) : avatarUrl ? (
-                <img src={avatarUrl} alt="Аватар" className="avatar-image" />
               ) : (
-                <div className="avatar-placeholder">👤</div>
+                <>
+                  <div className="avatar-image-container">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="Аватар" className="avatar-image" />
+                    ) : (
+                      <div className="avatar-placeholder">👤</div>
+                    )}
+                    
+                    <div className="avatar-overlay">
+                      <label htmlFor="avatar-upload" className="avatar-edit-overlay">
+                        <span className="avatar-edit-text">Изменить фото</span>
+                        <input
+                          id="avatar-upload"
+                          type="file"
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          onChange={handleAvatarChange}
+                          disabled={loadingAvatar}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                </>
               )}
-              
-              <label htmlFor="avatar-upload" className="avatar-edit">
-                <span className="avatar-edit-icon">✏️</span>
-                <input
-                  id="avatar-upload"
-                  type="file"
-                  accept="image/*"
-                  style={{ display: 'none' }}
-                  onChange={handleAvatarChange}
-                  disabled={loadingAvatar}
-                />
-              </label>
             </div>
             {avatarError && (
               <div style={{ color: '#ff6b6b', marginTop: '0.5rem', fontSize: '0.9rem', textAlign: 'center' }}>
