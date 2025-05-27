@@ -17,6 +17,7 @@ import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import './styles/mobile-optimization.css';
+import './styles/burger-menu-fix.css'; // Новые стили для исправления бургерного меню
 import { logVisit } from './firebase';
 
 export const ADMINS = [

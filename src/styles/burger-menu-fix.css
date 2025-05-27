@@ -1,0 +1,132 @@
+/* Стили для исправления бургерного меню */
+
+/* Кнопка бургер-меню */
+.mobile-menu-btn {
+  display: none !important;
+  flex-direction: column !important;
+  justify-content: space-around !important;
+  align-items: center !important;
+  width: 46px !important;
+  height: 46px !important;
+  background: rgba(54, 177, 78, 0.2) !important;
+  border: none !important;
+  border-radius: 50% !important;
+  cursor: pointer !important;
+  padding: 13px !important;
+  z-index: 1001 !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  box-shadow: 0 2px 10px rgba(54, 177, 78, 0.25) !important;
+  margin-left: 15px !important;
+}
+
+.mobile-menu-btn span {
+  display: block !important;
+  width: 22px !important;
+  height: 2px !important;
+  background-color: #4fd165 !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+  margin: 0 !important;
+}
+
+.mobile-menu-btn.active {
+  background: rgba(54, 177, 78, 0.3) !important;
+  box-shadow: 0 2px 12px rgba(54, 177, 78, 0.4) !important;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg) !important;
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0 !important;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg) !important;
+}
+
+/* Мобильное меню */
+@media (max-width: 700px) {
+  .main-header {
+    padding: 0 !important;
+  }
+  
+  .main-header nav {
+    padding: 0 16px !important;
+    height: 64px !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+  
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+  
+  .main-nav-links {
+    position: fixed !important;
+    top: 0 !important;
+    right: -100% !important;
+    width: 85% !important;
+    max-width: 320px !important;
+    height: 100vh !important;
+    background: var(--background) !important;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1000 !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    padding: 80px 20px 20px !important;
+    overflow-y: auto !important;
+    transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    display: flex !important;
+    gap: 16px !important;
+    border-left: 2px solid rgba(54, 177, 78, 0.2) !important;
+    visibility: visible !important;
+  }
+  
+  .main-nav-links.open {
+    right: 0 !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+  
+  body.theme-dark .main-nav-links {
+    background: #1a1a1a !important;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3) !important;
+    border-left: 2px solid rgba(79, 209, 101, 0.2) !important;
+  }
+  
+  .mobile-menu-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    backdrop-filter: blur(5px) !important;
+    -webkit-backdrop-filter: blur(5px) !important;
+    z-index: 999 !important;
+    animation: fadeIn 0.3s forwards !important;
+    pointer-events: auto !important;
+  }
+}
+
+/* Кнопки в мобильной версии */
+@media (max-width: 700px) {
+  .main-admin-btn {
+    font-size: 0.95rem !important;
+    padding: 7px 12px !important;
+    margin-left: 0 !important;
+    height: 36px !important;
+    min-width: 80px !important;
+    border-radius: 7px !important;
+    background: none !important;
+    color: #1a3a2b !important;
+    border: 1.2px solid #4fd165 !important;
+    box-shadow: none !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
