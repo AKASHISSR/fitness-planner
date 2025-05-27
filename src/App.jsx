@@ -123,6 +123,12 @@ function Header() {
         </div>
 
         <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className="mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="nav-link">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-icon">
               <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -207,18 +213,6 @@ function Header() {
           <span></span>
           <span></span>
         </button>
-        
-        {isMobileMenuOpen && (
-          <div className="mobile-menu-content">
-            <div className="mobile-menu-close" onClick={() => setIsMobileMenuOpen(false)}>
-              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                <path d="M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              </svg>
-            </div>
-            {/* Мобильное меню с теми же ссылками */}
-          </div>
-        )}
       </nav>
       {isMobileMenuOpen && <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>}
     </header>
