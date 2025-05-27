@@ -97,12 +97,14 @@
 /* Вкладки */
 .admin-tabs {
   display: flex;
+  flex-wrap: wrap;
   border-bottom: 1px solid #eee;
   background: #f8f9fa;
+  overflow-x: auto;
 }
 
 .admin-tab {
-  padding: 1.2rem 1.5rem;
+  padding: 1rem 1.2rem;
   font-weight: 600;
   color: #666;
   cursor: pointer;
@@ -111,6 +113,8 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .admin-tab:hover {
@@ -157,10 +161,10 @@
   font-size: 1.8rem;
 }
 
-/* Карточки статистики */
+/* Статистические карточки */
 .admin-stats {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
 }
@@ -550,10 +554,17 @@
   .admin-tabs {
     overflow-x: auto;
     white-space: nowrap;
+    justify-content: flex-start;
+    padding-bottom: 5px;
   }
   
   .admin-tab {
-    padding: 1rem;
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  .admin-tab-icon {
+    font-size: 1rem;
   }
   
   .admin-stats {
@@ -575,6 +586,38 @@
   .admin-table th,
   .admin-table td {
     padding: 0.8rem;
+  }
+  
+  .admin-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .admin-title {
+    font-size: 1.5rem;
+    margin-right: 80px; /* чтобы не накладывалась на кнопку */
+  }
+  
+  .admin-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .admin-tab-content {
+    padding: 1rem;
+  }
+  
+  .admin-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+  
+  .admin-btn-secondary {
+    top: 1rem !important;
+    right: 1rem !important;
+    font-size: 0.8rem !important;
+  }
+  
+  .admin-grid {
+    grid-template-columns: 1fr;
   }
 }
 

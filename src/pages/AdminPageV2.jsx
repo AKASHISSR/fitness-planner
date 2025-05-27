@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { db } from '../firebase';
-import { collection, query, orderBy, limit, getDocs, where, Timestamp } from 'firebase/firestore';
+import { collection, query, orderBy, limit, getDocs, where, Timestamp, doc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 import AdminReviewsPage from './AdminReviewsPage';
 import AdminFeedbackPage from './AdminFeedbackPage';
 import AdminPublishedReviewsPage from './AdminPublishedReviewsPage';
 import AdminVisitsPage from './AdminVisitsPage';
+import AdminContentTab from '../components/AdminContentTab';
+import AdminUsersTab from '../components/AdminUsersTab';
+import AdminSettingsTab from '../components/AdminSettingsTab';
 import './AdminPageV2.css';
+import './AdminPageV2.additional.css';
+import '../components/AdminSettings.css';
 import { ADMINS } from '../App';
 
 // Компонент для анимированного фона
@@ -680,13 +685,13 @@ function AdminPageV2() {
             transition={{ duration: 0.3 }}
           >
             {tab === 'dashboard' && <DashboardTab />}
-            {tab === 'users' && <UsersTab />}
-            {tab === 'content' && <ContentTab />}
+            {tab === 'users' && <AdminUsersTab />}
+            {tab === 'content' && <AdminContentTab />}
             {tab === 'reviews' && <AdminReviewsPage />}
             {tab === 'published' && <AdminPublishedReviewsPage />}
             {tab === 'feedback' && <AdminFeedbackPage />}
             {tab === 'visits' && <AdminVisitsPage />}
-            {tab === 'settings' && <SettingsTab />}
+            {tab === 'settings' && <AdminSettingsTab />}
           </motion.div>
         </AnimatePresence>
       </motion.div>

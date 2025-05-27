@@ -1,0 +1,105 @@
+/* Стили для настроек админ-панели */
+.admin-settings-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.admin-settings-section {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.admin-settings-section h3 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.8rem;
+}
+
+.admin-color-picker {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-color-picker input[type="color"] {
+  width: 50px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 0;
+  cursor: pointer;
+}
+
+.admin-color-picker input[type="text"] {
+  flex: 1;
+}
+
+.admin-checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.admin-checkbox-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+}
+
+.admin-success-message {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.admin-error-message {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Стили для темной темы */
+.theme-dark .admin-settings-section {
+  background: #2a2a2a;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark .admin-settings-section h3 {
+  color: #eee;
+  border-bottom-color: #333;
+}
+
+.theme-dark .admin-color-picker input[type="color"] {
+  border-color: #444;
+}
+
+.theme-dark .admin-success-message {
+  background-color: rgba(46, 204, 113, 0.2);
+}
+
+.theme-dark .admin-error-message {
+  background-color: rgba(231, 76, 60, 0.2);
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .admin-settings-container {
+    grid-template-columns: 1fr;
+  }
+}

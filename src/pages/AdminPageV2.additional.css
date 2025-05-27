@@ -1,0 +1,165 @@
+/* Дополнительные стили для админ-панели */
+
+/* Стили для таблиц */
+.admin-table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.admin-table th {
+  background: #f8f9fa;
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: #555;
+  border-bottom: 2px solid #eee;
+  white-space: nowrap;
+}
+
+.admin-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+.admin-table tr:hover td {
+  background: rgba(79, 209, 101, 0.05);
+}
+
+.admin-empty-table {
+  text-align: center;
+  color: #999;
+  padding: 2rem !important;
+}
+
+/* Стили для действий в таблице */
+.admin-actions {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.admin-action-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0.3rem;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.admin-action-btn:hover {
+  background: rgba(79, 209, 101, 0.1);
+}
+
+/* Стили для форм */
+.admin-form-group {
+  margin-bottom: 1.5rem;
+}
+
+.admin-form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.admin-form-group input,
+.admin-form-group select,
+.admin-form-group textarea {
+  width: 100%;
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.admin-form-group input:focus,
+.admin-form-group select:focus,
+.admin-form-group textarea:focus {
+  border-color: #4fd165;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(79, 209, 101, 0.2);
+}
+
+.admin-form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+/* Стили для загрузки */
+.admin-loading {
+  text-align: center;
+  padding: 2rem;
+  color: #999;
+  font-size: 1rem;
+}
+
+.admin-loading::after {
+  content: "...";
+  animation: loading-dots 1.5s infinite;
+}
+
+@keyframes loading-dots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+/* Стили для темной темы */
+.theme-dark .admin-table th {
+  background: #222;
+  color: #ddd;
+  border-bottom-color: #333;
+}
+
+.theme-dark .admin-table td {
+  border-bottom-color: #333;
+}
+
+.theme-dark .admin-table tr:hover td {
+  background: rgba(79, 209, 101, 0.1);
+}
+
+.theme-dark .admin-empty-table {
+  color: #777;
+}
+
+.theme-dark .admin-form-group label {
+  color: #ddd;
+}
+
+.theme-dark .admin-form-group input,
+.theme-dark .admin-form-group select,
+.theme-dark .admin-form-group textarea {
+  background: #333;
+  border-color: #444;
+  color: #eee;
+}
+
+.theme-dark .admin-form-group input:focus,
+.theme-dark .admin-form-group select:focus,
+.theme-dark .admin-form-group textarea:focus {
+  border-color: #4fd165;
+  box-shadow: 0 0 0 3px rgba(79, 209, 101, 0.3);
+}
+
+.theme-dark .admin-loading {
+  color: #777;
+}

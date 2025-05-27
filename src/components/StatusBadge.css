@@ -1,0 +1,70 @@
+.status-badge {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.status-success {
+  background-color: rgba(46, 204, 113, 0.15);
+  color: #2ecc71;
+}
+
+.status-warning {
+  background-color: rgba(241, 196, 15, 0.15);
+  color: #f1c40f;
+}
+
+.status-danger {
+  background-color: rgba(231, 76, 60, 0.15);
+  color: #e74c3c;
+}
+
+.status-info {
+  background-color: rgba(52, 152, 219, 0.15);
+  color: #3498db;
+}
+
+.status-primary {
+  background-color: rgba(79, 209, 101, 0.15);
+  color: #4fd165;
+}
+
+.status-default {
+  background-color: rgba(189, 195, 199, 0.15);
+  color: #7f8c8d;
+}
+
+/* Стили для темной темы */
+.theme-dark .status-success {
+  background-color: rgba(46, 204, 113, 0.2);
+  color: #2ecc71;
+}
+
+.theme-dark .status-warning {
+  background-color: rgba(241, 196, 15, 0.2);
+  color: #f1c40f;
+}
+
+.theme-dark .status-danger {
+  background-color: rgba(231, 76, 60, 0.2);
+  color: #e74c3c;
+}
+
+.theme-dark .status-info {
+  background-color: rgba(52, 152, 219, 0.2);
+  color: #3498db;
+}
+
+.theme-dark .status-primary {
+  background-color: rgba(79, 209, 101, 0.2);
+  color: #4fd165;
+}
+
+.theme-dark .status-default {
+  background-color: rgba(189, 195, 199, 0.2);
+  color: #bdc3c7;
+}
