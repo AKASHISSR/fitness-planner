@@ -239,9 +239,35 @@ function ProtectedRoute({ children }) {
 
 // Компонент для админских маршрутов
 function AdminRoute({ children }) {
-  const user = localStorage.getItem('fitgenius_user');
+  const userData = localStorage.getItem('fitgenius_user');
   const location = useLocation();
-  const isAdmin = user && ADMINS.includes(user);
+  let userEmail = '';
+  
+  // Получаем email пользователя из localStorage
+  if (userData) {
+    try {
+      // Проверяем, если это JSON строка
+      if (userData.startsWith('{')) {
+        const parsedData = JSON.parse(userData);
+        if (parsedData.email) {
+          userEmail = parsedData.email;
+        }
+      } else if (userData.includes('@')) {
+        // Просто email строка
+        userEmail = userData;
+      }
+    } catch (error) {
+      console.error('Ошибка при парсинге данных пользователя:', error);
+      userEmail = userData;
+    }
+  }
+  
+  // Проверяем, является ли пользователь администратором
+  const isAdmin = userEmail && ADMINS.some(admin => 
+    admin.toLowerCase() === userEmail.toLowerCase()
+  );
+  
+  console.log('AdminRoute проверка:', userEmail, ADMINS, isAdmin);
 
   if (!isAdmin) {
     return <Navigate to="/" state={{ from: location }} replace />;
