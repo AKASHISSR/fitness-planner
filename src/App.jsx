@@ -52,6 +52,11 @@ function Header() {
   const navigate = useNavigate();
   const isAdmin = user && ADMINS.includes(user);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  
+  // Принудительно закрываем меню при загрузке страницы
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, []);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
 
@@ -144,7 +149,7 @@ function Header() {
         </div>
         
         <div className="main-header-right">
-          <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+          <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : 'closed'}`}>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="nav-link">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-icon">
               <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>

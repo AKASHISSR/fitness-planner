@@ -5,8 +5,13 @@
 .burger-btn,
 .burger-menu-container,
 .burger-icon,
-.hamburger-button {
+.hamburger-button,
+.mobile-menu,
+.mobile-nav-links {
   display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Контейнер для шапки */
@@ -38,6 +43,7 @@ body.theme-dark .main-header {
   justify-content: space-between;
   padding: 0 24px;
   height: 64px;
+  position: relative;
 }
 
 /* Левая часть шапки */
@@ -52,6 +58,7 @@ body.theme-dark .main-header {
   display: flex;
   align-items: center;
   gap: 18px;
+  position: relative;
 }
 
 /* Навигационные ссылки */
@@ -59,6 +66,8 @@ body.theme-dark .main-header {
   display: flex;
   align-items: center;
   gap: 18px;
+  margin: 0;
+  padding: 0;
 }
 
 /* Идеальная кнопка бургера */
@@ -166,7 +175,7 @@ body.theme-dark .main-header {
   .main-nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: -150%;
     width: 80%;
     max-width: 300px;
     height: 100vh;
@@ -175,12 +184,24 @@ body.theme-dark .main-header {
     align-items: flex-start;
     padding: 80px 24px 24px;
     gap: 16px;
-    transition: right 0.3s ease;
+    transition: all 0.3s ease;
     z-index: 999;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     overflow-y: auto;
-    visibility: visible;
+    visibility: hidden;
+    opacity: 0;
     border-radius: 0 0 0 16px;
+    margin: 0;
+    transform: translateX(50px);
+  }
+  
+  /* Закрытое состояние меню */
+  .main-nav-links.closed {
+    right: -150%;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(50px);
+    pointer-events: none;
   }
   
   /* Темная тема для меню */
@@ -192,6 +213,10 @@ body.theme-dark .main-header {
   /* Открытое меню */
   .main-nav-links.open {
     right: 0;
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
   }
   
   /* Стили для ссылок в мобильном меню */
@@ -203,6 +228,7 @@ body.theme-dark .main-header {
     align-items: center;
     gap: 10px;
     margin: 0;
+    text-decoration: none;
   }
   
   .main-nav-links .nav-link:hover {
@@ -226,6 +252,7 @@ body.theme-dark .main-header {
     -webkit-backdrop-filter: blur(3px);
     z-index: 998;
     animation: fadeIn 0.3s forwards;
+    pointer-events: auto;
   }
   
   @keyframes fadeIn {
