@@ -17,7 +17,8 @@ import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import './styles/mobile-optimization.css';
-import './styles/burger-menu-fix.css'; // Новые стили для исправления бургерного меню
+import './styles/burger-menu-fix.css'; // Стили для исправления бургерного меню
+import './styles/burger-menu-new.css'; // Полностью новые стили для бургерного меню
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -54,6 +55,7 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
+  const burgerRef = useRef(null);
 
   // Обработчик прокрутки для эффекта прозрачности шапки
   useEffect(() => {
@@ -218,16 +220,19 @@ function Header() {
           </div>
         </div>
         
-        <button 
-          className={`mobile-menu-btn ${isMobileMenuOpen ? 'active' : ''}`} 
-          onClick={toggleMobileMenu} 
+        <div 
+          ref={burgerRef}
+          className="burger-menu-container"
+          onClick={toggleMobileMenu}
           aria-label="Меню"
           title="Меню"
         >
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
+          <div className={`burger-icon ${isMobileMenuOpen ? 'active' : ''}`}>
+            <div className="burger-line"></div>
+            <div className="burger-line"></div>
+            <div className="burger-line"></div>
+          </div>
+        </div>
       </nav>
       {isMobileMenuOpen && <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>}
     </header>
