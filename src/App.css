@@ -3,10 +3,18 @@
 /* --- Глобальные стили --- */
 body, html {
   min-height: 100vh;
-  background: linear-gradient(120deg, #f7f8fa 60%, #e6f7ea 100%);
+  margin: 0;
+  padding: 0;
   font-family: 'Montserrat', Arial, sans-serif;
-  color: #1a3a2b;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-color: var(--background);
+  color: var(--text);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 body.theme-dark {
@@ -1503,7 +1511,8 @@ body.theme-dark .mobile-menu-close-btn:hover {
 }
 
 .main-footer {
-  width: 100vw;
+  width: 100%;
+  max-width: 100%;
   background: rgba(30,32,34,0.97);
   color: #f7f8fa;
   padding: 36px 0 0 0;
@@ -1513,6 +1522,8 @@ body.theme-dark .mobile-menu-close-btn:hover {
   position: relative;
   z-index: 10;
   font-size: 1.05rem;
+  box-sizing: border-box;
+  overflow: hidden;
 }
 body.theme-light .main-footer {
   background: rgba(255,255,255,0.97);
