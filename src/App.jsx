@@ -8,7 +8,7 @@ import DashboardPage from './pages/DashboardPage';
 import AboutPage from './pages/AboutPage';
 import ReviewsPageV2 from './pages/ReviewsPageV2';
 import BlogPage from './pages/BlogPage';
-import FAQPage from './pages/FAQPage';
+import FAQPageV2 from './pages/FAQPageV2';
 import ContactsPage from './pages/ContactsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
@@ -429,7 +429,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/reviews" element={<ReviewsPageV2 />} />
         <Route path="/blog" element={<BlogPage />} />
-        <Route path="/faq" element={<FAQPage />} />
+        <Route path="/faq" element={<FAQPageV2 />} />
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
