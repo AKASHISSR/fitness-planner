@@ -900,6 +900,10 @@ body.theme-dark .pay-center {
     gap: 8px;
   }
   
+  .main-nav-links.open {
+    right: 0;
+  }
+  
   /* Улучшенный стиль для мобильной навигации */
   .main-nav-links .nav-link {
     width: 100%;

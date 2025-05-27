@@ -180,10 +180,10 @@ function HomePage() {
           </p>
           <div className={`hero-cta ${isVisible['hero'] ? 'visible' : ''}`}>
             <button className="cta-button primary" onClick={() => navigate('/questionnaire?type=food')}>
-              Создать программу питания
+              Программа питания
             </button>
             <button className="cta-button secondary" onClick={() => navigate('/questionnaire?type=workout')}>
-              Создать программу тренировок
+              Программа тренировок
             </button>
             <button className="cta-button combo" onClick={() => navigate('/questionnaire?type=combo')}>
               Комплексная программа
