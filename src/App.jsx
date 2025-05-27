@@ -13,7 +13,7 @@ import ContactsPage from './pages/ContactsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminPageV2 from './pages/AdminPageV2';
-import PayPage from './pages/PayPage';
+import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import { logVisit } from './firebase';
@@ -423,7 +423,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/choose" element={<ProgramTypePage />} />
         <Route path="/questionnaire" element={<QuestionnairePage />} />
-        <Route path="/pay" element={<PayPage />} />
+        <Route path="/pay" element={<PayPageV2 />} />
         <Route path="/payment" element={<PaymentPage />} />
         <Route path="/dashboard" element={<ProtectedRoute><DashboardPageV2 /></ProtectedRoute>} />
         <Route path="/about" element={<AboutPage />} />
