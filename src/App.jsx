@@ -17,7 +17,7 @@ import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import './styles/mobile-optimization.css';
-import './styles/burger-fix-final.css'; // Финальное исправление бургерного меню
+import './styles/hamburger.css'; // Новое бургерное меню
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -54,7 +54,6 @@ function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const headerRef = useRef(null);
-  const burgerRef = useRef(null);
 
   // Обработчик прокрутки для эффекта прозрачности шапки
   useEffect(() => {
@@ -144,7 +143,7 @@ function Header() {
           </Link>
         </div>
         
-        <div className="header-right">
+        <div className="main-header-right">
           <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="nav-link">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-icon">
@@ -219,17 +218,16 @@ function Header() {
             <span>+375 29 897-52-19</span>
           </div>
           </div>
-        
+          
           <button 
-            ref={burgerRef}
-            className={`burger-btn ${isMobileMenuOpen ? 'active' : ''}`}
+            className={`hamburger-button ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
             aria-label="Меню"
             title="Меню"
           >
-            <span className="burger-line"></span>
-            <span className="burger-line"></span>
-            <span className="burger-line"></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </button>
         </div>
       </nav>
