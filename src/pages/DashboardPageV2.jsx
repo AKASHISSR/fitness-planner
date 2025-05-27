@@ -157,15 +157,42 @@ function DashboardPageV2() {
     setPaidType(localStorage.getItem('fitgenius_paid_type'));
     setMealPlan(localStorage.getItem('fitgenius_meal_plan') || '');
     setWorkoutPlanText(localStorage.getItem('fitgenius_workout_plan') || '');
-    const email = localStorage.getItem('fitgenius_user') || '';
+    
+    // Получаем данные пользователя из localStorage
+    let userEmail = '';
+    let userData = localStorage.getItem('fitgenius_user');
+    
+    console.log('Полученные данные пользователя из localStorage:', userData);
+    
+    if (userData) {
+      try {
+        // Проверяем, если это JSON строка
+        if (userData.startsWith('{')) {
+          const parsedData = JSON.parse(userData);
+          if (parsedData.email) {
+            userEmail = parsedData.email;
+          }
+        } else if (userData.includes('@')) {
+          // Просто email строка
+          userEmail = userData;
+        }
+      } catch (error) {
+        console.error('Ошибка при парсинге данных пользователя:', error);
+        // Если не можем распарсить, используем как есть
+        userEmail = userData;
+      }
+    }
+    
+    console.log('Очищенный email пользователя:', userEmail);
+    const cleanEmail = userEmail;
     
     // Загружаем имя из Firestore
     async function fetchName() {
       let name = localStorage.getItem('fitgenius_name') || 'Пользователь';
-      if (email) {
+      if (cleanEmail) {
         setLoadingName(true);
         try {
-          const docRef = doc(db, 'users', email);
+          const docRef = doc(db, 'users', cleanEmail);
           const snap = await getDoc(docRef);
           if (snap.exists() && snap.data().name) {
             name = snap.data().name;
@@ -176,18 +203,18 @@ function DashboardPageV2() {
         }
         setLoadingName(false);
       }
-      setUser({ email, name });
+      setUser({ email: cleanEmail, name });
       setNewName(name);
     }
     
     // Загружаем историю активности
     async function fetchActivity() {
-      if (!email) return;
+      if (!cleanEmail) return;
       setLoadingActivity(true);
       try {
         const activityQuery = query(
           collection(db, 'user_activity'),
-          where('email', '==', email),
+          where('email', '==', cleanEmail),
           orderBy('timestamp', 'desc')
         );
         const snap = await getDocs(activityQuery);
@@ -200,11 +227,13 @@ function DashboardPageV2() {
     
     // Загружаем аватар
     async function fetchAvatar() {
-      if (!email) return;
+      if (!cleanEmail) return;
       setLoadingAvatar(true);
       setAvatarError('');
       try {
-        const url = await getUserAvatar(email);
+        console.log('Загрузка аватара для:', cleanEmail);
+        const url = await getUserAvatar(cleanEmail);
+        console.log('Полученный URL аватара:', url);
         if (url) setAvatarUrl(url);
       } catch (error) {
         console.error('Ошибка загрузки аватара:', error);
@@ -229,9 +258,9 @@ function DashboardPageV2() {
     fetchAvatar();
     
     // Логируем вход в личный кабинет
-    if (email) {
+    if (cleanEmail) {
       logUserActivity({
-        email,
+        email: cleanEmail,
         type: 'login',
         desc: 'Вход в личный кабинет'
       });
@@ -284,7 +313,9 @@ function DashboardPageV2() {
     setAvatarError('');
     
     try {
+      console.log('Загрузка аватара для пользователя:', user.email);
       const url = await uploadUserAvatarToImgbb(user.email, file);
+      console.log('Полученный URL аватара:', url);
       setAvatarUrl(url);
       
       // Логируем обновление аватара
@@ -320,7 +351,23 @@ function DashboardPageV2() {
   // Проверка доступа к планам
   const isFoodPaid = paidType === 'food' || paidType === 'combo';
   const isWorkoutPaid = paidType === 'workout' || paidType === 'combo';
-  const isAdmin = user.email && ADMINS.includes(user.email);
+  
+  // Проверка администратора
+  const checkAdmin = () => {
+    if (!user.email) return false;
+    
+    // Проверяем каждый email админа
+    for (const adminEmail of ADMINS) {
+      if (user.email.toLowerCase() === adminEmail.toLowerCase()) {
+        return true;
+      }
+    }
+    
+    return false;
+  };
+  
+  const isAdmin = checkAdmin();
+  console.log('Проверка админа:', user.email, ADMINS, isAdmin);
   
   // Переход в админ-панель
   const goToAdmin = () => {
@@ -361,7 +408,7 @@ function DashboardPageV2() {
               )}
               
               <label htmlFor="avatar-upload" className="avatar-edit">
-                <span className="avatar-edit-icon">📷</span>
+                <span className="avatar-edit-icon">✏️</span>
                 <input
                   id="avatar-upload"
                   type="file"
@@ -423,7 +470,7 @@ function DashboardPageV2() {
               </div>
             )}
             
-            <div className="user-email">{user.email || '—'}</div>
+            <div className="user-email">{user.email ? user.email : '—'}</div>
             
             <div className="user-actions">
               {isAdmin && (
