@@ -75,6 +75,8 @@ function Header() {
                 <path d="M6.5 12H3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 <path d="M21 12H17.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                 <path d="M8.5 12H15.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <circle cx="5" cy="12" r="1.5" fill="currentColor" />
+                <circle cx="19" cy="12" r="1.5" fill="currentColor" />
               </svg>
             </div>
             <div className="logo-text">
