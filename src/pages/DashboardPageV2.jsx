@@ -474,8 +474,32 @@ function DashboardPageV2() {
             
             <div className="user-actions">
               {isAdmin && (
-                <button className="btn btn-admin" onClick={goToAdmin}>
-                  <span>👑</span> Админ-панель
+                <button 
+                  className="btn btn-admin" 
+                  onClick={goToAdmin}
+                  style={{
+                    background: '#ff9800',
+                    color: 'white',
+                    fontWeight: 'bold',
+                    padding: '8px 16px',
+                    borderRadius: '8px',
+                    border: 'none',
+                    boxShadow: '0 4px 8px rgba(255, 152, 0, 0.3)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    transition: 'all 0.3s ease'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(255, 152, 0, 0.4)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(255, 152, 0, 0.3)';
+                  }}
+                >
+                  <span style={{ fontSize: '1.2rem' }}>👑</span> Админ-панель
                 </button>
               )}
               <button className="btn btn-logout" onClick={handleLogout}>

@@ -12,7 +12,7 @@ import FAQPageV2 from './pages/FAQPageV2';
 import ContactsPage from './pages/ContactsPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
-import AdminPage from './pages/AdminPage';
+import AdminPageV2 from './pages/AdminPageV2';
 import PayPage from './pages/PayPage';
 import PricesPage from './pages/PricesPage';
 import './App.css';
@@ -433,7 +433,7 @@ function App() {
         <Route path="/contacts" element={<ContactsPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/admin" element={<AdminRoute><AdminPage /></AdminRoute>} />
+        <Route path="/admin" element={<AdminRoute><AdminPageV2 /></AdminRoute>} />
         <Route path="/prices" element={<PricesPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
