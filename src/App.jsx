@@ -99,7 +99,26 @@ function Header() {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Блокируем прокрутку страницы при открытом меню
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
   };
+  
+  // Закрываем меню при изменении размера окна
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth > 700 && isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+        document.body.style.overflow = '';
+      }
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isMobileMenuOpen]);
 
   return (
     <header className={`main-header ${isScrolled ? 'scrolled' : ''}`} ref={headerRef}>

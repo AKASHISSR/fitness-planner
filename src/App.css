@@ -868,9 +868,9 @@ body.theme-dark .pay-center {
   background-clip: padding-box;
   -webkit-background-clip: padding-box;
   z-index: 999;
-  animation: fadeInOverlay 0.3s ease forwards;
   opacity: 0;
   animation: fadeIn 0.3s forwards;
+  pointer-events: auto;
 }
 
 @keyframes fadeIn {
@@ -894,6 +894,7 @@ body.theme-dark .pay-center {
   z-index: 1002;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  opacity: 1;
 }
 
 .mobile-menu-close:hover {
@@ -929,12 +930,13 @@ body.theme-dark .pay-center {
   
   .mobile-menu-btn {
     display: flex;
+    z-index: 1001;
   }
   
   .main-nav-links {
     position: fixed;
     top: 0;
-    right: -100%;
+    right: 0;
     width: 85%;
     max-width: 320px;
     height: 100vh;
@@ -946,15 +948,18 @@ body.theme-dark .pay-center {
     padding: 80px 20px 20px;
     overflow-y: auto;
     transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
+    display: none;
     gap: 12px;
     transform: translateX(100%);
     border-left: 2px solid rgba(54, 177, 78, 0.2);
+    visibility: hidden;
   }
   
   .main-nav-links.open {
     transform: translateX(0);
-    right: 0;
+    display: flex;
+    visibility: visible;
+    pointer-events: auto;
   }
   
   .main-nav-links::before {
@@ -967,6 +972,7 @@ body.theme-dark .pay-center {
     background: var(--background);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     z-index: 1;
+    pointer-events: none;
   }
   
   .main-nav-links::after {
@@ -980,6 +986,7 @@ body.theme-dark .pay-center {
     background-size: contain;
     background-repeat: no-repeat;
     z-index: 2;
+    pointer-events: none;
   }
   
   /* Улучшенный стиль для мобильной навигации */
@@ -987,7 +994,7 @@ body.theme-dark .pay-center {
     width: 100%;
     padding: 16px;
     border-radius: 14px;
-    margin: 0;
+    margin: 0 0 8px 0;
     font-size: 16px;
     transition: all 0.3s ease;
     display: flex;
@@ -998,6 +1005,8 @@ body.theme-dark .pay-center {
     border: 1px solid rgba(var(--primary-rgb), 0.1);
     position: relative;
     overflow: hidden;
+    text-decoration: none;
+    color: var(--text);
   }
   
   .main-nav-links .nav-link::before {
