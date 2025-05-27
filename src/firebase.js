@@ -67,38 +67,96 @@ export async function uploadUserAvatar(email, file) {
 
 // Получение ссылки на аватар пользователя
 export async function getUserAvatar(email) {
-  if (!email) return null;
-  const docRef = doc(db, 'users', email);
-  const snap = await getDoc(docRef);
-  if (snap.exists() && snap.data().avatar) {
-    return snap.data().avatar;
+  if (!email) {
+    console.log('Не могу получить аватар: email не указан');
+    return null;
   }
-  return null;
+  
+  try {
+    console.log(`Получаем аватар для пользователя: ${email}`);
+    const docRef = doc(db, 'users', email);
+    const snap = await getDoc(docRef);
+    
+    if (snap.exists()) {
+      const userData = snap.data();
+      if (userData.avatar) {
+        console.log(`Аватар найден: ${userData.avatar.substring(0, 30)}...`);
+        return userData.avatar;
+      } else {
+        console.log('Документ пользователя существует, но аватар не найден');
+      }
+    } else {
+      console.log('Документ пользователя не найден');
+    }
+    
+    return null;
+  } catch (error) {
+    console.error('Ошибка при получении аватара:', error);
+    return null;
+  }
 }
 
 // Загрузка аватара пользователя через imgbb
 export async function uploadUserAvatarToImgbb(email, file) {
-  if (!email || !file) throw new Error('Нет email или файла');
-  // Читаем файл как base64
-  const toBase64 = file => new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.readAsDataURL(file);
-    reader.onload = () => resolve(reader.result.split(',')[1]);
-    reader.onerror = error => reject(error);
-  });
-  const imageBase64 = await toBase64(file);
-  // Загружаем на imgbb
-  const formData = new FormData();
-  formData.append('key', IMGBB_API_KEY);
-  formData.append('image', imageBase64);
-  const res = await fetch('https://api.imgbb.com/1/upload', {
-    method: 'POST',
-    body: formData
-  });
-  const data = await res.json();
-  if (!data.success) throw new Error('Ошибка загрузки на imgbb');
-  const url = data.data.url;
-  // Сохраняем ссылку в Firestore
-  await setDoc(doc(db, 'users', email), { avatar: url }, { merge: true });
-  return url;
-} 
+  if (!email || !file) {
+    console.error('Ошибка загрузки аватара: нет email или файла');
+    throw new Error('Нет email или файла');
+  }
+  
+  try {
+    // Читаем файл как base64
+    const toBase64 = file => new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        try {
+          const base64 = reader.result.split(',')[1];
+          resolve(base64);
+        } catch (e) {
+          reject(new Error('Ошибка при чтении файла как base64'));
+        }
+      };
+      reader.onerror = error => reject(error);
+    });
+    
+    console.log('Начинаем чтение файла как base64...');
+    const imageBase64 = await toBase64(file);
+    console.log('Файл успешно прочитан как base64');
+    
+    // Загружаем на imgbb
+    const formData = new FormData();
+    formData.append('key', IMGBB_API_KEY);
+    formData.append('image', imageBase64);
+    
+    console.log('Отправляем запрос на ImgBB...');
+    const res = await fetch('https://api.imgbb.com/1/upload', {
+      method: 'POST',
+      body: formData
+    });
+    
+    if (!res.ok) {
+      throw new Error(`Ошибка HTTP: ${res.status} ${res.statusText}`);
+    }
+    
+    const data = await res.json();
+    console.log('Получен ответ от ImgBB:', data.success ? 'успешно' : 'ошибка');
+    
+    if (!data.success) {
+      throw new Error(`Ошибка загрузки на ImgBB: ${data.error?.message || 'Неизвестная ошибка'}`);
+    }
+    
+    // Используем display_url вместо url для лучшего качества
+    const url = data.data.display_url || data.data.url;
+    console.log('URL изображения:', url);
+    
+    // Сохраняем ссылку в Firestore
+    console.log('Сохраняем URL в Firestore...');
+    await setDoc(doc(db, 'users', email), { avatar: url }, { merge: true });
+    console.log('URL успешно сохранен в Firestore');
+    
+    return url;
+  } catch (error) {
+    console.error('Ошибка при загрузке аватара на ImgBB:', error);
+    throw error;
+  }
+}

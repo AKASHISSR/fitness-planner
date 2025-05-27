@@ -1,0 +1,638 @@
+/* DashboardPageV2.css - Современный стиль для личного кабинета */
+
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7f8fa 0%, #e6f7ea 100%);
+  padding: 2rem 1rem;
+  font-family: 'Roboto', sans-serif;
+}
+
+.dashboard-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+/* Анимированный фон */
+.dashboard-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.dashboard-particle {
+  position: absolute;
+  background: rgba(79, 209, 101, 0.15);
+  border-radius: 50%;
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(30px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(-15px);
+  }
+}
+
+/* Профиль пользователя */
+.user-profile {
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  padding: 2rem;
+  color: white;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-decoration {
+  position: absolute;
+  right: -50px;
+  top: -50px;
+  width: 200px;
+  height: 200px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.profile-decoration:nth-child(2) {
+  right: auto;
+  left: -30px;
+  top: auto;
+  bottom: -80px;
+  width: 150px;
+  height: 150px;
+}
+
+.avatar-container {
+  position: relative;
+  z-index: 1;
+}
+
+.avatar-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border: 3px solid white;
+  position: relative;
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 60px;
+  color: #4fd165;
+}
+
+.avatar-edit {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #36b14e;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+  transition: all 0.2s ease;
+}
+
+.avatar-edit:hover {
+  transform: scale(1.1);
+}
+
+.avatar-edit-icon {
+  color: white;
+  font-size: 18px;
+}
+
+.avatar-spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.user-info {
+  flex: 1;
+  z-index: 1;
+}
+
+.user-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-email {
+  font-size: 1rem;
+  opacity: 0.9;
+  margin-bottom: 1rem;
+}
+
+.edit-name-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edit-name-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.name-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1rem;
+}
+
+.name-input {
+  background: rgba(255, 255, 255, 0.9);
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 1.2rem;
+  color: #1a3a2b;
+  font-weight: 600;
+  width: 250px;
+  max-width: 100%;
+}
+
+.name-save-btn, .name-cancel-btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.name-save-btn {
+  background: #1a3a2b;
+  color: white;
+}
+
+.name-save-btn:hover {
+  background: #264a39;
+}
+
+.name-cancel-btn {
+  background: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.name-cancel-btn:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.user-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 8px 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.btn-primary {
+  background: #1a3a2b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #264a39;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.btn-admin {
+  background: #ff9800;
+  color: white;
+}
+
+.btn-admin:hover {
+  background: #f57c00;
+}
+
+.btn-logout {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.btn-logout:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Вкладки */
+.tabs-container {
+  display: flex;
+  border-bottom: 1px solid #eee;
+}
+
+.tab {
+  padding: 1rem 1.5rem;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.tab:hover {
+  color: #36b14e;
+}
+
+.tab.active {
+  color: #36b14e;
+}
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: #36b14e;
+  border-radius: 3px 3px 0 0;
+}
+
+/* Содержимое вкладок */
+.tab-content {
+  padding: 2rem;
+}
+
+.tab-content h2 {
+  color: #1a3a2b;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+}
+
+/* План питания */
+.meal-plan {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.day-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.day-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.day-header {
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.day-content {
+  padding: 1rem;
+}
+
+.meal-item {
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.meal-item:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.meal-type {
+  font-weight: 600;
+  color: #36b14e;
+  margin-bottom: 0.3rem;
+}
+
+.meal-text {
+  color: #444;
+}
+
+/* План тренировок */
+.workout-plan {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.workout-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.workout-header {
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  color: white;
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.workout-content {
+  padding: 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.workout-text {
+  color: #444;
+  flex: 1;
+}
+
+/* Список покупок */
+.shopping-list {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.shopping-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 0.8rem;
+}
+
+.shopping-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.shopping-item-checkbox {
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 2px solid #36b14e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.shopping-item-checkbox.checked {
+  background: #36b14e;
+  color: white;
+}
+
+.shopping-item-text {
+  color: #444;
+}
+
+.shopping-item-text.checked {
+  text-decoration: line-through;
+  color: #888;
+}
+
+/* История активности */
+.activity-list {
+  background: white;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.activity-item {
+  padding: 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #e6f7ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #36b14e;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.activity-details {
+  flex: 1;
+}
+
+.activity-type {
+  font-weight: 600;
+  color: #1a3a2b;
+  margin-bottom: 0.3rem;
+}
+
+.activity-desc {
+  color: #666;
+  margin-bottom: 0.3rem;
+}
+
+.activity-time {
+  color: #999;
+  font-size: 0.9rem;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .user-profile {
+    flex-direction: column;
+    text-align: center;
+    gap: 1rem;
+  }
+  
+  .user-actions {
+    justify-content: center;
+  }
+  
+  .name-edit-form {
+    flex-direction: column;
+  }
+  
+  .tabs-container {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+  
+  .tab {
+    padding: 1rem;
+  }
+  
+  .meal-plan, .workout-plan {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Темная тема */
+.theme-dark .dashboard-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #232323 100%);
+}
+
+.theme-dark .dashboard-content {
+  background: #2a2a2a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark .tabs-container {
+  border-bottom-color: #333;
+}
+
+.theme-dark .tab {
+  color: #aaa;
+}
+
+.theme-dark .tab:hover,
+.theme-dark .tab.active {
+  color: #4fd165;
+}
+
+.theme-dark .tab-content h2 {
+  color: #e6f7ea;
+}
+
+.theme-dark .day-card,
+.theme-dark .workout-card,
+.theme-dark .shopping-list,
+.theme-dark .activity-list {
+  background: #333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark .meal-item {
+  border-bottom-color: #444;
+}
+
+.theme-dark .meal-text,
+.theme-dark .workout-text,
+.theme-dark .shopping-item-text {
+  color: #ccc;
+}
+
+.theme-dark .activity-item {
+  border-bottom-color: #444;
+}
+
+.theme-dark .activity-desc {
+  color: #aaa;
+}
+
+.theme-dark .activity-time {
+  color: #777;
+}
+
+.theme-dark .name-input {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.fade-in-delay-1 {
+  animation: fadeIn 0.5s ease 0.1s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-2 {
+  animation: fadeIn 0.5s ease 0.2s forwards;
+  opacity: 0;
+}
+
+.fade-in-delay-3 {
+  animation: fadeIn 0.5s ease 0.3s forwards;
+  opacity: 0;
+}
