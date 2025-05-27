@@ -70,6 +70,7 @@ function Header() {
     const handleClickOutside = (event) => {
       if (headerRef.current && !headerRef.current.contains(event.target) && isMobileMenuOpen) {
         setIsMobileMenuOpen(false);
+        document.body.style.overflow = '';
       }
     };
 
