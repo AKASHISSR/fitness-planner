@@ -17,7 +17,7 @@ import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import './styles/mobile-optimization.css';
-import './styles/hamburger.css'; // Новое бургерное меню
+import './styles/perfect-menu.css'; // Идеальное бургерное меню
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -220,14 +220,16 @@ function Header() {
           </div>
           
           <button 
-            className={`hamburger-button ${isMobileMenuOpen ? 'active' : ''}`}
+            className={`perfect-burger ${isMobileMenuOpen ? 'active' : ''}`}
             onClick={toggleMobileMenu}
             aria-label="Меню"
             title="Меню"
           >
-            <span></span>
-            <span></span>
-            <span></span>
+            <div className="burger-lines">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
           </button>
         </div>
       </nav>
