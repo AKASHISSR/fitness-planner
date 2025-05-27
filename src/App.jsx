@@ -17,8 +17,7 @@ import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
 import './styles/mobile-optimization.css';
-import './styles/burger-menu-fix.css'; // Стили для исправления бургерного меню
-import './styles/burger-menu-new.css'; // Полностью новые стили для бургерного меню
+import './styles/burger-fix-final.css'; // Финальное исправление бургерного меню
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -144,8 +143,9 @@ function Header() {
             </div>
           </Link>
         </div>
-
-        <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
+        
+        <div className="header-right">
+          <div className={`main-nav-links ${isMobileMenuOpen ? 'open' : ''}`}>
           <Link to="/" onClick={() => setIsMobileMenuOpen(false)} className="nav-link">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="nav-icon">
               <path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
@@ -218,20 +218,19 @@ function Header() {
             </svg>
             <span>+375 29 897-52-19</span>
           </div>
-        </div>
-        
-        <div 
-          ref={burgerRef}
-          className="burger-menu-container"
-          onClick={toggleMobileMenu}
-          aria-label="Меню"
-          title="Меню"
-        >
-          <div className={`burger-icon ${isMobileMenuOpen ? 'active' : ''}`}>
-            <div className="burger-line"></div>
-            <div className="burger-line"></div>
-            <div className="burger-line"></div>
           </div>
+        
+          <button 
+            ref={burgerRef}
+            className={`burger-btn ${isMobileMenuOpen ? 'active' : ''}`}
+            onClick={toggleMobileMenu}
+            aria-label="Меню"
+            title="Меню"
+          >
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+            <span className="burger-line"></span>
+          </button>
         </div>
       </nav>
       {isMobileMenuOpen && <div className="mobile-menu-overlay" onClick={toggleMobileMenu}></div>}
