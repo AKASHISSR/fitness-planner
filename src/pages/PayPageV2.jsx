@@ -4,31 +4,29 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { logUserActivity } from '../firebase';
 import './PayPageV2.css';
 
-// Обновленные тарифы с новыми ценами и описаниями
+// Тарифы с ценами и описаниями в соответствии со страницей Цены и оплата
 const TARIFFS = {
   food: { 
-    name: 'Питание', 
-    price: 1490, 
-    oldPrice: 1990,
+    name: 'Программа питания на неделю', 
+    price: 20, 
+    oldPrice: null,
     icon: '🥗',
-    description: 'Персональное меню на 7 дней, список покупок, рекомендации по питанию.',
-    discount: '25% скидка'
+    description: 'Персональное меню на 7 дней, список покупок, рекомендации по питанию.'
   },
   workout: { 
-    name: 'Тренировки', 
-    price: 1490, 
-    oldPrice: 1990,
+    name: 'Программа тренировок на неделю', 
+    price: 30, 
+    oldPrice: null,
     icon: '💪',
-    description: 'План тренировок на 7 дней, упражнения, видео и советы.',
-    discount: '25% скидка'
+    description: 'План тренировок на 7 дней, упражнения, видео и советы.'
   },
   combo: { 
-    name: 'Комбо: питание + тренировки', 
-    price: 1990, 
-    oldPrice: 2990,
+    name: 'Комбо: питание + тренировки на неделю', 
+    price: 40, 
+    oldPrice: 50,
     icon: '🔥',
     description: 'Всё включено: рацион и тренировки на 7 дней для максимального результата.',
-    discount: '33% скидка'
+    discount: 'Экономия 10 руб.'
   },
 };
 
@@ -150,7 +148,7 @@ function PayPageV2() {
         await logUserActivity({ 
           email: userEmail, 
           type: 'purchase', 
-          desc: `Оплачен тариф: ${tariff.name} (${tariff.price} ₽)` 
+          desc: `Оплачен тариф: ${tariff.name} (${tariff.price} руб.)` 
         });
         
         // Задержка для отображения конфетти
@@ -219,9 +217,9 @@ function PayPageV2() {
                 <div className="pay-tariff-name">{tariff.name}</div>
                 <div className="pay-tariff-description">{tariff.description}</div>
                 <div className="pay-price-container">
-                  <span className="pay-old-price">{tariff.oldPrice} ₽</span>
-                  <span className="pay-current-price">{tariff.price} ₽</span>
-                  <span className="pay-discount-badge">{tariff.discount}</span>
+                  {tariff.oldPrice && <span className="pay-old-price">{tariff.oldPrice} руб.</span>}
+                  <span className="pay-current-price">{tariff.price} руб.</span>
+                  {tariff.discount && <span className="pay-discount-badge">{tariff.discount}</span>}
                 </div>
               </div>
             </motion.div>
@@ -233,7 +231,7 @@ function PayPageV2() {
               transition={{ delay: 0.5, duration: 0.5 }}
             >
               <div className="pay-total-label">Сумма к оплате:</div>
-              <div className="pay-total-price">{tariff.price} ₽</div>
+              <div className="pay-total-price">{tariff.price} руб.</div>
             </motion.div>
           </div>
           
