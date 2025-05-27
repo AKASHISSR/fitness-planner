@@ -371,7 +371,7 @@ function DashboardPageV2() {
   
   // Переход в админ-панель
   const goToAdmin = () => {
-    navigate('/adminV2');
+    navigate('/admin');
   };
   
   // Выход из аккаунта
