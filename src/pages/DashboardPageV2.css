@@ -663,3 +663,195 @@
   animation: fadeIn 0.5s ease 0.3s forwards;
   opacity: 0;
 }
+
+/* Адаптивные стили для мобильных устройств */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .dashboard-content {
+    border-radius: 12px;
+  }
+  
+  /* Оптимизация профиля пользователя */
+  .user-profile {
+    flex-direction: column;
+    padding: 1.5rem 1rem;
+    gap: 1rem;
+    text-align: center;
+  }
+  
+  .user-name {
+    font-size: 1.5rem;
+    justify-content: center;
+  }
+  
+  .user-email {
+    font-size: 0.9rem;
+  }
+  
+  .user-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  
+  .stat-item {
+    padding: 0.5rem;
+  }
+  
+  .logout-btn {
+    width: 100%;
+    margin-top: 1rem;
+  }
+  
+  /* Оптимизация вкладок */
+  .tabs-container {
+    overflow-x: auto;
+    padding-bottom: 5px;
+    margin-bottom: 10px;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .tabs {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    min-width: 100%;
+  }
+  
+  .tab {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  
+  /* Оптимизация контента вкладок */
+  .tab-content {
+    padding: 1rem;
+  }
+  
+  .tab-content h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Оптимизация плана питания */
+  .food-plan-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .day-card {
+    padding: 1rem;
+  }
+  
+  .day-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .meal-item {
+    padding: 0.8rem 0;
+  }
+  
+  .meal-type {
+    font-size: 0.9rem;
+  }
+  
+  .meal-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Оптимизация плана тренировок */
+  .workout-plan-container {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .workout-card {
+    padding: 1rem;
+  }
+  
+  .workout-day {
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
+  }
+  
+  .workout-text {
+    font-size: 0.9rem;
+  }
+  
+  /* Оптимизация списка покупок */
+  .shopping-list {
+    padding: 1rem;
+  }
+  
+  .shopping-list-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .shopping-items {
+    grid-template-columns: 1fr;
+  }
+  
+  /* Оптимизация активности */
+  .activity-list {
+    padding: 1rem;
+  }
+  
+  .activity-list-title {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+  }
+  
+  .activity-item {
+    padding: 0.8rem 0;
+  }
+  
+  .activity-desc {
+    font-size: 0.9rem;
+  }
+  
+  .activity-time {
+    font-size: 0.8rem;
+  }
+  
+  /* Оптимизация модального окна */
+  .modal-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .modal-input {
+    font-size: 0.9rem;
+    padding: 0.8rem;
+  }
+  
+  .modal-actions {
+    margin-top: 1rem;
+  }
+  
+  .modal-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Улучшение сенсорных целей */
+  .tab, 
+  .btn-primary, 
+  .btn-secondary, 
+  .btn-admin, 
+  .logout-btn, 
+  .modal-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}

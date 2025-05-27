@@ -16,6 +16,7 @@ import AdminPageV2 from './pages/AdminPageV2';
 import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import './App.css';
+import './styles/mobile-optimization.css';
 import { logVisit } from './firebase';
 
 export const ADMINS = [

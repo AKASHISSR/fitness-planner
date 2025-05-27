@@ -392,19 +392,116 @@ body.theme-dark .feedback-textarea:focus {
 }
 
 @media (max-width: 480px) {
+  .faq-bg {
+    padding: 20px 10px;
+  }
+  
   .faq-heading {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
+    margin-bottom: 10px;
   }
   
   .faq-subheading {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.4;
   }
   
   .faq-container {
     padding: 20px 15px;
+    border-radius: 16px;
+  }
+  
+  .faq-item {
+    margin-bottom: 12px;
+    border-radius: 12px;
+  }
+  
+  .faq-question {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-icon {
+    width: 20px;
+    height: 20px;
+    font-size: 1.3rem;
+  }
+  
+  .faq-answer {
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+  
+  .faq-answer.open {
+    padding: 0 15px 15px 15px;
+  }
+  
+  .faq-answer ul, .faq-answer ol {
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .faq-answer li {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
   }
   
   .feedback-container {
-    padding: 20px;
+    padding: 20px 15px;
+    margin-top: 25px;
+    border-radius: 12px;
+  }
+  
+  .feedback-heading {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .feedback-subheading {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+  }
+  
+  .feedback-form {
+    gap: 15px;
+  }
+  
+  .form-group label {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+  }
+  
+  .form-input, .form-textarea {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+    border-radius: 8px;
+  }
+  
+  .form-textarea {
+    min-height: 100px;
+  }
+  
+  .submit-button {
+    padding: 12px 20px;
+    font-size: 0.95rem;
+    border-radius: 10px;
+    min-height: 44px;
+  }
+  
+  .feedback-error, .feedback-success {
+    font-size: 0.85rem;
+    padding: 8px;
+    border-radius: 6px;
+  }
+  
+  /* Улучшение сенсорных целей */
+  .faq-question,
+  .submit-button,
+  .form-input,
+  .form-textarea {
+    min-height: 44px;
+    touch-action: manipulation;
   }
 }

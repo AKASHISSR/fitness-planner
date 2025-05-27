@@ -780,37 +780,136 @@ body.theme-dark .prices-support {
 @media (max-width: 480px) {
   .prices-heading {
     font-size: 1.5rem;
+    margin-bottom: 5px;
+  }
+  
+  .prices-subheading {
+    font-size: 1rem;
+    margin-bottom: 25px;
   }
   
   .prices-container {
     padding: 20px 15px;
+    border-radius: 16px;
+    margin: 10px;
   }
   
   .tariff-icon {
     font-size: 2.5rem;
+    margin-bottom: 15px;
   }
   
   .prices-title {
     font-size: 1.3rem;
+    margin-bottom: 10px;
+    line-height: 1.3;
+  }
+  
+  .prices-desc {
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.4;
   }
   
   .current-price {
     font-size: 1.8rem;
   }
   
+  .old-price {
+    font-size: 1rem;
+  }
+  
+  .currency {
+    font-size: 1rem;
+  }
+  
   .prices-button {
     padding: 12px 25px;
     font-size: 1.1rem;
     width: 100%;
+    min-height: 50px;
+    border-radius: 12px;
   }
   
   .payment-icons {
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
   }
   
   .payment-icon {
     width: 50px;
     height: 35px;
+  }
+  
+  .tariff-features {
+    margin-top: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .tariff-feature {
+    font-size: 0.9rem;
+    padding: 8px 0;
+  }
+  
+  .feature-check {
+    font-size: 1rem;
+    margin-right: 8px;
+  }
+  
+  .prices-summary {
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .selected-tariff-title {
+    font-size: 1rem;
+  }
+  
+  .selected-tariff-price {
+    font-size: 1.2rem;
+  }
+  
+  .prices-steps {
+    margin-top: 30px;
+  }
+  
+  .steps-title {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+  }
+  
+  .step-number {
+    width: 36px;
+    height: 36px;
+    font-size: 1.1rem;
+  }
+  
+  .step-title {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+  }
+  
+  .step-desc {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  /* Улучшение сенсорных целей */
+  .prices-tariff,
+  .prices-button,
+  .payment-icon,
+  .tariff-feature {
+    min-height: 44px;
+    touch-action: manipulation;
+  }
+  
+  /* Улучшение прокрутки */
+  .prices-bg {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    padding: 20px 0;
   }
 }
 
