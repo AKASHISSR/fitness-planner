@@ -246,7 +246,7 @@ function HomePage() {
                 <h3>Рацион для похудения</h3>
               </div>
               <p className="example-desc">Сбалансированное меню на неделю, учитывающее ваши предпочтения и цели.</p>
-              <button className="example-btn" onClick={() => openModal('/public/example-food-day.png')}>
+              <button className="example-btn" onClick={() => openModal('./example-food-day.png')}>
                 Посмотреть пример
               </button>
             </div>
@@ -259,7 +259,7 @@ function HomePage() {
                 <h3>План тренировок</h3>
               </div>
               <p className="example-desc">Эффективные упражнения с учетом вашего уровня и доступного инвентаря.</p>
-              <button className="example-btn" onClick={() => openModal('/public/example-workout-day.png')}>
+              <button className="example-btn" onClick={() => openModal('./example-workout-day.png')}>
                 Посмотреть пример
               </button>
             </div>

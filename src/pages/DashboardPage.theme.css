@@ -1,0 +1,312 @@
+/* DashboardPage.theme.css - Стили для темной/светлой темы */
+
+/* Основные стили для светлой темы */
+:root {
+  --dash-bg-color: #f7f8fa;
+  --dash-card-bg: #ffffff;
+  --dash-text-color: #1a3a2b;
+  --dash-text-secondary: #444444;
+  --dash-border-color: #e6e6e6;
+  --dash-accent-color: #4fd165;
+  --dash-accent-hover: #36b14e;
+  --dash-accent-light: #e6f7ea;
+  --dash-tab-active-bg: #4fd165;
+  --dash-tab-active-text: #ffffff;
+  --dash-tab-inactive-bg: #f7f8fa;
+  --dash-tab-inactive-text: #1a3a2b;
+  --dash-activity-item-bg: #f7f8fa;
+  --dash-activity-time-color: #666666;
+  --dash-activity-type-bg: #e6f7ea;
+  --dash-activity-type-color: #1a3a2b;
+  --dash-empty-state-color: #888888;
+  --dash-loading-spinner-color: #4fd165;
+}
+
+/* Стили для темной темы */
+.theme-dark {
+  --dash-bg-color: #1a1a1a;
+  --dash-card-bg: #232323;
+  --dash-text-color: #f7f8fa;
+  --dash-text-secondary: #cccccc;
+  --dash-border-color: #333333;
+  --dash-accent-color: #4fd165;
+  --dash-accent-hover: #36b14e;
+  --dash-accent-light: #1a3a2b;
+  --dash-tab-active-bg: #4fd165;
+  --dash-tab-active-text: #ffffff;
+  --dash-tab-inactive-bg: #232323;
+  --dash-tab-inactive-text: #f7f8fa;
+  --dash-activity-item-bg: #2a2a2a;
+  --dash-activity-time-color: #aaaaaa;
+  --dash-activity-type-bg: #1a3a2b;
+  --dash-activity-type-color: #e6f7ea;
+  --dash-empty-state-color: #aaaaaa;
+  --dash-loading-spinner-color: #4fd165;
+}
+
+/* Применение переменных к элементам */
+.dash-bg {
+  background-color: var(--dash-bg-color);
+  color: var(--dash-text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.profile-card {
+  background-color: var(--dash-card-bg);
+  border: 1px solid var(--dash-border-color);
+}
+
+.profile-block-name {
+  color: var(--dash-text-color);
+}
+
+.profile-block-email {
+  color: var(--dash-text-secondary);
+}
+
+.avatar-placeholder {
+  background-color: var(--dash-accent-light);
+  color: var(--dash-text-color);
+}
+
+.profile-name-input {
+  background-color: var(--dash-card-bg);
+  color: var(--dash-text-color);
+  border: 1px solid var(--dash-border-color);
+}
+
+.profile-name-save {
+  background-color: var(--dash-accent-color);
+  color: white;
+}
+
+.profile-name-save:hover:not(:disabled) {
+  background-color: var(--dash-accent-hover);
+}
+
+.profile-name-save:disabled {
+  background-color: var(--dash-accent-light);
+  opacity: 0.7;
+}
+
+.avatar-upload-btn {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+}
+
+.avatar-upload-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.dash-tab {
+  background-color: var(--dash-tab-inactive-bg);
+  color: var(--dash-tab-inactive-text);
+  border: 1px solid var(--dash-border-color);
+}
+
+.dash-tab.active {
+  background-color: var(--dash-tab-active-bg);
+  color: var(--dash-tab-active-text);
+}
+
+.dash-btn {
+  background-color: var(--dash-accent-light);
+  color: var(--dash-text-color);
+  border: 1px solid var(--dash-accent-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dash-btn:hover:not(:disabled) {
+  background-color: var(--dash-accent-color);
+  color: white;
+}
+
+.dash-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.admin-btn {
+  background-color: var(--dash-accent-color);
+  color: white;
+  font-weight: 700;
+}
+
+.activity-item {
+  background-color: var(--dash-activity-item-bg);
+  border: 1px solid var(--dash-border-color);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 12px;
+  transition: background-color 0.3s ease;
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.activity-time {
+  font-size: 0.9rem;
+  color: var(--dash-activity-time-color);
+  white-space: nowrap;
+}
+
+.activity-type {
+  background: var(--dash-activity-type-bg);
+  color: var(--dash-activity-type-color);
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.activity-description {
+  font-size: 1rem;
+  color: var(--dash-text-color);
+  word-break: break-word;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  opacity: 0.7;
+}
+
+.empty-state-text {
+  color: var(--dash-text-color);
+  font-size: 1.1rem;
+  margin-bottom: 16px;
+}
+
+.loading-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--dash-loading-spinner-color);
+  animation: spin 1s ease-in-out infinite;
+  margin-bottom: 16px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loading-text {
+  color: var(--dash-text-color);
+  font-size: 1.1rem;
+}
+
+/* Адаптивные стили для карточек */
+.food-plan-container,
+.workout-plan-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+
+@media (min-width: 768px) {
+  .food-plan-container,
+  .workout-plan-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  .food-plan-card,
+  .workout-plan-card {
+    grid-column: 1 / 3;
+  }
+}
+
+@media (min-width: 1024px) {
+  .food-plan-container,
+  .workout-plan-container {
+    grid-template-columns: 2fr 1fr 1fr;
+  }
+  
+  .food-plan-card,
+  .workout-plan-card {
+    grid-column: 1;
+    grid-row: 1 / 3;
+  }
+}
+
+/* Стили для карточек статистики */
+.stats-card-group {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 640px) {
+  .stats-card-group {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 1024px) {
+  .stats-card-group {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+/* Стили для контейнера действий */
+.dash-actions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.dash-actions-container .dash-btn {
+  flex: 1 1 auto;
+  min-width: 120px;
+}
+
+/* Стили для вкладок */
+.dash-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.dash-tab {
+  flex: 1 1 auto;
+  min-width: 100px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Стили для содержимого вкладок */
+.dash-content {
+  margin-top: 16px;
+}

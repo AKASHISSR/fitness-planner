@@ -1,0 +1,189 @@
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u043au043eu043cu043fu043eu043du0435u043du0442u0430 Reminder */
+
+.reminder {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  padding: 16px;
+  margin-bottom: 16px;
+  transition: transform 0.3s, opacity 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+.reminder.dismissed {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.reminder:hover {
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.reminder-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* u0426u0432u0435u0442u0430 u0434u043bu044f u0440u0430u0437u043du044bu0445 u0442u0438u043fu043eu0432 u043du0430u043fu043eu043cu0438u043du0430u043du0438u0439 */
+.reminder.workout .reminder-icon {
+  background-color: rgba(79, 209, 101, 0.1);
+  color: var(--primary);
+}
+
+.reminder.food .reminder-icon {
+  background-color: rgba(240, 173, 78, 0.1);
+  color: var(--warning);
+}
+
+.reminder.water .reminder-icon {
+  background-color: rgba(91, 192, 222, 0.1);
+  color: var(--info);
+}
+
+.reminder.general .reminder-icon {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: var(--danger);
+}
+
+.reminder-content {
+  flex: 1;
+}
+
+.reminder-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 6px;
+}
+
+.reminder-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.reminder-time {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.reminder-message {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.reminder-dismiss {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  transition: background-color 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+
+.reminder-dismiss:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: var(--text-primary);
+}
+
+body.theme-dark .reminder-dismiss:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u0433u0440u0443u043fu043fu044b u043du0430u043fu043eu043cu0438u043du0430u043du0438u0439 */
+.reminder-group {
+  margin-bottom: 24px;
+}
+
+.reminder-group-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-primary);
+}
+
+.reminder-group-content {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+/* u0410u0434u0430u043fu0442u0438u0432u043du043eu0441u0442u044c u0434u043bu044f u043cu043eu0431u0438u043bu044cu043du044bu0445 u0443u0441u0442u0440u043eu0439u0441u0442u0432 */
+@media (max-width: 768px) {
+  .reminder {
+    padding: 14px;
+  }
+  
+  .reminder-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.2rem;
+  }
+  
+  .reminder-title {
+    font-size: 1rem;
+  }
+  
+  .reminder-message {
+    font-size: 0.9rem;
+  }
+  
+  .reminder-group-title {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .reminder {
+    padding: 12px;
+    gap: 10px;
+  }
+  
+  .reminder-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .reminder-title {
+    font-size: 0.95rem;
+  }
+  
+  .reminder-time {
+    font-size: 0.8rem;
+  }
+  
+  .reminder-message {
+    font-size: 0.85rem;
+  }
+  
+  .reminder-dismiss {
+    width: 20px;
+    height: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .reminder-group-title {
+    font-size: 1rem;
+    margin-bottom: 10px;
+  }
+}

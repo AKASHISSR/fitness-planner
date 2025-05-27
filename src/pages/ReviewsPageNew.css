@@ -77,6 +77,7 @@ body.theme-dark .reviews-container {
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   color: #f7f8fa;
 }
+
 /* Заголовки */
 .reviews-heading {
   font-size: 2.5rem;
@@ -107,6 +108,7 @@ body.theme-dark .reviews-heading {
 body.theme-dark .reviews-subheading {
   color: #aaa;
 }
+
 /* Блок статистики */
 .reviews-stats {
   display: flex;
@@ -285,6 +287,46 @@ body.theme-dark .review-likes {
 .like-icon {
   font-size: 1.2rem;
 }
+
+/* Форма отправки отзыва */
+.review-form-container {
+  background: #fff;
+  border-radius: 24px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  padding: 30px;
+  width: 100%;
+  max-width: 600px;
+  margin-top: 40px;
+}
+
+body.theme-dark .review-form-container {
+  background: #2a2a2a;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #1a3a2b;
+  text-align: center;
+}
+
+body.theme-dark .form-heading {
+  color: #f7f8fa;
+}
+
+.form-subheading {
+  font-size: 0.9rem;
+  text-align: center;
+  color: #666;
+  margin-bottom: 25px;
+}
+
+body.theme-dark .form-subheading {
+  color: #aaa;
+}
+
 .review-form {
   display: flex;
   flex-direction: column;
@@ -340,21 +382,21 @@ body.theme-dark .review-textarea:focus {
   resize: vertical;
 }
 
-.rating-select {
+.rating-selector {
   display: flex;
   gap: 10px;
   margin-bottom: 10px;
 }
 
-.rating-option {
+.rating-star {
   cursor: pointer;
   color: #ddd;
   font-size: 1.5rem;
   transition: color 0.2s;
 }
 
-.rating-option.selected,
-.rating-option:hover {
+.rating-star.active,
+.rating-star:hover {
   color: #ffb400;
 }
 
@@ -463,87 +505,6 @@ body.theme-dark .reviews-page-btn.active {
   color: #fff;
 }
 
-/* Адаптивный дизайн */
-@media (max-width: 768px) {
-  .reviews-container {
-    padding: 25px 20px;
-  }
-  
-  .reviews-heading {
-    font-size: 2rem;
-  }
-  
-  .reviews-stats {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .stat-card {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  .reviews-list {
-    grid-template-columns: 1fr;
-  }
-}
-/* Стили для формы отзывов */
-.review-form-container {
-  background: #fff;
-  border-radius: 24px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
-  padding: 30px;
-  width: 100%;
-  max-width: 600px;
-  margin-top: 40px;
-}
-
-body.theme-dark .review-form-container {
-  background: #2a2a2a;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-}
-
-.form-heading {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #1a3a2b;
-  text-align: center;
-}
-
-body.theme-dark .form-heading {
-  color: #f7f8fa;
-}
-
-.form-subheading {
-  font-size: 0.9rem;
-  text-align: center;
-  color: #666;
-  margin-bottom: 25px;
-}
-
-body.theme-dark .form-subheading {
-  color: #aaa;
-}
-
-.rating-selector {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 10px;
-}
-
-.rating-star {
-  cursor: pointer;
-  color: #ddd;
-  font-size: 1.5rem;
-  transition: color 0.2s;
-}
-
-.rating-star.active,
-.rating-star:hover {
-  color: #ffb400;
-}
-
 /* Стили для конфетти */
 .confetti-container {
   position: fixed;
@@ -577,6 +538,45 @@ body.theme-dark .form-subheading {
   }
 }
 
+/* Дополнительные стили для анимаций */
+.success-icon, .error-icon {
+  margin-right: 5px;
+  font-size: 1.1rem;
+}
+
+.success-icon {
+  color: #4fd165;
+}
+
+.error-icon {
+  color: #d32f2f;
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 25px 20px;
+  }
+  
+  .reviews-heading {
+    font-size: 2rem;
+  }
+  
+  .reviews-stats {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat-card {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  .reviews-list {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* Дополнительные стили для мобильных устройств */
 @media (max-width: 480px) {
   .reviews-heading {
@@ -598,42 +598,4 @@ body.theme-dark .form-subheading {
   .review-form-container {
     padding: 20px;
   }
-}
-
-/* Дополнительные стили для анимаций */
-.success-icon, .error-icon {
-  margin-right: 5px;
-  font-size: 1.1rem;
-}
-
-.success-icon {
-  color: #4fd165;
-}
-
-.error-icon {
-  color: #d32f2f;
-}
-.reviews-page-btn.active,
-.reviews-page-btn:disabled {
-  background: #4fd165;
-  color: #fff;
-  cursor: default;
-}
-.reviews-page-btn:hover:not(:disabled) {
-  background: #b2e9c7;
-}
-body.theme-dark .reviews-pagination {
-  margin-top: 25px;
-}
-body.theme-dark .reviews-page-btn {
-  background: #232323;
-  color: #f7f8fa;
-}
-body.theme-dark .reviews-page-btn.active,
-body.theme-dark .reviews-page-btn:disabled {
-  background: #4fd165;
-  color: #fff;
-}
-body.theme-dark .reviews-page-btn:hover:not(:disabled) {
-  background: #333;
 }

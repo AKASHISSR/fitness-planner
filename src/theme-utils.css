@@ -1,0 +1,252 @@
+/* Утилиты для темной/светлой темы и адаптивности */
+
+/* Переменные цветов */
+:root {
+  --primary: #4fd165;
+  --primary-dark: #36b14e;
+  --primary-light: #c6f7d6;
+  --secondary: #1a3a2b;
+  --bg-light: #f7f8fa;
+  --bg-light-accent: #e6f7ea;
+  --bg-dark: #232323;
+  --bg-dark-accent: #1a3a2b;
+  --text-light: #1a3a2b;
+  --text-dark: #f7f8fa;
+  --text-muted-light: #555;
+  --text-muted-dark: #aaa;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  --border-light: #eee;
+  --border-dark: #333;
+  --success: #4fd165;
+  --warning: #f0ad4e;
+  --danger: #d9534f;
+  --info: #5bc0de;
+}
+
+/* Светлая тема (по умолчанию) */
+body.theme-light {
+  --bg-primary: var(--bg-light);
+  --bg-secondary: var(--bg-light-accent);
+  --text-primary: var(--text-light);
+  --text-secondary: var(--text-muted-light);
+  --shadow: var(--shadow-light);
+  --border: var(--border-light);
+  background: linear-gradient(120deg, var(--bg-light) 60%, var(--bg-light-accent) 100%);
+  color: var(--text-primary);
+}
+
+/* Темная тема */
+body.theme-dark {
+  --bg-primary: var(--bg-dark);
+  --bg-secondary: var(--bg-dark-accent);
+  --text-primary: var(--text-dark);
+  --text-secondary: var(--text-muted-dark);
+  --shadow: var(--shadow-dark);
+  --border: var(--border-dark);
+  background: linear-gradient(120deg, var(--bg-dark) 60%, var(--bg-dark-accent) 100%) !important;
+  color: var(--text-primary);
+}
+
+/* Улучшенная кнопка переключения темы */
+.theme-toggle-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 2px 8px var(--shadow);
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden;
+}
+
+.theme-toggle-btn:hover {
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle-btn.animating {
+  animation: pulse 0.75s ease-in-out;
+}
+
+.theme-icon {
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-toggle-btn:hover .theme-icon {
+  transform: rotate(30deg) scale(1.2);
+}
+
+.theme-toggle-btn.animating .theme-icon {
+  animation: spin 0.75s ease-in-out;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Улучшения для шапки */
+.main-header {
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 4px 24px var(--shadow);
+  transition: background 0.3s, box-shadow 0.3s;
+}
+
+body.theme-dark .main-header {
+  background: rgba(35, 35, 35, 0.98);
+}
+
+/* Улучшения для навигации */
+.main-nav-links a {
+  color: var(--text-primary);
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.main-nav-links a:hover, .main-nav-links a:focus {
+  background: var(--bg-secondary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+
+body.theme-dark .main-nav-links a {
+  color: var(--text-primary);
+}
+
+body.theme-dark .main-nav-links a:hover, body.theme-dark .main-nav-links a:focus {
+  background: var(--bg-secondary);
+  color: var(--primary);
+}
+
+/* Улучшения для кнопок */
+button, .main-nav-btn, .dash-btn {
+  background: linear-gradient(90deg, var(--primary) 60%, var(--primary-dark) 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(79, 209, 101, 0.2);
+  transition: all 0.2s ease;
+}
+
+button:hover, .main-nav-btn:hover, .dash-btn:hover {
+  background: linear-gradient(90deg, var(--primary-dark) 60%, var(--primary) 100%);
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(79, 209, 101, 0.3);
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .theme-toggle-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+  
+  .main-header nav {
+    padding: 0 12px;
+  }
+  
+  .main-logo {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .theme-toggle-btn {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  
+  .main-header nav {
+    padding: 0 8px;
+  }
+  
+  .main-logo {
+    font-size: 1.5rem;
+  }
+  
+  .main-nav-links a {
+    padding: 8px 16px;
+  }
+}
+
+/* Исправления для градиентного текста */
+.main-logo, .home-header h1 {
+  background: linear-gradient(90deg, var(--primary) 10%, var(--secondary) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-dark .main-logo, body.theme-dark .home-header h1 {
+  background: linear-gradient(90deg, var(--primary) 10%, var(--text-dark) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Улучшения для личного кабинета */
+.dash-center {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  box-shadow: 0 4px 32px var(--shadow);
+}
+
+/* Улучшения для форм */
+input, select, textarea {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(79, 209, 101, 0.2);
+  outline: none;
+}
+
+body.theme-dark input, body.theme-dark select, body.theme-dark textarea {
+  background-color: var(--bg-dark);
+  border-color: var(--border-dark);
+}
+
+/* Улучшения для модальных окон */
+.offer-modal, .example-modal {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* Улучшения для футера */
+.main-footer {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-top: 1px solid var(--border);
+}
+
+.footer-link {
+  color: var(--primary);
+}
+
+.footer-link:hover {
+  color: var(--primary-dark);
+}

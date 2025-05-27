@@ -1,0 +1,569 @@
+/* DashboardEnhanced.css - Улучшенные стили для личного кабинета */
+
+/* Основной контейнер */
+.dashboard-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #1a3a2b 0%, #36b14e 100%);
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Анимированный фон */
+.dashboard-bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 10% 20%, rgba(79, 209, 101, 0.3) 0%, transparent 30%),
+              radial-gradient(circle at 90% 80%, rgba(79, 209, 101, 0.3) 0%, transparent 40%),
+              radial-gradient(circle at 50% 50%, rgba(54, 177, 78, 0.2) 0%, transparent 60%);
+  z-index: 0;
+  animation: gradientMove 15s infinite alternate ease-in-out;
+}
+
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 100% 100%;
+  }
+}
+
+/* Контейнер для частиц */
+.dashboard-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Стили для частиц */
+.dashboard-particle {
+  position: absolute;
+  pointer-events: none;
+  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  z-index: 1;
+}
+
+.dashboard-particle.circle {
+  border-radius: 50%;
+}
+
+.dashboard-particle.square {
+  border-radius: 3px;
+}
+
+/* Карточка профиля */
+.profile-card {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1000px;
+  margin-bottom: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Верхняя часть профиля */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+/* Аватар пользователя */
+.avatar-container {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #e6f7ea;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 20px rgba(79, 209, 101, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.avatar-container:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(79, 209, 101, 0.4);
+}
+
+.avatar-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.avatar-placeholder {
+  font-size: 48px;
+  color: #4fd165;
+}
+
+.avatar-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  color: white;
+  font-size: 14px;
+}
+
+.avatar-container:hover .avatar-overlay {
+  opacity: 1;
+}
+
+/* Информация пользователя */
+.user-info {
+  flex: 1;
+}
+
+.user-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1a3a2b;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-email {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 16px;
+}
+
+.edit-name-btn {
+  background: none;
+  border: none;
+  color: #4fd165;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 4px;
+  margin-left: 8px;
+  transition: transform 0.2s ease;
+}
+
+.edit-name-btn:hover {
+  transform: scale(1.1);
+}
+
+.edit-name-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.edit-name-input {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+.save-name-btn, .cancel-name-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.save-name-btn {
+  background: #4fd165;
+  color: white;
+}
+
+.save-name-btn:hover {
+  background: #36b14e;
+  transform: translateY(-2px);
+}
+
+.cancel-name-btn {
+  background: #f1f1f1;
+  color: #666;
+}
+
+.cancel-name-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+/* Кнопка выхода */
+.logout-btn {
+  padding: 8px 16px;
+  background: #f1f1f1;
+  color: #666;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.logout-icon {
+  font-size: 18px;
+}
+
+.logout-btn:hover {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+/* Основной контент */
+.dashboard-content {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 24px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Табы */
+.tabs-container {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background: #f1f1f1;
+  color: #666;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.tab-btn.active {
+  background: #4fd165;
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(79, 209, 101, 0.3);
+}
+
+.tab-btn:hover:not(.active) {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+/* Кнопка экспорта */
+.export-btn {
+  padding: 12px 24px;
+  background: #f1f1f1;
+  color: #666;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  flex: 1;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.export-btn:hover:not(:disabled) {
+  background: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+.export-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Админ-панель */
+.admin-btn {
+  background: #1a3a2b;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: all 0.3s ease;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  position: relative;
+  z-index: 10;
+}
+
+.admin-icon {
+  font-size: 20px;
+}
+
+.admin-btn:hover {
+  background: #36b14e;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(79, 209, 101, 0.3);
+}
+
+/* Контент табов */
+.tab-content {
+  min-height: 200px;
+}
+
+/* Программа питания и тренировок */
+.plan-container {
+  white-space: pre-wrap;
+  text-align: left;
+  background: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #eee;
+}
+
+.not-paid-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 32px;
+  text-align: center;
+}
+
+.not-paid-message b {
+  font-size: 20px;
+  color: #ff6b6b;
+}
+
+.buy-now-btn {
+  padding: 12px 24px;
+  background: #4fd165;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.buy-now-btn:hover {
+  background: #36b14e;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(79, 209, 101, 0.3);
+}
+
+/* История активности */
+.activity-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a3a2b;
+  margin-bottom: 16px;
+}
+
+.activity-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.activity-item {
+  background: #f9f9f9;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.activity-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.activity-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.activity-time {
+  font-size: 0.9rem;
+  color: #666;
+  white-space: nowrap;
+}
+
+.activity-type {
+  background: #e6f7ea;
+  color: #1a3a2b;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.activity-desc {
+  font-size: 1rem;
+  color: #333;
+  word-break: break-word;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .user-name {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .edit-name-btn {
+    margin-left: 0;
+  }
+  
+  .edit-name-form {
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .tabs-container {
+    flex-direction: column;
+  }
+  
+  .tab-btn, .export-btn {
+    width: 100%;
+  }
+}
+
+/* Темная тема */
+body.theme-dark .profile-card,
+body.theme-dark .dashboard-content {
+  background: rgba(35, 35, 35, 0.9);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.theme-dark .user-name {
+  color: #f7f8fa;
+}
+
+body.theme-dark .user-email {
+  color: #aaa;
+}
+
+body.theme-dark .tab-btn,
+body.theme-dark .export-btn,
+body.theme-dark .cancel-name-btn,
+body.theme-dark .logout-btn {
+  background: #333;
+  color: #ddd;
+}
+
+body.theme-dark .tab-btn.active {
+  background: #4fd165;
+  color: #fff;
+}
+
+body.theme-dark .tab-btn:hover:not(.active),
+body.theme-dark .export-btn:hover:not(:disabled),
+body.theme-dark .cancel-name-btn:hover,
+body.theme-dark .logout-btn:hover {
+  background: #444;
+}
+
+body.theme-dark .plan-container,
+body.theme-dark .activity-item {
+  background: #333;
+  border-color: #444;
+  color: #ddd;
+}
+
+body.theme-dark .activity-time {
+  color: #aaa;
+}
+
+body.theme-dark .activity-type {
+  background: rgba(79, 209, 101, 0.2);
+  color: #4fd165;
+}
+
+body.theme-dark .activity-desc {
+  color: #ddd;
+}
+
+body.theme-dark .edit-name-input {
+  background: #333;
+  border-color: #444;
+  color: #ddd;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-card, .dashboard-content {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.dashboard-content {
+  animation-delay: 0.2s;
+}

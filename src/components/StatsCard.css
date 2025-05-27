@@ -1,0 +1,137 @@
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u043au043eu043cu043fu043eu043du0435u043du0442u0430 StatsCard */
+
+.stats-card {
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stats-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.stats-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.stats-icon {
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(79, 209, 101, 0.1);
+  color: var(--primary);
+}
+
+.stats-card.primary .stats-icon {
+  background-color: rgba(79, 209, 101, 0.1);
+  color: var(--primary);
+}
+
+.stats-card.success .stats-icon {
+  background-color: rgba(79, 209, 101, 0.1);
+  color: var(--success);
+}
+
+.stats-card.warning .stats-icon {
+  background-color: rgba(240, 173, 78, 0.1);
+  color: var(--warning);
+}
+
+.stats-card.danger .stats-icon {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: var(--danger);
+}
+
+.stats-card.info .stats-icon {
+  background-color: rgba(91, 192, 222, 0.1);
+  color: var(--info);
+}
+
+.stats-value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: baseline;
+}
+
+.stats-unit {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  margin-left: 4px;
+}
+
+.stats-change {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.stats-change.positive {
+  background-color: rgba(79, 209, 101, 0.1);
+  color: var(--success);
+}
+
+.stats-change.negative {
+  background-color: rgba(217, 83, 79, 0.1);
+  color: var(--danger);
+}
+
+.stats-card-group {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+/* u0410u0434u0430u043fu0442u0438u0432u043du043eu0441u0442u044c u0434u043bu044f u043cu043eu0431u0438u043bu044cu043du044bu0445 u0443u0441u0442u0440u043eu0439u0441u0442u0432 */
+@media (max-width: 768px) {
+  .stats-card-group {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  
+  .stats-value {
+    font-size: 1.8rem;
+  }
+  
+  .stats-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-card-group {
+    grid-template-columns: 1fr;
+  }
+  
+  .stats-card {
+    padding: 14px;
+  }
+  
+  .stats-value {
+    font-size: 1.6rem;
+  }
+  
+  .stats-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.2rem;
+  }
+}

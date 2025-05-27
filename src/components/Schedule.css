@@ -1,0 +1,218 @@
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u043au043eu043cu043fu043eu043du0435u043du0442u0430 Schedule */
+
+.schedule {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.schedule-item {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+.schedule-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px var(--shadow);
+}
+
+.schedule-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.schedule-item-day {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.schedule-item-icon {
+  font-size: 1.3rem;
+}
+
+.schedule-item-content {
+  padding: 16px;
+  color: var(--text-primary);
+}
+
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u0440u0430u0441u043fu0438u0441u0430u043du0438u044f u0442u0440u0435u043du0438u0440u043eu0432u043eu043a */
+.schedule-workout {
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u0440u0430u0441u043fu0438u0441u0430u043du0438u044f u043fu0438u0442u0430u043du0438u044f */
+.schedule-meals {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.schedule-meal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.schedule-meal-type {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--primary);
+}
+
+.schedule-meal-text {
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u0441u043fu0438u0441u043au0430 u043fu0440u043eu0434u0443u043au0442u043eu0432 */
+.shopping-list {
+  background: var(--bg-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  overflow: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+.shopping-list-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  border-bottom: 1px solid var(--border);
+}
+
+.shopping-list-title {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.shopping-list-icon {
+  font-size: 1.3rem;
+}
+
+.shopping-list-items {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.shopping-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.shopping-list-checkbox {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+
+.shopping-list-label {
+  font-size: 1rem;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: text-decoration 0.2s, color 0.2s;
+}
+
+.shopping-list-checkbox:checked + .shopping-list-label {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+}
+
+/* u0410u0434u0430u043fu0442u0438u0432u043du043eu0441u0442u044c u0434u043bu044f u043cu043eu0431u0438u043bu044cu043du044bu0445 u0443u0441u0442u0440u043eu0439u0441u0442u0432 */
+@media (max-width: 768px) {
+  .schedule-item-header {
+    padding: 10px 14px;
+  }
+  
+  .schedule-item-day {
+    font-size: 1rem;
+  }
+  
+  .schedule-item-content {
+    padding: 14px;
+  }
+  
+  .schedule-meal-type {
+    font-size: 0.85rem;
+  }
+  
+  .schedule-meal-text {
+    font-size: 0.95rem;
+  }
+  
+  .shopping-list-header {
+    padding: 10px 14px;
+  }
+  
+  .shopping-list-title {
+    font-size: 1rem;
+  }
+  
+  .shopping-list-items {
+    padding: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .schedule-item-header {
+    padding: 8px 12px;
+  }
+  
+  .schedule-item-day {
+    font-size: 0.95rem;
+  }
+  
+  .schedule-item-icon {
+    font-size: 1.2rem;
+  }
+  
+  .schedule-item-content {
+    padding: 12px;
+  }
+  
+  .schedule-meal-type {
+    font-size: 0.8rem;
+  }
+  
+  .schedule-meal-text {
+    font-size: 0.9rem;
+  }
+  
+  .shopping-list-header {
+    padding: 8px 12px;
+  }
+  
+  .shopping-list-title {
+    font-size: 0.95rem;
+  }
+  
+  .shopping-list-icon {
+    font-size: 1.2rem;
+  }
+  
+  .shopping-list-items {
+    padding: 12px;
+  }
+  
+  .shopping-list-label {
+    font-size: 0.9rem;
+  }
+}

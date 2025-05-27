@@ -256,11 +256,42 @@
 }
 
 .cta-button.combo {
-  background: linear-gradient(135deg, #36b14e 0%, #1a3a2b 100%);
+  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
   color: white;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-  animation: pulse 2s infinite;
+  box-shadow: 0 4px 20px rgba(79, 209, 101, 0.5);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+  animation: pulseBright 2s infinite;
+  font-weight: 700;
+  font-size: 1.1em;
+  transform: scale(1.05);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes pulseBright {
+  0% { transform: scale(1.05); box-shadow: 0 4px 20px rgba(79, 209, 101, 0.5); }
+  50% { transform: scale(1.1); box-shadow: 0 6px 30px rgba(79, 209, 101, 0.7); }
+  100% { transform: scale(1.05); box-shadow: 0 4px 20px rgba(79, 209, 101, 0.5); }
+}
+
+.cta-button.combo::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 70%);
+  opacity: 0;
+  transform: scale(0.5);
+  animation: glowEffect 3s infinite;
+}
+
+@keyframes glowEffect {
+  0% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 0.5; transform: scale(1); }
+  100% { opacity: 0; transform: scale(0.5); }
 }
 
 .cta-button.large {
@@ -296,8 +327,10 @@
 
 .cta-button.combo:hover {
   animation: none;
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
-  transform: translateY(-5px) scale(1.05);
+  background: linear-gradient(135deg, #5fe275 0%, #47c25f 100%);
+  transform: translateY(-5px) scale(1.12);
+  box-shadow: 0 8px 35px rgba(79, 209, 101, 0.8);
+  border: 2px solid rgba(255, 255, 255, 0.5);
 }
 
 /* Индикатор прокрутки */

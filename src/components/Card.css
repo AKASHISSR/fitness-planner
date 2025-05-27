@@ -1,0 +1,100 @@
+/* u0421u0442u0438u043bu0438 u0434u043bu044f u043au043eu043cu043fu043eu043du0435u043du0442u0430 Card */
+
+.adaptive-card {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 8px var(--shadow);
+  padding: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, color 0.3s;
+  overflow: hidden;
+  width: 100%;
+}
+
+.adaptive-card.elevated:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+/* u0412u0430u0440u0438u0430u043du0442u044b u043au0430u0440u0442u043eu0447u0435u043a */
+.adaptive-card.primary {
+  border-left: 4px solid var(--primary);
+}
+
+.adaptive-card.success {
+  border-left: 4px solid var(--success);
+}
+
+.adaptive-card.warning {
+  border-left: 4px solid var(--warning);
+}
+
+.adaptive-card.danger {
+  border-left: 4px solid var(--danger);
+}
+
+.adaptive-card.info {
+  border-left: 4px solid var(--info);
+}
+
+/* u0417u0430u0433u043eu043bu043eu0432u043eu043a u043au0430u0440u0442u043eu0447u043au0438 */
+.card-header {
+  margin-bottom: 16px;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 700;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* u0421u043eu0434u0435u0440u0436u0438u043cu043eu0435 u043au0430u0440u0442u043eu0447u043au0438 */
+.card-content {
+  color: var(--text-primary);
+}
+
+/* u0413u0440u0443u043fu043fu0430 u043au0430u0440u0442u043eu0447u0435u043a */
+.card-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: 100%;
+}
+
+/* u0410u0434u0430u043fu0442u0438u0432u043du043eu0441u0442u044c u0434u043bu044f u043cu043eu0431u0438u043bu044cu043du044bu0445 u0443u0441u0442u0440u043eu0439u0441u0442u0432 */
+@media (max-width: 768px) {
+  .card-group {
+    flex-direction: column;
+  }
+  
+  .adaptive-card {
+    padding: 16px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .adaptive-card {
+    padding: 14px;
+    border-radius: 10px;
+  }
+  
+  .card-title {
+    font-size: 1.1rem;
+  }
+  
+  .card-subtitle {
+    font-size: 0.9rem;
+  }
+}

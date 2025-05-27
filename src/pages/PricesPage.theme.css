@@ -1,0 +1,94 @@
+/* u0414u043eu043fu043eu043bu043du0438u0442u0435u043bu044cu043du044bu0435 u0441u0442u0438u043bu0438 u0434u043bu044f u0441u0442u0440u0430u043du0438u0446u044b u0446u0435u043d u0441 u043fu043eu0434u0434u0435u0440u0436u043au043eu0439 u0442u0435u043cu043du043eu0439/u0441u0432u0435u0442u043bu043eu0439 u0442u0435u043cu044b */
+
+.prices-bg {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background 0.3s, color 0.3s;
+}
+
+.prices-title {
+  color: var(--text-primary);
+  background: linear-gradient(90deg, var(--primary) 10%, var(--secondary) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.theme-dark .prices-title {
+  background: linear-gradient(90deg, var(--primary) 10%, var(--text-dark) 90%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.price-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 16px var(--shadow);
+  color: var(--text-primary);
+  transition: transform 0.3s, box-shadow 0.3s, background 0.3s, color 0.3s;
+}
+
+.price-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px var(--shadow);
+}
+
+.price-card-title {
+  color: var(--primary);
+}
+
+.price-card-price {
+  color: var(--text-primary);
+}
+
+.price-card-features {
+  color: var(--text-secondary);
+}
+
+.price-card-button {
+  background: var(--primary);
+  color: white;
+  transition: background 0.3s, transform 0.2s;
+}
+
+.price-card-button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+/* u0410u0434u0430u043fu0442u0438u0432u043du043eu0441u0442u044c u0434u043bu044f u043cu043eu0431u0438u043bu044cu043du044bu0445 u0443u0441u0442u0440u043eu0439u0441u0442u0432 */
+@media (max-width: 768px) {
+  .prices-container {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .price-card {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 480px) {
+  .prices-bg {
+    padding: 24px 12px;
+  }
+  
+  .prices-title {
+    font-size: 1.8rem;
+    margin-bottom: 16px;
+  }
+  
+  .price-card {
+    padding: 16px;
+  }
+  
+  .price-card-title {
+    font-size: 1.3rem;
+  }
+  
+  .price-card-price {
+    font-size: 1.5rem;
+  }
+}
