@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './ReviewsPage.css?v=1.0.2';
+import './ReviewsPage.css?v=1.0.3';
 
 // Компонент для анимированных частиц на фоне
 const AnimatedBackground = () => {
