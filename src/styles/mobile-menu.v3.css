@@ -159,11 +159,20 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px;
+  padding: 14px 16px;
   border-radius: 12px;
-  background: rgba(79, 209, 101, 0.05);
+  background: rgba(79, 209, 101, 0.1);
   color: var(--text, #1a3a2b);
-  font-weight: 500;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(79, 209, 101, 0.15);
+  margin-bottom: 10px;
+}
+
+.mobile-menu-phone-display .mobile-menu-icon {
+  color: var(--primary, #4fd165);
+  min-width: 22px;
+  height: 22px;
 }
 
 
@@ -173,8 +182,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;
-  height: 44px;
+  width: 46px;
+  height: 46px;
   background: #4fd165;
   border-radius: 50%;
   border: none;
@@ -184,6 +193,7 @@
   z-index: 1000;
   position: relative;
   overflow: hidden;
+  margin-left: 10px;
 }
 
 .mobile-menu-btn:hover {
@@ -200,7 +210,7 @@
 
 .mobile-menu-btn span {
   display: block;
-  width: 22px;
+  width: 24px;
   height: 2.5px;
   background-color: white;
   margin: 3px 0;
@@ -223,6 +233,7 @@
 .mobile-menu-btn.open {
   background: #36b14e;
   box-shadow: 0 2px 10px rgba(54, 177, 78, 0.35);
+  transform: rotate(180deg);
 }
 
 .mobile-menu-btn.open span:nth-child(1) {
@@ -337,8 +348,9 @@ body.theme-dark .mobile-menu-info {
 }
 
 body.theme-dark .mobile-menu-phone-display {
-  background: rgba(79, 209, 101, 0.07);
+  background: rgba(79, 209, 101, 0.1);
   color: #f0f0f0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
 
 /* Десктопная навигация */
@@ -428,9 +440,17 @@ body.theme-dark .nav-link:hover {
 @media (max-width: 700px) {
   .mobile-menu-btn {
     display: flex;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
   }
   
   .desktop-nav-links {
     display: none;
+  }
+  
+  .mobile-menu-btn.open {
+    transform: rotate(180deg) translateY(50%);
   }
 }
