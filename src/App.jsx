@@ -147,8 +147,17 @@ function Header() {
     localStorage.removeItem('fitgenius_paid_type');
     localStorage.removeItem('fitgenius_meal_plan');
     localStorage.removeItem('fitgenius_workout_plan');
-    navigate('/');
-    setIsMobileMenuOpen(false);
+    
+    // Используем window.location.hash для корректного перехода в HashRouter
+    // Это обеспечит, что мы останемся на правильном домене
+    window.location.hash = '#/';
+    
+    // Альтернативный вариант с navigate, но после небольшой задержки
+    // чтобы дать время на очистку состояния
+    setTimeout(() => {
+      navigate('/');
+      setIsMobileMenuOpen(false);
+    }, 50);
   };
 
   // Переключение мобильного меню
