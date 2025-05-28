@@ -118,4 +118,17 @@
   .nav-phone {
     display: none;
   }
+  
+  .mobile-menu-btn {
+    display: flex;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+  }
+  
+  .desktop-nav-links {
+    display: none;
+  }
 }
