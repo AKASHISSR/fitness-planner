@@ -287,7 +287,6 @@ function Header() {
           <span></span>
           <span></span>
         </button>
-        
       </nav>
       
       {/* Оверлей мобильного меню */}
