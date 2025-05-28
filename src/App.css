@@ -29,30 +29,17 @@ body.theme-dark {
   left: 0;
   right: 0;
   z-index: 1000;
-  background: var(--background-primary);
-  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.98);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+  padding: 0 24px;
+  transition: box-shadow 0.3s, background 0.3s;
   margin: 0 0 32px 0;
   animation: fadeInDown 0.7s;
 }
 
-.main-header.scrolled {
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.header-nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  height: 60px;
-  position: relative;
-}
-
 body.theme-dark .main-header {
-  background: var(--background-primary);
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+  background: #1a1a1a;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeInDown {
@@ -610,7 +597,7 @@ body.theme-dark .dash-center {
     z-index: 110;
     border-radius: 0 22px 22px 0;
     visibility: hidden;
-    backdrop-filter: blur(12px);
+    /* Удаляем эффект размытия */
     animation: none;
   }
   .main-nav-links.active {
@@ -823,166 +810,188 @@ body.theme-dark .pay-center {
 
 /* --- Мобильное меню --- */
 
-/* Мобильное меню */
-.burger-btn {
+/* Кнопка бургер-меню */
+.mobile-menu-btn {
   display: none;
-  position: relative;
-  width: 32px;
-  height: 32px;
-  padding: 0;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(54, 177, 78, 0.1);
   border: none;
-  background: none;
+  border-radius: 50%;
   cursor: pointer;
-  margin-left: auto;
+  padding: 0;
   z-index: 1001;
-}
-
-.burger-btn:focus {
-  outline: none;
-}
-
-.burger-btn:focus-visible {
-  outline: 2px solid var(--primary);
-  outline-offset: 2px;
-  border-radius: 4px;
-}
-
-.burger-line {
-  position: absolute;
-  left: 50%;
-  width: 24px;
-  height: 2px;
-  background-color: var(--text);
-  transform: translateX(-50%);
   transition: all 0.3s ease;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(54, 177, 78, 0.2);
 }
 
-.burger-line:nth-child(1) {
-  top: 10px;
+.mobile-menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--primary);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  margin: 2px 0;
 }
 
-.burger-line:nth-child(2) {
-  top: 50%;
-  transform: translate(-50%, -50%);
+.mobile-menu-btn.active {
+  background: rgba(54, 177, 78, 0.2);
+  box-shadow: 0 2px 12px rgba(54, 177, 78, 0.3);
 }
 
-.burger-line:nth-child(3) {
-  bottom: 10px;
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+  width: 22px;
 }
 
-.burger-btn.open .burger-line:nth-child(1) {
-  transform: translateY(7px) rotate(45deg);
-}
-
-.burger-btn.open .burger-line:nth-child(2) {
+.mobile-menu-btn.active span:nth-child(2) {
   opacity: 0;
-  transform: scale(0);
+  transform: translateX(-10px);
 }
 
-.burger-btn.open .burger-line:nth-child(3) {
-  transform: translateY(-7px) rotate(-45deg);
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+  width: 22px;
 }
 
-.menu-overlay {
+/* Оверлей для мобильного меню */
+.mobile-menu-overlay {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  /* Удаляем эффект размытия */
+  background-clip: padding-box;
+  -webkit-background-clip: padding-box;
   z-index: 999;
   opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: fadeIn 0.3s forwards;
+  pointer-events: auto;
 }
 
-.menu-overlay.visible {
-  opacity: 1;
-  visibility: visible;
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
+/* Мобильное меню */
 @media (max-width: 700px) {
-  .burger-btn {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  .main-header {
+    padding: 0 16px;
   }
-
-  .mobile-menu {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: 80%;
-    max-width: 300px;
-    height: 100vh;
-    background: var(--background-primary);
-    padding: 80px 20px 20px;
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow-y: auto;
-    box-shadow: -4px 0 12px rgba(0, 0, 0, 0.1);
+  
+  .main-header nav {
+    height: 60px;
   }
-
-  .mobile-menu.open {
-    right: 0;
+  
+  .logo-icon {
+    width: 28px;
+    height: 28px;
   }
-
-  .nav-link {
+  
+  .logo-text {
+    font-size: 1.2rem;
+  }
+  
+  .mobile-menu-btn {
     display: flex;
-    align-items: center;
-    gap: 12px;
+    z-index: 1001;
+  }
+  
+    /* Этот класс больше не используется, но оставляем для обратной совместимости */
+  .main-nav-links {
+    display: none;
+  }
+  
+  /* Этот класс больше не используется */
+  .main-nav-links.open {
+    display: none;
+  }
+  
+
+  
+
+  
+  /* Улучшенный стиль для мобильной навигации */
+  .main-nav-links .nav-link {
+    width: 100%;
     padding: 12px;
-    border-radius: 8px;
-    transition: all 0.2s ease;
-    color: var(--text-primary);
+    border-radius: 12px;
+    margin: 4px 0;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: rgba(var(--background-rgb), 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+    border: 1px solid rgba(var(--primary-rgb), 0.1);
+    position: relative;
+    overflow: hidden;
     text-decoration: none;
-    font-weight: 500;
+    color: var(--text);
   }
-
-  .nav-link:hover {
-    background-color: var(--background-secondary);
-    transform: translateX(4px);
+  
+  .main-nav-links .nav-link::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background: var(--primary);
+    opacity: 0;
+    transition: opacity 0.3s ease;
   }
-
-  .nav-link:active {
-    transform: translateX(2px);
+  
+  .main-nav-links .nav-link:active {
+    transform: scale(0.98);
   }
-
-  .nav-icon {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    color: var(--text-secondary);
-    transition: color 0.2s ease;
+  
+  .main-nav-links .nav-link:hover {
+    background-color: rgba(var(--primary-rgb), 0.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   }
-
-  .nav-link:hover .nav-icon {
+  
+  .main-nav-links .nav-link:hover::before {
+    opacity: 1;
+  }
+  
+  .main-nav-links .nav-icon {
+    width: 22px;
+    height: 22px;
     color: var(--primary);
   }
-
-  .nav-phone {
-    margin-top: auto;
+  
+  .main-nav-links .nav-phone {
+    margin-top: 10px;
+    padding: 12px;
+    width: 100%;
+    border-top: 1px solid rgba(var(--text-rgb), 0.1);
     display: flex;
     align-items: center;
-    gap: 12px;
-    padding: 12px;
-    color: var(--text-primary);
+    gap: 10px;
     font-weight: 500;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .nav-phone .nav-icon {
     color: var(--primary);
   }
-}
-
-
+  
+  .main-nav-links .nav-phone .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+  body.theme-dark .main-nav-links {
+    background: #1a1a1a;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
+    border-left: 2px solid rgba(79, 209, 101, 0.2);
+  }
   
 
   
@@ -1428,7 +1437,7 @@ body.theme-dark .mobile-menu-close-btn:hover {
     z-index: 110;
     border-radius: 0 22px 22px 0;
     visibility: hidden;
-    backdrop-filter: blur(12px);
+    /* Удаляем эффект размытия */
     animation: none;
   }
   
