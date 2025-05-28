@@ -10,7 +10,7 @@
 .main-header-left {
   display: flex;
   align-items: center;
-  width: 240px; /* Увеличиваем фиксированную ширину для левой части */
+  width: 260px; /* Еще больше увеличиваем фиксированную ширину для левой части */
   padding-left: 15px; /* Увеличиваем отступ слева */
 }
 
@@ -21,7 +21,7 @@
   gap: 18px;
   height: 100%;
   flex: 1; /* Занимает всё доступное пространство */
-  margin-left: 35px; /* Увеличиваем отступ слева для навигации */
+  margin-left: 40px; /* Еще больше увеличиваем отступ слева для навигации */
 }
 
 .nav-link {
@@ -51,7 +51,7 @@
   }
   
   .main-header-left {
-    width: 220px;
+    width: 240px;
     padding-left: 15px;
   }
   
@@ -70,7 +70,7 @@
   }
   
   .main-header-left {
-    width: 200px;
+    width: 220px;
     padding-left: 15px;
   }
   
@@ -89,7 +89,7 @@
   }
   
   .main-header-left {
-    width: 180px;
+    width: 200px;
     padding-left: 15px;
   }
   

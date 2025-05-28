@@ -1,18 +1,19 @@
 /* Исправления для логотипа и кнопки смены темы */
 .main-logo {
-  gap: 8px; /* Расстояние между иконкой и текстом */
-  padding: 5px 8px; /* Внутренние отступы */
-  margin-right: 15px; /* Добавляем отступ справа от логотипа */
+  gap: 10px; /* Увеличиваем расстояние между иконкой и текстом */
+  padding: 6px 10px; /* Увеличиваем внутренние отступы */
+  margin-right: 20px; /* Увеличиваем отступ справа от логотипа */
 }
 
 .logo-icon {
-  width: 32px; /* Увеличиваем размер иконки */
-  height: 32px;
+  width: 36px; /* Еще больше увеличиваем размер иконки */
+  height: 36px;
 }
 
 .logo-text {
-  font-size: 1.1rem; /* Увеличиваем размер текста */
+  font-size: 1.25rem; /* Еще больше увеличиваем размер текста */
   font-weight: 700; /* Делаем текст жирнее */
+  letter-spacing: 0.5px; /* Улучшаем читаемость */
 }
 
 .theme-toggle-btn {
@@ -23,32 +24,32 @@
 /* Медиа-запросы для адаптивности */
 @media (max-width: 1000px) {
   .logo-icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .logo-text {
+    font-size: 1.15rem;
+  }
+  
+  .main-logo {
+    margin-right: 15px;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-logo {
+    gap: 6px;
+    padding: 4px 6px;
+    margin-right: 10px;
+  }
+  
+  .logo-icon {
     width: 28px;
     height: 28px;
   }
   
   .logo-text {
     font-size: 1rem;
-  }
-  
-  .main-logo {
-    margin-right: 10px;
-  }
-}
-
-@media (max-width: 900px) {
-  .main-logo {
-    gap: 5px;
-    padding: 4px 5px;
-    margin-right: 8px;
-  }
-  
-  .logo-icon {
-    width: 26px;
-    height: 26px;
-  }
-  
-  .logo-text {
-    font-size: 0.95rem;
   }
 }
