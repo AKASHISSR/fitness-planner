@@ -18,10 +18,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 18px;
+  gap: 16px;
   height: 100%;
   flex: 1; /* Занимает всё доступное пространство */
-  margin-left: 40px; /* Еще больше увеличиваем отступ слева для навигации */
+  margin-left: 20px; /* Уменьшаем отступ слева для навигации */
 }
 
 .nav-link {
@@ -32,7 +32,7 @@
 }
 
 .nav-phone {
-  margin-left: auto;
+  margin-left: 25px; /* Увеличиваем отступ от предыдущего элемента */
   height: fit-content;
   width: 220px; /* Фиксированная ширина для телефона */
   display: flex;
@@ -43,7 +43,7 @@
 /* Медиа-запросы для адаптивности */
 @media (max-width: 1200px) {
   .desktop-nav-links {
-    gap: 12px;
+    gap: 14px;
   }
   
   .nav-link {
@@ -62,7 +62,7 @@
 
 @media (max-width: 1000px) {
   .desktop-nav-links {
-    gap: 8px;
+    gap: 12px;
   }
   
   .nav-link span {
@@ -81,7 +81,7 @@
 
 @media (max-width: 900px) {
   .desktop-nav-links {
-    gap: 5px;
+    gap: 10px;
   }
   
   .nav-link span {
