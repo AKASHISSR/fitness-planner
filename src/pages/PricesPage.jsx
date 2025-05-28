@@ -45,21 +45,7 @@ const TariffFeatures = ({ features }) => {
   );
 };
 
-// Компонент для отображения методов оплаты
-const PaymentMethods = () => {
-  return (
-    <div className="payment-methods">
-      <h3>Способы оплаты</h3>
-      <div className="payment-icons">
-        <div className="payment-icon visa"></div>
-        <div className="payment-icon mastercard"></div>
-        <div className="payment-icon mir"></div>
-        <div className="payment-icon applepay"></div>
-        <div className="payment-icon googlepay"></div>
-      </div>
-    </div>
-  );
-};
+
 
 function PricesPage() {
   const [selected, setSelected] = useState('combo');
@@ -289,7 +275,7 @@ function PricesPage() {
           </div>
         </div>
         
-        <PaymentMethods />
+
         
         <motion.div 
           className="prices-guarantee"

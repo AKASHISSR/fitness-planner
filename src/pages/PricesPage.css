@@ -563,64 +563,7 @@ body.theme-dark .step-item p {
   100% { opacity: 0; transform: scale(1.5); }
 }
 
-.payment-methods {
-  width: 100%;
-  margin-bottom: 30px;
-}
-
-.payment-methods h3 {
-  font-size: 1.2rem;
-  margin-bottom: 15px;
-  text-align: center;
-  color: #1a3a2b;
-}
-
-body.theme-dark .payment-methods h3 {
-  color: #f7f8fa;
-}
-
-.payment-icons {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-}
-
-.payment-icon {
-  width: 60px;
-  height: 40px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  background-size: 80%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-body.theme-dark .payment-icon {
-  background-color: #333;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-}
-
-.payment-icon.visa {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png');
-}
-
-.payment-icon.mastercard {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png');
-}
-
-.payment-icon.mir {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Mir-logo.SVG/2560px-Mir-logo.SVG.png');
-}
-
-.payment-icon.applepay {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/2560px-Apple_Pay_logo.svg.png');
-}
-
-.payment-icon.googlepay {
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png');
-}
+/* Стили для блока способов оплаты удалены */
 
 .prices-guarantee {
   display: flex;
