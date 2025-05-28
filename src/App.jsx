@@ -15,9 +15,11 @@ import RegisterPage from './pages/RegisterPage';
 import AdminPageV2 from './pages/AdminPageV2';
 import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
-import './App.v2.css';
-import './styles/mobile-optimization.css?v=1.0.5';
-import './styles/mobile-menu.v2.css';
+import './App.v3.css';
+import './styles/mobile-optimization.css?v=1.0.6';
+import './styles/mobile-menu.v3.css';
+import './menu-fixes.css';
+import './button-fixes.css';
 import { logVisit } from './firebase';
 
 export const ADMINS = [

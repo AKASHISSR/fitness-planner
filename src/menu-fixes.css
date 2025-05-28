@@ -1,0 +1,47 @@
+/* Исправления для верхнего меню */
+.main-header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+}
+
+.desktop-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  height: 100%;
+  margin-left: 20px;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+}
+
+.nav-phone {
+  margin-left: auto;
+  height: fit-content;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1100px) {
+  .desktop-nav-links {
+    gap: 10px;
+  }
+  
+  .nav-link {
+    padding: 6px 8px;
+  }
+}
+
+@media (max-width: 900px) {
+  .desktop-nav-links {
+    gap: 6px;
+  }
+  
+  .nav-link span {
+    font-size: 0.9rem;
+  }
+}

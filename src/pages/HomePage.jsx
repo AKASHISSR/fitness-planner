@@ -179,14 +179,16 @@ function HomePage() {
             Достигайте своих целей с индивидуальным планом, разработанным специально для вас
           </p>
           <div className={`hero-cta ${isVisible['hero'] ? 'visible' : ''}`}>
-            <button className="cta-button primary" onClick={() => navigate('/questionnaire?type=food')}>
-              Программа питания
-            </button>
-            <button className="cta-button secondary" onClick={() => navigate('/questionnaire?type=workout')}>
-              Программа тренировок
-            </button>
-            <button className="cta-button combo" onClick={() => navigate('/questionnaire?type=combo')}>
-              Комплексная программа
+            <div className="top-buttons-row">
+              <button className="cta-button primary" onClick={() => navigate('/questionnaire?type=food')}>
+                Программа питания
+              </button>
+              <button className="cta-button secondary" onClick={() => navigate('/questionnaire?type=workout')}>
+                Программа тренировок
+              </button>
+            </div>
+            <button className="cta-button combo premium" onClick={() => navigate('/questionnaire?type=combo')}>
+              <span className="premium-star">★</span> Комплексная программа <span className="premium-star">★</span>
             </button>
           </div>
         </div>

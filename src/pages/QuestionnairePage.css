@@ -52,9 +52,9 @@ body.theme-dark .questionnaire-bg {
   animation: fadeInUp 0.8s;
 }
 body.theme-dark .questionnaire-center {
-  background: rgba(30,32,34,0.98);
-  color: #f7f8fa;
-  border: 2.5px solid #4fd16544;
+  background: rgba(20,20,20,0.95);
+  color: #fff;
+  border-color: #1a3a2b;
   box-shadow: 0 8px 40px #4fd16533, 0 1.5px 0 #4fd16544;
 }
 @keyframes fadeInUp {
@@ -80,3 +80,45 @@ body.theme-dark .questionnaire-center {
     box-shadow: 0 4px 24px #4fd16522;
   }
 } 
+
+/* Стили для компонента множественного выбора */
+.multiselect-options {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.multiselect-option {
+  margin-bottom: 8px;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  font-size: 18px;
+  user-select: none;
+}
+
+.checkbox-container input {
+  margin-right: 12px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.checkbox-text {
+  font-size: 16px;
+}
+
+.multiselect-hint {
+  color: #888;
+  font-size: 14px;
+  margin-top: 8px;
+  font-style: italic;
+}
+
+body.theme-dark .multiselect-hint {
+  color: #aaa;
+}

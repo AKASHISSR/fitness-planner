@@ -22,7 +22,7 @@ const FOOD_QUESTIONS = [
 
 const WORKOUT_QUESTIONS = [
   { name: 'experience', label: 'Опыт тренировок', type: 'select', options: ['Новичок', 'Средний', 'Продвинутый'] },
-  { name: 'equipment', label: 'Доступный инвентарь', type: 'select', options: ['Только тело', 'Гантели', 'Тренажёры'] },
+  { name: 'equipment', label: 'Доступный инвентарь', type: 'multiselect', options: ['Только тело', 'Гантели', 'Тренажёры'] },
   { name: 'preference', label: 'Предпочтения', type: 'select', options: ['Силовые', 'Кардио', 'Йога', 'Функционалка'] },
   { name: 'days', label: 'Тренировок в неделю', type: 'number', min: 1, max: 7 },
   { name: 'injuries', label: 'Травмы/ограничения', type: 'text' },
@@ -49,8 +49,27 @@ function QuestionnairePage() {
     setAnswers({ ...answers, [current.name]: e.target.value });
   };
 
+  const handleMultiSelectChange = (option) => {
+    const currentValues = answers[current.name] || [];
+    let newValues;
+    
+    if (currentValues.includes(option)) {
+      // Если опция уже выбрана, удаляем её
+      newValues = currentValues.filter(item => item !== option);
+    } else {
+      // Если опция не выбрана, добавляем её
+      newValues = [...currentValues, option];
+    }
+    
+    setAnswers({ ...answers, [current.name]: newValues });
+  };
+
   const handleNext = () => {
-    if (!answers[current.name] && current.type !== 'text') return;
+    if (current.type === 'multiselect' && (!answers[current.name] || answers[current.name].length === 0)) {
+      return; // Не переходим дальше, если не выбрано ни одного варианта
+    } else if (!answers[current.name] && current.type !== 'text') {
+      return; // Не переходим дальше для других обязательных полей
+    }
     setStep((s) => s + 1);
   };
 
@@ -84,6 +103,25 @@ function QuestionnairePage() {
                 <option value="" disabled>Выберите...</option>
                 {current.options.map(opt => <option key={opt} value={opt}>{opt}</option>)}
               </select>
+            )}
+            {current.type === 'multiselect' && (
+              <div className="multiselect-options">
+                {current.options.map(opt => (
+                  <div key={opt} className="multiselect-option">
+                    <label className="checkbox-container">
+                      <input 
+                        type="checkbox" 
+                        checked={(answers[current.name] || []).includes(opt)} 
+                        onChange={() => handleMultiSelectChange(opt)}
+                      />
+                      <span className="checkbox-text">{opt}</span>
+                    </label>
+                  </div>
+                ))}
+                {(!answers[current.name] || answers[current.name].length === 0) && (
+                  <div className="multiselect-hint">Выберите один или несколько вариантов</div>
+                )}
+              </div>
             )}
             {current.type === 'number' && (
               <input type="number" min={current.min} max={current.max} value={answers[current.name] || ''} onChange={handleChange} required style={{ width: '100%', padding: 12, borderRadius: 8, border: '1px solid #ccc', fontSize: 18 }} />
