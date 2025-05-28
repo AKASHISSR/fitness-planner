@@ -1,37 +1,54 @@
 /* Исправления для логотипа и кнопки смены темы */
 .main-logo {
-  gap: 6px; /* Уменьшаем расстояние между иконкой и текстом */
-  padding: 4px 6px; /* Уменьшаем внутренние отступы */
+  gap: 8px; /* Расстояние между иконкой и текстом */
+  padding: 5px 8px; /* Внутренние отступы */
+  margin-right: 15px; /* Добавляем отступ справа от логотипа */
 }
 
 .logo-icon {
-  width: 28px; /* Уменьшаем размер иконки */
-  height: 28px;
+  width: 32px; /* Увеличиваем размер иконки */
+  height: 32px;
 }
 
 .logo-text {
-  font-size: 0.95rem; /* Уменьшаем размер текста */
+  font-size: 1.1rem; /* Увеличиваем размер текста */
+  font-weight: 700; /* Делаем текст жирнее */
 }
 
 .theme-toggle-btn {
-  margin-right: 8px; /* Добавляем отступ справа от кнопки смены темы */
+  margin-right: 10px; /* Увеличиваем отступ справа от кнопки смены темы */
+  font-size: 1.2rem; /* Увеличиваем размер иконки темы */
 }
 
 /* Медиа-запросы для адаптивности */
 @media (max-width: 1000px) {
   .logo-icon {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
   }
   
   .logo-text {
-    font-size: 0.9rem;
+    font-size: 1rem;
+  }
+  
+  .main-logo {
+    margin-right: 10px;
   }
 }
 
 @media (max-width: 900px) {
   .main-logo {
-    gap: 4px;
-    padding: 3px 4px;
+    gap: 5px;
+    padding: 4px 5px;
+    margin-right: 8px;
+  }
+  
+  .logo-icon {
+    width: 26px;
+    height: 26px;
+  }
+  
+  .logo-text {
+    font-size: 0.95rem;
   }
 }
