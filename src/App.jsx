@@ -20,6 +20,7 @@ import './styles/mobile-optimization.css?v=1.0.6';
 import './styles/mobile-menu.v3.css';
 import './menu-fixes.css';
 import './button-fixes.css';
+import './logo-fixes.css';
 import { logVisit } from './firebase';
 
 export const ADMINS = [

@@ -1,0 +1,37 @@
+/* Исправления для логотипа и кнопки смены темы */
+.main-logo {
+  gap: 6px; /* Уменьшаем расстояние между иконкой и текстом */
+  padding: 4px 6px; /* Уменьшаем внутренние отступы */
+}
+
+.logo-icon {
+  width: 28px; /* Уменьшаем размер иконки */
+  height: 28px;
+}
+
+.logo-text {
+  font-size: 0.95rem; /* Уменьшаем размер текста */
+}
+
+.theme-toggle-btn {
+  margin-right: 8px; /* Добавляем отступ справа от кнопки смены темы */
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 1000px) {
+  .logo-icon {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .logo-text {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .main-logo {
+    gap: 4px;
+    padding: 3px 4px;
+  }
+}
