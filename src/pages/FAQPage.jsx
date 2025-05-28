@@ -1,4 +1,4 @@
-import './FAQPage.css';
+import './FAQPage.css?v=1.0.1';
 import { useState } from 'react';
 
 function FAQPage() {
