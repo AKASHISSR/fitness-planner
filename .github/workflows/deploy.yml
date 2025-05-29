@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, emergency-fix ]
   workflow_dispatch:
 
 jobs:
@@ -24,9 +24,17 @@ jobs:
       - name: Build
         run: npm run build
 
+      - name: Create _headers file
+        run: |
+          echo "/*" > dist/_headers
+          echo "  Cache-Control: no-cache, no-store, must-revalidate" >> dist/_headers
+          echo "  Pragma: no-cache" >> dist/_headers
+          echo "  Expires: 0" >> dist/_headers
+          
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
           clean: true
+          force: true
