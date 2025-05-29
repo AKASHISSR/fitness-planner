@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css?v=1.0.5'
+import './mobile-optimizations.css?v=1.5.0'
 import { forceCacheRefresh, clearServiceWorkerCache, refreshResources } from './utils/cacheControl.js'
 
 // Функция для принудительного обновления кеша
@@ -16,7 +17,16 @@ const clearCache = () => {
   forceCacheRefresh();
   
   // Добавляем случайное число к localStorage для отслеживания обновлений
-  localStorage.setItem('cache_version', Date.now().toString());
+  const cacheVersion = Date.now().toString();
+  localStorage.setItem('cache_version', cacheVersion);
+  localStorage.setItem('mobile_styles_version', cacheVersion);
+  
+  // Принудительно обновляем стили
+  const styleSheets = document.querySelectorAll('link[rel="stylesheet"]');
+  styleSheets.forEach(sheet => {
+    const href = sheet.href.split('?')[0];
+    sheet.href = `${href}?v=${cacheVersion}`;
+  });
   
   console.log('Cache cleared and resources refreshed at:', new Date().toISOString());
 }

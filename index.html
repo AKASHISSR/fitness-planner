@@ -6,12 +6,129 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./mobile-fixes.css?v=1.4.0" />
+    <link rel="stylesheet" href="./mobile-fixes.css?v=1.5.0" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitGenius</title>
+    <style>
+      /* Встроенные стили для мобильной оптимизации */
+      @media (max-width: 768px) {
+        /* Мобильное меню */
+        .mobile-menu {
+          width: 85% !important;
+          max-width: 320px !important;
+        }
+        
+        .mobile-menu-btn {
+          width: 44px !important;
+          height: 44px !important;
+          border-radius: 50% !important;
+          background: rgba(255, 255, 255, 0.9) !important;
+          box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+        }
+        
+        .mobile-menu-close-btn {
+          display: none !important;
+        }
+        
+        .mobile-menu-phone-display {
+          border-top: 1px solid rgba(0, 0, 0, 0.1) !important;
+          margin-top: 10px !important;
+          padding-top: 10px !important;
+        }
+        
+        /* Личный кабинет */
+        .dashboard-container {
+          padding: 1rem !important;
+        }
+        
+        .dashboard-content {
+          padding: 1.5rem !important;
+        }
+        
+        .user-profile {
+          flex-direction: column !important;
+          align-items: center !important;
+          text-align: center !important;
+        }
+        
+        .user-avatar-container {
+          margin-right: 0 !important;
+          margin-bottom: 15px !important;
+        }
+        
+        /* Страница опросника */
+        .questionnaire-center {
+          padding: 25px 20px !important;
+        }
+        
+        /* Страница оплаты */
+        .pay-card {
+          max-width: 100% !important;
+        }
+        
+        .pay-tariff {
+          flex-direction: column !important;
+          text-align: center !important;
+        }
+        
+        .pay-tariff-icon {
+          margin-right: 0 !important;
+          margin-bottom: 1rem !important;
+        }
+        
+        .pay-total {
+          flex-direction: column !important;
+          text-align: center !important;
+        }
+        
+        /* Страница FAQ */
+        .faq-container {
+          padding: 25px 20px !important;
+        }
+        
+        /* Страница отзывов */
+        .review-card {
+          padding: 15px !important;
+        }
+      }
+    </style>
+    <script>
+      // Функция для принудительного обновления кеша стилей
+      (function() {
+        // Генерируем уникальную версию для кеша
+        const cacheVersion = Date.now();
+        
+        // Сохраняем версию в localStorage
+        try {
+          localStorage.setItem('mobile_styles_version', cacheVersion.toString());
+        } catch (e) {
+          console.error('LocalStorage not available:', e);
+        }
+        
+        // Функция для обновления ссылок на стили
+        function updateStylesheets() {
+          const styleSheets = document.querySelectorAll('link[rel="stylesheet"]');
+          styleSheets.forEach(sheet => {
+            const href = sheet.href.split('?')[0];
+            sheet.href = `${href}?v=${cacheVersion}`;
+          });
+        }
+        
+        // Обновляем стили при загрузке страницы
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', updateStylesheets);
+        } else {
+          updateStylesheets();
+        }
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script src="./force-refresh.js?v=1.5.0"></script>
   </body>
 </html>
