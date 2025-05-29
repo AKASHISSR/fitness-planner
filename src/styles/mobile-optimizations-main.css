@@ -1,0 +1,226 @@
+/* Основной файл мобильных оптимизаций для FitGenius */
+
+/* Импортируем все улучшенные стили для мобильных устройств */
+@import './mobile-optimization-enhanced.css';
+@import './mobile-menu-enhanced.css';
+
+/* Дополнительные глобальные оптимизации для мобильных устройств */
+
+/* Улучшение производительности анимаций на мобильных устройствах */
+@media (max-width: 768px) {
+  * {
+    /* Оптимизация рендеринга */
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Отключение сложных анимаций на мобильных устройствах */
+  .complex-animation {
+    animation: none !important;
+    transition: none !important;
+  }
+  
+  /* Оптимизация плавности прокрутки */
+  html, body {
+    scroll-behavior: smooth;
+  }
+  
+  /* Улучшение доступности для сенсорных устройств */
+  button, 
+  [role="button"],
+  a,
+  input[type="checkbox"],
+  input[type="radio"],
+  select,
+  .clickable {
+    cursor: pointer;
+    touch-action: manipulation;
+  }
+  
+  /* Оптимизация шрифтов для мобильных устройств */
+  body {
+    text-rendering: optimizeSpeed;
+  }
+  
+  /* Улучшение контрастности для мобильных устройств */
+  .text-content {
+    color: rgba(0, 0, 0, 0.85);
+  }
+  
+  body.theme-dark .text-content {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  /* Оптимизация отступов для мобильных устройств */
+  .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  
+  /* Оптимизация размера кнопок для сенсорных устройств */
+  button, .button, a.button, [type="button"], [type="submit"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 10px 15px;
+  }
+}
+
+/* Оптимизация для маленьких экранов */
+@media (max-width: 375px) {
+  h1, .h1 {
+    font-size: 1.6rem !important;
+  }
+  
+  h2, .h2 {
+    font-size: 1.4rem !important;
+  }
+  
+  h3, .h3 {
+    font-size: 1.2rem !important;
+  }
+  
+  p, li {
+    font-size: 0.95rem !important;
+  }
+  
+  .container {
+    padding-left: 12px !important;
+    padding-right: 12px !important;
+  }
+  
+  button, .button, a.button {
+    padding: 8px 12px !important;
+    font-size: 0.95rem !important;
+  }
+}
+
+/* Исправления для специфических компонентов */
+
+/* Исправление бургерного меню */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    width: 46px !important;
+    height: 46px !important;
+    border-radius: 50% !important;
+    position: absolute !important;
+    right: 15px !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: center !important;
+    align-items: center !important;
+    box-shadow: 0 4px 12px rgba(79, 209, 101, 0.3) !important;
+    z-index: 100 !important;
+  }
+  
+  .mobile-menu-btn span {
+    display: block !important;
+    width: 22px !important;
+    height: 2px !important;
+    background-color: white !important;
+    margin: 2px 0 !important;
+    transition: all 0.3s ease !important;
+    border-radius: 2px !important;
+  }
+  
+  .mobile-menu-btn.open span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px) !important;
+  }
+  
+  .mobile-menu-btn.open span:nth-child(2) {
+    opacity: 0 !important;
+    transform: scale(0) !important;
+  }
+  
+  .mobile-menu-btn.open span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px) !important;
+  }
+}
+
+/* Оптимизация страницы опроса */
+@media (max-width: 768px) {
+  .questionnaire-container {
+    padding: 20px 15px !important;
+  }
+  
+  .question-card {
+    padding: 20px 15px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .option-item {
+    padding: 12px 15px !important;
+    margin-bottom: 10px !important;
+    min-height: 44px !important;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+  
+  .nav-button {
+    width: 100% !important;
+    min-height: 44px !important;
+  }
+}
+
+/* Оптимизация страницы оплаты */
+@media (max-width: 768px) {
+  .pricing-card {
+    padding: 20px 15px !important;
+    margin-bottom: 20px !important;
+  }
+  
+  .pricing-button {
+    min-height: 44px !important;
+    width: 100% !important;
+  }
+  
+  .pricing-features {
+    padding: 0 5px !important;
+  }
+}
+
+/* Оптимизация личного кабинета */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  
+  .user-profile {
+    width: 100% !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .dashboard-card {
+    padding: 20px 15px !important;
+  }
+}
+
+/* Фиксы для отображения модальных окон */
+@media (max-width: 768px) {
+  .modal-content {
+    width: 95% !important;
+    max-width: 95% !important;
+    padding: 20px 15px !important;
+    max-height: 85vh !important;
+  }
+  
+  .modal-close {
+    top: 10px !important;
+    right: 10px !important;
+    width: 36px !important;
+    height: 36px !important;
+  }
+}

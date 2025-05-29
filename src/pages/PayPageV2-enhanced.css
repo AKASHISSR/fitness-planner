@@ -1,0 +1,730 @@
+/* PayPageV2-enhanced.css - Улучшенный стиль для страницы оплаты с оптимизацией для мобильных устройств */
+
+.pay-page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f7f8fa 0%, #e6f7ea 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  font-family: 'Roboto', sans-serif;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Анимированный фон */
+.pay-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.pay-particle {
+  position: absolute;
+  background: rgba(79, 209, 101, 0.15);
+  border-radius: 50%;
+  animation: float 15s infinite ease-in-out;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-30px) translateX(15px);
+  }
+  50% {
+    transform: translateY(-15px) translateX(30px);
+  }
+  75% {
+    transform: translateY(-25px) translateX(-15px);
+  }
+}
+
+/* Карточка оплаты */
+.pay-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  overflow: hidden;
+  position: relative;
+}
+
+.pay-card-header {
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  padding: 2rem;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+.pay-card-decoration {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.pay-card-decoration:nth-child(1) {
+  top: -50px;
+  right: -50px;
+}
+
+.pay-card-decoration:nth-child(2) {
+  bottom: -50px;
+  left: -50px;
+}
+
+.pay-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.pay-subtitle {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.pay-card-body {
+  padding: 2rem;
+}
+
+.pay-info {
+  margin-bottom: 2rem;
+}
+
+.pay-tariff {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.pay-tariff:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.pay-tariff-icon {
+  font-size: 2.5rem;
+  margin-right: 1.5rem;
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  color: white;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(79, 209, 101, 0.3);
+  flex-shrink: 0;
+}
+
+.pay-tariff-details {
+  flex: 1;
+}
+
+.pay-tariff-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a3a2b;
+  margin-bottom: 0.3rem;
+}
+
+.pay-tariff-description {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+
+.pay-price-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.pay-old-price {
+  font-size: 1rem;
+  color: #999;
+  text-decoration: line-through;
+}
+
+.pay-current-price {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #36b14e;
+}
+
+.pay-discount-badge {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: rgba(255, 152, 0, 0.15);
+  color: #ff9800;
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-left: 10px;
+}
+
+.pay-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #f8f9fa;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.pay-total-label {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a3a2b;
+}
+
+.pay-total-price {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #36b14e;
+}
+
+.pay-button {
+  width: 100%;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(79, 209, 101, 0.3);
+  min-height: 56px; /* Увеличенная высота для лучшего касания на мобильных */
+  -webkit-tap-highlight-color: transparent; /* Убираем подсветку при нажатии на мобильных */
+}
+
+.pay-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(79, 209, 101, 0.5);
+}
+
+.pay-button:active {
+  transform: translateY(0);
+  box-shadow: 0 5px 15px rgba(79, 209, 101, 0.3);
+}
+
+.pay-button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.pay-button-icon {
+  font-size: 1.5rem;
+}
+
+/* Методы оплаты */
+.pay-methods {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.pay-methods-title {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 1rem;
+}
+
+.pay-methods-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.pay-method-icon {
+  width: 50px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.pay-method-icon:hover {
+  opacity: 1;
+}
+
+.pay-method-visa {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png');
+}
+
+.pay-method-mastercard {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/1280px-Mastercard-logo.svg.png');
+}
+
+.pay-method-mir {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Mir-logo.SVG.svg/1200px-Mir-logo.SVG.svg.png');
+}
+
+.pay-method-applepay {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Apple_Pay_logo.svg/1200px-Apple_Pay_logo.svg.png');
+}
+
+.pay-method-googlepay {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Google_Pay_Logo.svg/2560px-Google_Pay_Logo.svg.png');
+}
+
+/* Гарантии */
+.pay-guarantees {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.pay-guarantee-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.pay-guarantee-icon {
+  font-size: 1.2rem;
+}
+
+/* Конфетти для анимации успешной оплаты */
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  top: -10px;
+  border-radius: 0;
+  animation: confetti-fall 5s linear forwards;
+}
+
+@keyframes confetti-fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(720deg);
+    opacity: 0;
+  }
+}
+
+/* Улучшенная адаптивность для мобильных устройств */
+@media (max-width: 768px) {
+  .pay-page-container {
+    padding: 1rem;
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
+  
+  .pay-card {
+    max-width: 100%;
+    border-radius: 16px;
+  }
+  
+  .pay-card-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pay-title {
+    font-size: 1.8rem;
+  }
+  
+  .pay-subtitle {
+    font-size: 1rem;
+  }
+  
+  .pay-card-body {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pay-tariff {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    border-radius: 10px;
+  }
+  
+  .pay-tariff-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 2rem;
+    margin-right: 1rem;
+  }
+  
+  .pay-tariff-name {
+    font-size: 1.1rem;
+  }
+  
+  .pay-current-price {
+    font-size: 1.3rem;
+  }
+  
+  .pay-total {
+    padding: 1.2rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .pay-total-label {
+    font-size: 1.1rem;
+  }
+  
+  .pay-total-price {
+    font-size: 1.7rem;
+  }
+  
+  .pay-button {
+    font-size: 1.1rem;
+    padding: 0.9rem;
+  }
+  
+  .pay-methods-icons {
+    gap: 0.8rem;
+  }
+  
+  .pay-method-icon {
+    width: 45px;
+    height: 28px;
+  }
+  
+  .pay-guarantees {
+    gap: 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Дополнительная оптимизация для маленьких экранов */
+@media (max-width: 480px) {
+  .pay-page-container {
+    padding: 0.8rem;
+  }
+  
+  .pay-card-header {
+    padding: 1.2rem 1rem;
+  }
+  
+  .pay-title {
+    font-size: 1.6rem;
+  }
+  
+  .pay-subtitle {
+    font-size: 0.9rem;
+  }
+  
+  .pay-card-body {
+    padding: 1.2rem 0.8rem;
+  }
+  
+  .pay-tariff {
+    flex-direction: column;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .pay-tariff-icon {
+    margin-right: 0;
+    margin-bottom: 0.8rem;
+  }
+  
+  .pay-tariff-name {
+    font-size: 1rem;
+  }
+  
+  .pay-tariff-description {
+    font-size: 0.85rem;
+  }
+  
+  .pay-price-container {
+    justify-content: center;
+  }
+  
+  .pay-current-price {
+    font-size: 1.2rem;
+  }
+  
+  .pay-discount-badge {
+    font-size: 0.7rem;
+    padding: 0.2rem 0.6rem;
+  }
+  
+  .pay-total {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .pay-total-label {
+    font-size: 1rem;
+  }
+  
+  .pay-total-price {
+    font-size: 1.5rem;
+  }
+  
+  .pay-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+  }
+  
+  .pay-methods-title {
+    font-size: 0.9rem;
+  }
+  
+  .pay-methods-icons {
+    gap: 0.6rem;
+  }
+  
+  .pay-method-icon {
+    width: 40px;
+    height: 25px;
+  }
+  
+  .pay-guarantees {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+  }
+  
+  .pay-guarantee-item {
+    font-size: 0.8rem;
+  }
+}
+
+/* Улучшения для тактильной обратной связи на мобильных устройствах */
+@media (hover: none) {
+  .pay-tariff:active {
+    transform: scale(0.98);
+    background-color: #f0f0f0;
+  }
+  
+  .pay-button:active {
+    transform: scale(0.98);
+    background: linear-gradient(135deg, #2fa043 0%, #45c259 100%);
+  }
+  
+  .pay-method-icon:active {
+    opacity: 1;
+  }
+}
+
+/* Темная тема */
+.theme-dark .pay-page-container {
+  background: linear-gradient(135deg, #1a1a1a 0%, #232323 100%);
+}
+
+.theme-dark .pay-card {
+  background: #2a2a2a;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+}
+
+.theme-dark .pay-tariff {
+  background: #333;
+}
+
+.theme-dark .pay-tariff-name {
+  color: #e6f7ea;
+}
+
+.theme-dark .pay-tariff-description {
+  color: #aaa;
+}
+
+.theme-dark .pay-total {
+  background: #333;
+}
+
+.theme-dark .pay-total-label {
+  color: #e6f7ea;
+}
+
+.theme-dark .pay-methods-title {
+  color: #aaa;
+}
+
+.theme-dark .pay-guarantee-item {
+  color: #aaa;
+}
+
+.theme-dark .pay-tariff:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.theme-dark .pay-tariff:active {
+  background-color: #2a2a2a;
+}
+
+/* Улучшенная доступность */
+.pay-button:focus {
+  outline: 2px solid #4fd165;
+  outline-offset: 2px;
+}
+
+.pay-tariff:focus-within {
+  outline: 2px solid #4fd165;
+  outline-offset: 2px;
+}
+
+/* Анимации для улучшения UX */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.pay-button.processing {
+  animation: pulse 1.5s infinite;
+}
+
+/* Стили для сообщений об успешной оплате */
+.payment-success-message {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  text-align: center;
+  max-width: 90%;
+  animation: fadeIn 0.5s;
+}
+
+.theme-dark .payment-success-message {
+  background: #2a2a2a;
+  color: white;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -40%);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.success-icon {
+  font-size: 3rem;
+  color: #4fd165;
+  margin-bottom: 1rem;
+}
+
+.success-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.success-message {
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.theme-dark .success-message {
+  color: #aaa;
+}
+
+.success-button {
+  background: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.success-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(79, 209, 101, 0.3);
+}
+
+/* Оверлей для блокировки интерфейса во время обработки платежа */
+.payment-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(3px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.3s;
+}
+
+.payment-loader {
+  width: 50px;
+  height: 50px;
+  border: 5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #4fd165;
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

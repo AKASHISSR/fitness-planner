@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { logUserActivity } from '../firebase';
-import './PayPageV2.css';
+import './PayPageV2-enhanced.css?v=1.1.0';
 
 // Тарифы с ценами и описаниями в соответствии со страницей Цены и оплата
 const TARIFFS = {

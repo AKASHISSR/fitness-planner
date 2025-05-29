@@ -1,0 +1,603 @@
+/* Расширенная мобильная оптимизация для FitGenius */
+
+/* Базовые настройки для адаптивности */
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Улучшение отзывчивости изображений */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Улучшение отзывчивости видео */
+video, iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Улучшение отзывчивости таблиц */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  overflow-x: auto;
+  display: block;
+}
+
+/* Улучшение отзывчивости форм */
+input, select, textarea, button {
+  max-width: 100%;
+  box-sizing: border-box;
+  font-size: 16px; /* Предотвращает масштабирование на iOS */
+}
+
+/* Улучшение отзывчивости кнопок */
+button, .button, [type="button"], [type="submit"] {
+  touch-action: manipulation;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Улучшение шрифтов для мобильных устройств */
+@media (max-width: 768px) {
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+    line-height: 1.2;
+    margin-bottom: 15px;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    margin-bottom: 12px;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 10px;
+  }
+  
+  p, li, td, th {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 12px;
+  }
+}
+
+/* Улучшение отступов для мобильных устройств */
+@media (max-width: 768px) {
+  .container, .section, .wrapper {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  
+  .row, .grid {
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  
+  .col, .column, .grid-item {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Улучшение навигации для мобильных устройств */
+@media (max-width: 768px) {
+  .nav-link, .menu-item {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+  }
+  
+  .dropdown-menu {
+    position: static;
+    width: 100%;
+    box-shadow: none;
+  }
+}
+
+/* Улучшение сенсорных целей для мобильных устройств */
+@media (max-width: 768px) {
+  button, .button, [type="button"], [type="submit"],
+  .nav-link, .menu-item, a.card, .clickable {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  input[type="checkbox"], input[type="radio"] {
+    min-height: 24px;
+    min-width: 24px;
+  }
+}
+
+/* Улучшение модальных окон для мобильных устройств */
+@media (max-width: 768px) {
+  .modal, .dialog, .popup {
+    width: 95%;
+    max-width: 95%;
+    margin: 0 auto;
+    border-radius: 12px;
+    padding: 20px 15px;
+  }
+  
+  .modal-close, .dialog-close, .popup-close {
+    top: 10px;
+    right: 10px;
+    width: 36px;
+    height: 36px;
+  }
+}
+
+/* Улучшение прокрутки для мобильных устройств */
+@media (max-width: 768px) {
+  .scrollable {
+    -webkit-overflow-scrolling: touch;
+    overflow-y: auto;
+    scrollbar-width: thin;
+  }
+  
+  /* Стилизация скроллбара для WebKit */
+  .scrollable::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  .scrollable::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+  }
+  
+  .scrollable::-webkit-scrollbar-thumb {
+    background-color: rgba(79, 209, 101, 0.5);
+    border-radius: 4px;
+  }
+}
+
+/* Скрытие элементов на мобильных устройствах */
+@media (max-width: 768px) {
+  .hide-on-mobile {
+    display: none !important;
+  }
+}
+
+/* Отображение элементов только на мобильных устройствах */
+.show-on-mobile {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .show-on-mobile {
+    display: block !important;
+  }
+  
+  .show-on-mobile.inline {
+    display: inline !important;
+  }
+  
+  .show-on-mobile.flex {
+    display: flex !important;
+  }
+  
+  .show-on-mobile.grid {
+    display: grid !important;
+  }
+}
+
+/* Улучшение читаемости текста на мобильных устройствах */
+@media (max-width: 768px) {
+  body {
+    letter-spacing: 0.01em;
+  }
+  
+  p, li {
+    max-width: 100%;
+  }
+}
+
+/* Улучшение контрастности для мобильных устройств */
+@media (max-width: 768px) {
+  .low-contrast {
+    color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .theme-dark .low-contrast {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Оптимизация героического блока для мобильных устройств */
+@media (max-width: 768px) {
+  .home-hero {
+    min-height: 100vh;
+    padding: 20px 0;
+    justify-content: center;
+  }
+  
+  .hero-content {
+    padding: 20px 15px;
+    margin-top: 0;
+    width: 100%;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    padding: 0 10px;
+  }
+  
+  .hero-cta {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 0 15px;
+  }
+  
+  .cta-button {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    font-size: 1rem;
+    padding: 12px 20px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+  
+  .hero-scroll-indicator {
+    bottom: 20px;
+  }
+}
+
+/* Оптимизация секций для мобильных устройств */
+@media (max-width: 768px) {
+  .home-benefits,
+  .home-examples,
+  .home-cta-section {
+    padding: 60px 15px;
+  }
+  
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 30px;
+    padding: 0 10px;
+  }
+  
+  .section-title::after {
+    width: 80px;
+    height: 3px;
+    bottom: -10px;
+  }
+  
+  .benefits-grid,
+  .examples-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .benefit-card,
+  .example-card {
+    padding: 25px 20px;
+    max-width: 100%;
+  }
+  
+  .benefit-icon,
+  .example-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .benefit-card h3,
+  .example-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+  }
+  
+  .benefit-card p,
+  .example-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Оптимизация мобильного меню */
+@media (max-width: 768px) {
+  .mobile-menu {
+    width: 85%;
+    max-width: 300px;
+    padding: 20px 15px;
+  }
+  
+  .mobile-menu-btn {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    box-shadow: 0 4px 12px rgba(79, 209, 101, 0.3);
+  }
+  
+  .mobile-menu-btn span {
+    width: 22px;
+    height: 2px;
+    margin: 2px 0;
+  }
+  
+  .mobile-menu-link {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+  
+  .mobile-menu-info {
+    margin-top: 15px;
+    padding-top: 15px;
+  }
+  
+  .mobile-menu-phone-display {
+    padding: 12px 15px;
+    border-radius: 10px;
+    margin-bottom: 8px;
+  }
+}
+
+/* Оптимизация страницы оплаты для мобильных устройств */
+@media (max-width: 768px) {
+  .pay-container {
+    padding: 20px 15px;
+  }
+  
+  .pricing-card {
+    padding: 20px 15px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+  }
+  
+  .pricing-header {
+    margin-bottom: 15px;
+  }
+  
+  .pricing-title {
+    font-size: 1.5rem;
+  }
+  
+  .pricing-price {
+    font-size: 1.8rem;
+  }
+  
+  .pricing-features {
+    margin-bottom: 15px;
+  }
+  
+  .pricing-feature {
+    padding: 8px 0;
+    font-size: 0.95rem;
+  }
+  
+  .pricing-button {
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Оптимизация страницы личного кабинета для мобильных устройств */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 20px 15px;
+  }
+  
+  .dashboard-header {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .user-profile {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .avatar-container {
+    margin-bottom: 15px;
+  }
+  
+  .user-info {
+    text-align: center;
+    width: 100%;
+  }
+  
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .dashboard-card {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .dashboard-card-header {
+    margin-bottom: 15px;
+  }
+  
+  .dashboard-card-title {
+    font-size: 1.3rem;
+  }
+}
+
+/* Оптимизация страницы опроса для мобильных устройств */
+@media (max-width: 768px) {
+  .questionnaire-container {
+    padding: 20px 15px;
+  }
+  
+  .question-card {
+    padding: 20px 15px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .question-title {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+  }
+  
+  .option-item {
+    padding: 12px 15px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  
+  .option-label {
+    font-size: 1rem;
+  }
+  
+  .navigation-buttons {
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .nav-button {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1rem;
+  }
+}
+
+/* Оптимизация страницы отзывов для мобильных устройств */
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 20px 15px;
+  }
+  
+  .reviews-header {
+    margin-bottom: 20px;
+  }
+  
+  .reviews-title {
+    font-size: 1.8rem;
+  }
+  
+  .reviews-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  
+  .review-card {
+    padding: 20px 15px;
+    border-radius: 12px;
+  }
+  
+  .review-header {
+    margin-bottom: 15px;
+  }
+  
+  .reviewer-name {
+    font-size: 1.1rem;
+  }
+  
+  .review-content {
+    font-size: 0.95rem;
+  }
+}
+
+/* Улучшение адаптивности для очень маленьких экранов */
+@media (max-width: 375px) {
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.4rem;
+  }
+  
+  h3 {
+    font-size: 1.2rem;
+  }
+  
+  .hero-title {
+    font-size: 1.7rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  
+  .section-title {
+    font-size: 1.6rem;
+  }
+  
+  .cta-button {
+    font-size: 0.95rem;
+    padding: 10px 16px;
+  }
+  
+  .benefit-card,
+  .example-card {
+    padding: 20px 15px;
+  }
+}
+
+/* Улучшение производительности анимаций на мобильных устройствах */
+@media (max-width: 768px) {
+  .particle {
+    display: none;
+  }
+  
+  .cursor-effect-container {
+    opacity: 0.5;
+  }
+  
+  .animated-element {
+    animation-duration: 0.5s;
+  }
+  
+  .hero-title,
+  .hero-subtitle,
+  .hero-cta,
+  .section-title,
+  .benefit-card,
+  .example-card {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+}
+
+/* Улучшение доступности для мобильных устройств */
+@media (max-width: 768px) {
+  :focus {
+    outline: 2px solid #4fd165;
+    outline-offset: 2px;
+  }
+  
+  .clickable:active {
+    transform: scale(0.98);
+  }
+  
+  input, select, textarea {
+    padding: 12px 15px;
+  }
+}
