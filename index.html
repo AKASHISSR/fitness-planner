@@ -2,37 +2,72 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate, max-age=0" />
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <link rel="stylesheet" href="./mobile-fixes.css?v=1.5.0" />
+    <link rel="stylesheet" href="./mobile-fixes.css?v=2.0.0&t=1748513000" />
+    <link rel="stylesheet" href="./force-styles.css?v=2.0.0&t=1748513000" />
+    <script>
+      // Принудительно добавляем стили при загрузке страницы
+      document.addEventListener('DOMContentLoaded', function() {
+        var link1 = document.createElement('link');
+        link1.rel = 'stylesheet';
+        link1.href = './mobile-fixes.css?v=2.0.0&t=' + new Date().getTime();
+        document.head.appendChild(link1);
+        
+        var link2 = document.createElement('link');
+        link2.rel = 'stylesheet';
+        link2.href = './force-styles.css?v=2.0.0&t=' + new Date().getTime();
+        document.head.appendChild(link2);
+      });
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FitGenius - Мобильная версия</title>
+    <title>FitGenius - Мобильная версия 2.0</title>
     <style>
-      /* Встроенные стили для мобильной оптимизации */
+      /* Встроенные стили для мобильной оптимизации - версия 2.0 */
       @media (max-width: 768px) {
-        /* Очень заметные изменения для проверки деплоя */
+        /* Очень заметные изменения для мгновенного применения */
         .mobile-menu-btn {
-          background: linear-gradient(135deg, #4fd165, #36b14e) !important;
+          background: linear-gradient(135deg, #ff5722, #ff9800) !important;
           color: white !important;
-          border: 2px solid white !important;
-          box-shadow: 0 0 15px rgba(79, 209, 101, 0.5) !important;
+          border: 3px solid white !important;
+          box-shadow: 0 0 20px rgba(255, 87, 34, 0.7) !important;
+          transform: scale(1.1) !important;
+          z-index: 9999 !important;
         }
         
         .mobile-menu-btn span,
         .mobile-menu-btn span::before,
         .mobile-menu-btn span::after {
           background: white !important;
+          height: 3px !important;
         }
         
         .dashboard-container {
-          background: linear-gradient(135deg, #e6f7ea, #b2f7c3) !important;
+          background: linear-gradient(135deg, #ffeb3b, #ff9800) !important;
         }
         
         body.theme-dark .dashboard-container {
-          background: linear-gradient(135deg, #1a3a2b, #232323) !important;
+          background: linear-gradient(135deg, #673ab7, #3f51b5) !important;
         }
+        
+        /* Индикатор версии */
+        body::after {
+          content: "v2.0.0" !important;
+          position: fixed !important;
+          bottom: 10px !important;
+          right: 10px !important;
+          background: #ff5722 !important;
+          color: white !important;
+          padding: 5px 10px !important;
+          border-radius: 20px !important;
+          font-size: 12px !important;
+          z-index: 9999 !important;
+          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+        }
+        /* Старые стили удалены, чтобы избежать конфликта */
+        /* Старые стили удалены, чтобы избежать конфликта */
         /* Мобильное меню */
         .mobile-menu {
           width: 85% !important;
