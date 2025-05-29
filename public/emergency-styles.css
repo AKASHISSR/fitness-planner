@@ -1,0 +1,110 @@
+/* Экстренные стили для мобильной версии - версия 3.0.0 */
+@media (max-width: 768px) {
+  /* Мобильное меню */
+  .mobile-menu-btn {
+    background: linear-gradient(135deg, #4fd165, #36b14e) !important;
+    color: white !important;
+    border: 2px solid white !important;
+    box-shadow: 0 0 15px rgba(79, 209, 101, 0.5) !important;
+    transform: scale(1.1) !important;
+    z-index: 9999 !important;
+  }
+  
+  .mobile-menu-btn span,
+  .mobile-menu-btn span::before,
+  .mobile-menu-btn span::after {
+    background: white !important;
+    height: 3px !important;
+  }
+  
+  .mobile-menu {
+    width: 85% !important;
+    background: linear-gradient(135deg, #f7f8fa, #e6f7ea) !important;
+    box-shadow: 0 0 30px rgba(79, 209, 101, 0.3) !important;
+  }
+  
+  .mobile-menu a {
+    color: #1a3a2b !important;
+    font-weight: bold !important;
+    font-size: 18px !important;
+    padding: 15px 20px !important;
+    border-bottom: 1px solid rgba(79, 209, 101, 0.2) !important;
+  }
+  
+  /* Личный кабинет */
+  .dashboard-container {
+    background: linear-gradient(135deg, #e6f7ea, #b2f7c3) !important;
+  }
+  
+  body.theme-dark .dashboard-container {
+    background: linear-gradient(135deg, #1a3a2b, #232323) !important;
+  }
+  
+  .dashboard-header {
+    background: linear-gradient(135deg, #4fd165, #36b14e) !important;
+    padding: 20px !important;
+    border-radius: 15px !important;
+    margin-bottom: 20px !important;
+    box-shadow: 0 10px 20px rgba(79, 209, 101, 0.3) !important;
+  }
+  
+  .dashboard-header h1,
+  .dashboard-header h2,
+  .dashboard-header h3 {
+    color: white !important;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3) !important;
+  }
+  
+  /* Кнопки */
+  .btn-primary,
+  button[type="submit"],
+  .submit-button {
+    background: linear-gradient(135deg, #4fd165, #36b14e) !important;
+    border: none !important;
+    color: white !important;
+    padding: 12px 24px !important;
+    border-radius: 30px !important;
+    font-weight: bold !important;
+    box-shadow: 0 5px 15px rgba(79, 209, 101, 0.3) !important;
+    transform: translateY(0) !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  .btn-primary:hover,
+  button[type="submit"]:hover,
+  .submit-button:hover {
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 20px rgba(79, 209, 101, 0.4) !important;
+  }
+  
+  /* Карточки */
+  .card, 
+  .pay-card,
+  .dashboard-card {
+    border-radius: 15px !important;
+    overflow: hidden !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1) !important;
+    border: 2px solid #4fd165 !important;
+  }
+  
+  /* Заголовки */
+  h1, h2, h3 {
+    color: #1a3a2b !important;
+    margin-bottom: 15px !important;
+  }
+  
+  /* Добавляем индикатор версии */
+  body::after {
+    content: "v3.0.0" !important;
+    position: fixed !important;
+    bottom: 10px !important;
+    right: 10px !important;
+    background: #4fd165 !important;
+    color: white !important;
+    padding: 5px 10px !important;
+    border-radius: 20px !important;
+    font-size: 12px !important;
+    z-index: 9999 !important;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
+  }
+}
