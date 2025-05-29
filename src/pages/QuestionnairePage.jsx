@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import './QuestionnairePage-enhanced.css?v=1.1.0';
+import './QuestionnairePage-enhanced.css?v=1.3.0';
 import { logUserActivity } from '../firebase';
 
 const COMMON_QUESTIONS = [
