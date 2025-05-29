@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main, mobile-fix ]
   workflow_dispatch:
 
 jobs:
@@ -23,10 +23,46 @@ jobs:
 
       - name: Build
         run: npm run build
+        
+      - name: Add cache-busting timestamps
+        run: |
+          echo "Adding cache-busting timestamps to CSS files"
+          TIMESTAMP=$(date +%s)
+          find dist -name "*.css" -exec sh -c 'mv "$1" "${1%.css}.$TIMESTAMP.css"' _ {} \;
+          find dist -name "*.html" -exec sed -i "s/\.css/.$TIMESTAMP.css/g" {} \;
+          
+      - name: Update HTML headers
+        run: |
+          echo "Adding cache control headers"
+          mkdir -p dist/.github
+          cat > dist/.github/workflows/update-headers.yml << EOF
+          name: Update Headers
+          on: [push]
+          jobs:
+            update-headers:
+              runs-on: ubuntu-latest
+              steps:
+                - name: Create _headers file
+                  run: |
+                    echo "/*" > _headers
+                    echo "  Cache-Control: no-cache, no-store, must-revalidate" >> _headers
+                    echo "  Pragma: no-cache" >> _headers
+                    echo "  Expires: 0" >> _headers
+          EOF
 
+      - name: Create _headers file
+        run: |
+          echo "/*" > dist/_headers
+          echo "  Cache-Control: no-cache, no-store, must-revalidate" >> dist/_headers
+          echo "  Pragma: no-cache" >> dist/_headers
+          echo "  Expires: 0" >> dist/_headers
+          
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
           clean: true
+          clean-exclude: |
+            .nojekyll
+          force: true
