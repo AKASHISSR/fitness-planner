@@ -1,0 +1,468 @@
+/* mobile-fixes.css - Все улучшения для мобильной версии сайта в одном файле */
+
+/* Улучшения для мобильного меню */
+@media (max-width: 768px) {
+  .mobile-menu {
+    width: 85%;
+    max-width: 320px;
+  }
+  
+  .mobile-menu-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-btn:hover {
+    background: #fff;
+    transform: scale(1.05);
+  }
+  
+  .mobile-menu-btn span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #1a3a2b;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-btn span::before,
+  .mobile-menu-btn span::after {
+    content: '';
+    position: absolute;
+    width: 22px;
+    height: 2px;
+    background: #1a3a2b;
+    transition: all 0.3s ease;
+  }
+  
+  .mobile-menu-btn span::before {
+    top: -7px;
+  }
+  
+  .mobile-menu-btn span::after {
+    bottom: -7px;
+  }
+  
+  .mobile-menu-btn.open span {
+    background: transparent;
+  }
+  
+  .mobile-menu-btn.open span::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+  
+  .mobile-menu-btn.open span::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+  
+  .mobile-menu-link {
+    padding: 14px 0;
+    font-size: 16px;
+  }
+  
+  .mobile-menu-phone-display {
+    padding: 14px 0;
+    margin-top: 10px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #666;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+  }
+  
+  body.theme-dark .mobile-menu-phone-display {
+    border-top-color: rgba(255, 255, 255, 0.1);
+    color: #aaa;
+  }
+  
+  .mobile-menu-close-btn {
+    display: none;
+  }
+}
+
+/* Улучшения для личного кабинета */
+@media (max-width: 768px) {
+  .dashboard-container {
+    padding: 1rem;
+  }
+  
+  .dashboard-content {
+    padding: 1.5rem;
+    border-radius: 15px;
+  }
+  
+  .user-profile {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px 15px;
+  }
+  
+  .user-avatar-container {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  .user-info {
+    width: 100%;
+  }
+  
+  .dashboard-tabs {
+    overflow-x: auto;
+    padding-bottom: 5px;
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-tab {
+    padding: 10px 15px;
+    font-size: 14px;
+    white-space: nowrap;
+  }
+  
+  .plan-day {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .plan-day-header {
+    font-size: 16px;
+  }
+  
+  .meal-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .meal-type {
+    font-size: 14px;
+  }
+  
+  .meal-text {
+    font-size: 14px;
+  }
+  
+  .exercise-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .exercise-name {
+    font-size: 14px;
+  }
+  
+  .exercise-details {
+    font-size: 14px;
+  }
+  
+  .shopping-list {
+    padding: 15px;
+  }
+  
+  .shopping-item {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .avatar-overlay {
+    opacity: 0.8;
+  }
+}
+
+/* Улучшения для страницы опросника */
+@media (max-width: 768px) {
+  .questionnaire-bg {
+    padding: 20px 15px;
+  }
+  
+  .questionnaire-center {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+  
+  .question-title {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+  
+  .question-subtitle {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  .option-item {
+    padding: 12px;
+    margin-bottom: 10px;
+  }
+  
+  .option-label {
+    font-size: 14px;
+  }
+  
+  .nav-button {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  .checkbox-container {
+    padding: 10px;
+  }
+  
+  .checkbox-container input {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .multiselect-hint {
+    font-size: 13px;
+  }
+}
+
+/* Улучшения для страницы оплаты */
+@media (max-width: 768px) {
+  .pay-page-container {
+    padding: 1rem;
+  }
+  
+  .pay-card {
+    max-width: 100%;
+    border-radius: 15px;
+  }
+  
+  .pay-card-header {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pay-title {
+    font-size: 1.6rem;
+  }
+  
+  .pay-subtitle {
+    font-size: 1rem;
+  }
+  
+  .pay-card-body {
+    padding: 1.5rem 1rem;
+  }
+  
+  .pay-tariff {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .pay-tariff-icon {
+    margin-right: 0;
+    margin-bottom: 1rem;
+  }
+  
+  .pay-price-container {
+    justify-content: center;
+  }
+  
+  .pay-total {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .pay-button {
+    font-size: 1rem;
+    padding: 0.8rem;
+    min-height: 48px;
+  }
+}
+
+/* Улучшения для страницы FAQ */
+@media (max-width: 768px) {
+  .faq-bg {
+    padding: 20px 15px;
+  }
+  
+  .faq-container {
+    padding: 25px 20px;
+    border-radius: 15px;
+  }
+  
+  .faq-title {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+  }
+  
+  .faq-category {
+    padding: 8px 15px;
+    font-size: 14px;
+  }
+  
+  .faq-question {
+    padding: 15px;
+    font-size: 15px;
+  }
+  
+  .faq-answer {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .faq-item.active .faq-answer {
+    padding: 0 15px 15px;
+  }
+  
+  .faq-feedback {
+    padding: 20px 15px;
+    margin-top: 25px;
+  }
+  
+  .faq-input,
+  .faq-textarea {
+    padding: 10px;
+    font-size: 14px;
+  }
+  
+  .faq-submit-btn {
+    padding: 12px 20px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+}
+
+/* Улучшения для страницы отзывов */
+@media (max-width: 768px) {
+  .reviews-container {
+    padding: 20px 15px;
+  }
+  
+  .reviews-header {
+    margin-bottom: 20px;
+  }
+  
+  .reviews-title {
+    font-size: 1.6rem;
+  }
+  
+  .reviews-subtitle {
+    font-size: 1rem;
+  }
+  
+  .review-card {
+    padding: 15px;
+    margin-bottom: 15px;
+  }
+  
+  .review-header {
+    margin-bottom: 10px;
+  }
+  
+  .review-avatar {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .review-name {
+    font-size: 15px;
+  }
+  
+  .review-date {
+    font-size: 12px;
+  }
+  
+  .review-text {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+  }
+  
+  .review-rating {
+    font-size: 14px;
+  }
+  
+  .review-star {
+    font-size: 16px;
+  }
+}
+
+/* Общие улучшения для мобильных устройств */
+@media (max-width: 768px) {
+  button, 
+  .button, 
+  input[type="button"], 
+  input[type="submit"] {
+    min-height: 44px;
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  textarea,
+  select {
+    padding: 10px;
+    font-size: 14px;
+    min-height: 44px;
+  }
+  
+  h1 {
+    font-size: 1.8rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.3rem;
+  }
+  
+  p {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  .container {
+    padding: 15px;
+  }
+}
+
+/* Дополнительные улучшения для очень маленьких экранов */
+@media (max-width: 375px) {
+  button, 
+  .button, 
+  input[type="button"], 
+  input[type="submit"] {
+    min-height: 42px;
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  h1 {
+    font-size: 1.6rem;
+  }
+  
+  h2 {
+    font-size: 1.3rem;
+  }
+  
+  h3 {
+    font-size: 1.1rem;
+  }
+  
+  .container {
+    padding: 10px;
+  }
+}
