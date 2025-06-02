@@ -1,17 +1,84 @@
 /* mobile-optimizations.css - Полная оптимизация для мобильных устройств */
 
-/* Оптимизация для мобильного меню */
+/* Базовые мобильные оптимизации */
 @media (max-width: 768px) {
+  /* Общие стили для всех страниц */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+
+  .container {
+    padding: 0 15px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  /* Оптимизация типографики */
+  h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.75rem;
+    line-height: 1.3;
+    margin-bottom: 0.875rem;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+  }
+
+  p {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  /* Оптимизация кнопок и интерактивных элементов */
+  button, 
+  .btn,
+  .nav-link,
+  .main-nav-btn {
+    min-height: 44px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    touch-action: manipulation;
+  }
+
+  /* Оптимизация форм */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    min-height: 44px;
+    padding: 12px 16px;
+    font-size: 16px;
+    border-radius: 8px;
+  }
+
+  /* Оптимизация мобильного меню */
   .mobile-menu {
     width: 85%;
     max-width: 320px;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
   }
-  
+
   .mobile-menu-btn {
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     display: flex;
     align-items: center;
@@ -19,13 +86,16 @@
     z-index: 100;
     cursor: pointer;
     transition: all 0.3s ease;
+    position: fixed;
+    top: 15px;
+    right: 15px;
   }
-  
+
   .mobile-menu-btn:hover {
     background: #fff;
     transform: scale(1.05);
   }
-  
+
   .mobile-menu-btn span {
     display: block;
     width: 22px;
@@ -34,7 +104,7 @@
     position: relative;
     transition: all 0.3s ease;
   }
-  
+
   .mobile-menu-btn span::before,
   .mobile-menu-btn span::after {
     content: '';
@@ -44,139 +114,285 @@
     background: #1a3a2b;
     transition: all 0.3s ease;
   }
-  
+
   .mobile-menu-btn span::before {
     top: -7px;
   }
-  
+
   .mobile-menu-btn span::after {
     bottom: -7px;
   }
-  
+
   .mobile-menu-btn.open span {
     background: transparent;
   }
-  
+
   .mobile-menu-btn.open span::before {
     transform: rotate(45deg);
     top: 0;
   }
-  
+
   .mobile-menu-btn.open span::after {
     transform: rotate(-45deg);
     bottom: 0;
   }
-  
-  .mobile-menu-link {
-    padding: 14px 0;
-    font-size: 16px;
-  }
-  
-  .mobile-menu-phone-display {
-    padding: 14px 0;
-    margin-top: 10px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    color: #666;
-    font-size: 14px;
-    display: flex;
-    align-items: center;
-  }
-  
-  body.theme-dark .mobile-menu-phone-display {
-    border-top-color: rgba(255, 255, 255, 0.1);
-    color: #aaa;
-  }
-  
-  .mobile-menu-close-btn {
-    display: none;
-  }
-}
 
-/* Оптимизация для личного кабинета */
-@media (max-width: 768px) {
+  /* Оптимизация личного кабинета */
   .dashboard-container {
     padding: 1rem;
   }
-  
+
   .dashboard-content {
     padding: 1.5rem;
     border-radius: 15px;
+    margin-top: 60px;
   }
-  
+
   .user-profile {
     flex-direction: column;
     align-items: center;
     text-align: center;
     padding: 20px 15px;
   }
-  
+
   .user-avatar-container {
     margin-right: 0;
     margin-bottom: 15px;
   }
-  
+
   .user-info {
     width: 100%;
   }
-  
+
   .dashboard-tabs {
     overflow-x: auto;
     padding-bottom: 5px;
     margin-bottom: 20px;
+    -webkit-overflow-scrolling: touch;
   }
-  
+
   .dashboard-tab {
-    padding: 10px 15px;
+    padding: 12px 16px;
     font-size: 14px;
     white-space: nowrap;
+    min-width: 120px;
+    text-align: center;
   }
-  
-  .plan-day {
+
+  /* Оптимизация карточек и элементов списка */
+  .card,
+  .plan-day,
+  .meal-item,
+  .exercise-item {
     padding: 15px;
     margin-bottom: 15px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
-  
-  .plan-day-header {
-    font-size: 16px;
-  }
-  
-  .meal-item {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
-  .meal-type {
-    font-size: 14px;
-  }
-  
-  .meal-text {
-    font-size: 14px;
-  }
-  
-  .exercise-item {
-    padding: 10px;
-    margin-bottom: 10px;
-  }
-  
+
+  .card-title,
+  .plan-day-header,
+  .meal-type,
   .exercise-name {
-    font-size: 14px;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
   }
-  
+
+  .card-content,
+  .meal-text,
   .exercise-details {
     font-size: 14px;
+    line-height: 1.5;
   }
-  
-  .shopping-list {
-    padding: 15px;
+
+  /* Оптимизация форм и инпутов */
+  .form-group {
+    margin-bottom: 20px;
   }
-  
-  .shopping-item {
-    padding: 10px;
+
+  .form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  /* Оптимизация модальных окон */
+  .modal {
+    width: 90%;
+    max-width: 400px;
+    margin: 20px auto;
+    border-radius: 16px;
+    padding: 20px;
+  }
+
+  .modal-header {
+    margin-bottom: 20px;
+  }
+
+  .modal-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  .modal-content {
+    padding: 0;
+  }
+
+  .modal-footer {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+  }
+
+  /* Оптимизация навигации */
+  .main-nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 85%;
+    max-width: 320px;
+    height: 100vh;
+    background: #fff;
+    padding: 20px;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .main-nav-links.active {
+    right: 0;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 16px;
+    font-size: 16px;
+    color: #1a3a2b;
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+
+  .nav-link:hover {
+    background: rgba(79, 209, 101, 0.08);
+  }
+
+  .nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+  }
+
+  /* Оптимизация футера */
+  .main-footer {
+    padding: 40px 20px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .footer-block {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-link {
+    display: block;
+    padding: 8px 0;
     font-size: 14px;
   }
-  
-  .avatar-overlay {
-    opacity: 0.8;
+
+  /* Оптимизация для очень маленьких экранов */
+  @media (max-width: 375px) {
+    .container {
+      padding: 0 10px;
+    }
+
+    h1 {
+      font-size: 1.75rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    h3 {
+      font-size: 1.25rem;
+    }
+
+    button, 
+    .btn,
+    .nav-link,
+    .main-nav-btn {
+      padding: 10px 16px;
+      font-size: 14px;
+    }
+
+    .mobile-menu {
+      width: 95%;
+    }
+
+    .main-nav-links {
+      width: 95%;
+    }
+  }
+}
+
+/* Оптимизация для планшетов */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .container {
+    padding: 0 30px;
+  }
+
+  .dashboard-content {
+    padding: 2rem;
+  }
+
+  .card,
+  .plan-day,
+  .meal-item,
+  .exercise-item {
+    padding: 20px;
+  }
+
+  .main-nav-links {
+    width: 70%;
+    max-width: 400px;
+  }
+}
+
+/* Оптимизация для ландшафтной ориентации */
+@media (max-height: 500px) and (orientation: landscape) {
+  .mobile-menu {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .main-nav-links {
+    padding: 15px;
+  }
+
+  .nav-link {
+    padding: 8px 12px;
+  }
+
+  .dashboard-content {
+    margin-top: 50px;
   }
 }
 
@@ -392,77 +608,5 @@
   
   .review-star {
     font-size: 16px;
-  }
-}
-
-/* Общие оптимизации для мобильных устройств */
-@media (max-width: 768px) {
-  button, 
-  .button, 
-  input[type="button"], 
-  input[type="submit"] {
-    min-height: 44px;
-    padding: 10px 15px;
-    font-size: 14px;
-  }
-  
-  input[type="text"],
-  input[type="email"],
-  input[type="password"],
-  input[type="number"],
-  textarea,
-  select {
-    padding: 10px;
-    font-size: 14px;
-    min-height: 44px;
-  }
-  
-  h1 {
-    font-size: 1.8rem;
-  }
-  
-  h2 {
-    font-size: 1.5rem;
-  }
-  
-  h3 {
-    font-size: 1.3rem;
-  }
-  
-  p {
-    font-size: 14px;
-    line-height: 1.5;
-  }
-  
-  .container {
-    padding: 15px;
-  }
-}
-
-/* Дополнительные оптимизации для очень маленьких экранов */
-@media (max-width: 375px) {
-  button, 
-  .button, 
-  input[type="button"], 
-  input[type="submit"] {
-    min-height: 42px;
-    padding: 8px 12px;
-    font-size: 13px;
-  }
-  
-  h1 {
-    font-size: 1.6rem;
-  }
-  
-  h2 {
-    font-size: 1.3rem;
-  }
-  
-  h3 {
-    font-size: 1.1rem;
-  }
-  
-  .container {
-    padding: 10px;
   }
 }
