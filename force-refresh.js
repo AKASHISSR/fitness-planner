@@ -119,3 +119,14 @@
     console.error('LocalStorage not available:', e);
   }
 })();
+
+// Force refresh script
+(function() {
+  const version = '1.5.0';
+  const lastVersion = localStorage.getItem('app_version');
+  
+  if (lastVersion !== version) {
+    localStorage.setItem('app_version', version);
+    window.location.reload(true);
+  }
+})();

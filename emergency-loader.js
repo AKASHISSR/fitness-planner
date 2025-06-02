@@ -105,4 +105,17 @@
   } else {
     init();
   }
+
+  function checkAppLoaded() {
+    const root = document.getElementById('root');
+    if (root && root.children.length > 0) {
+      console.log('App loaded successfully');
+    } else {
+      console.log('App not loaded, retrying...');
+      setTimeout(checkAppLoaded, 1000);
+    }
+  }
+  
+  // Start checking after a short delay
+  setTimeout(checkAppLoaded, 1000);
 })();

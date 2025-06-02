@@ -435,7 +435,16 @@
   }
   
   .container {
-    padding: 15px;
+    padding: 10px;
+  }
+  
+  .card {
+    margin: 10px 0;
+  }
+  
+  .button {
+    width: 100%;
+    margin: 5px 0;
   }
 }
 
