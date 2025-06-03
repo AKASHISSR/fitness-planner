@@ -19,6 +19,7 @@
   padding: 0 !important;
   outline: none !important;
   overflow: hidden !important;
+  margin: 0 !important;
 }
 
 .mobile-menu-btn::before {
