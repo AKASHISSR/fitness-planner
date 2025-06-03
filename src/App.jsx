@@ -15,11 +15,12 @@ import RegisterPage from './pages/RegisterPage';
 import AdminPageV2 from './pages/AdminPageV2';
 import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
-import './App.v3.css?v=20241220-008';
-import './styles/mobile-menu-fixed.css?v=20241220-008';
-import './styles/navigation-fixes.css?v=20241220-008';
-import './button-fixes.css?v=20241220-008';
-import './logo-fixes.css?v=20241220-008';
+import LoadingScreen from './components/LoadingScreen';
+import './App.v3.css?v=20241220-009';
+import './styles/mobile-menu-fixed.css?v=20241220-009';
+import './styles/navigation-fixes.css?v=20241220-009';
+import './button-fixes.css?v=20241220-009';
+import './logo-fixes.css?v=20241220-009';
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -618,6 +619,8 @@ function Footer() {
 }
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     async function logUserVisit() {
       let ip = '';
@@ -632,6 +635,14 @@ function App() {
     }
     logUserVisit();
   }, []);
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onLoadingComplete={handleLoadingComplete} />;
+  }
 
   return (
     <Router>
