@@ -3,9 +3,10 @@
 /* Бургер-кнопка - полностью переделанная */
 .mobile-menu-btn {
   display: none !important;
-  position: fixed !important;
-  top: 15px !important;
+  position: absolute !important;
+  top: 50% !important;
   right: 20px !important;
+  transform: translateY(-50%) !important;
   width: 48px !important;
   height: 48px !important;
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
@@ -33,7 +34,7 @@
 }
 
 .mobile-menu-btn:hover {
-  transform: scale(1.05) !important;
+  transform: translateY(-50%) scale(1.05) !important;
   box-shadow: 0 6px 25px rgba(79, 209, 101, 0.4) !important;
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
 }
@@ -43,7 +44,7 @@
 }
 
 .mobile-menu-btn:active {
-  transform: scale(0.95) !important;
+  transform: translateY(-50%) scale(0.95) !important;
   box-shadow: 0 2px 15px rgba(79, 209, 101, 0.3) !important;
 }
 
@@ -84,11 +85,13 @@
 .mobile-menu-btn.open {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
   box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3) !important;
+  transform: translateY(-50%) !important;
 }
 
 .mobile-menu-btn.open:hover {
   background: linear-gradient(135deg, #ee5a52, #dc4c3f) !important;
   box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4) !important;
+  transform: translateY(-50%) scale(1.05) !important;
 }
 
 .mobile-menu-btn.open .burger-line:nth-child(1) {
@@ -156,43 +159,22 @@
   pointer-events: auto !important;
 }
 
-/* Заголовок меню */
+/* Заголовок меню - упрощенный без кнопки закрытия */
 .mobile-menu-header {
   display: flex !important;
   align-items: center !important;
-  justify-content: space-between !important;
+  justify-content: center !important;
   padding: 25px 0 !important;
   border-bottom: 2px solid rgba(79, 209, 101, 0.3) !important;
   margin-bottom: 25px !important;
 }
 
+/* Убираем стили кнопки закрытия */
 .mobile-menu-close-btn {
-  background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
-  border: none !important;
-  color: white !important;
-  cursor: pointer !important;
-  width: 45px !important;
-  height: 45px !important;
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  border-radius: 12px !important;
-  transition: all 0.3s ease !important;
-  box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3) !important;
+  display: none !important;
 }
 
-.mobile-menu-close-btn:hover {
-  background: linear-gradient(135deg, #ee5a52, #dc4c3f) !important;
-  transform: rotate(90deg) scale(1.1) !important;
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4) !important;
-}
-
-.mobile-menu-close-btn svg {
-  width: 24px !important;
-  height: 24px !important;
-}
-
-/* Логотип в меню */
+/* Логотип в меню - центрированный */
 .mobile-menu-logo {
   display: flex !important;
   align-items: center !important;
@@ -408,10 +390,6 @@ body.theme-dark .mobile-menu-phone-display {
 
 body.theme-dark .mobile-menu-logo {
   color: #f0f0f0 !important;
-}
-
-body.theme-dark .mobile-menu-close-btn {
-  color: white !important;
 }
 
 /* Светлая тема */
