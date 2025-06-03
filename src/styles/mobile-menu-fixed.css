@@ -1,21 +1,22 @@
 /* Исправленные стили для мобильного меню */
 
-/* Бургер-кнопка */
+/* Бургер-кнопка - полностью переделанная */
 .mobile-menu-btn {
   display: none !important;
-  flex-direction: column !important;
-  justify-content: center !important;
-  align-items: center !important;
-  width: 50px !important;
-  height: 50px !important;
+  position: fixed !important;
+  top: 15px !important;
+  right: 20px !important;
+  width: 48px !important;
+  height: 48px !important;
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
   border-radius: 12px !important;
   border: none !important;
   cursor: pointer !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  box-shadow: 0 6px 20px rgba(79, 209, 101, 0.4) !important;
-  z-index: 1001 !important;
-  position: relative !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  box-shadow: 0 4px 20px rgba(79, 209, 101, 0.3) !important;
+  z-index: 1002 !important;
+  padding: 0 !important;
+  outline: none !important;
   overflow: hidden !important;
 }
 
@@ -26,15 +27,15 @@
   left: 0 !important;
   right: 0 !important;
   bottom: 0 !important;
-  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0)) !important;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), transparent) !important;
   opacity: 0 !important;
   transition: opacity 0.3s ease !important;
 }
 
 .mobile-menu-btn:hover {
+  transform: scale(1.05) !important;
+  box-shadow: 0 6px 25px rgba(79, 209, 101, 0.4) !important;
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
-  transform: translateY(-2px) scale(1.05) !important;
-  box-shadow: 0 8px 25px rgba(79, 209, 101, 0.5) !important;
 }
 
 .mobile-menu-btn:hover::before {
@@ -42,58 +43,72 @@
 }
 
 .mobile-menu-btn:active {
-  transform: translateY(0) scale(0.98) !important;
-  box-shadow: 0 4px 15px rgba(79, 209, 101, 0.3) !important;
+  transform: scale(0.95) !important;
+  box-shadow: 0 2px 15px rgba(79, 209, 101, 0.3) !important;
 }
 
-.mobile-menu-btn span {
-  display: block !important;
-  width: 24px !important;
-  height: 3px !important;
-  background-color: white !important;
-  margin: 3px 0 !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
-  border-radius: 3px !important;
+/* Новая иконка бургера */
+.mobile-menu-btn .burger-icon {
   position: relative !important;
+  width: 24px !important;
+  height: 18px !important;
+  margin: auto !important;
+  display: block !important;
 }
 
-.mobile-menu-btn span::before,
-.mobile-menu-btn span::after {
-  content: '' !important;
+.mobile-menu-btn .burger-line {
   position: absolute !important;
+  left: 0 !important;
   width: 100% !important;
-  height: 100% !important;
-  background-color: white !important;
-  border-radius: 3px !important;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  height: 3px !important;
+  background: white !important;
+  border-radius: 2px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  transform-origin: center !important;
 }
 
-.mobile-menu-btn span::before {
-  top: -9px !important;
+.mobile-menu-btn .burger-line:nth-child(1) {
+  top: 0 !important;
 }
 
-.mobile-menu-btn span::after {
-  top: 9px !important;
+.mobile-menu-btn .burger-line:nth-child(2) {
+  top: 50% !important;
+  transform: translateY(-50%) !important;
 }
 
+.mobile-menu-btn .burger-line:nth-child(3) {
+  bottom: 0 !important;
+}
+
+/* Анимация при открытии */
 .mobile-menu-btn.open {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
-  transform: rotate(180deg) !important;
-  box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4) !important;
+  box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3) !important;
 }
 
-.mobile-menu-btn.open span {
-  background-color: transparent !important;
+.mobile-menu-btn.open:hover {
+  background: linear-gradient(135deg, #ee5a52, #dc4c3f) !important;
+  box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4) !important;
 }
 
-.mobile-menu-btn.open span::before {
-  transform: rotate(45deg) translate(0, 0) !important;
-  top: 0 !important;
+.mobile-menu-btn.open .burger-line:nth-child(1) {
+  top: 50% !important;
+  transform: translateY(-50%) rotate(45deg) !important;
 }
 
-.mobile-menu-btn.open span::after {
-  transform: rotate(-45deg) translate(0, 0) !important;
-  top: 0 !important;
+.mobile-menu-btn.open .burger-line:nth-child(2) {
+  opacity: 0 !important;
+  transform: translateY(-50%) scale(0) !important;
+}
+
+.mobile-menu-btn.open .burger-line:nth-child(3) {
+  bottom: 50% !important;
+  transform: translateY(50%) rotate(-45deg) !important;
+}
+
+/* Удаляем старые стили span */
+.mobile-menu-btn span {
+  display: none !important;
 }
 
 /* Мобильное меню */
@@ -357,12 +372,12 @@ body.theme-dark .mobile-menu-link:hover {
 
 body.theme-dark .mobile-menu-btn {
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
-  box-shadow: 0 6px 20px rgba(79, 209, 101, 0.4) !important;
+  box-shadow: 0 4px 20px rgba(79, 209, 101, 0.3) !important;
 }
 
 body.theme-dark .mobile-menu-btn:hover {
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
-  box-shadow: 0 8px 25px rgba(79, 209, 101, 0.5) !important;
+  box-shadow: 0 6px 25px rgba(79, 209, 101, 0.4) !important;
 }
 
 body.theme-dark .mobile-menu-btn.open {
@@ -432,18 +447,16 @@ body.theme-light .mobile-menu-logout {
 @media (max-width: 700px) {
   .mobile-menu-btn {
     display: flex !important;
-    position: absolute !important;
-    right: 20px !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
   .desktop-nav-links {
     display: none !important;
   }
   
-  .mobile-menu-btn.open {
-    transform: translateY(-50%) rotate(180deg) !important;
+  .nav-phone {
+    display: none !important;
   }
 }
 
@@ -465,12 +478,17 @@ body.theme-light .mobile-menu-logout {
   }
   
   .mobile-menu-btn {
-    width: 46px !important;
-    height: 46px !important;
+    width: 44px !important;
+    height: 44px !important;
     right: 15px !important;
   }
   
-  .mobile-menu-btn span {
-    width: 22px !important;
+  .mobile-menu-btn .burger-icon {
+    width: 20px !important;
+    height: 15px !important;
+  }
+  
+  .mobile-menu-btn .burger-line {
+    height: 2px !important;
   }
 } 

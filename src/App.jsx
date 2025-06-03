@@ -15,11 +15,11 @@ import RegisterPage from './pages/RegisterPage';
 import AdminPageV2 from './pages/AdminPageV2';
 import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
-import './App.v3.css?v=20241220-002';
-import './styles/mobile-menu-fixed.css?v=20241220-002';
-import './styles/navigation-fixes.css?v=20241220-002';
-import './button-fixes.css?v=20241220-002';
-import './logo-fixes.css?v=20241220-002';
+import './App.v3.css?v=20241220-003';
+import './styles/mobile-menu-fixed.css?v=20241220-003';
+import './styles/navigation-fixes.css?v=20241220-003';
+import './button-fixes.css?v=20241220-003';
+import './logo-fixes.css?v=20241220-003';
 import { logVisit } from './firebase';
 
 export const ADMINS = [
@@ -282,9 +282,11 @@ function Header() {
           aria-label="Меню"
           title="Меню"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <div className="burger-icon">
+            <div className="burger-line"></div>
+            <div className="burger-line"></div>
+            <div className="burger-line"></div>
+          </div>
         </button>
       </nav>
       
