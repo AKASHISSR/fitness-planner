@@ -387,16 +387,29 @@ button:hover, .main-nav-btn:hover, .dash-btn:hover {
   -webkit-text-fill-color: transparent;
   animation: fadeInUp 0.8s;
 }
+
+body.theme-dark .home-header h1 {
+  color: #f7f8fa;
+  background: none;
+  -webkit-text-fill-color: inherit;
+}
+
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
 .home-header .home-subtitle {
   font-size: 1.2rem;
   color: #444;
   margin-bottom: 32px;
   animation: fadeInUp 1.1s;
 }
+
+body.theme-dark .home-header .home-subtitle {
+  color: #aaa;
+}
+
 .home-cta {
   display: flex;
   flex-direction: column;
@@ -703,19 +716,7 @@ body.theme-dark .dash-center {
     gap: 8px !important;
     justify-content: center !important;
   }
-  .mobile-menu-btn {
-    font-size: 1.6rem !important;
-    padding: 4px 8px !important;
-    margin-left: 4px !important;
-    height: 40px !important;
-    width: 40px !important;
-    min-width: 40px !important;
-    min-height: 40px !important;
-    border-radius: 10px !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
 }
 
 @media (max-width: 480px) {

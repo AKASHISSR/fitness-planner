@@ -5,10 +5,15 @@ export default defineConfig({
   base: '/fitness-planner/',
   plugins: [react()],
   build: {
-    cssCodeSplit: false,
+    cssCodeSplit: true,
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
-        manualChunks: undefined
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'ui-vendor': ['framer-motion'],
+          'utils-vendor': ['jspdf', 'firebase/app', 'firebase/auth', 'firebase/firestore']
+        }
       }
     }
   }

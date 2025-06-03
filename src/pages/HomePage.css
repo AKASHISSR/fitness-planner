@@ -925,20 +925,31 @@
     min-height: 100vh;
   }
   
-  .hero-cta {
+  .hero-content {
+    padding: 20px 15px;
+    margin-top: 0;
     width: 100%;
-    max-width: 100%;
-    padding: 0 15px;
-    margin-top: 20px;
+  }
+  
+  .hero-title {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    padding: 0 10px;
   }
   
   .hero-subtitle {
     font-size: 1.1rem;
-    margin-bottom: 30px;
-    padding: 0 15px;
+    margin-bottom: 20px;
+    padding: 0 10px;
   }
   
-
+  .hero-cta {
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+    padding: 0 15px;
+    align-items: center;
+  }
   
   .cta-button {
     width: 100%;
@@ -1044,60 +1055,8 @@
     height: 30px;
   }
   
-  .hero-content {
-    padding: 30px 15px;
-    margin-top: 0;
-  }
-  
-  .hero-title {
-    font-size: 2rem;
-    margin-bottom: 20px;
-  }
-  
-  .hero-subtitle {
-    font-size: 1.1rem;
-    margin-bottom: 25px;
-  }
-  
-
-  
-  .cta-button.large {
-    padding: 12px 30px;
-    font-size: 1.1rem;
-    margin: 0 auto;
-    display: block;
-    width: auto;
-    min-width: 180px;
-  }
-  
-  .home-benefits,
-  .home-examples,
-  .home-cta-section {
-    padding: 70px 15px;
-  }
-  
-  .section-title {
-    font-size: 1.8rem;
-    margin-bottom: 40px;
-  }
-  
-  .section-title::after {
-    width: 80px;
-    height: 3px;
-    bottom: -10px;
-  }
-  
-  .benefits-grid,
-  .examples-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
-  }
-  
-  .benefit-card,
-  .example-card {
-    max-width: 400px;
-    margin-left: auto;
-    margin-right: auto;
+  .hero-scroll-indicator {
+    display: none;
   }
   
   .cta-content h2 {
