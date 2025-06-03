@@ -1,12 +1,38 @@
 /* Исправленные стили для мобильного меню */
 
-/* Бургер-кнопка - полностью переделанная */
+/* Бургер-кнопка - полностью переделанная с максимальной специфичностью */
+@media (max-width: 700px) {
+  .main-header nav .mobile-menu-btn,
+  .mobile-menu-btn {
+    display: flex !important;
+    position: fixed !important;
+    top: 15px !important;
+    right: 20px !important;
+    transform: none !important;
+    width: 48px !important;
+    height: 48px !important;
+    background: linear-gradient(135deg, #4fd165, #36b14e) !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    box-shadow: 0 4px 20px rgba(79, 209, 101, 0.3) !important;
+    z-index: 1002 !important;
+    padding: 0 !important;
+    outline: none !important;
+    overflow: hidden !important;
+    margin: 0 !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+}
+
 .mobile-menu-btn {
   display: none !important;
-  position: absolute !important;
-  top: 50% !important;
+  position: fixed !important;
+  top: 15px !important;
   right: 20px !important;
-  transform: translateY(-50%) !important;
+  transform: none !important;
   width: 48px !important;
   height: 48px !important;
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
@@ -35,7 +61,7 @@
 }
 
 .mobile-menu-btn:hover {
-  transform: translateY(-50%) scale(1.05) !important;
+  transform: scale(1.05) !important;
   box-shadow: 0 6px 25px rgba(79, 209, 101, 0.4) !important;
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
 }
@@ -45,7 +71,7 @@
 }
 
 .mobile-menu-btn:active {
-  transform: translateY(-50%) scale(0.95) !important;
+  transform: scale(0.95) !important;
   box-shadow: 0 2px 15px rgba(79, 209, 101, 0.3) !important;
 }
 
@@ -86,13 +112,13 @@
 .mobile-menu-btn.open {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
   box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3) !important;
-  transform: translateY(-50%) !important;
+  transform: none !important;
 }
 
 .mobile-menu-btn.open:hover {
   background: linear-gradient(135deg, #ee5a52, #dc4c3f) !important;
   box-shadow: 0 6px 25px rgba(255, 107, 107, 0.4) !important;
-  transform: translateY(-50%) scale(1.05) !important;
+  transform: scale(1.05) !important;
 }
 
 .mobile-menu-btn.open .burger-line:nth-child(1) {
@@ -424,17 +450,6 @@ body.theme-light .mobile-menu-logout {
 
 /* Мобильные стили */
 @media (max-width: 700px) {
-  .mobile-menu-btn {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    position: absolute !important;
-    top: 50% !important;
-    right: 20px !important;
-    transform: translateY(-50%) !important;
-    margin: 0 !important;
-  }
-  
   .desktop-nav-links {
     display: none !important;
   }
@@ -465,9 +480,9 @@ body.theme-light .mobile-menu-logout {
     width: 44px !important;
     height: 44px !important;
     right: 15px !important;
-    position: absolute !important;
-    top: 50% !important;
-    transform: translateY(-50%) !important;
+    position: fixed !important;
+    top: 12px !important;
+    transform: none !important;
   }
   
   .mobile-menu-btn .burger-icon {
