@@ -427,6 +427,11 @@ body.theme-light .mobile-menu-logout {
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
+    position: absolute !important;
+    top: 50% !important;
+    right: 20px !important;
+    transform: translateY(-50%) !important;
+    margin: 0 !important;
   }
   
   .desktop-nav-links {
@@ -459,6 +464,9 @@ body.theme-light .mobile-menu-logout {
     width: 44px !important;
     height: 44px !important;
     right: 15px !important;
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
   }
   
   .mobile-menu-btn .burger-icon {
