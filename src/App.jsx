@@ -16,11 +16,11 @@ import AdminPageV2 from './pages/AdminPageV2';
 import PayPageV2 from './pages/PayPageV2';
 import PricesPage from './pages/PricesPage';
 import LoadingScreen from './components/LoadingScreen';
-import './App.v3.css?v=20241220-009';
-import './styles/mobile-menu-fixed.css?v=20241220-009';
-import './styles/navigation-fixes.css?v=20241220-009';
-import './button-fixes.css?v=20241220-009';
-import './logo-fixes.css?v=20241220-009';
+import './App.v3.css?v=20241220-010';
+import './styles/mobile-menu-fixed.css?v=20241220-010';
+import './styles/navigation-fixes.css?v=20241220-010';
+import './button-fixes.css?v=20241220-010';
+import './logo-fixes.css?v=20241220-010';
 import { logVisit } from './firebase';
 
 export const ADMINS = [

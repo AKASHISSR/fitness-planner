@@ -370,123 +370,123 @@
   filter: drop-shadow(0 0 8px rgba(255, 99, 99, 0.4)) !important;
 }
 
-/* Темная тема - улучшенная */
-body.theme-dark .mobile-menu {
+/* Темная тема - улучшенная с максимальной специфичностью */
+html body.theme-dark .mobile-menu {
   background: linear-gradient(135deg, #1a1a1a, #2a2a2a) !important;
   border-left: 3px solid #4fd165 !important;
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.6) !important;
 }
 
-body.theme-dark .mobile-menu-header {
+html body.theme-dark .mobile-menu-header {
   border-bottom: 2px solid rgba(79, 209, 101, 0.4) !important;
 }
 
-body.theme-dark .mobile-menu-link {
+html body.theme-dark .mobile-menu-link {
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.12), rgba(79, 209, 101, 0.08)) !important;
   border: 2px solid rgba(79, 209, 101, 0.25) !important;
   color: #f5f5f5 !important;
 }
 
-body.theme-dark .mobile-menu-link:hover {
+html body.theme-dark .mobile-menu-link:hover {
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.25), rgba(79, 209, 101, 0.18)) !important;
   color: #ffffff !important;
   box-shadow: 0 4px 15px rgba(79, 209, 101, 0.3) !important;
 }
 
-body.theme-dark .mobile-menu-btn {
+html body.theme-dark .mobile-menu-btn {
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
   box-shadow: 0 4px 20px rgba(79, 209, 101, 0.4) !important;
 }
 
-body.theme-dark .mobile-menu-btn:hover {
+html body.theme-dark .mobile-menu-btn:hover {
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
   box-shadow: 0 6px 25px rgba(79, 209, 101, 0.5) !important;
 }
 
-body.theme-dark .mobile-menu-btn.open {
+html body.theme-dark .mobile-menu-btn.open {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
   box-shadow: 0 4px 20px rgba(255, 107, 107, 0.4) !important;
 }
 
-body.theme-dark .mobile-menu-logout {
+html body.theme-dark .mobile-menu-logout {
   background: linear-gradient(135deg, rgba(255, 99, 99, 0.18), rgba(255, 99, 99, 0.12)) !important;
   border: 2px solid rgba(255, 99, 99, 0.35) !important;
   color: #f5f5f5 !important;
 }
 
-body.theme-dark .mobile-menu-logout:hover {
+html body.theme-dark .mobile-menu-logout:hover {
   background: linear-gradient(135deg, rgba(255, 99, 99, 0.3), rgba(255, 99, 99, 0.2)) !important;
   box-shadow: 0 4px 15px rgba(255, 99, 99, 0.4) !important;
   color: #ffffff !important;
 }
 
-body.theme-dark .mobile-menu-info {
+html body.theme-dark .mobile-menu-info {
   border-top: 2px dashed rgba(79, 209, 101, 0.5) !important;
 }
 
-body.theme-dark .mobile-menu-phone-display {
+html body.theme-dark .mobile-menu-phone-display {
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.2), rgba(79, 209, 101, 0.15)) !important;
   color: #f5f5f5 !important;
   box-shadow: 0 4px 15px rgba(79, 209, 101, 0.3) !important;
   border: 2px solid rgba(79, 209, 101, 0.4) !important;
 }
 
-body.theme-dark .mobile-menu-logo {
+html body.theme-dark .mobile-menu-logo {
   color: #f5f5f5 !important;
 }
 
-/* Светлая тема - улучшенная */
-body.theme-light .mobile-menu {
+/* Светлая тема - улучшенная с максимальной специфичностью */
+html body.theme-light .mobile-menu {
   background: linear-gradient(135deg, #ffffff, #fafbfc) !important;
   border-left: 3px solid #4fd165 !important;
   box-shadow: -8px 0 32px rgba(0, 0, 0, 0.12) !important;
 }
 
-body.theme-light .mobile-menu-link {
+html body.theme-light .mobile-menu-link {
   color: #2c3e50 !important;
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.08), rgba(79, 209, 101, 0.05)) !important;
   border: 2px solid rgba(79, 209, 101, 0.15) !important;
 }
 
-body.theme-light .mobile-menu-link:hover {
+html body.theme-light .mobile-menu-link:hover {
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.15), rgba(79, 209, 101, 0.1)) !important;
   color: #1a252f !important;
   box-shadow: 0 4px 15px rgba(79, 209, 101, 0.2) !important;
 }
 
-body.theme-light .mobile-menu-logo {
+html body.theme-light .mobile-menu-logo {
   color: #2c3e50 !important;
 }
 
-body.theme-light .mobile-menu-phone-display {
+html body.theme-light .mobile-menu-phone-display {
   color: #2c3e50 !important;
   background: linear-gradient(135deg, rgba(79, 209, 101, 0.12), rgba(79, 209, 101, 0.08)) !important;
   border: 2px solid rgba(79, 209, 101, 0.25) !important;
 }
 
-body.theme-light .mobile-menu-logout {
+html body.theme-light .mobile-menu-logout {
   color: #2c3e50 !important;
   background: linear-gradient(135deg, rgba(255, 99, 99, 0.12), rgba(255, 99, 99, 0.08)) !important;
   border: 2px solid rgba(255, 99, 99, 0.25) !important;
 }
 
-body.theme-light .mobile-menu-logout:hover {
+html body.theme-light .mobile-menu-logout:hover {
   background: linear-gradient(135deg, rgba(255, 99, 99, 0.2), rgba(255, 99, 99, 0.15)) !important;
   color: #1a252f !important;
   box-shadow: 0 4px 15px rgba(255, 99, 99, 0.25) !important;
 }
 
-body.theme-light .mobile-menu-btn {
+html body.theme-light .mobile-menu-btn {
   background: linear-gradient(135deg, #4fd165, #36b14e) !important;
   box-shadow: 0 4px 20px rgba(79, 209, 101, 0.25) !important;
 }
 
-body.theme-light .mobile-menu-btn:hover {
+html body.theme-light .mobile-menu-btn:hover {
   background: linear-gradient(135deg, #36b14e, #2a9940) !important;
   box-shadow: 0 6px 25px rgba(79, 209, 101, 0.35) !important;
 }
 
-body.theme-light .mobile-menu-btn.open {
+html body.theme-light .mobile-menu-btn.open {
   background: linear-gradient(135deg, #ff6b6b, #ee5a52) !important;
   box-shadow: 0 4px 20px rgba(255, 107, 107, 0.3) !important;
 }
