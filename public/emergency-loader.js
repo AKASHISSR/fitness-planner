@@ -2,7 +2,7 @@
 (function() {
   // Функция для добавления временной метки к URL
   function addTimestamp(url) {
-    return url + '?v=3.0.0&t=' + new Date().getTime();
+    return url + '?t=' + new Date().getTime();
   }
 
   // Функция для загрузки CSS файла
@@ -18,7 +18,7 @@
   function addInlineStyles() {
     var style = document.createElement('style');
     style.textContent = `
-      /* Встроенные стили для мобильной версии - версия 3.0.0 */
+      /* Встроенные стили для мобильной версии */
       @media (max-width: 768px) {
         /* Мобильное меню */
         .mobile-menu-btn {
@@ -35,21 +35,6 @@
         .mobile-menu-btn span::after {
           background: white !important;
           height: 3px !important;
-        }
-        
-        /* Индикатор версии */
-        body::after {
-          content: "v3.0.0" !important;
-          position: fixed !important;
-          bottom: 10px !important;
-          right: 10px !important;
-          background: #4fd165 !important;
-          color: white !important;
-          padding: 5px 10px !important;
-          border-radius: 20px !important;
-          font-size: 12px !important;
-          z-index: 9999 !important;
-          box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2) !important;
         }
       }
     `;
