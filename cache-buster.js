@@ -65,4 +65,24 @@
     }
   });
   
+  // Дополнительная принудительная очистка кеша
+  if (currentVersion !== CACHE_VERSION) {
+    // Очищаем кеш браузера
+    if ('caches' in window) {
+      caches.keys().then(function(names) {
+        for (let name of names) {
+          caches.delete(name);
+        }
+      });
+    }
+    
+    // Принудительная перезагрузка через 1 секунду
+    setTimeout(() => {
+      if (currentVersion && currentVersion !== CACHE_VERSION) {
+        console.log('🔄 Принудительная перезагрузка для применения обновлений...');
+        window.location.reload(true);
+      }
+    }, 1000);
+  }
+  
 })(); 
