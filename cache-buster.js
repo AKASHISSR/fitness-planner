@@ -2,14 +2,14 @@
 (function() {
   'use strict';
   
-  const CACHE_VERSION = '20241220-059';
+  const CACHE_VERSION = '20241220-060';
   const STORAGE_KEY = 'fitgenius_cache_version';
   
   // Проверяем версию кеша
   const currentVersion = localStorage.getItem(STORAGE_KEY);
   
   if (currentVersion !== CACHE_VERSION) {
-    console.log('🔄 Обновление кеша FitGenius...');
+    console.log('🔄 Обновление кеша FitGenius...', 'Текущая версия:', currentVersion, 'Новая версия:', CACHE_VERSION);
     
     // Очищаем все виды кеша
     try {
@@ -53,6 +53,12 @@
     } catch (error) {
       console.warn('⚠️ Ошибка при очистке кеша:', error);
     }
+    
+    // Принудительная перезагрузка страницы
+    console.log('🔄 Принудительная перезагрузка для применения обновлений...');
+    setTimeout(() => {
+      window.location.reload(true);
+    }, 500);
   }
   
   // Принудительное обновление CSS
@@ -66,23 +72,12 @@
   });
   
   // Дополнительная принудительная очистка кеша
-  if (currentVersion !== CACHE_VERSION) {
-    // Очищаем кеш браузера
-    if ('caches' in window) {
-      caches.keys().then(function(names) {
-        for (let name of names) {
-          caches.delete(name);
-        }
-      });
-    }
-    
-    // Принудительная перезагрузка через 1 секунду
-    setTimeout(() => {
-      if (currentVersion && currentVersion !== CACHE_VERSION) {
-        console.log('🔄 Принудительная перезагрузка для применения обновлений...');
-        window.location.reload(true);
+  if ('caches' in window) {
+    caches.keys().then(function(names) {
+      for (let name of names) {
+        caches.delete(name);
       }
-    }, 1000);
+    });
   }
   
 })(); 
