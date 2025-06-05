@@ -2,7 +2,7 @@
 (function() {
   'use strict';
   
-  const CACHE_VERSION = '20241220-052';
+  const CACHE_VERSION = '20241220-053';
   const STORAGE_KEY = 'fitgenius_cache_version';
   
   // Проверяем версию кеша
