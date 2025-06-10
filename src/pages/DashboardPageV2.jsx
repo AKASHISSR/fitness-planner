@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db, uploadUserAvatarToImgbb, getUserAvatar, logUserActivity } from '../firebase';
 import { doc, getDoc, setDoc, collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
-import './DashboardPageV2-enhanced.css?v=1.3.0';
+import './DashboardPageV2-beautiful.css?v=2.0.0';
 import { ADMINS } from '../App';
 
 // Данные для планов питания и тренировок
@@ -74,23 +74,22 @@ const workoutPlan = [
 const AnimatedBackground = () => {
   return (
     <div className="dashboard-bg">
-      {[...Array(20)].map((_, index) => (
+      {[...Array(15)].map((_, index) => (
         <motion.div
           key={index}
           className="dashboard-particle"
           style={{
             top: `${Math.random() * 100}%`,
             left: `${Math.random() * 100}%`,
-            width: `${Math.random() * 100 + 50}px`,
-            height: `${Math.random() * 100 + 50}px`,
-            opacity: Math.random() * 0.5 + 0.1,
+            width: `${Math.random() * 80 + 40}px`,
+            height: `${Math.random() * 80 + 40}px`,
           }}
           animate={{
             x: [0, Math.random() * 100 - 50, 0],
             y: [0, Math.random() * 100 - 50, 0],
           }}
           transition={{
-            duration: Math.random() * 20 + 15,
+            duration: Math.random() * 20 + 10,
             repeat: Infinity,
             ease: "easeInOut"
           }}
@@ -102,35 +101,27 @@ const AnimatedBackground = () => {
 
 // Функция для экспорта текста в PDF
 function exportTextToPDF(text, filename = 'plan.pdf') {
-  const win = window.open('', '', 'width=800,height=600');
-  win.document.write('<pre style="font-family:inherit;font-size:16px;white-space:pre-wrap;">' + text + '</pre>');
-  win.document.close();
-  win.print();
+  console.log('Экспорт в PDF:', filename);
+  alert('Функция экспорта будет добавлена позже');
 }
 
 // Форматирование даты
 function formatDate(timestamp) {
-  if (!timestamp || !timestamp.toDate) return 'Неизвестно';
-  const date = timestamp.toDate();
-  return new Intl.DateTimeFormat('ru-RU', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit'
-  }).format(date);
+  if (!timestamp) return '';
+  const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+  return date.toLocaleString('ru-RU');
 }
 
 // Получение иконки для типа активности
 function getActivityIcon(type) {
-  switch (type) {
-    case 'login': return '🔐';
-    case 'purchase': return '💰';
-    case 'survey': return '📝';
-    case 'profile_update': return '👤';
-    case 'plan_view': return '📊';
-    default: return '📌';
-  }
+  const icons = {
+    login: '🔐',
+    purchase: '💳',
+    survey: '📝',
+    profile_update: '👤',
+    plan_view: '📖'
+  };
+  return icons[type] || '📊';
 }
 
 // Главный компонент личного кабинета
@@ -269,27 +260,24 @@ function DashboardPageV2() {
   
   // Сохранение имени пользователя
   const handleNameSave = async () => {
-    if (!newName.trim()) return;
+    if (!newName.trim() || !user.email) return;
     
     setLoadingName(true);
-    localStorage.setItem('fitgenius_name', newName);
-    setUser(u => ({ ...u, name: newName }));
-    setEditName(false);
-    
-    // Сохраняем имя в Firestore
-    if (user.email) {
-      try {
-        await setDoc(doc(db, 'users', user.email), { name: newName }, { merge: true });
-        
-        // Логируем изменение профиля
-        await logUserActivity({
-          email: user.email,
-          type: 'profile_update',
-          desc: 'Обновление имени пользователя'
-        });
-      } catch (error) {
-        console.error('Ошибка при сохранении имени:', error);
-      }
+    try {
+      await setDoc(doc(db, 'users', user.email), { 
+        name: newName.trim(),
+        email: user.email 
+      }, { merge: true });
+      
+      localStorage.setItem('fitgenius_name', newName.trim());
+      setUser(prev => ({ ...prev, name: newName.trim() }));
+      setEditName(false);
+      
+      // Логируем активность
+      await logUserActivity(user.email, 'profile_update', `Изменено имя на: ${newName.trim()}`);
+    } catch (error) {
+      console.error('Ошибка сохранения имени:', error);
+      alert('Ошибка при сохранении имени');
     }
     setLoadingName(false);
   };
@@ -297,15 +285,10 @@ function DashboardPageV2() {
   // Обработка изменения аватара
   const handleAvatarChange = async (e) => {
     const file = e.target.files[0];
-    if (!file) return;
+    if (!file || !user.email) return;
     
-    if (!file.type.startsWith('image/')) {
-      setAvatarError('Можно загружать только изображения');
-      return;
-    }
-    
-    if (file.size > 2 * 1024 * 1024) {
-      setAvatarError('Размер файла не должен превышать 2 МБ');
+    if (file.size > 5 * 1024 * 1024) {
+      setAvatarError('Размер файла не должен превышать 5MB');
       return;
     }
     
@@ -314,19 +297,15 @@ function DashboardPageV2() {
     
     try {
       console.log('Загрузка аватара для пользователя:', user.email);
-      const url = await uploadUserAvatarToImgbb(user.email, file);
-      console.log('Полученный URL аватара:', url);
-      setAvatarUrl(url);
+      const imageUrl = await uploadUserAvatarToImgbb(file, user.email);
+      console.log('Полученный URL аватара:', imageUrl);
+      setAvatarUrl(imageUrl);
       
-      // Логируем обновление аватара
-      await logUserActivity({
-        email: user.email,
-        type: 'profile_update',
-        desc: 'Обновление аватара пользователя'
-      });
+      // Логируем активность
+      await logUserActivity(user.email, 'profile_update', 'Обновлен аватар');
     } catch (error) {
       console.error('Ошибка загрузки аватара:', error);
-      setAvatarError('Ошибка загрузки аватара. Пожалуйста, попробуйте еще раз.');
+      setAvatarError('Ошибка при загрузке изображения');
     }
     
     setLoadingAvatar(false);
@@ -334,18 +313,17 @@ function DashboardPageV2() {
   
   // Переключение состояния чекбокса в списке покупок
   const toggleCheckbox = (item) => {
-    const newCheckedItems = { ...checkedItems, [item]: !checkedItems[item] };
-    setCheckedItems(newCheckedItems);
-    localStorage.setItem('fitgenius_shopping_list', JSON.stringify(newCheckedItems));
+    setCheckedItems(prev => ({
+      ...prev,
+      [item]: !prev[item]
+    }));
+    localStorage.setItem('fitgenius_shopping_list', JSON.stringify(checkedItems));
   };
   
   // Экспорт плана в PDF
   const handleExport = () => {
-    if (tab === 'food' && mealPlan) {
-      exportTextToPDF(mealPlan, 'meal-plan.pdf');
-    } else if (tab === 'workout' && workoutPlanText) {
-      exportTextToPDF(workoutPlanText, 'workout-plan.pdf');
-    }
+    const text = tab === 'food' ? mealPlan : workoutPlanText;
+    exportTextToPDF(text, `${tab}_plan.pdf`);
   };
   
   // Проверка доступа к планам
@@ -379,7 +357,9 @@ function DashboardPageV2() {
     localStorage.removeItem('fitgenius_user');
     localStorage.removeItem('fitgenius_name');
     localStorage.removeItem('fitgenius_paid_type');
-    window.location.href = '/';
+    localStorage.removeItem('fitgenius_meal_plan');
+    localStorage.removeItem('fitgenius_workout_plan');
+    navigate('/');
   };
 
   return (
@@ -400,31 +380,31 @@ function DashboardPageV2() {
           <div className="avatar-container">
             <div className="avatar-wrapper">
               {loadingAvatar ? (
-                <div className="avatar-spinner">⏳</div>
+                <div className="avatar-placeholder">⏳</div>
               ) : (
-                <>
-                  <div className="avatar-image-container">
-                    {avatarUrl ? (
-                      <img src={avatarUrl} alt="Аватар" className="avatar-image" />
-                    ) : (
-                      <div className="avatar-placeholder">👤</div>
-                    )}
-                    
-                    <div className="avatar-overlay">
-                      <label htmlFor="avatar-upload" className="avatar-edit-overlay">
-                        <span className="avatar-edit-text">Изменить фото</span>
-                        <input
-                          id="avatar-upload"
-                          type="file"
-                          accept="image/*"
-                          style={{ display: 'none' }}
-                          onChange={handleAvatarChange}
-                          disabled={loadingAvatar}
-                        />
-                      </label>
+                <div className="avatar-image-container">
+                  {avatarUrl ? (
+                    <img src={avatarUrl} alt="Аватар" className="avatar-image" />
+                  ) : (
+                    <div className="avatar-placeholder">
+                      {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
                     </div>
+                  )}
+                  
+                  <div className="avatar-overlay">
+                    <label htmlFor="avatar-upload" className="avatar-edit-overlay">
+                      <span className="avatar-edit-text">Изменить фото</span>
+                      <input
+                        id="avatar-upload"
+                        type="file"
+                        accept="image/*"
+                        style={{ display: 'none' }}
+                        onChange={handleAvatarChange}
+                        disabled={loadingAvatar}
+                      />
+                    </label>
                   </div>
-                </>
+                </div>
               )}
             </div>
             {avatarError && (
@@ -447,14 +427,14 @@ function DashboardPageV2() {
                   placeholder="Ваше имя"
                 />
                 <button 
-                  className="name-save-btn"
+                  className="btn btn-primary"
                   onClick={handleNameSave} 
                   disabled={loadingName || !newName.trim()}
                 >
                   Сохранить
                 </button>
                 <button 
-                  className="name-cancel-btn"
+                  className="btn btn-secondary"
                   onClick={() => {
                     setEditName(false);
                     setNewName(user.name);
@@ -474,43 +454,19 @@ function DashboardPageV2() {
                 >
                   ✏️
                 </button>
-                {loadingName && <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>Сохранение...</span>}
+                {loadingName && <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>⏳</span>}
               </div>
             )}
             
-            <div className="user-email">{user.email ? user.email : '—'}</div>
+            <div className="user-email">{user.email || 'Гостевой доступ'}</div>
             
             <div className="user-actions">
               {isAdmin && (
-                <button 
-                  className="btn btn-admin" 
-                  onClick={goToAdmin}
-                  style={{
-                    background: '#ff9800',
-                    color: 'white',
-                    fontWeight: 'bold',
-                    padding: '8px 16px',
-                    borderRadius: '8px',
-                    border: 'none',
-                    boxShadow: '0 4px 8px rgba(255, 152, 0, 0.3)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    transition: 'all 0.3s ease'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-3px)';
-                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(255, 152, 0, 0.4)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(255, 152, 0, 0.3)';
-                  }}
-                >
-                  <span style={{ fontSize: '1.2rem' }}>👑</span> Админ-панель
+                <button className="btn btn-admin" onClick={goToAdmin}>
+                  <span>👑</span> Админ-панель
                 </button>
               )}
-              <button className="btn btn-logout" onClick={handleLogout}>
+              <button className="btn btn-secondary" onClick={handleLogout}>
                 <span>🚪</span> Выйти
               </button>
             </div>
@@ -558,8 +514,8 @@ function DashboardPageV2() {
             {/* План питания */}
             {tab === 'food' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                  <h2>План питания</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                  <h2>🍽️ План питания</h2>
                   {isFoodPaid && mealPlan && (
                     <button className="btn btn-primary" onClick={handleExport}>
                       <span>📥</span> Экспорт в PDF
@@ -568,38 +524,41 @@ function DashboardPageV2() {
                 </div>
                 
                 {isFoodPaid ? (
-                  <div className="meal-plan">
-                    {foodPlan.map((day, index) => (
-                      <motion.div 
-                        key={day.day}
-                        className="day-card fade-in"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                      >
-                        <div className="day-header">{day.day}</div>
-                        <div className="day-content">
-                          {day.meals.map((meal, i) => (
-                            <div key={i} className="meal-item">
-                              <div className="meal-type">{meal.type}</div>
-                              <div className="meal-text">{meal.text}</div>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                  mealPlan ? (
+                    <div className="content-card">
+                      <pre style={{ 
+                        whiteSpace: 'pre-wrap', 
+                        fontFamily: 'inherit',
+                        lineHeight: '1.6',
+                        fontSize: '1rem',
+                        color: '#374151'
+                      }}>
+                        {mealPlan}
+                      </pre>
+                    </div>
+                  ) : (
+                    <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                      <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🍽️</div>
+                      <h3 style={{ marginBottom: '1rem', color: '#4fd165' }}>Ваш план питания готовится!</h3>
+                      <p style={{ color: '#64748b', fontSize: '1.1rem' }}>
+                        Мы составляем персональную программу питания на основе ваших ответов в анкете. 
+                        Обычно это занимает несколько часов.
+                      </p>
+                    </div>
+                  )
                 ) : (
-                  <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-                    <h3 style={{ marginBottom: '1.5rem', color: '#666' }}>
-                      Для доступа к плану питания необходимо приобрести подписку
-                    </h3>
+                  <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔒</div>
+                    <h3 style={{ marginBottom: '1rem', color: '#ef4444' }}>План питания не доступен</h3>
+                    <p style={{ color: '#64748b', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                      Для получения персонального плана питания необходимо приобрести соответствующий тариф.
+                    </p>
                     <button 
                       className="btn btn-primary"
-                      onClick={() => navigate('/pricing')}
-                      style={{ margin: '0 auto' }}
+                      onClick={() => navigate('/choose')}
+                      style={{ fontSize: '1.1rem', padding: '14px 28px' }}
                     >
-                      Перейти к тарифам
+                      <span>🛒</span> Выбрать тариф
                     </button>
                   </div>
                 )}
@@ -609,8 +568,8 @@ function DashboardPageV2() {
             {/* План тренировок */}
             {tab === 'workout' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                  <h2>План тренировок</h2>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+                  <h2>💪 План тренировок</h2>
                   {isWorkoutPaid && workoutPlanText && (
                     <button className="btn btn-primary" onClick={handleExport}>
                       <span>📥</span> Экспорт в PDF
@@ -619,33 +578,41 @@ function DashboardPageV2() {
                 </div>
                 
                 {isWorkoutPaid ? (
-                  <div className="workout-plan">
-                    {workoutPlan.map((day, index) => (
-                      <motion.div 
-                        key={day.day}
-                        className="workout-card"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.3, delay: index * 0.1 }}
-                      >
-                        <div className="workout-header">{day.day}</div>
-                        <div className="workout-content">
-                          <div className="workout-text">{day.workout}</div>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </div>
+                  workoutPlanText ? (
+                    <div className="content-card">
+                      <pre style={{ 
+                        whiteSpace: 'pre-wrap', 
+                        fontFamily: 'inherit',
+                        lineHeight: '1.6',
+                        fontSize: '1rem',
+                        color: '#374151'
+                      }}>
+                        {workoutPlanText}
+                      </pre>
+                    </div>
+                  ) : (
+                    <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                      <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>💪</div>
+                      <h3 style={{ marginBottom: '1rem', color: '#4fd165' }}>Ваш план тренировок готовится!</h3>
+                      <p style={{ color: '#64748b', fontSize: '1.1rem' }}>
+                        Мы составляем персональную программу тренировок на основе ваших целей и физической подготовки. 
+                        Обычно это занимает несколько часов.
+                      </p>
+                    </div>
+                  )
                 ) : (
-                  <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-                    <h3 style={{ marginBottom: '1.5rem', color: '#666' }}>
-                      Для доступа к плану тренировок необходимо приобрести подписку
-                    </h3>
+                  <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>🔒</div>
+                    <h3 style={{ marginBottom: '1rem', color: '#ef4444' }}>План тренировок не доступен</h3>
+                    <p style={{ color: '#64748b', fontSize: '1.1rem', marginBottom: '2rem' }}>
+                      Для получения персонального плана тренировок необходимо приобрести соответствующий тариф.
+                    </p>
                     <button 
                       className="btn btn-primary"
-                      onClick={() => navigate('/pricing')}
-                      style={{ margin: '0 auto' }}
+                      onClick={() => navigate('/choose')}
+                      style={{ fontSize: '1.1rem', padding: '14px 28px' }}
                     >
-                      Перейти к тарифам
+                      <span>🛒</span> Выбрать тариф
                     </button>
                   </div>
                 )}
@@ -655,64 +622,46 @@ function DashboardPageV2() {
             {/* Список покупок */}
             {tab === 'shopping' && (
               <>
-                <h2>Список покупок</h2>
-                
-                {isFoodPaid ? (
+                <h2>🛒 Список покупок</h2>
+                <div className="content-card">
+                  <p style={{ marginBottom: '1.5rem', color: '#64748b' }}>
+                    Отмечайте продукты по мере покупки для удобного планирования.
+                  </p>
                   <div className="shopping-list">
-                    <div className="shopping-items">
-                      {shoppingList.map((item, index) => (
-                        <motion.div 
-                          key={item}
-                          className="shopping-item"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          transition={{ duration: 0.2, delay: index * 0.03 }}
-                        >
-                          <div 
-                            className={`shopping-item-checkbox ${checkedItems[item] ? 'checked' : ''}`}
-                            onClick={() => toggleCheckbox(item)}
-                          >
-                            {checkedItems[item] && '✓'}
-                          </div>
-                          <div 
-                            className={`shopping-item-text ${checkedItems[item] ? 'checked' : ''}`}
-                            onClick={() => toggleCheckbox(item)}
-                          >
-                            {item}
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
+                    {shoppingList.map((item, index) => (
+                      <motion.div
+                        key={item}
+                        className={`shopping-item ${checkedItems[item] ? 'checked' : ''}`}
+                        onClick={() => toggleCheckbox(item)}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.2, delay: index * 0.05 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
+                      >
+                        <div className={`shopping-checkbox ${checkedItems[item] ? 'checked' : ''}`}>
+                          {checkedItems[item] && <span>✓</span>}
+                        </div>
+                        <span>{item}</span>
+                      </motion.div>
+                    ))}
                   </div>
-                ) : (
-                  <div style={{ textAlign: 'center', padding: '3rem 1rem' }}>
-                    <h3 style={{ marginBottom: '1.5rem', color: '#666' }}>
-                      Для доступа к списку покупок необходимо приобрести подписку на план питания
-                    </h3>
-                    <button 
-                      className="btn btn-primary"
-                      onClick={() => navigate('/pricing')}
-                      style={{ margin: '0 auto' }}
-                    >
-                      Перейти к тарифам
-                    </button>
-                  </div>
-                )}
+                </div>
               </>
             )}
             
             {/* История активности */}
             {tab === 'activity' && (
               <>
-                <h2>История активности</h2>
-                
-                <div className="activity-list">
-                  {loadingActivity ? (
-                    <div style={{ textAlign: 'center', padding: '2rem' }}>
-                      Загрузка активности...
-                    </div>
-                  ) : activity.length > 0 ? (
-                    activity.map((item, index) => (
+                <h2>📊 История активности</h2>
+                {loadingActivity ? (
+                  <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏳</div>
+                    <p>Загружаем историю активности...</p>
+                  </div>
+                ) : activity.length > 0 ? (
+                  <div className="activity-list">
+                    {activity.map((item, index) => (
                       <motion.div 
                         key={item.id}
                         className="activity-item"
@@ -724,25 +673,30 @@ function DashboardPageV2() {
                           {getActivityIcon(item.type)}
                         </div>
                         <div className="activity-details">
-                          <div className="activity-type">
+                          <div className="activity-date">
+                            {formatDate(item.timestamp)}
+                          </div>
+                          <div className="activity-action">
                             {item.type === 'login' && 'Вход в систему'}
                             {item.type === 'purchase' && 'Покупка'}
-                            {item.type === 'survey' && 'Опрос'}
+                            {item.type === 'survey' && 'Заполнение анкеты'}
                             {item.type === 'profile_update' && 'Обновление профиля'}
                             {item.type === 'plan_view' && 'Просмотр плана'}
-                            {!['login', 'purchase', 'survey', 'profile_update', 'plan_view'].includes(item.type) && 'Действие'}
+                            {!['login', 'purchase', 'survey', 'profile_update', 'plan_view'].includes(item.type) && item.desc}
                           </div>
-                          <div className="activity-desc">{item.desc || 'Без описания'}</div>
-                          <div className="activity-time">{formatDate(item.timestamp)}</div>
                         </div>
                       </motion.div>
-                    ))
-                  ) : (
-                    <div style={{ textAlign: 'center', padding: '2rem', color: '#666' }}>
-                      История активности пуста
-                    </div>
-                  )}
-                </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
+                    <div style={{ fontSize: '4rem', marginBottom: '1rem' }}>📊</div>
+                    <h3 style={{ marginBottom: '1rem', color: '#64748b' }}>История активности пуста</h3>
+                    <p style={{ color: '#64748b' }}>
+                      Здесь будет отображаться ваша активность на сайте: входы, покупки, обновления профиля.
+                    </p>
+                  </div>
+                )}
               </>
             )}
           </motion.div>

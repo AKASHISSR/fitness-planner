@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css?v=1.0.5'
 import './mobile-optimizations.css?v=1.5.0'
+import './header-offset.css?v=1.0.0'
 import { forceCacheRefresh, clearServiceWorkerCache, refreshResources } from './utils/cacheControl.js'
 
 // Функция для принудительного обновления кеша

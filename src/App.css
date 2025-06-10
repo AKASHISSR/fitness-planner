@@ -22,6 +22,17 @@ body.theme-dark {
   color: #f7f8fa;
 }
 
+/* Универсальный отступ от фиксированного хедера */
+.page-content {
+  padding-top: 100px !important;
+}
+
+@media (max-width: 700px) {
+  .page-content {
+    padding-top: 110px !important;
+  }
+}
+
 /* --- Шапка --- */
 .main-header {
   position: fixed;
@@ -1216,6 +1227,7 @@ body.theme-dark .pay-center {
   position: relative;
   overflow: hidden;
   z-index: 0;
+  padding-top: 100px !important;
   background: linear-gradient(270deg, #f7f8fa, #e6f7ea, #b2f7c3, #4fd165, #e6f7ea, #f7f8fa);
   background-size: 400% 400%;
   animation: animatedGradientLight 18s ease-in-out infinite;
@@ -1240,6 +1252,7 @@ body.theme-dark .dash-bg, body.theme-dark .questionnaire-bg {
   .dash-bg, .questionnaire-bg {
     min-height: 100vh;
     width: 100vw;
+    padding-top: 110px !important;
     background-size: 400% 400%;
   }
 }
@@ -1248,6 +1261,7 @@ body.theme-dark .dash-bg, body.theme-dark .questionnaire-bg {
 .home-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: linear-gradient(120deg, #e6f7ea, #f7f8fa, #b2f7c3, #4fd165);
   background-size: 300% 300%;
   animation: homeGradient 16s ease-in-out infinite;
@@ -1272,6 +1286,7 @@ body.theme-dark .home-bg {
 .pay-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: linear-gradient(135deg, #fffbe6, #ffe7a3, #f7f8fa, #4fd165);
   background-size: 300% 300%;
   animation: payGradient 18s ease-in-out infinite;
@@ -1296,6 +1311,7 @@ body.theme-dark .pay-bg {
 .reviews-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: linear-gradient(120deg, #e6f7fa, #b3e6ff, #f7f8fa);
   background-size: 300% 300%;
   animation: reviewsGradient 20s ease-in-out infinite;
@@ -1320,6 +1336,7 @@ body.theme-dark .reviews-bg {
 .faq-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: radial-gradient(circle at 20% 40%, #e6f7ea 0%, #f7f8fa 60%, #b2f7c3 100%);
   background-size: 200% 200%;
   animation: faqGradient 22s ease-in-out infinite;
@@ -1344,6 +1361,7 @@ body.theme-dark .faq-bg {
 .blog-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: linear-gradient(120deg, #f7f8fa, #e6f7fa, #c6e6c3);
   background-size: 300% 300%;
   animation: blogGradient 24s ease-in-out infinite;
@@ -1368,6 +1386,7 @@ body.theme-dark .blog-bg {
 .about-bg {
   min-height: 100vh;
   width: 100vw;
+  padding-top: 100px !important;
   background: linear-gradient(135deg, #f7f8fa, #e6f7ea, #ffe7a3);
   background-size: 300% 300%;
   animation: aboutGradient 26s ease-in-out infinite;
@@ -1393,7 +1412,11 @@ body.theme-dark .about-bg {
   .home-bg, .pay-bg, .reviews-bg, .faq-bg, .blog-bg, .about-bg {
     min-height: 100vh;
     width: 100vw;
+    padding-top: 110px !important;
     background-size: 400% 400%;
+  }
+  .dash-bg, .questionnaire-bg {
+    padding-top: 110px !important;
   }
 }
 

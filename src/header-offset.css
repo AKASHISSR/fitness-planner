@@ -1,0 +1,57 @@
+/* ПРИОРИТЕТНЫЕ ОТСТУПЫ ОТ ФИКСИРОВАННОГО ХЕДЕРА */
+/* Этот файл должен загружаться последним для перекрытия всех других стилей */
+
+html body .home-bg,
+html body .pay-bg,
+html body .reviews-bg,
+html body .faq-bg,
+html body .blog-bg,
+html body .about-bg,
+html body .dash-bg,
+html body .questionnaire-bg,
+html body .dashboard-container {
+  padding-top: 100px !important;
+  margin-top: 0 !important;
+}
+
+/* Мобильная версия */
+@media (max-width: 700px) {
+  html body .home-bg,
+  html body .pay-bg,
+  html body .reviews-bg,
+  html body .faq-bg,
+  html body .blog-bg,
+  html body .about-bg,
+  html body .dash-bg,
+  html body .questionnaire-bg,
+  html body .dashboard-container {
+    padding-top: 110px !important;
+    margin-top: 0 !important;
+  }
+}
+
+/* Дополнительные селекторы для всех возможных контейнеров */
+body div[class*="-bg"],
+body section[class*="-bg"],
+body main[class*="-bg"] {
+  padding-top: 100px !important;
+}
+
+@media (max-width: 700px) {
+  body div[class*="-bg"],
+  body section[class*="-bg"],
+  body main[class*="-bg"] {
+    padding-top: 110px !important;
+  }
+}
+
+/* Универсальный класс для любого контента */
+.header-offset {
+  padding-top: 100px !important;
+}
+
+@media (max-width: 700px) {
+  .header-offset {
+    padding-top: 110px !important;
+  }
+} 

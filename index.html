@@ -8,11 +8,42 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <link rel="stylesheet" href="/emergency-styles.css" />
     <link rel="stylesheet" href="/mobile-fixes.css" />
+    <link rel="stylesheet" href="/src/header-offset.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FitGenius</title>
     <script type="module" src="/emergency-loader.js"></script>
     <script type="module" src="/cache-buster.js"></script>
     <style>
+      /* КРИТИЧЕСКИЕ ОТСТУПЫ ОТ ХЕДЕРА - МАКСИМАЛЬНЫЙ ПРИОРИТЕТ */
+      html body .home-bg,
+      html body .pay-bg, 
+      html body .reviews-bg,
+      html body .faq-bg,
+      html body .blog-bg,
+      html body .about-bg,
+      html body .dash-bg,
+      html body .questionnaire-bg,
+      html body .dashboard-container {
+        padding-top: 100px !important;
+        margin-top: 0 !important;
+        box-sizing: border-box !important;
+      }
+      
+      @media (max-width: 700px) {
+        html body .home-bg,
+        html body .pay-bg, 
+        html body .reviews-bg,
+        html body .faq-bg,
+        html body .blog-bg,
+        html body .about-bg,
+        html body .dash-bg,
+        html body .questionnaire-bg,
+        html body .dashboard-container {
+          padding-top: 110px !important;
+          margin-top: 0 !important;
+        }
+      }
+      
       /* Встроенные стили для мобильной оптимизации */
       @media (max-width: 768px) {
         /* Мобильное меню */

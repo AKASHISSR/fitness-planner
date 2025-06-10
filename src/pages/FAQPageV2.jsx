@@ -35,7 +35,7 @@ const FAQItem = ({ question, answer, index }) => {
   
   return (
     <motion.div 
-      className="faq-item"
+      className={`faq-item ${isOpen ? 'active' : ''}`}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1, duration: 0.5 }}
@@ -43,15 +43,33 @@ const FAQItem = ({ question, answer, index }) => {
     >
       <div className="faq-question" onClick={toggleOpen}>
         <div className="faq-question-text">{question}</div>
-        <div className={`faq-icon ${isOpen ? 'open' : ''}`}>+</div>
+        <motion.div 
+          className="faq-icon"
+          animate={{ rotate: isOpen ? 45 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          +
+        </motion.div>
       </div>
-      <div className={`faq-answer ${isOpen ? 'open' : ''}`}>
-        {typeof answer === 'string' ? (
-          <p>{answer}</p>
-        ) : (
-          answer
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div 
+            className="faq-answer"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            <div className="faq-answer-content">
+              {typeof answer === 'string' ? (
+                <p>{answer}</p>
+              ) : (
+                answer
+              )}
+            </div>
+          </motion.div>
         )}
-      </div>
+      </AnimatePresence>
     </motion.div>
   );
 };
@@ -198,47 +216,62 @@ function FAQPageV2() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.5 }}
         >
-          <h2 className="feedback-heading">Остались вопросы?</h2>
-          <p className="feedback-subheading">Напишите нам, и мы с радостью ответим на все ваши вопросы</p>
+          <div className="feedback-header">
+            <div className="feedback-icon">💬</div>
+            <h2 className="feedback-heading">Остались вопросы?</h2>
+            <p className="feedback-subheading">Напишите нам, и мы с радостью ответим на все ваши вопросы в течение 24 часов</p>
+          </div>
           
           <form className="feedback-form" onSubmit={handleSubmit}>
-            <div className="form-group">
-              <label htmlFor="name" className="form-label">Ваше имя</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Введите ваше имя"
-                value={form.name}
-                onChange={handleChange}
-                className="feedback-input"
-                required
-              />
+            <div className="form-row">
+              <div className="form-group">
+                <label htmlFor="name" className="form-label">
+                  <span className="label-icon">👤</span>
+                  Ваше имя
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  placeholder="Как к вам обращаться?"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="feedback-input"
+                  required
+                />
+              </div>
+              
+              <div className="form-group">
+                <label htmlFor="email" className="form-label">
+                  <span className="label-icon">📧</span>
+                  Email для ответа
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="your@email.com"
+                  value={form.email}
+                  onChange={handleChange}
+                  className="feedback-input"
+                  required
+                />
+              </div>
             </div>
             
             <div className="form-group">
-              <label htmlFor="email" className="form-label">Email для ответа</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                placeholder="Введите ваш email"
-                value={form.email}
-                onChange={handleChange}
-                className="feedback-input"
-                required
-              />
-            </div>
-            
-            <div className="form-group">
-              <label htmlFor="message" className="form-label">Ваш вопрос или сообщение</label>
+              <label htmlFor="message" className="form-label">
+                <span className="label-icon">✍️</span>
+                Ваш вопрос или сообщение
+              </label>
               <textarea
                 id="message"
                 name="message"
-                placeholder="Опишите ваш вопрос или сообщение..."
+                placeholder="Опишите ваш вопрос подробно. Чем больше информации, тем точнее мы сможем помочь!"
                 value={form.message}
                 onChange={handleChange}
                 className="feedback-textarea"
+                rows="5"
                 required
               />
             </div>
@@ -247,22 +280,26 @@ function FAQPageV2() {
               {error && (
                 <motion.div 
                   className="feedback-error"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <span className="error-icon">⚠️</span> {error}
+                  <span className="error-icon">❌</span> 
+                  <span>{error}</span>
                 </motion.div>
               )}
               
               {sent && (
                 <motion.div 
                   className="feedback-success"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  <span className="success-icon">✓</span> Спасибо! Ваше сообщение отправлено.
+                  <span className="success-icon">🎉</span> 
+                  <span>Спасибо! Ваше сообщение успешно отправлено. Мы свяжемся с вами в ближайшее время!</span>
                 </motion.div>
               )}
             </AnimatePresence>
@@ -270,12 +307,25 @@ function FAQPageV2() {
             <motion.button 
               type="submit" 
               className="feedback-btn"
-              whileHover={{ scale: 1.05, boxShadow: '0 8px 20px rgba(79, 209, 101, 0.3)' }}
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ 
+                scale: 1.02, 
+                boxShadow: '0 12px 30px rgba(79, 209, 101, 0.4)',
+                y: -2
+              }}
+              whileTap={{ scale: 0.98 }}
+              transition={{ duration: 0.2 }}
             >
+              <span className="btn-icon">🚀</span>
               Отправить сообщение
             </motion.button>
           </form>
+          
+          <div className="feedback-footer">
+            <p className="feedback-contact-info">
+              <span className="contact-icon">📞</span>
+              Или напишите нам на <a href="mailto:support@fitgenius.ru">support@fitgenius.ru</a>
+            </p>
+          </div>
         </motion.div>
       </motion.div>
     </div>
