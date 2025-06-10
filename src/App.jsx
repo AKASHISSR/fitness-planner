@@ -193,8 +193,8 @@ function Header() {
               </svg>
             </div>
             <div className="logo-text">
-              <span className="logo-fit">TEST</span>
-              <span className="logo-genius">Deploy</span>
+              <span className="logo-fit">Fit</span>
+              <span className="logo-genius">Genius</span>
             </div>
           </Link>
         </div>
@@ -316,8 +316,8 @@ function Header() {
               </svg>
             </div>
             <div className="logo-text">
-              <span className="logo-fit">TEST</span>
-              <span className="logo-genius">Deploy</span>
+              <span className="logo-fit">Fit</span>
+              <span className="logo-genius">Genius</span>
             </div>
           </Link>
         </div>
