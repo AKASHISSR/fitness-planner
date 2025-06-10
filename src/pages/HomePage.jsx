@@ -37,9 +37,6 @@ function HomePage() {
   
   // Настройка Intersection Observer для анимации появления элементов при прокрутке
   useEffect(() => {
-    // Делаем героический блок видимым сразу
-    setIsVisible(prev => ({ ...prev, hero: true }));
-    
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -176,14 +173,14 @@ function HomePage() {
       {/* Героический блок с анимированным фоном */}
       <header className="home-hero" onMouseMove={handleMouseMove}>
         <div className="cursor-effect-container" ref={particleContainerRef}></div>
-        <div className="hero-content animate-on-scroll" data-id="hero">
-          <h1 className={`hero-title ${isVisible['hero'] ? 'visible' : ''}`}>
+        <div className="hero-content" data-id="hero">
+          <h1 className="hero-title visible">
             Персональные программы питания и тренировок с гарантией результата
           </h1>
-          <p className={`hero-subtitle ${isVisible['hero'] ? 'visible' : ''}`}>
+          <p className="hero-subtitle visible">
             Достигайте своих целей с индивидуальным планом, разработанным специально для вас
           </p>
-          <div className={`hero-cta ${isVisible['hero'] ? 'visible' : ''}`}>
+          <div className="hero-cta visible">
             <div className="top-buttons-row">
               <button className="cta-button primary" onClick={() => navigate('/questionnaire?type=food')}>
                 Программа питания
