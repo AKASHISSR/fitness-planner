@@ -9,11 +9,17 @@
   margin-top: 0;
   overflow-x: hidden;
   font-family: 'Inter', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+  /* Расширяем фон до самого верха для покрытия области под header */
+  background-size: 100% calc(100% + 100px);
+  background-position: 0 -70px;
 }
 
 /* Темная тема */
 body.theme-dark .home-bg {
   background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 25%, #1a3a2b 75%, #1a1a1a 100%);
+  /* Расширяем фон до самого верха для покрытия области под header */
+  background-size: 100% calc(100% + 100px);
+  background-position: 0 -70px;
 }
 
 /* Героический блок */
@@ -32,6 +38,9 @@ body.theme-dark .home-bg {
     rgba(248, 249, 250, 0.8) 25%, 
     rgba(232, 245, 232, 0.7) 75%, 
     rgba(255, 255, 255, 0.9) 100%);
+  /* Расширяем фон героического блока тоже */
+  background-size: 100% calc(100% + 100px);
+  background-position: 0 -70px;
 }
 
 body.theme-dark .home-hero {
@@ -40,6 +49,9 @@ body.theme-dark .home-hero {
     rgba(45, 45, 45, 0.8) 25%, 
     rgba(26, 58, 43, 0.7) 75%, 
     rgba(26, 26, 26, 0.9) 100%);
+  /* Расширяем фон героического блока тоже */
+  background-size: 100% calc(100% + 100px);
+  background-position: 0 -70px;
 }
 
 /* Контейнер для эффекта частиц */
