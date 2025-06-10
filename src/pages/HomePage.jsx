@@ -37,6 +37,9 @@ function HomePage() {
   
   // Настройка Intersection Observer для анимации появления элементов при прокрутке
   useEffect(() => {
+    // Делаем героический блок видимым сразу
+    setIsVisible(prev => ({ ...prev, hero: true }));
+    
     observerRef.current = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -46,9 +49,11 @@ function HomePage() {
     }, { threshold: 0.1 });
     
     // Наблюдаем за всеми элементами с классом 'animate-on-scroll'
-    document.querySelectorAll('.animate-on-scroll').forEach(el => {
-      observerRef.current.observe(el);
-    });
+    setTimeout(() => {
+      document.querySelectorAll('.animate-on-scroll').forEach(el => {
+        observerRef.current.observe(el);
+      });
+    }, 100);
     
     return () => {
       if (observerRef.current) {

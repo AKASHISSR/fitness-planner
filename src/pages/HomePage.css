@@ -59,6 +59,14 @@ body.theme-dark .cursor-effect-container {
   background: radial-gradient(circle at center, rgba(79, 209, 101, 0.1) 0%, transparent 70%);
 }
 
+/* Контент героического блока */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
 /* Стили для частиц */
 .particle {
   position: absolute;
