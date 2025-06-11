@@ -1,6 +1,6 @@
-/* mobile-optimizations.css - Полная оптимизация для мобильных устройств */
+/* mobile-optimizations.css - Временно отключен для новой мобильной версии */
 
-/* Оптимизация для мобильного меню */
+/* ОТКЛЮЧЕНО - конфликт с новыми стилями
 @media (max-width: 768px) {
   .mobile-menu {
     width: 85%;
@@ -91,8 +91,9 @@
     display: none;
   }
 }
+*/
 
-/* Оптимизация для личного кабинета */
+/* ОТКЛЮЧЕНО - конфликт с новыми стилями
 @media (max-width: 768px) {
   .dashboard-container {
     padding: 1rem;
@@ -179,8 +180,9 @@
     opacity: 0.8;
   }
 }
+*/
 
-/* Оптимизация для страницы опросника */
+/* ОТКЛЮЧЕНО - конфликт с новыми стилями
 @media (max-width: 768px) {
   .questionnaire-bg {
     padding: 20px 15px;
@@ -226,9 +228,10 @@
   }
   
   .multiselect-hint {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
+*/
 
 /* Оптимизация для страницы оплаты */
 @media (max-width: 768px) {

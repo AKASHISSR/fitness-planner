@@ -1164,4 +1164,70 @@ body.theme-dark .activity-action {
   .mobile-user-email {
     font-size: 0.8rem !important;
   }
+}
+
+/* ГЛОБАЛЬНЫЕ ПРАВИЛА ДЛЯ УСТРАНЕНИЯ ПРОБЛЕМ С МОБИЛЬНОЙ ВЕРСИЕЙ */
+
+/* Полный сброс для мобильных устройств */
+@media (max-width: 768px) {
+  /* Отключаем горизонтальный скролл глобально */
+  html {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  
+  body {
+    overflow-x: hidden !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* Сброс всех возможных контейнеров */
+  #root {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Отключаем старые стили dashboard */
+  .dashboard-container:not(.mobile) .user-profile {
+    display: none !important;
+  }
+  
+  /* Принудительная ширина для основного контейнера приложения */
+  .App {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+  }
+  
+  /* Исправление для всех flexbox контейнеров */
+  .dashboard-container * {
+    max-width: 100% !important;
+  }
+  
+  /* Принудительное исправление переполнения текста */
+  .meal-text,
+  .workout-text,
+  .activity-desc,
+  .shopping-item-text {
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
+    hyphens: auto !important;
+  }
+  
+  /* Принудительная фиксация размеров изображений */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+  /* Исправление для вкладок - убираем белые пространства */
+  .tabs {
+    margin: 0 !important;
+    padding: 0 1rem !important;
+  }
 } 
