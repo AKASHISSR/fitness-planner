@@ -595,1258 +595,573 @@ body.theme-dark .activity-action {
 
 /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
 @media (max-width: 768px) {
-  .dashboard-container {
-    padding: 0.5rem;
-    min-height: 100vh;
-  }
-  
-  .dashboard-content {
-    border-radius: 16px;
-    margin: 0;
-  }
-  
-  /* Профиль пользователя - мобильная версия */
-  .user-profile {
-    flex-direction: column;
-    text-align: center;
-    gap: 1.5rem;
-    padding: 2rem 1rem;
-    border-radius: 16px 16px 0 0;
-  }
-  
-  .avatar-wrapper {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .avatar-placeholder {
-    font-size: 2rem;
-  }
-  
-  .user-name {
-    font-size: 1.8rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  
-  .user-email {
-    font-size: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .user-actions {
-    justify-content: center;
-    gap: 0.75rem;
-  }
-  
-  .btn {
-    padding: 10px 16px;
-    font-size: 0.9rem;
-    min-height: 44px; /* Touch-friendly размер */
-  }
-  
-  /* Вкладки - мобильная версия */
-  .tabs-container {
-    margin: 1rem 0.5rem;
-    padding: 4px;
-    gap: 4px;
-    overflow-x: auto;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  
-  .tabs-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .tab {
-    padding: 12px 16px;
-    font-size: 0.85rem;
-    min-width: max-content;
-    white-space: nowrap;
-    flex: none;
-  }
-  
-  /* Контент вкладок - мобильная версия */
-  .tab-content {
-    padding: 1rem 0.75rem;
-  }
-  
-  .tab-content h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    text-align: center;
-  }
-  
-  /* Карточки контента - мобильная версия */
-  .content-card {
-    margin-bottom: 1rem;
-    padding: 1rem;
-    border-radius: 12px;
-  }
-  
-  .content-card pre {
-    font-size: 0.9rem !important;
-    line-height: 1.5 !important;
-    white-space: pre-wrap;
-    word-wrap: break-word;
-  }
-  
-  /* Список покупок - мобильная версия */
-  .shopping-list {
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-  
-  .shopping-item {
-    padding: 14px 16px; /* Больше для touch */
-    min-height: 50px;
-    font-size: 0.95rem;
-  }
-  
-  .shopping-checkbox {
-    width: 24px;
-    height: 24px;
-    border-width: 2px;
-  }
-  
-  /* История активности - мобильная версия */
-  .activity-item {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-    text-align: left;
-  }
-  
-  .activity-icon {
-    width: 36px;
-    height: 36px;
-    font-size: 1.3rem;
-    align-self: center;
-  }
-  
-  .activity-details {
-    width: 100%;
-    text-align: center;
-  }
-  
-  .activity-date {
-    font-size: 0.8rem;
-  }
-  
-  .activity-action {
-    font-size: 0.9rem;
-    margin-top: 0.1rem;
-  }
-  
-  /* Форма редактирования имени - мобильная версия */
-  .name-edit-form {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 0.75rem;
-  }
-  
-  .name-input {
-    width: 100%;
-    min-width: unset;
-    font-size: 16px; /* Предотвращает зум на iOS */
-    padding: 14px 16px;
-  }
-  
-  /* Кнопки экспорта - мобильная версия */
-  .tab-content > div:first-child {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    gap: 1rem !important;
-  }
-  
-  .tab-content > div:first-child .btn {
-    align-self: center;
-  }
-}
-
-/* Дополнительная оптимизация для очень маленьких экранов */
-@media (max-width: 480px) {
-  .dashboard-container {
-    padding: 0.25rem;
-  }
-  
-  .user-profile {
-    padding: 1.5rem 0.75rem;
-  }
-  
-  .user-name {
-    font-size: 1.6rem;
-  }
-  
-  .tabs-container {
-    margin: 0.75rem 0.25rem;
-  }
-  
-  .tab {
-    padding: 10px 12px;
-    font-size: 0.8rem;
-  }
-  
-  .tab-content {
-    padding: 0.75rem 0.5rem;
-  }
-  
-  .tab-content h2 {
-    font-size: 1.3rem;
-  }
-  
-  .content-card {
-    padding: 0.75rem;
-  }
-  
-  .content-card pre {
-    font-size: 0.85rem !important;
-  }
-  
-  .shopping-item {
-    padding: 12px 14px;
-    font-size: 0.9rem;
-  }
-  
-  .activity-item {
-    padding: 0.75rem;
-  }
-  
-  .btn {
-    padding: 12px 16px;
-    font-size: 0.85rem;
-  }
-}
-
-/* Touch-friendly улучшения */
-@media (hover: none) and (pointer: coarse) {
-  .tab {
-    padding: 16px 20px; /* Больше области касания */
-  }
-  
-  .shopping-item {
-    padding: 16px;
-    min-height: 52px;
-  }
-  
-  .btn {
-    min-height: 48px;
-    padding: 14px 20px;
-  }
-  
-  .edit-name-btn {
-    padding: 12px 16px;
-    min-height: 44px;
-  }
-  
-  .avatar-image-container {
-    cursor: default;
-  }
-  
-  /* Упрощаем ховер эффекты для тач устройств */
-  .tab:hover,
-  .shopping-item:hover,
-  .content-card:hover,
-  .activity-item:hover {
-    transform: none;
-  }
-  
-  .tab:active {
-    background: rgba(79, 209, 101, 0.2);
-    transform: scale(0.98);
-  }
-  
-  .shopping-item:active {
-    transform: scale(0.98);
-  }
-  
-  .btn:active {
-    transform: scale(0.96);
-  }
-}
-
-/* Скрытие скроллбаров на мобильных */
-@media (max-width: 768px) {
-  .tabs-container {
-    -webkit-overflow-scrolling: touch;
-  }
-  
-  .tabs-container::-webkit-scrollbar {
-    display: none;
-  }
-  
-  .content-card pre {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Анимации для мобильных - более плавные */
-@media (max-width: 768px) {
+  /* ГЛОБАЛЬНЫЕ ИСПРАВЛЕНИЯ */
   * {
-    -webkit-tap-highlight-color: transparent;
+    box-sizing: border-box !important;
+  }
+  
+  html, body {
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  /* ОСНОВНЫЕ КОНТЕЙНЕРЫ */
+  .dashboard-container {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow-x: hidden !important;
+    background: linear-gradient(135deg, #f7f8fa 0%, #e6f7ea 100%) !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+  
+  .dashboard-container.mobile {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow-x: hidden !important;
   }
   
   .dashboard-content {
-    animation: mobileSlideUp 0.4s ease-out;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    min-width: 100vw !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+    background: transparent !important;
   }
   
-  @keyframes mobileSlideUp {
-    from {
-      opacity: 0;
-      transform: translateY(30px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-}
-
-/* МОБИЛЬНЫЕ КОМПОНЕНТЫ - ИСПРАВЛЕННАЯ ВЕРСИЯ */
-
-/* Мобильный контейнер */
-.dashboard-container.mobile {
-  padding: 0;
-  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-  min-height: 100vh;
-}
-
-body.theme-dark .dashboard-container.mobile {
-  background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-}
-
-.dashboard-container.mobile .dashboard-content {
-  border-radius: 0;
-  margin: 0;
-  min-height: 100vh;
-  box-shadow: none;
-  background: transparent;
-  padding: 0;
-}
-
-/* Мобильный профиль пользователя (старый стиль - скрыт) */
-.mobile-user-profile {
-  display: none; /* Скрываем старый дизайн */
-}
-
-.mobile-profile-header {
-  display: flex;
-  align-items: center;
-  padding: 2rem 1.5rem 1.5rem 1.5rem;
-  gap: 1rem;
-  position: relative;
-  z-index: 2;
-}
-
-.mobile-avatar-container {
-  position: relative;
-  flex-shrink: 0;
-}
-
-.mobile-avatar-wrapper {
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  overflow: hidden;
-  background: #ffffff;
-  padding: 3px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.mobile-user-info {
-  flex: 1;
-  min-width: 0;
-  padding-right: 0.5rem;
-}
-
-.mobile-user-name {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.mobile-user-name span {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  line-height: 1.2;
-}
-
-.mobile-edit-btn {
-  background: rgba(255, 255, 255, 0.25);
-  border: none;
-  border-radius: 8px;
-  color: white;
-  cursor: pointer;
-  padding: 6px 10px;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-edit-btn:hover {
-  background: rgba(255, 255, 255, 0.35);
-  transform: translateY(-1px);
-}
-
-.mobile-user-email {
-  font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.9);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-  line-height: 1.3;
-}
-
-.mobile-actions-toggle {
-  background: rgba(255, 255, 255, 0.2);
-  border: none;
-  border-radius: 12px;
-  color: white;
-  cursor: pointer;
-  padding: 12px;
-  font-size: 1.3rem;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-actions-toggle:hover {
-  background: rgba(255, 255, 255, 0.3);
-  transform: scale(1.05);
-}
-
-.mobile-user-actions {
-  padding: 0 1.5rem 1.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.mobile-action-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
-  padding: 14px 20px;
-  border: none;
-  border-radius: 12px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-action-btn.admin {
-  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
-  color: white;
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.3);
-}
-
-.mobile-action-btn.logout {
-  background: rgba(255, 255, 255, 0.2);
-  color: white;
-}
-
-.mobile-action-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Форма редактирования имени для мобильных */
-.mobile-name-edit-form {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  width: 100%;
-}
-
-.mobile-name-input {
-  flex: 1;
-  background: rgba(255, 255, 255, 0.95);
-  border: 2px solid rgba(255, 255, 255, 0.5);
-  border-radius: 10px;
-  padding: 10px 14px;
-  font-size: 1rem;
-  color: #1e293b;
-  min-width: 0;
-  font-weight: 600;
-}
-
-.mobile-name-input:focus {
-  outline: none;
-  background: rgba(255, 255, 255, 1);
-  border-color: #ffffff;
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3);
-}
-
-.mobile-name-buttons {
-  display: flex;
-  gap: 0.5rem;
-  flex-shrink: 0;
-}
-
-.mobile-btn {
-  border: none;
-  border-radius: 8px;
-  padding: 10px;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  min-width: 38px;
-  height: 38px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-btn-save {
-  background: rgba(16, 185, 129, 0.8);
-  color: white;
-  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-}
-
-.mobile-btn-save:hover:not(:disabled) {
-  background: rgba(16, 185, 129, 1);
-  transform: scale(1.05);
-}
-
-.mobile-cancel-btn {
-  background: rgba(239, 68, 68, 0.8);
-  color: white;
-  box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
-}
-
-.mobile-cancel-btn:hover:not(:disabled) {
-  background: rgba(239, 68, 68, 1);
-  transform: scale(1.05);
-}
-
-/* Статистика пользователя */
-.mobile-user-stats {
-  display: flex;
-  gap: 1rem;
-  justify-content: center;
-  margin: 1rem 0;
-  overflow: hidden;
-}
-
-.mobile-stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.25rem;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 0.75rem;
-  border-radius: 12px;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  min-width: 80px;
-}
-
-.mobile-stat-icon {
-  font-size: 1.5rem;
-}
-
-.mobile-stat-value {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: white;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-}
-
-.mobile-stat-label {
-  font-size: 0.7rem;
-  color: rgba(255, 255, 255, 0.8);
-  text-align: center;
-  line-height: 1.2;
-}
-
-.mobile-stats-toggle {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
-  color: white;
-  cursor: pointer;
-  padding: 0.5rem 1rem;
-  font-size: 0.9rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  justify-content: center;
-}
-
-.mobile-stats-toggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.mobile-arrow {
-  transition: transform 0.3s ease;
-  font-size: 0.8rem;
-}
-
-.mobile-arrow.up {
-  transform: rotate(180deg);
-}
-
-/* Быстрые действия */
-.mobile-quick-actions {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 16px;
-  padding: 1rem;
-  margin-bottom: 1rem;
-}
-
-.mobile-quick-action-toggle {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: white;
-  cursor: pointer;
-  padding: 0.75rem 1rem;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 0.75rem;
-}
-
-.mobile-quick-action-toggle:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-1px);
-}
-
-.mobile-action-icon {
-  font-size: 1.2rem;
-}
-
-.mobile-chevron {
-  transition: transform 0.3s ease;
-  font-size: 0.9rem;
-}
-
-.mobile-chevron.up {
-  transform: rotate(180deg);
-}
-
-/* Сетка действий */
-.mobile-actions-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  overflow: hidden;
-}
-
-.mobile-grid-action {
-  background: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 12px;
-  color: white;
-  cursor: pointer;
-  padding: 1rem 0.75rem;
-  font-size: 0.9rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  backdrop-filter: blur(10px);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  text-align: center;
-  min-height: 80px;
-  justify-content: center;
-}
-
-.mobile-grid-action:hover {
-  background: rgba(255, 255, 255, 0.25);
-  transform: translateY(-2px);
-}
-
-.mobile-grid-action.admin {
-  background: linear-gradient(135deg, rgba(251, 191, 36, 0.8), rgba(245, 158, 11, 0.8));
-  border-color: rgba(251, 191, 36, 0.4);
-  box-shadow: 0 4px 12px rgba(251, 191, 36, 0.2);
-}
-
-.mobile-grid-action.logout {
-  background: linear-gradient(135deg, rgba(239, 68, 68, 0.7), rgba(220, 38, 38, 0.7));
-  border-color: rgba(239, 68, 68, 0.4);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-}
-
-.mobile-grid-icon {
-  font-size: 1.5rem;
-}
-
-.mobile-grid-text {
-  font-size: 0.8rem;
-  line-height: 1.2;
-}
-
-/* Сообщение об ошибке */
-.mobile-error-message {
-  background: rgba(239, 68, 68, 0.9);
-  color: white;
-  padding: 0.75rem;
-  border-radius: 12px;
-  margin-top: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(239, 68, 68, 0.3);
-  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
-}
-
-.mobile-error-icon {
-  font-size: 1.1rem;
-}
-
-/* Адаптация для очень маленьких экранов */
-@media (max-width: 360px) {
-  .mobile-profile-content {
-    padding: 1.25rem 1rem;
+  /* СКРЫТИЕ ДЕКОРАТИВНЫХ ЭЛЕМЕНТОВ */
+  .dashboard-bg,
+  .dashboard-particle,
+  .profile-decoration {
+    display: none !important;
   }
   
-  .mobile-profile-card {
-    padding: 1.25rem;
+  /* ДЕСКТОПНЫЙ ПРОФИЛЬ - СКРЫТЬ */
+  .user-profile:not(.mobile-user-profile-stunning) {
+    display: none !important;
   }
   
+  /* ПОТРЯСАЮЩИЙ МОБИЛЬНЫЙ ПРОФИЛЬ */
+  .mobile-user-profile-stunning {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 1.5rem 1rem !important;
+    border-radius: 0 0 24px 24px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+    background: linear-gradient(135deg, #4fd165 0%, #36b14e 50%, #2ea043 100%) !important;
+    box-shadow: 0 4px 16px rgba(79, 209, 101, 0.2) !important;
+  }
+  
+  /* КОНТЕЙНЕР АВАТАРА */
   .mobile-avatar-ring {
-    padding: 3px;
+    width: 100px !important;
+    height: 100px !important;
+    margin: 0 auto 1rem auto !important;
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
   }
   
-  .mobile-avatar-container-new {
-    width: 76px;
-    height: 76px;
+  .mobile-avatar-container {
+    width: 80px !important;
+    height: 80px !important;
+    border-radius: 50% !important;
+    overflow: hidden !important;
+    position: relative !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
   }
   
-  .mobile-user-name-new {
-    font-size: 1.3rem;
+  .mobile-avatar-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 50% !important;
   }
   
-  .mobile-actions-grid {
-    grid-template-columns: 1fr;
+  .mobile-avatar-placeholder {
+    font-size: 2rem !important;
+    color: #4fd165 !important;
+    font-weight: 600 !important;
   }
   
-  .mobile-stat-item {
-    min-width: 70px;
-    padding: 0.5rem;
+  /* ИНФОРМАЦИЯ ПОЛЬЗОВАТЕЛЯ */
+  .mobile-user-info {
+    text-align: center !important;
+    color: white !important;
+    margin-bottom: 1rem !important;
   }
-}
-
-/* ПОТРЯСАЮЩАЯ МОБИЛЬНАЯ НАВИГАЦИЯ ПО ВКЛАДКАМ */
-
-.mobile-tab-selector {
-  margin: 1rem 1.25rem;
-  position: relative;
-  z-index: 10;
-}
-
-.mobile-tab-current {
-  width: 100%;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 2px solid rgba(79, 209, 101, 0.2);
-  border-radius: 16px;
-  color: #1a3a2b;
-  cursor: pointer;
-  padding: 1rem 1.25rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: 
-    0 4px 16px rgba(0, 0, 0, 0.08),
-    0 2px 8px rgba(79, 209, 101, 0.1);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-}
-
-.mobile-tab-current::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, 
-    rgba(79, 209, 101, 0.03) 0%, 
-    rgba(79, 209, 101, 0.08) 50%, 
-    rgba(79, 209, 101, 0.03) 100%);
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
-
-.mobile-tab-current:hover::before {
-  opacity: 1;
-}
-
-.mobile-tab-current:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.12),
-    0 4px 12px rgba(79, 209, 101, 0.15);
-  border-color: rgba(79, 209, 101, 0.3);
-}
-
-.mobile-tab-arrow {
-  font-size: 1rem;
-  color: #4fd165;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  transform-origin: center;
-}
-
-.mobile-tab-arrow.open {
-  transform: rotate(180deg);
-  color: #36b14e;
-}
-
-.mobile-tab-dropdown {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  right: 0;
-  background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-  border: 2px solid rgba(79, 209, 101, 0.15);
-  border-radius: 16px;
-  overflow: hidden;
-  z-index: 100;
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.15),
-    0 6px 20px rgba(79, 209, 101, 0.1);
-  backdrop-filter: blur(20px);
-}
-
-.mobile-tab-option {
-  width: 100%;
-  background: transparent;
-  border: none;
-  color: #1a3a2b;
-  cursor: pointer;
-  padding: 1rem 1.25rem;
-  font-size: 1rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid rgba(79, 209, 101, 0.1);
-  position: relative;
-  text-align: left;
-}
-
-.mobile-tab-option:last-child {
-  border-bottom: none;
-}
-
-.mobile-tab-option:hover:not(:disabled) {
-  background: linear-gradient(135deg, 
-    rgba(79, 209, 101, 0.08) 0%, 
-    rgba(79, 209, 101, 0.12) 100%);
-  color: #2ea043;
-  transform: translateX(4px);
-}
-
-.mobile-tab-option.active {
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
-  color: white;
-  font-weight: 600;
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.mobile-tab-option.active:hover {
-  background: linear-gradient(135deg, #36b14e 0%, #2ea043 100%);
-  transform: translateX(2px);
-}
-
-.mobile-tab-option.disabled {
-  color: rgba(26, 58, 43, 0.5);
-  cursor: not-allowed;
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.mobile-tab-option.disabled:hover {
-  background: rgba(0, 0, 0, 0.02);
-  transform: none;
-}
-
-.tab-lock {
-  font-size: 0.9rem;
-  margin-left: 0.5rem;
-  opacity: 0.7;
-}
-
-/* Анимации для dropdown */
-@keyframes mobileDropdownSlide {
-  from {
-    opacity: 0;
-    transform: translateY(-8px) scale(0.98);
+  
+  .mobile-user-name {
+    font-size: 1.4rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 0.25rem !important;
+    color: white !important;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
+  
+  .mobile-user-email {
+    font-size: 0.9rem !important;
+    opacity: 0.9 !important;
+    color: rgba(255, 255, 255, 0.9) !important;
   }
-}
-
-.mobile-tab-dropdown {
-  animation: mobileDropdownSlide 0.3s ease-out;
-}
-
-/* Адаптация для очень маленьких экранов */
-@media (max-width: 360px) {
+  
+  /* БЫСТРЫЕ ДЕЙСТВИЯ */
+  .mobile-quick-actions {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.75rem !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  
+  .mobile-action-btn {
+    padding: 0.75rem !important;
+    border: none !important;
+    border-radius: 12px !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    color: white !important;
+    font-size: 0.8rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 0.25rem !important;
+    min-height: 60px !important;
+    text-align: center !important;
+    line-height: 1.2 !important;
+  }
+  
+  .mobile-action-btn:active {
+    transform: scale(0.95) !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+  }
+  
+  .mobile-action-icon {
+    font-size: 1.2rem !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  /* СЕЛЕКТОР ВКЛАДОК */
   .mobile-tab-selector {
-    margin: 0.75rem 1rem;
+    margin: 1rem !important;
+    position: relative !important;
+    z-index: 10 !important;
+    width: calc(100vw - 2rem) !important;
+    max-width: calc(100vw - 2rem) !important;
+    box-sizing: border-box !important;
   }
   
   .mobile-tab-current {
-    padding: 0.875rem 1rem;
-    font-size: 1rem;
+    width: 100% !important;
+    padding: 1rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 2px solid rgba(79, 209, 101, 0.2) !important;
+    border-radius: 16px !important;
+    color: #1a3a2b !important;
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .mobile-tab-dropdown {
+    position: absolute !important;
+    top: 100% !important;
+    left: 0 !important;
+    width: 100% !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(15px) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
+    z-index: 20 !important;
+    margin-top: 0.5rem !important;
+    border: 2px solid rgba(79, 209, 101, 0.15) !important;
+    overflow: hidden !important;
+    box-sizing: border-box !important;
   }
   
   .mobile-tab-option {
-    padding: 0.875rem 1rem;
-    font-size: 0.95rem;
+    width: 100% !important;
+    padding: 1rem !important;
+    border: none !important;
+    background: transparent !important;
+    color: #1a3a2b !important;
+    font-size: 0.95rem !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    border-bottom: 1px solid rgba(79, 209, 101, 0.1) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-sizing: border-box !important;
+  }
+  
+  .mobile-tab-option:last-child {
+    border-bottom: none !important;
+  }
+  
+  .mobile-tab-option:active,
+  .mobile-tab-option.active {
+    background: rgba(79, 209, 101, 0.1) !important;
+    color: #2ea043 !important;
+    font-weight: 600 !important;
+  }
+  
+  .mobile-tab-option.disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+  }
+  
+  /* КОНТЕНТ ВКЛАДОК */
+  .tab-content {
+    width: 100vw !important;
+    max-width: 100vw !important;
+    margin: 0 !important;
+    padding: 1rem !important;
+    background: transparent !important;
+    overflow-x: hidden !important;
+    box-sizing: border-box !important;
+  }
+  
+  .tab-content h2 {
+    font-size: 1.3rem !important;
+    font-weight: 700 !important;
+    color: #1a3a2b !important;
+    margin: 0 0 1.5rem 0 !important;
+    text-align: center !important;
+    padding: 0 1rem !important;
+  }
+  
+  /* КАРТОЧКИ КОНТЕНТА */
+  .day-card,
+  .workout-card,
+  .shopping-list,
+  .activity-list {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 1rem 0 !important;
+    padding: 1.25rem !important;
+    background: rgba(255, 255, 255, 0.95) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(79, 209, 101, 0.15) !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    box-sizing: border-box !important;
+    overflow: hidden !important;
+  }
+  
+  /* ПЛАН ПИТАНИЯ */
+  .food-plan-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .day-title,
+  .workout-day {
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #2ea043 !important;
+    margin-bottom: 1rem !important;
+    text-align: center !important;
+    padding-bottom: 0.5rem !important;
+    border-bottom: 2px solid rgba(79, 209, 101, 0.2) !important;
+  }
+  
+  .meal-item {
+    padding: 0.75rem !important;
+    margin-bottom: 0.5rem !important;
+    background: rgba(248, 250, 252, 0.8) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid #4fd165 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .meal-type {
+    font-size: 0.85rem !important;
+    font-weight: 600 !important;
+    color: #2ea043 !important;
+    margin-bottom: 0.25rem !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+  }
+  
+  .meal-text,
+  .workout-text {
+    font-size: 0.9rem !important;
+    line-height: 1.5 !important;
+    color: #334155 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+  }
+  
+  /* ПЛАН ТРЕНИРОВОК */
+  .workout-plan-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* СПИСОК ПОКУПОК */
+  .shopping-items {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+  }
+  
+  .shopping-item {
+    display: flex !important;
+    align-items: center !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+    background: rgba(248, 250, 252, 0.6) !important;
+    border-radius: 12px !important;
+    border: 1px solid rgba(79, 209, 101, 0.1) !important;
+    transition: all 0.2s ease !important;
+    min-height: 48px !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .shopping-item-checkbox {
+    width: 20px !important;
+    height: 20px !important;
+    border-radius: 4px !important;
+    border: 2px solid #4fd165 !important;
+    cursor: pointer !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .shopping-item-text {
+    flex: 1 !important;
+    font-size: 0.9rem !important;
+    color: #334155 !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    min-width: 0 !important;
+  }
+  
+  /* ИСТОРИЯ АКТИВНОСТИ */
+  .activity-item {
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 0.75rem !important;
+    padding: 0.75rem !important;
+    background: rgba(248, 250, 252, 0.6) !important;
+    border-radius: 12px !important;
+    border-left: 4px solid #4fd165 !important;
+    margin-bottom: 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  
+  .activity-icon {
+    width: 32px !important;
+    height: 32px !important;
+    background: rgba(79, 209, 101, 0.15) !important;
+    border-radius: 50% !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1rem !important;
+    color: #2ea043 !important;
+    flex-shrink: 0 !important;
+  }
+  
+  .activity-details {
+    flex: 1 !important;
+    min-width: 0 !important;
+  }
+  
+  .activity-type {
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    color: #2ea043 !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .activity-desc {
+    font-size: 0.85rem !important;
+    line-height: 1.4 !important;
+    color: #64748b !important;
+    word-wrap: break-word !important;
+    overflow-wrap: break-word !important;
+    margin-bottom: 0.25rem !important;
+  }
+  
+  .activity-time {
+    font-size: 0.75rem !important;
+    color: #94a3b8 !important;
+  }
+  
+  /* КНОПКИ */
+  .btn {
+    min-height: 48px !important;
+    padding: 0.75rem 1rem !important;
+    font-size: 0.9rem !important;
+    border-radius: 12px !important;
+    border: none !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    width: 100% !important;
+    max-width: 280px !important;
+    margin: 0 auto 0.5rem auto !important;
+    display: block !important;
+    box-sizing: border-box !important;
+  }
+  
+  .btn-primary {
+    background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(79, 209, 101, 0.3) !important;
+  }
+  
+  .btn-secondary {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #2ea043 !important;
+    border: 2px solid rgba(79, 209, 101, 0.3) !important;
+  }
+  
+  /* ФОРМЫ */
+  .name-edit-form {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 0.75rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-top: 1rem !important;
+    padding: 1rem !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .name-input {
+    width: 100% !important;
+    padding: 0.75rem !important;
+    border: 2px solid rgba(255, 255, 255, 0.3) !important;
+    border-radius: 8px !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #334155 !important;
+    font-size: 1rem !important;
+    box-sizing: border-box !important;
+  }
+  
+  .name-save-btn,
+  .name-cancel-btn {
+    padding: 0.75rem 1rem !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-size: 0.9rem !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
+  }
+  
+  .name-save-btn {
+    background: rgba(255, 255, 255, 0.9) !important;
+    color: #2ea043 !important;
+  }
+  
+  .name-cancel-btn {
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #64748b !important;
   }
 }
 
-/* МОБИЛЬНЫЙ КОНТЕНТ ВКЛАДОК */
-
-/* Контент для мобильной версии */
-.dashboard-container.mobile .tab-content {
-  padding: 1rem 1.25rem 2rem 1.25rem;
-  background: transparent;
-}
-
-.dashboard-container.mobile .tab-content h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a3a2b;
-  margin-bottom: 1.5rem;
-  text-align: center;
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Карточки контента */
-.dashboard-container.mobile .content-card {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 20px;
-  padding: 1.5rem;
-  margin-bottom: 1.5rem;
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 4px 16px rgba(79, 209, 101, 0.1);
-  transition: all 0.3s ease;
-}
-
-.dashboard-container.mobile .content-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 
-    0 12px 40px rgba(0, 0, 0, 0.12),
-    0 6px 20px rgba(79, 209, 101, 0.15);
-}
-
-/* Планы питания */
-.dashboard-container.mobile .meal-plan {
-  display: grid;
-  gap: 1rem;
-}
-
-.dashboard-container.mobile .day-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.dashboard-container.mobile .day-card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.dashboard-container.mobile .day-header {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1a3a2b;
-  margin-bottom: 1rem;
-  text-align: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(79, 209, 101, 0.2);
-}
-
-.dashboard-container.mobile .meal-item {
-  background: rgba(79, 209, 101, 0.05);
-  border: 1px solid rgba(79, 209, 101, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  transition: all 0.3s ease;
-}
-
-.dashboard-container.mobile .meal-item:last-child {
-  margin-bottom: 0;
-}
-
-.dashboard-container.mobile .meal-item:hover {
-  background: rgba(79, 209, 101, 0.08);
-  border-color: rgba(79, 209, 101, 0.2);
-}
-
-.dashboard-container.mobile .meal-type {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: #4fd165;
-  margin-bottom: 0.5rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-}
-
-.dashboard-container.mobile .meal-text {
-  font-size: 1rem;
-  color: #1a3a2b;
-  line-height: 1.4;
-}
-
-/* Планы тренировок */
-.dashboard-container.mobile .workout-plan {
-  display: grid;
-  gap: 1rem;
-}
-
-.dashboard-container.mobile .workout-card {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 16px;
-  padding: 1.25rem;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
-  transition: all 0.3s ease;
-}
-
-.dashboard-container.mobile .workout-card:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-}
-
-.dashboard-container.mobile .workout-header {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #1a3a2b;
-  margin-bottom: 1rem;
-  text-align: center;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid rgba(79, 209, 101, 0.2);
-}
-
-.dashboard-container.mobile .workout-content {
-  background: rgba(79, 209, 101, 0.05);
-  border: 1px solid rgba(79, 209, 101, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-}
-
-.dashboard-container.mobile .workout-text {
-  font-size: 1rem;
-  color: #1a3a2b;
-  line-height: 1.5;
-}
-
-/* Список покупок */
-.dashboard-container.mobile .shopping-list {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.dashboard-container.mobile .shopping-items {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0.75rem;
-}
-
-.dashboard-container.mobile .shopping-item {
-  background: rgba(79, 209, 101, 0.05);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 12px;
-  padding: 1rem;
-  font-size: 1rem;
-  font-weight: 500;
-  color: #1a3a2b;
-  transition: all 0.3s ease;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  cursor: pointer;
-  min-height: 52px;
-}
-
-.dashboard-container.mobile .shopping-item:hover {
-  background: rgba(79, 209, 101, 0.1);
-  border-color: rgba(79, 209, 101, 0.25);
-  transform: translateX(4px);
-}
-
-.dashboard-container.mobile .shopping-item.checked {
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
-  color: white;
-  border-color: #4fd165;
-}
-
-.dashboard-container.mobile .shopping-item-checkbox {
-  width: 20px;
-  height: 20px;
-  border: 2px solid #4fd165;
-  border-radius: 6px;
-  background: transparent;
-  transition: all 0.3s ease;
-  flex-shrink: 0;
-}
-
-.dashboard-container.mobile .shopping-item.checked .shopping-item-checkbox {
-  background: white;
-  border-color: white;
-}
-
-.dashboard-container.mobile .shopping-item-text {
-  flex: 1;
-  text-align: left;
-}
-
-.dashboard-container.mobile .shopping-item.checked .shopping-item-text {
-  text-decoration: line-through;
-  opacity: 0.9;
-}
-
-/* История активности */
-.dashboard-container.mobile .activity-list {
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(79, 209, 101, 0.15);
-  border-radius: 20px;
-  padding: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
-}
-
-.dashboard-container.mobile .activity-item {
-  background: rgba(79, 209, 101, 0.05);
-  border: 1px solid rgba(79, 209, 101, 0.1);
-  border-radius: 12px;
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  transition: all 0.3s ease;
-  border-left: 4px solid #4fd165;
-}
-
-.dashboard-container.mobile .activity-item:last-child {
-  margin-bottom: 0;
-}
-
-.dashboard-container.mobile .activity-item:hover {
-  background: rgba(79, 209, 101, 0.08);
-  border-color: rgba(79, 209, 101, 0.2);
-  transform: translateX(2px);
-}
-
-.dashboard-container.mobile .activity-icon {
-  width: 40px;
-  height: 40px;
-  background: linear-gradient(135deg, #e6f7ea 0%, #4fd165 100%);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(79, 209, 101, 0.2);
-}
-
-.dashboard-container.mobile .activity-details {
-  flex: 1;
-  text-align: left;
-}
-
-.dashboard-container.mobile .activity-type {
-  font-size: 1rem;
-  font-weight: 600;
-  color: #1a3a2b;
-  margin-bottom: 0.25rem;
-}
-
-.dashboard-container.mobile .activity-desc {
-  font-size: 0.9rem;
-  color: #666;
-  line-height: 1.4;
-}
-
-.dashboard-container.mobile .activity-time {
-  font-size: 0.8rem;
-  color: #888;
-  margin-top: 0.25rem;
-}
-
-/* Кнопки экспорта */
-.dashboard-container.mobile .tab-header {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 1.5rem;
-}
-
-.dashboard-container.mobile .btn {
-  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
-  color: white;
-  border: none;
-  border-radius: 12px;
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 16px rgba(79, 209, 101, 0.3);
-}
-
-.dashboard-container.mobile .btn:hover {
-  background: linear-gradient(135deg, #36b14e 0%, #2ea043 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(79, 209, 101, 0.4);
+/* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ОЧЕНЬ МАЛЕНЬКИХ ЭКРАНОВ */
+@media (max-width: 360px) {
+  .mobile-user-profile-stunning {
+    padding: 1rem 0.75rem !important;
+  }
+  
+  .mobile-tab-selector {
+    margin: 0.75rem !important;
+    width: calc(100vw - 1.5rem) !important;
+    max-width: calc(100vw - 1.5rem) !important;
+  }
+  
+  .tab-content {
+    padding: 0.75rem !important;
+  }
+  
+  .day-card,
+  .workout-card,
+  .shopping-list,
+  .activity-list {
+    padding: 1rem !important;
+  }
+  
+  .mobile-action-btn {
+    padding: 0.5rem !important;
+    font-size: 0.75rem !important;
+    min-height: 50px !important;
+  }
+  
+  .mobile-user-name {
+    font-size: 1.2rem !important;
+  }
+  
+  .mobile-user-email {
+    font-size: 0.8rem !important;
+  }
 } 
