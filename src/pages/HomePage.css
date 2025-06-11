@@ -5,13 +5,13 @@
 
 /* CSS переменные для цветовой схемы */
 :root {
-  --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-  --secondary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  --primary-gradient: linear-gradient(135deg, #4fd165 0%, #36b14e 50%, #2ea043 100%);
+  --secondary-gradient: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
   --surface-light: rgba(255, 255, 255, 0.95);
   --surface-dark: rgba(26, 32, 54, 0.95);
   --glass-light: rgba(255, 255, 255, 0.1);
   --glass-dark: rgba(255, 255, 255, 0.05);
-  --shadow-light: 0 8px 32px rgba(102, 126, 234, 0.15);
+  --shadow-light: 0 8px 32px rgba(79, 209, 101, 0.15);
   --shadow-dark: 0 8px 32px rgba(0, 0, 0, 0.3);
   --text-primary-light: #2d3748;
   --text-primary-dark: #f7fafc;
@@ -57,18 +57,18 @@ body.theme-dark .home-bg {
   width: 100%;
   height: 100%;
   background: 
-    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(240, 147, 251, 0.1) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(79, 209, 101, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(54, 177, 78, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(46, 160, 67, 0.1) 0%, transparent 50%);
   z-index: -1;
   animation: floating-bg 20s ease-in-out infinite;
 }
 
 body.theme-dark .home-bg::before {
   background: 
-    radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.05) 0%, transparent 50%),
-    radial-gradient(circle at 40% 80%, rgba(240, 147, 251, 0.05) 0%, transparent 50%);
+    radial-gradient(circle at 20% 50%, rgba(79, 209, 101, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(54, 177, 78, 0.05) 0%, transparent 50%),
+    radial-gradient(circle at 40% 80%, rgba(46, 160, 67, 0.05) 0%, transparent 50%);
 }
 
 @keyframes floating-bg {
@@ -123,17 +123,17 @@ body.theme-dark .home-bg::before {
 
 .particle.circle {
   border-radius: 50%;
-  box-shadow: 0 0 20px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 0 20px rgba(79, 209, 101, 0.6);
 }
 
 .particle.star {
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-  box-shadow: 0 0 15px rgba(118, 75, 162, 0.7);
+  box-shadow: 0 0 15px rgba(54, 177, 78, 0.7);
 }
 
 .particle.triangle {
   clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  box-shadow: 0 0 12px rgba(240, 147, 251, 0.5);
+  box-shadow: 0 0 12px rgba(46, 160, 67, 0.5);
 }
 
 .background-particle {
@@ -152,7 +152,7 @@ body.theme-dark .home-bg::before {
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  text-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+  text-shadow: 0 4px 20px rgba(79, 209, 101, 0.3);
   opacity: 0;
   transform: translateY(50px) scale(0.9);
   transition: all 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -281,7 +281,7 @@ body.theme-dark .hero-subtitle {
 
 .cta-button:hover {
   transform: translateY(-4px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 40px rgba(79, 209, 101, 0.4);
 }
 
 .cta-button:active {
@@ -296,28 +296,28 @@ body.theme-dark .hero-subtitle {
 }
 
 .cta-button.primary:hover {
-  box-shadow: 0 16px 48px rgba(102, 126, 234, 0.5);
+  box-shadow: 0 16px 48px rgba(79, 209, 101, 0.5);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Вторичная кнопка */
 .cta-button.secondary {
   background: var(--surface-light);
-  color: #667eea;
-  border: 2px solid rgba(102, 126, 234, 0.3);
+  color: #4fd165;
+  border: 2px solid rgba(79, 209, 101, 0.3);
   backdrop-filter: blur(20px);
 }
 
 body.theme-dark .cta-button.secondary {
   background: var(--surface-dark);
-  color: #a78bfa;
-  border-color: rgba(167, 139, 250, 0.3);
+  color: #68d391;
+  border-color: rgba(104, 211, 145, 0.3);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: rgba(102, 126, 234, 0.5);
-  color: #5a67d8;
+  background: rgba(79, 209, 101, 0.1);
+  border-color: rgba(79, 209, 101, 0.5);
+  color: #36b14e;
 }
 
 /* Премиум комбо кнопка */
@@ -494,7 +494,7 @@ body.theme-dark .home-benefits {
 .benefit-card {
   background: var(--surface-light);
   backdrop-filter: blur(20px);
-  border: 2px solid rgba(102, 126, 234, 0.1);
+  border: 2px solid rgba(79, 209, 101, 0.1);
   border-radius: 24px;
   padding: 40px 30px;
   text-align: center;
@@ -508,7 +508,7 @@ body.theme-dark .home-benefits {
 
 body.theme-dark .benefit-card {
   background: var(--surface-dark);
-  border-color: rgba(167, 139, 250, 0.1);
+  border-color: rgba(104, 211, 145, 0.1);
   box-shadow: var(--shadow-dark);
 }
 
@@ -519,12 +519,12 @@ body.theme-dark .benefit-card {
 
 .benefit-card:hover {
   transform: translateY(-8px) scale(1.02);
-  border-color: rgba(102, 126, 234, 0.3);
-  box-shadow: 0 20px 60px rgba(102, 126, 234, 0.2);
+  border-color: rgba(79, 209, 101, 0.3);
+  box-shadow: 0 20px 60px rgba(79, 209, 101, 0.2);
 }
 
 body.theme-dark .benefit-card:hover {
-  border-color: rgba(167, 139, 250, 0.3);
+  border-color: rgba(104, 211, 145, 0.3);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
 }
 
@@ -540,7 +540,7 @@ body.theme-dark .benefit-card:hover {
   justify-content: center;
   font-size: 2.5rem;
   position: relative;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 32px rgba(79, 209, 101, 0.3);
   animation: icon-float 3s ease-in-out infinite;
 }
 
@@ -609,7 +609,7 @@ body.theme-dark .home-examples {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  border: 2px solid rgba(102, 126, 234, 0.1);
+  border: 2px solid rgba(79, 209, 101, 0.1);
   height: 100%;
   position: relative;
   overflow: hidden;
@@ -619,7 +619,7 @@ body.theme-dark .home-examples {
 
 body.theme-dark .example-card {
   background: var(--surface-dark);
-  border-color: rgba(167, 139, 250, 0.1);
+  border-color: rgba(104, 211, 145, 0.1);
   box-shadow: var(--shadow-dark);
 }
 
@@ -641,12 +641,12 @@ body.theme-dark .example-card {
 
 .example-card:hover {
   transform: translateY(-12px) scale(1.02);
-  border-color: rgba(102, 126, 234, 0.3);
-  box-shadow: 0 25px 70px rgba(102, 126, 234, 0.25);
+  border-color: rgba(79, 209, 101, 0.3);
+  box-shadow: 0 25px 70px rgba(79, 209, 101, 0.25);
 }
 
 body.theme-dark .example-card:hover {
-  border-color: rgba(167, 139, 250, 0.3);
+  border-color: rgba(104, 211, 145, 0.3);
   box-shadow: 0 25px 70px rgba(0, 0, 0, 0.4);
 }
 
@@ -665,7 +665,7 @@ body.theme-dark .example-card:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 8px 32px rgba(79, 209, 101, 0.3);
   animation: icon-pulse 3s ease-in-out infinite;
 }
 
@@ -720,7 +720,7 @@ body.theme-dark .example-desc {
   margin-top: auto;
   width: 100%;
   text-align: center;
-  box-shadow: 0 8px 32px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 8px 32px rgba(79, 209, 101, 0.4);
   position: relative;
   overflow: hidden;
   border: 2px solid rgba(255, 255, 255, 0.2);
@@ -728,7 +728,7 @@ body.theme-dark .example-desc {
 
 .example-btn:hover {
   transform: translateY(-3px) scale(1.02);
-  box-shadow: 0 12px 40px rgba(102, 126, 234, 0.6);
+  box-shadow: 0 12px 40px rgba(79, 209, 101, 0.6);
   border-color: rgba(255, 255, 255, 0.4);
 }
 
@@ -825,7 +825,7 @@ body.theme-dark .example-desc {
 
 .cta-content .cta-button {
   background: rgba(255, 255, 255, 0.95);
-  color: #667eea;
+  color: #4fd165;
   border: 3px solid rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(20px);
   margin: 0 auto;
@@ -838,7 +838,7 @@ body.theme-dark .example-desc {
 
 .cta-content .cta-button:hover {
   background: rgba(255, 255, 255, 1);
-  color: #5a67d8;
+  color: #36b14e;
   border-color: rgba(255, 255, 255, 0.6);
   transform: translateY(-6px) scale(1.05);
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
@@ -876,13 +876,13 @@ body.theme-dark .example-desc {
   overflow: auto;
   position: relative;
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
-  border: 2px solid rgba(102, 126, 234, 0.2);
+  border: 2px solid rgba(79, 209, 101, 0.2);
   animation: modal-scale-in 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 body.theme-dark .modal-content {
   background: var(--surface-dark);
-  border-color: rgba(167, 139, 250, 0.2);
+  border-color: rgba(104, 211, 145, 0.2);
 }
 
 @keyframes modal-scale-in {
