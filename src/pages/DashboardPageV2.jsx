@@ -190,122 +190,249 @@ const MobileUserProfile = ({
   handleLogout 
 }) => {
   const [showActions, setShowActions] = useState(false);
+  const [showStats, setShowStats] = useState(false);
 
   return (
-    <div className="mobile-user-profile">
-      <div className="mobile-profile-header">
-        <div className="mobile-avatar-container">
-          <div className="mobile-avatar-wrapper">
-            {loadingAvatar ? (
-              <div className="avatar-placeholder">⏳</div>
-            ) : (
-              <div className="avatar-image-container">
-                {avatarUrl ? (
-                  <img src={avatarUrl} alt="Аватар" className="avatar-image" />
+    <div className="mobile-user-profile-stunning">
+      {/* Анимированный фон с частицами */}
+      <div className="mobile-profile-particles">
+        {[...Array(12)].map((_, i) => (
+          <div 
+            key={i}
+            className="mobile-particle" 
+            style={{
+              '--delay': `${i * 0.5}s`,
+              '--x': `${Math.random() * 100}%`,
+              '--y': `${Math.random() * 100}%`,
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Основной контент профиля */}
+      <div className="mobile-profile-content">
+        {/* Карточка с информацией пользователя */}
+        <motion.div 
+          className="mobile-profile-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: "easeOutCubic" }}
+        >
+          {/* Аватар с красивым эффектом */}
+          <div className="mobile-avatar-section">
+            <div className="mobile-avatar-ring">
+              <div className="mobile-avatar-container-new">
+                {loadingAvatar ? (
+                  <div className="mobile-avatar-loading">
+                    <div className="mobile-loading-spinner"></div>
+                  </div>
                 ) : (
-                  <div className="avatar-placeholder">
-                    {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
+                  <div className="mobile-avatar-wrapper-new">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="Аватар" className="mobile-avatar-image" />
+                    ) : (
+                      <div className="mobile-avatar-placeholder">
+                        {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
+                      </div>
+                    )}
+                    
+                    {/* Оверлей для изменения аватара */}
+                    <div className="mobile-avatar-overlay">
+                      <label htmlFor="mobile-avatar-upload-new" className="mobile-avatar-edit">
+                        <span className="mobile-avatar-icon">📷</span>
+                        <span className="mobile-avatar-text">Изменить</span>
+                        <input
+                          id="mobile-avatar-upload-new"
+                          type="file"
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          onChange={handleAvatarChange}
+                          disabled={loadingAvatar}
+                        />
+                      </label>
+                    </div>
                   </div>
                 )}
-                
-                <div className="avatar-overlay">
-                  <label htmlFor="mobile-avatar-upload" className="avatar-edit-overlay">
-                    <span className="avatar-edit-text">📷</span>
-                    <input
-                      id="mobile-avatar-upload"
-                      type="file"
-                      accept="image/*"
-                      style={{ display: 'none' }}
-                      onChange={handleAvatarChange}
-                      disabled={loadingAvatar}
-                    />
-                  </label>
-                </div>
               </div>
-            )}
+            </div>
+            
+            {/* Индикатор онлайн статуса */}
+            <div className="mobile-status-indicator">
+              <div className="mobile-status-dot"></div>
+            </div>
           </div>
-          {avatarError && (
-            <div className="mobile-avatar-error">{avatarError}</div>
-          )}
-        </div>
-        
-        <div className="mobile-user-info">
-          {editName ? (
-            <div className="mobile-name-edit-form">
-              <input
-                type="text"
-                className="mobile-name-input"
-                value={newName}
-                onChange={e => setNewName(e.target.value)}
-                maxLength={32}
-                disabled={loadingName}
-                placeholder="Ваше имя"
-              />
-              <div className="mobile-name-buttons">
+
+          {/* Информация о пользователе */}
+          <div className="mobile-user-details">
+            {editName ? (
+              <motion.div 
+                className="mobile-edit-form"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="mobile-input-group">
+                  <input
+                    type="text"
+                    className="mobile-name-input-new"
+                    value={newName}
+                    onChange={e => setNewName(e.target.value)}
+                    maxLength={32}
+                    disabled={loadingName}
+                    placeholder="Введите ваше имя"
+                  />
+                  <div className="mobile-input-actions">
+                    <button 
+                      className="mobile-action-btn-new mobile-save-btn"
+                      onClick={handleNameSave} 
+                      disabled={loadingName || !newName.trim()}
+                    >
+                      <span>✓</span>
+                    </button>
+                    <button 
+                      className="mobile-action-btn-new mobile-cancel-btn"
+                      onClick={() => {
+                        setEditName(false);
+                        setNewName(user.name);
+                      }} 
+                      disabled={loadingName}
+                    >
+                      <span>✕</span>
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            ) : (
+              <div className="mobile-name-section">
+                <h2 className="mobile-user-name-new">
+                  {user.name || 'Пользователь'}
+                  {loadingName && <span className="mobile-loading-icon">⏳</span>}
+                </h2>
                 <button 
-                  className="mobile-btn mobile-btn-save"
-                  onClick={handleNameSave} 
-                  disabled={loadingName || !newName.trim()}
+                  className="mobile-edit-name-btn"
+                  onClick={() => setEditName(true)}
+                  title="Редактировать имя"
                 >
-                  ✓
-                </button>
-                <button 
-                  className="mobile-btn mobile-btn-cancel"
-                  onClick={() => {
-                    setEditName(false);
-                    setNewName(user.name);
-                  }} 
-                  disabled={loadingName}
-                >
-                  ✕
+                  <span>✏️</span>
                 </button>
               </div>
-            </div>
-          ) : (
-            <div className="mobile-user-name">
-              <span>{user.name}</span>
-              <button 
-                className="mobile-edit-btn"
-                onClick={() => setEditName(true)}
-                title="Редактировать имя"
-              >
-                ✏️
-              </button>
-              {loadingName && <span className="mobile-loading">⏳</span>}
-            </div>
-          )}
-          
-          <div className="mobile-user-email">{user.email || 'Гостевой доступ'}</div>
-        </div>
-        
-        <button 
-          className="mobile-actions-toggle"
-          onClick={() => setShowActions(!showActions)}
-        >
-          ⚙️
-        </button>
-      </div>
-      
-      <AnimatePresence>
-        {showActions && (
-          <motion.div
-            className="mobile-user-actions"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {isAdmin && (
-              <button className="mobile-action-btn admin" onClick={goToAdmin}>
-                <span>👑</span> Админ-панель
-              </button>
             )}
-            <button className="mobile-action-btn logout" onClick={handleLogout}>
-              <span>🚪</span> Выйти
+            
+            <div className="mobile-user-email-new">
+              {user.email || 'Гостевой доступ'}
+            </div>
+
+            {/* Статистика пользователя */}
+            <motion.div 
+              className="mobile-user-stats"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: showStats ? 1 : 0, height: showStats ? 'auto' : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              <div className="mobile-stat-item">
+                <span className="mobile-stat-icon">🏃‍♂️</span>
+                <span className="mobile-stat-value">7</span>
+                <span className="mobile-stat-label">дней активности</span>
+              </div>
+              <div className="mobile-stat-item">
+                <span className="mobile-stat-icon">🎯</span>
+                <span className="mobile-stat-value">85%</span>
+                <span className="mobile-stat-label">выполнено целей</span>
+              </div>
+            </motion.div>
+
+            <button 
+              className="mobile-stats-toggle"
+              onClick={() => setShowStats(!showStats)}
+            >
+              <span>{showStats ? 'Скрыть статистику' : 'Показать статистику'}</span>
+              <span className={`mobile-arrow ${showStats ? 'up' : 'down'}`}>▼</span>
             </button>
+          </div>
+        </motion.div>
+
+        {/* Быстрые действия */}
+        <motion.div 
+          className="mobile-quick-actions"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <button 
+            className="mobile-quick-action-toggle"
+            onClick={() => setShowActions(!showActions)}
+          >
+            <span className="mobile-action-icon">⚙️</span>
+            <span>Действия</span>
+            <span className={`mobile-chevron ${showActions ? 'up' : 'down'}`}>▼</span>
+          </button>
+          
+          <AnimatePresence>
+            {showActions && (
+              <motion.div
+                className="mobile-actions-grid"
+                initial={{ opacity: 0, height: 0, y: -10 }}
+                animate={{ opacity: 1, height: 'auto', y: 0 }}
+                exit={{ opacity: 0, height: 0, y: -10 }}
+                transition={{ duration: 0.4, ease: "easeOutCubic" }}
+              >
+                {isAdmin && (
+                  <motion.button 
+                    className="mobile-grid-action admin"
+                    onClick={goToAdmin}
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <span className="mobile-grid-icon">👑</span>
+                    <span className="mobile-grid-text">Админ-панель</span>
+                  </motion.button>
+                )}
+                
+                <motion.button 
+                  className="mobile-grid-action settings"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="mobile-grid-icon">⚙️</span>
+                  <span className="mobile-grid-text">Настройки</span>
+                </motion.button>
+                
+                <motion.button 
+                  className="mobile-grid-action support"
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="mobile-grid-icon">💬</span>
+                  <span className="mobile-grid-text">Поддержка</span>
+                </motion.button>
+                
+                <motion.button 
+                  className="mobile-grid-action logout"
+                  onClick={handleLogout}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <span className="mobile-grid-icon">🚪</span>
+                  <span className="mobile-grid-text">Выйти</span>
+                </motion.button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        {/* Ошибка аватара */}
+        {avatarError && (
+          <motion.div 
+            className="mobile-error-message"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+          >
+            <span className="mobile-error-icon">⚠️</span>
+            <span>{avatarError}</span>
           </motion.div>
         )}
-      </AnimatePresence>
+      </div>
     </div>
   );
 };
