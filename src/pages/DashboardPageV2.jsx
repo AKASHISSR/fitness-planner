@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db, uploadUserAvatarToImgbb, getUserAvatar, logUserActivity } from '../firebase';
 import { doc, getDoc, setDoc, collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
-import './DashboardPageV2-beautiful.css?v=3.0.0';
+import './DashboardPageV2-beautiful.css?v=4.0.0';
 import { ADMINS } from '../App';
 
 // Данные для планов питания и тренировок
@@ -70,6 +70,24 @@ const workoutPlan = [
   { day: 'Воскресенье', workout: 'Отдых и восстановление' },
 ];
 
+// Хук для определения мобильного устройства
+const useIsMobile = () => {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    checkIsMobile();
+    window.addEventListener('resize', checkIsMobile);
+
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
+
+  return isMobile;
+};
+
 // Компонент для анимированного фона
 const AnimatedBackground = () => {
   return (
@@ -95,6 +113,199 @@ const AnimatedBackground = () => {
           }}
         />
       ))}
+    </div>
+  );
+};
+
+// Мобильная навигация по вкладкам в виде выпадающего меню
+const MobileTabSelector = ({ tab, setTab, isFoodPaid, isWorkoutPaid }) => {
+  const [isOpen, setIsOpen] = useState(false);
+  
+  const tabs = [
+    { key: 'food', label: '🍽️ План питания', available: isFoodPaid },
+    { key: 'workout', label: '💪 План тренировок', available: isWorkoutPaid },
+    { key: 'shopping', label: '🛒 Список покупок', available: true },
+    { key: 'activity', label: '📊 Активность', available: true },
+  ];
+
+  const currentTab = tabs.find(t => t.key === tab);
+
+  return (
+    <div className="mobile-tab-selector">
+      <button 
+        className="mobile-tab-current"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <span>{currentTab?.label}</span>
+        <span className={`mobile-tab-arrow ${isOpen ? 'open' : ''}`}>▼</span>
+      </button>
+      
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="mobile-tab-dropdown"
+            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -10, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            {tabs.map((tabItem) => (
+              <button
+                key={tabItem.key}
+                className={`mobile-tab-option ${tab === tabItem.key ? 'active' : ''} ${!tabItem.available ? 'disabled' : ''}`}
+                onClick={() => {
+                  if (tabItem.available) {
+                    setTab(tabItem.key);
+                    setIsOpen(false);
+                  }
+                }}
+                disabled={!tabItem.available}
+              >
+                {tabItem.label}
+                {!tabItem.available && <span className="tab-lock">🔒</span>}
+              </button>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+};
+
+// Компактный профиль для мобильных
+const MobileUserProfile = ({ 
+  user, 
+  editName, 
+  setEditName, 
+  newName, 
+  setNewName, 
+  handleNameSave, 
+  loadingName,
+  avatarUrl, 
+  loadingAvatar, 
+  handleAvatarChange, 
+  avatarError,
+  isAdmin,
+  goToAdmin,
+  handleLogout 
+}) => {
+  const [showActions, setShowActions] = useState(false);
+
+  return (
+    <div className="mobile-user-profile">
+      <div className="mobile-profile-header">
+        <div className="mobile-avatar-container">
+          <div className="mobile-avatar-wrapper">
+            {loadingAvatar ? (
+              <div className="avatar-placeholder">⏳</div>
+            ) : (
+              <div className="avatar-image-container">
+                {avatarUrl ? (
+                  <img src={avatarUrl} alt="Аватар" className="avatar-image" />
+                ) : (
+                  <div className="avatar-placeholder">
+                    {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
+                  </div>
+                )}
+                
+                <div className="avatar-overlay">
+                  <label htmlFor="mobile-avatar-upload" className="avatar-edit-overlay">
+                    <span className="avatar-edit-text">📷</span>
+                    <input
+                      id="mobile-avatar-upload"
+                      type="file"
+                      accept="image/*"
+                      style={{ display: 'none' }}
+                      onChange={handleAvatarChange}
+                      disabled={loadingAvatar}
+                    />
+                  </label>
+                </div>
+              </div>
+            )}
+          </div>
+          {avatarError && (
+            <div className="mobile-avatar-error">{avatarError}</div>
+          )}
+        </div>
+        
+        <div className="mobile-user-info">
+          {editName ? (
+            <div className="mobile-name-edit-form">
+              <input
+                type="text"
+                className="mobile-name-input"
+                value={newName}
+                onChange={e => setNewName(e.target.value)}
+                maxLength={32}
+                disabled={loadingName}
+                placeholder="Ваше имя"
+              />
+              <div className="mobile-name-buttons">
+                <button 
+                  className="mobile-btn mobile-btn-save"
+                  onClick={handleNameSave} 
+                  disabled={loadingName || !newName.trim()}
+                >
+                  ✓
+                </button>
+                <button 
+                  className="mobile-btn mobile-btn-cancel"
+                  onClick={() => {
+                    setEditName(false);
+                    setNewName(user.name);
+                  }} 
+                  disabled={loadingName}
+                >
+                  ✕
+                </button>
+              </div>
+            </div>
+          ) : (
+            <div className="mobile-user-name">
+              <span>{user.name}</span>
+              <button 
+                className="mobile-edit-btn"
+                onClick={() => setEditName(true)}
+                title="Редактировать имя"
+              >
+                ✏️
+              </button>
+              {loadingName && <span className="mobile-loading">⏳</span>}
+            </div>
+          )}
+          
+          <div className="mobile-user-email">{user.email || 'Гостевой доступ'}</div>
+        </div>
+        
+        <button 
+          className="mobile-actions-toggle"
+          onClick={() => setShowActions(!showActions)}
+        >
+          ⚙️
+        </button>
+      </div>
+      
+      <AnimatePresence>
+        {showActions && (
+          <motion.div
+            className="mobile-user-actions"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3 }}
+          >
+            {isAdmin && (
+              <button className="mobile-action-btn admin" onClick={goToAdmin}>
+                <span>👑</span> Админ-панель
+              </button>
+            )}
+            <button className="mobile-action-btn logout" onClick={handleLogout}>
+              <span>🚪</span> Выйти
+            </button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };
@@ -142,6 +353,9 @@ function DashboardPageV2() {
   const [avatarError, setAvatarError] = useState('');
   const [checkedItems, setCheckedItems] = useState({});
   const navigate = useNavigate();
+  
+  // Определение мобильного устройства
+  const isMobile = useIsMobile();
 
   // Загрузка данных при монтировании компонента
   useEffect(() => {
@@ -363,143 +577,171 @@ function DashboardPageV2() {
   };
 
   return (
-    <div className="dashboard-container">
+    <div className={`dashboard-container ${isMobile ? 'mobile' : 'desktop'}`}>
       <AnimatedBackground />
       
       <motion.div 
         className="dashboard-content"
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: isMobile ? 10 : 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
       >
-        {/* Профиль пользователя */}
-        <div className="user-profile">
-          <div className="profile-decoration"></div>
-          <div className="profile-decoration"></div>
-          
-          <div className="avatar-container">
-            <div className="avatar-wrapper">
-              {loadingAvatar ? (
-                <div className="avatar-placeholder">⏳</div>
-              ) : (
-                <div className="avatar-image-container">
-                  {avatarUrl ? (
-                    <img src={avatarUrl} alt="Аватар" className="avatar-image" />
-                  ) : (
-                    <div className="avatar-placeholder">
-                      {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
+        {/* Адаптивный профиль пользователя */}
+        {isMobile ? (
+          <MobileUserProfile
+            user={user}
+            editName={editName}
+            setEditName={setEditName}
+            newName={newName}
+            setNewName={setNewName}
+            handleNameSave={handleNameSave}
+            loadingName={loadingName}
+            avatarUrl={avatarUrl}
+            loadingAvatar={loadingAvatar}
+            handleAvatarChange={handleAvatarChange}
+            avatarError={avatarError}
+            isAdmin={isAdmin}
+            goToAdmin={goToAdmin}
+            handleLogout={handleLogout}
+          />
+        ) : (
+          <div className="user-profile">
+            <div className="profile-decoration"></div>
+            <div className="profile-decoration"></div>
+            
+            <div className="avatar-container">
+              <div className="avatar-wrapper">
+                {loadingAvatar ? (
+                  <div className="avatar-placeholder">⏳</div>
+                ) : (
+                  <div className="avatar-image-container">
+                    {avatarUrl ? (
+                      <img src={avatarUrl} alt="Аватар" className="avatar-image" />
+                    ) : (
+                      <div className="avatar-placeholder">
+                        {user.name ? user.name.charAt(0).toUpperCase() : '👤'}
+                      </div>
+                    )}
+                    
+                    <div className="avatar-overlay">
+                      <label htmlFor="avatar-upload" className="avatar-edit-overlay">
+                        <span className="avatar-edit-text">Изменить фото</span>
+                        <input
+                          id="avatar-upload"
+                          type="file"
+                          accept="image/*"
+                          style={{ display: 'none' }}
+                          onChange={handleAvatarChange}
+                          disabled={loadingAvatar}
+                        />
+                      </label>
                     </div>
-                  )}
-                  
-                  <div className="avatar-overlay">
-                    <label htmlFor="avatar-upload" className="avatar-edit-overlay">
-                      <span className="avatar-edit-text">Изменить фото</span>
-                      <input
-                        id="avatar-upload"
-                        type="file"
-                        accept="image/*"
-                        style={{ display: 'none' }}
-                        onChange={handleAvatarChange}
-                        disabled={loadingAvatar}
-                      />
-                    </label>
                   </div>
+                )}
+              </div>
+              {avatarError && (
+                <div style={{ color: '#ff6b6b', marginTop: '0.5rem', fontSize: '0.9rem', textAlign: 'center' }}>
+                  {avatarError}
                 </div>
               )}
             </div>
-            {avatarError && (
-              <div style={{ color: '#ff6b6b', marginTop: '0.5rem', fontSize: '0.9rem', textAlign: 'center' }}>
-                {avatarError}
-              </div>
-            )}
-          </div>
-          
-          <div className="user-info">
-            {editName ? (
-              <div className="name-edit-form">
-                <input
-                  type="text"
-                  className="name-input"
-                  value={newName}
-                  onChange={e => setNewName(e.target.value)}
-                  maxLength={32}
-                  disabled={loadingName}
-                  placeholder="Ваше имя"
-                />
-                <button 
-                  className="btn btn-primary"
-                  onClick={handleNameSave} 
-                  disabled={loadingName || !newName.trim()}
-                >
-                  Сохранить
-                </button>
-                <button 
-                  className="btn btn-secondary"
-                  onClick={() => {
-                    setEditName(false);
-                    setNewName(user.name);
-                  }} 
-                  disabled={loadingName}
-                >
-                  Отмена
-                </button>
-              </div>
-            ) : (
-              <div className="user-name">
-                {user.name}
-                <button 
-                  className="edit-name-btn"
-                  onClick={() => setEditName(true)}
-                  title="Редактировать имя"
-                >
-                  ✏️
-                </button>
-                {loadingName && <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>⏳</span>}
-              </div>
-            )}
             
-            <div className="user-email">{user.email || 'Гостевой доступ'}</div>
-            
-            <div className="user-actions">
-              {isAdmin && (
-                <button className="btn btn-admin" onClick={goToAdmin}>
-                  <span>👑</span> Админ-панель
-                </button>
+            <div className="user-info">
+              {editName ? (
+                <div className="name-edit-form">
+                  <input
+                    type="text"
+                    className="name-input"
+                    value={newName}
+                    onChange={e => setNewName(e.target.value)}
+                    maxLength={32}
+                    disabled={loadingName}
+                    placeholder="Ваше имя"
+                  />
+                  <button 
+                    className="btn btn-primary"
+                    onClick={handleNameSave} 
+                    disabled={loadingName || !newName.trim()}
+                  >
+                    Сохранить
+                  </button>
+                  <button 
+                    className="btn btn-secondary"
+                    onClick={() => {
+                      setEditName(false);
+                      setNewName(user.name);
+                    }} 
+                    disabled={loadingName}
+                  >
+                    Отмена
+                  </button>
+                </div>
+              ) : (
+                <div className="user-name">
+                  {user.name}
+                  <button 
+                    className="edit-name-btn"
+                    onClick={() => setEditName(true)}
+                    title="Редактировать имя"
+                  >
+                    ✏️
+                  </button>
+                  {loadingName && <span style={{ fontSize: '0.9rem', opacity: 0.7 }}>⏳</span>}
+                </div>
               )}
-              <button className="btn btn-secondary" onClick={handleLogout}>
-                <span>🚪</span> Выйти
-              </button>
+              
+              <div className="user-email">{user.email || 'Гостевой доступ'}</div>
+              
+              <div className="user-actions">
+                {isAdmin && (
+                  <button className="btn btn-admin" onClick={goToAdmin}>
+                    <span>👑</span> Админ-панель
+                  </button>
+                )}
+                <button className="btn btn-secondary" onClick={handleLogout}>
+                  <span>🚪</span> Выйти
+                </button>
+              </div>
             </div>
           </div>
-        </div>
+        )}
         
-        {/* Вкладки */}
-        <div className="tabs-container">
-          <div 
-            className={`tab ${tab === 'food' ? 'active' : ''}`}
-            onClick={() => setTab('food')}
-          >
-            🍽️ План питания
+        {/* Адаптивная навигация */}
+        {isMobile ? (
+          <MobileTabSelector
+            tab={tab}
+            setTab={setTab}
+            isFoodPaid={isFoodPaid}
+            isWorkoutPaid={isWorkoutPaid}
+          />
+        ) : (
+          <div className="tabs-container">
+            <div 
+              className={`tab ${tab === 'food' ? 'active' : ''}`}
+              onClick={() => setTab('food')}
+            >
+              🍽️ План питания
+            </div>
+            <div 
+              className={`tab ${tab === 'workout' ? 'active' : ''}`}
+              onClick={() => setTab('workout')}
+            >
+              💪 План тренировок
+            </div>
+            <div 
+              className={`tab ${tab === 'shopping' ? 'active' : ''}`}
+              onClick={() => setTab('shopping')}
+            >
+              🛒 Список покупок
+            </div>
+            <div 
+              className={`tab ${tab === 'activity' ? 'active' : ''}`}
+              onClick={() => setTab('activity')}
+            >
+              📊 Активность
+            </div>
           </div>
-          <div 
-            className={`tab ${tab === 'workout' ? 'active' : ''}`}
-            onClick={() => setTab('workout')}
-          >
-            💪 План тренировок
-          </div>
-          <div 
-            className={`tab ${tab === 'shopping' ? 'active' : ''}`}
-            onClick={() => setTab('shopping')}
-          >
-            🛒 Список покупок
-          </div>
-          <div 
-            className={`tab ${tab === 'activity' ? 'active' : ''}`}
-            onClick={() => setTab('activity')}
-          >
-            📊 Активность
-          </div>
-        </div>
+        )}
         
         {/* Содержимое вкладок */}
         <AnimatePresence mode="wait">
@@ -514,11 +756,11 @@ function DashboardPageV2() {
             {/* План питания */}
             {tab === 'food' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                  <h2>🍽️ План питания</h2>
+                <div className={`tab-header ${isMobile ? 'mobile' : ''}`}>
+                  {!isMobile && <h2>🍽️ План питания</h2>}
                   {isFoodPaid && mealPlan && (
                     <button className="btn btn-primary" onClick={handleExport}>
-                      <span>📥</span> Экспорт в PDF
+                      <span>📥</span> {isMobile ? 'PDF' : 'Экспорт в PDF'}
                     </button>
                   )}
                 </div>
@@ -568,11 +810,11 @@ function DashboardPageV2() {
             {/* План тренировок */}
             {tab === 'workout' && (
               <>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-                  <h2>💪 План тренировок</h2>
+                <div className={`tab-header ${isMobile ? 'mobile' : ''}`}>
+                  {!isMobile && <h2>💪 План тренировок</h2>}
                   {isWorkoutPaid && workoutPlanText && (
                     <button className="btn btn-primary" onClick={handleExport}>
-                      <span>📥</span> Экспорт в PDF
+                      <span>📥</span> {isMobile ? 'PDF' : 'Экспорт в PDF'}
                     </button>
                   )}
                 </div>
@@ -622,7 +864,7 @@ function DashboardPageV2() {
             {/* Список покупок */}
             {tab === 'shopping' && (
               <>
-                <h2>🛒 Список покупок</h2>
+                {!isMobile && <h2>🛒 Список покупок</h2>}
                 <div className="content-card">
                   <p style={{ marginBottom: '1.5rem', color: '#64748b' }}>
                     Отмечайте продукты по мере покупки для удобного планирования.
@@ -653,7 +895,7 @@ function DashboardPageV2() {
             {/* История активности */}
             {tab === 'activity' && (
               <>
-                <h2>📊 История активности</h2>
+                {!isMobile && <h2>📊 История активности</h2>}
                 {loadingActivity ? (
                   <div className="content-card" style={{ textAlign: 'center', padding: '3rem' }}>
                     <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>⏳</div>

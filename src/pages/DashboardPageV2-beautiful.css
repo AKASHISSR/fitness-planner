@@ -903,4 +903,470 @@ body.theme-dark .activity-action {
       transform: translateY(0);
     }
   }
+}
+
+/* МОБИЛЬНЫЕ КОМПОНЕНТЫ */
+
+/* Мобильный профиль пользователя */
+.mobile-user-profile {
+  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
+  margin: -0.5rem -0.5rem 1rem -0.5rem;
+  border-radius: 0 0 20px 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.mobile-profile-header {
+  display: flex;
+  align-items: center;
+  padding: 1.5rem 1rem;
+  gap: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-avatar-container {
+  position: relative;
+}
+
+.mobile-avatar-wrapper {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #ffffff;
+  padding: 2px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.mobile-user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.mobile-user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.mobile-user-name span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-edit-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 6px;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.mobile-edit-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.mobile-loading {
+  font-size: 0.8rem;
+  opacity: 0.8;
+  margin-left: 0.5rem;
+}
+
+.mobile-user-email {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mobile-actions-toggle {
+  background: rgba(255, 255, 255, 0.15);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  flex-shrink: 0;
+}
+
+.mobile-actions-toggle:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+.mobile-user-actions {
+  padding: 0 1rem 1rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobile-action-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 10px 16px;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-action-btn.admin {
+  background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+  color: white;
+}
+
+.mobile-action-btn.logout {
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+}
+
+.mobile-action-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.mobile-avatar-error {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  text-align: center;
+  margin-top: 0.25rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+/* Форма редактирования имени для мобильных */
+.mobile-name-edit-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.mobile-name-input {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 1rem;
+  color: #1e293b;
+  min-width: 0;
+}
+
+.mobile-name-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+.mobile-name-buttons {
+  display: flex;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+
+.mobile-btn {
+  border: none;
+  border-radius: 6px;
+  padding: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-btn-save {
+  background: rgba(255, 255, 255, 0.9);
+  color: #4fd165;
+}
+
+.mobile-btn-cancel {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.mobile-btn:hover {
+  transform: scale(1.05);
+}
+
+.mobile-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Мобильный селектор вкладок */
+.mobile-tab-selector {
+  position: relative;
+  margin: 1rem 0.5rem;
+  z-index: 10;
+}
+
+.mobile-tab-current {
+  width: 100%;
+  background: rgba(79, 209, 101, 0.1);
+  border: 2px solid rgba(79, 209, 101, 0.2);
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+body.theme-dark .mobile-tab-current {
+  background: rgba(79, 209, 101, 0.15);
+  border-color: rgba(79, 209, 101, 0.3);
+  color: #f8fafc;
+}
+
+.mobile-tab-current:hover {
+  border-color: rgba(79, 209, 101, 0.4);
+  background: rgba(79, 209, 101, 0.15);
+}
+
+.mobile-tab-arrow {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+  color: #4fd165;
+}
+
+.mobile-tab-arrow.open {
+  transform: rotate(180deg);
+}
+
+.mobile-tab-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2px solid rgba(79, 209, 101, 0.2);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(20px);
+  z-index: 20;
+}
+
+body.theme-dark .mobile-tab-dropdown {
+  background: rgba(45, 45, 45, 0.95);
+  border-color: rgba(79, 209, 101, 0.3);
+}
+
+.mobile-tab-option {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid rgba(79, 209, 101, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mobile-tab-option:last-child {
+  border-bottom: none;
+}
+
+.mobile-tab-option:hover:not(.disabled) {
+  background: rgba(79, 209, 101, 0.1);
+  color: #4fd165;
+}
+
+.mobile-tab-option.active {
+  background: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
+  color: white;
+  font-weight: 600;
+}
+
+.mobile-tab-option.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  color: #94a3b8;
+}
+
+.tab-lock {
+  font-size: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+/* Адаптивные заголовки вкладок */
+.tab-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.tab-header.mobile {
+  justify-content: flex-end;
+  margin-bottom: 1rem;
+}
+
+.tab-header.mobile .btn {
+  font-size: 0.9rem;
+  padding: 10px 16px;
+}
+
+/* Улучшения для мобильных контейнеров */
+.dashboard-container.mobile {
+  padding: 0.5rem 0;
+}
+
+.dashboard-container.mobile .dashboard-content {
+  border-radius: 16px;
+  margin: 0 0.5rem;
+  min-height: calc(100vh - 1rem);
+}
+
+.dashboard-container.mobile .tab-content {
+  padding: 1rem 0.75rem;
+}
+
+.dashboard-container.mobile .content-card {
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+}
+
+/* Оптимизация карточек контента для мобильных */
+.dashboard-container.mobile .content-card pre {
+  font-size: 0.9rem !important;
+  line-height: 1.5 !important;
+  padding: 0.75rem;
+  background: rgba(248, 250, 252, 0.8);
+  border-radius: 8px;
+  border: 1px solid rgba(226, 232, 240, 0.5);
+}
+
+body.theme-dark .dashboard-container.mobile .content-card pre {
+  background: rgba(51, 65, 85, 0.6);
+  border-color: rgba(100, 116, 139, 0.3);
+}
+
+/* Мобильная оптимизация списка покупок */
+.dashboard-container.mobile .shopping-list {
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+
+.dashboard-container.mobile .shopping-item {
+  padding: 12px 14px;
+  min-height: 48px;
+  font-size: 0.9rem;
+  border-radius: 10px;
+}
+
+.dashboard-container.mobile .shopping-checkbox {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+/* Мобильная оптимизация истории активности */
+.dashboard-container.mobile .activity-item {
+  padding: 0.75rem;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  border-radius: 10px;
+}
+
+.dashboard-container.mobile .activity-icon {
+  width: 32px;
+  height: 32px;
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+.dashboard-container.mobile .activity-details {
+  flex: 1;
+  text-align: left;
+}
+
+.dashboard-container.mobile .activity-date {
+  font-size: 0.75rem;
+}
+
+.dashboard-container.mobile .activity-action {
+  font-size: 0.85rem;
+  margin-top: 0.1rem;
+}
+
+/* Анимации для мобильных компонентов */
+@media (max-width: 768px) {
+  .mobile-user-profile {
+    animation: mobileProfileSlideDown 0.4s ease-out;
+  }
+  
+  .mobile-tab-selector {
+    animation: mobileTabFadeIn 0.3s ease-out 0.1s both;
+  }
+  
+  @keyframes mobileProfileSlideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes mobileTabFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 } 
