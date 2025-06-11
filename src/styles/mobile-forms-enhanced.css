@@ -1,0 +1,337 @@
+/* ========================================
+   УЛУЧШЕННЫЕ МОБИЛЬНЫЕ ФОРМЫ И ИНТЕРАКТИВНЫЕ ЭЛЕМЕНТЫ
+   ======================================== */
+
+@media (max-width: 768px) {
+  /* Улучшенные поля ввода */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Предотвращает зум на iOS */
+    line-height: 1.5 !important;
+    padding: 12px 16px !important;
+    border-radius: 8px !important;
+    border: 2px solid #e1e5e9 !important;
+    background-color: #ffffff !important;
+    transition: all 0.3s ease !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    -webkit-appearance: none !important;
+    -moz-appearance: none !important;
+    appearance: none !important;
+    min-height: 48px !important;
+  }
+  
+  /* Темная тема для полей ввода */
+  body.theme-dark input[type="text"],
+  body.theme-dark input[type="email"],
+  body.theme-dark input[type="password"],
+  body.theme-dark input[type="number"],
+  body.theme-dark input[type="tel"],
+  body.theme-dark textarea,
+  body.theme-dark select {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #f5f5f5 !important;
+  }
+  
+  /* Фокус для полей ввода */
+  input:focus,
+  textarea:focus,
+  select:focus {
+    border-color: var(--primary, #4fd165) !important;
+    box-shadow: 0 0 0 3px rgba(79, 209, 101, 0.15) !important;
+    outline: none !important;
+  }
+  
+  /* Placeholder стили */
+  input::placeholder,
+  textarea::placeholder {
+    color: #999999 !important;
+    opacity: 1 !important;
+    font-size: 15px !important;
+  }
+  
+  body.theme-dark input::placeholder,
+  body.theme-dark textarea::placeholder {
+    color: #888888 !important;
+  }
+  
+  /* Улучшенные textarea */
+  textarea {
+    min-height: 100px !important;
+    resize: vertical !important;
+    font-family: inherit !important;
+  }
+  
+  /* Улучшенные select */
+  select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+    background-position: right 12px center !important;
+    background-repeat: no-repeat !important;
+    background-size: 16px !important;
+    padding-right: 40px !important;
+  }
+  
+  body.theme-dark select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e") !important;
+  }
+  
+  /* Улучшенные лейблы */
+  label {
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
+    margin-bottom: 6px !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  
+  body.theme-dark label {
+    color: #d1d5db !important;
+  }
+  
+  /* Обязательные поля */
+  label.required::after {
+    content: " *" !important;
+    color: #dc2626 !important;
+    font-weight: bold !important;
+  }
+  
+  /* Группы полей */
+  .form-group {
+    margin-bottom: 20px !important;
+  }
+  
+  .form-row {
+    display: flex !important;
+    gap: 12px !important;
+    flex-direction: column !important;
+  }
+  
+  /* Радио кнопки и чекбоксы */
+  input[type="radio"],
+  input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    margin-right: 8px !important;
+    cursor: pointer !important;
+    accent-color: var(--primary, #4fd165) !important;
+  }
+  
+  .radio-group,
+  .checkbox-group {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  
+  .radio-option,
+  .checkbox-option {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px !important;
+    background: #f9f9f9 !important;
+    border-radius: 8px !important;
+    border: 1px solid #e1e5e9 !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+  }
+  
+  body.theme-dark .radio-option,
+  body.theme-dark .checkbox-option {
+    background: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #f5f5f5 !important;
+  }
+  
+  .radio-option:hover,
+  .checkbox-option:hover {
+    background: rgba(79, 209, 101, 0.1) !important;
+    border-color: var(--primary, #4fd165) !important;
+  }
+  
+  .radio-option.selected,
+  .checkbox-option.selected {
+    background: rgba(79, 209, 101, 0.15) !important;
+    border-color: var(--primary, #4fd165) !important;
+  }
+  
+  /* Сообщения об ошибках */
+  .error-message {
+    color: #dc2626 !important;
+    font-size: 14px !important;
+    margin-top: 4px !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  
+  .field-error input,
+  .field-error textarea,
+  .field-error select {
+    border-color: #dc2626 !important;
+    box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.15) !important;
+  }
+  
+  /* Сообщения об успехе */
+  .success-message {
+    color: #059669 !important;
+    font-size: 14px !important;
+    margin-top: 4px !important;
+    display: block !important;
+    line-height: 1.4 !important;
+  }
+  
+  /* Улучшенные кнопки форм */
+  .form-button {
+    width: 100% !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    padding: 14px 20px !important;
+    border-radius: 8px !important;
+    border: none !important;
+    min-height: 48px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    letter-spacing: 0.3px !important;
+  }
+  
+  .form-button-primary {
+    background: linear-gradient(135deg, var(--primary, #4fd165), #36b14e) !important;
+    color: white !important;
+    box-shadow: 0 4px 12px rgba(79, 209, 101, 0.3) !important;
+  }
+  
+  .form-button-primary:hover {
+    background: linear-gradient(135deg, #36b14e, #2ca842) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(79, 209, 101, 0.4) !important;
+  }
+  
+  .form-button-secondary {
+    background: #f3f4f6 !important;
+    color: #374151 !important;
+    border: 1px solid #d1d5db !important;
+  }
+  
+  body.theme-dark .form-button-secondary {
+    background: #374151 !important;
+    color: #f9fafb !important;
+    border-color: #4b5563 !important;
+  }
+  
+  .form-button-secondary:hover {
+    background: #e5e7eb !important;
+  }
+  
+  body.theme-dark .form-button-secondary:hover {
+    background: #4b5563 !important;
+  }
+  
+  /* Отключенные кнопки */
+  .form-button:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+    box-shadow: none !important;
+  }
+  
+  /* Прогресс индикаторы */
+  .progress-bar {
+    width: 100% !important;
+    height: 8px !important;
+    background: #e5e7eb !important;
+    border-radius: 4px !important;
+    overflow: hidden !important;
+    margin-bottom: 16px !important;
+  }
+  
+  body.theme-dark .progress-bar {
+    background: #374151 !important;
+  }
+  
+  .progress-fill {
+    height: 100% !important;
+    background: linear-gradient(90deg, var(--primary, #4fd165), #36b14e) !important;
+    transition: width 0.3s ease !important;
+  }
+  
+  /* Всплывающие подсказки */
+  .tooltip {
+    position: relative !important;
+    display: inline-block !important;
+  }
+  
+  .tooltip-text {
+    visibility: hidden !important;
+    position: absolute !important;
+    bottom: 125% !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    background: #374151 !important;
+    color: white !important;
+    padding: 8px 12px !important;
+    border-radius: 6px !important;
+    font-size: 14px !important;
+    white-space: nowrap !important;
+    z-index: 1000 !important;
+    opacity: 0 !important;
+    transition: opacity 0.3s !important;
+  }
+  
+  .tooltip:hover .tooltip-text {
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+  
+  /* Улучшения для accessibility */
+  .sr-only {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+  }
+  
+  /* Фокус видимый для клавиатурной навигации */
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--primary, #4fd165) !important;
+    outline-offset: 2px !important;
+  }
+}
+
+/* Специальные стили для очень маленьких экранов */
+@media (max-width: 480px) {
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  textarea,
+  select {
+    font-size: 16px !important; /* Предотвращает зум */
+    padding: 10px 14px !important;
+    min-height: 44px !important;
+  }
+  
+  .form-button {
+    font-size: 15px !important;
+    padding: 12px 16px !important;
+    min-height: 44px !important;
+  }
+  
+  .form-row {
+    gap: 8px !important;
+  }
+} 
