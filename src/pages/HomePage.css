@@ -8,7 +8,7 @@
   --primary-gradient: linear-gradient(135deg, #4fd165 0%, #36b14e 50%, #2ea043 100%);
   --secondary-gradient: linear-gradient(135deg, #4fd165 0%, #36b14e 100%);
   --surface-light: rgba(255, 255, 255, 0.95);
-  --surface-dark: rgba(26, 32, 54, 0.95);
+  --surface-dark: rgba(26, 54, 26, 0.95);
   --glass-light: rgba(255, 255, 255, 0.1);
   --glass-dark: rgba(255, 255, 255, 0.05);
   --shadow-light: 0 8px 32px rgba(79, 209, 101, 0.15);
@@ -25,8 +25,8 @@
   background: linear-gradient(135deg, 
     #fdfcfb 0%, 
     #f8f9fa 25%, 
-    #e3f2fd 50%,
-    #f1f8ff 75%, 
+    #e8f5e8 50%,
+    #f1f9f1 75%, 
     #ffffff 100%);
   color: var(--text-primary-light);
   padding-top: 0;
@@ -40,11 +40,11 @@
 /* Темная тема */
 body.theme-dark .home-bg {
   background: linear-gradient(135deg, 
-    #0f0f23 0%, 
-    #1a1a2e 25%, 
-    #16213e 50%,
-    #0f3460 75%, 
-    #1a1a2e 100%);
+    #0f1a0f 0%, 
+    #1a2e1a 25%, 
+    #162116 50%,
+    #0f340f 75%, 
+    #1a2e1a 100%);
   color: var(--text-primary-dark);
 }
 

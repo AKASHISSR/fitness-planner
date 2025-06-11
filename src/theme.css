@@ -16,7 +16,7 @@
   --success: #4fd165;
   --warning: #ffbb33;
   --error: #ff6b6b;
-  --info: #33b5e5;
+  --info: #4fd165;
   
   --gradient-primary: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
   --gradient-dark: linear-gradient(135deg, #1a3a2b 0%, #36b14e 100%);
@@ -43,7 +43,7 @@
   --success: #4fd165;
   --warning: #ffbb33;
   --error: #ff6b6b;
-  --info: #33b5e5;
+  --info: #4fd165;
   
   --gradient-primary: linear-gradient(135deg, #36b14e 0%, #4fd165 100%);
   --gradient-dark: linear-gradient(135deg, #121212 0%, #232323 100%);
