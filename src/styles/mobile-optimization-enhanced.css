@@ -264,7 +264,7 @@ button, .button, [type="button"], [type="submit"] {
   }
   
   .hero-scroll-indicator {
-    bottom: 20px;
+    display: none;
   }
 }
 

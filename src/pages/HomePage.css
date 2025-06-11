@@ -834,6 +834,11 @@ body.theme-dark .modal-close:hover {
     min-height: 90vh;
   }
   
+  /* Скрываем ползунок "Прокрутите вниз" на мобильных */
+  .hero-scroll-indicator {
+    display: none;
+  }
+  
   .section-title {
     font-size: 2.2rem;
     margin-bottom: 40px;
@@ -893,6 +898,11 @@ body.theme-dark .modal-close:hover {
   
   .home-hero {
     padding: 60px 10px 20px;
+  }
+  
+  /* Дополнительно скрываем ползунок на маленьких экранах */
+  .hero-scroll-indicator {
+    display: none !important;
   }
 }
 
