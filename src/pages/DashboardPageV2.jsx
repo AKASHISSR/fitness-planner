@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { db, uploadUserAvatarToImgbb, getUserAvatar, logUserActivity } from '../firebase';
 import { doc, getDoc, setDoc, collection, query, where, orderBy, getDocs } from 'firebase/firestore';
 import { motion, AnimatePresence } from 'framer-motion';
-import './DashboardPageV2-beautiful.css?v=2.0.0';
+import './DashboardPageV2-beautiful.css?v=3.0.0';
 import { ADMINS } from '../App';
 
 // Данные для планов питания и тренировок
